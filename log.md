@@ -7,6 +7,15 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Masters Collective removal** waits on Bronson's go-ahead and his calls on existing free members (see
   [Memberships](wiki/metabolichq/mpt-membership.md)). Once it ships, drop the remaining shutdown notes from the pages.
 
+- **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
+  (an MPT pillar, more proof posts, or four posts a week)?
+
+## 2026-11-15 — Content and artifacts
+
+Added the Content Strategy & 13-Week Calendar doc, the MetHQ homepage messaging preview, both blog drafting guides and
+topic queues, and an index of all claude.ai artifacts. New pages: wiki/business/coach-bronson-content.md,
+wiki/metabolichq/methq-content.md. Changed: content-and-social (now a hub), writing-and-brand-rules, sources, index.
+
 ## 2026-11-14 (evening) — Bronson's answers
 
 - #156 closed with a resolution note; stage 3 moved to #607. Page: resources-and-files.

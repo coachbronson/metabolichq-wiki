@@ -14,7 +14,11 @@ sources: [notes, coachbronson-site CLAUDE.md]
 - Keep his mailing address off anything public unless legally required; then narrow to city and state.
 - Demo/test account "how to get in" emails go from his **coachbronson.com** Google account (not his personal Gmail),
   unless he says otherwise.
-- "Fitness is Freedom" is old branding — remove it from images.
+- "Fitness is Freedom" is old branding — remove it from images. The Coach Bronson tagline is now *"The cost of
+  performance shouldn't be quality of life."*
+- Never mention or link the Masters Collective (shut down 2026-11-14).
+- Never invent a coach, client, testimonial or quote; past clients are described anonymously by results.
+- Every study, statistic or quote is web-checked and linked; product claims only for what's live.
 - The main group program is the **"Metabolic Performance Training" program**.
 - MetabolicHQ content speaks to coaches who understand metabolic health and want the best quality of life for clients,
   not just getting them skinny.

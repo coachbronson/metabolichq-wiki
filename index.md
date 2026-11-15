@@ -27,13 +27,15 @@ Start here. One line per page; read the ones that bear on the task. Rules for ma
 - [HIPAA](wiki/metabolichq/hipaa.md) — health-practice integration prospect; HIPAA-ready MetabolicHQ
 - [Help and how-to](wiki/metabolichq/help-and-howto.md) — Help page, how-to videos, support, review after e2e runs
 - [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, MetHQ blog
+- [MetabolicHQ content](wiki/metabolichq/methq-content.md) — messaging framework (one claim, five pillars), homepage "Replace your stack", social, blog rules and topic queue
 - [Roadmap and backlog](wiki/metabolichq/roadmap-and-backlog.md) — where the backlog lives, snapshot of open work, roadmap shape
 
 ## Coaching business
 
 - [coachbronson.com](wiki/business/coachbronson-site.md) — site rebuild, audience, hosting situation, forms, blog/newsletter automation
 - [Offers](wiki/business/offers.md) — business priorities, offer ladder, lead magnet, 1:1 coaching
-- [Content and social](wiki/business/content-and-social.md) — both brands' social, content types, approvals, MetHQ messaging framework
+- [Content and social](wiki/business/content-and-social.md) — hub: how content runs across both brands, approvals, schedules
+- [Coach Bronson content](wiki/business/coach-bronson-content.md) — positioning, tagline, 8 key messages, pillars, weekly social template, production rules, book breadcrumbs, blog and newsletter rules
 - [Coaching methods](wiki/business/coaching-methods.md) — book concepts: fuel and function, adaptive economy, macros over calories
 - [Books and research](wiki/business/books-and-research.md) — sports nutrition book, S&C PM book, publications, client jobs
 
