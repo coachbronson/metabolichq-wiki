@@ -20,8 +20,13 @@ sources: [public/js/config.js, notes, CHANGELOG]
 Bronson is shutting the Masters Collective down, and it is to be wiped from the app and the sites. Until the removal
 ships, the old flow is still in the code: Circle → Zapier → `circleMember` function → single-use `MC-…` code on the
 Stripe coupon `masters-collective`, the Platform → Masters Collective portal page, `collective/{email}` records, and
-mentions on metabolichq.app/mpt, Terms, Privacy and Help. Removal is a high-risk change (payments, saved data) and
-waits on his go-ahead.
+mentions on metabolichq.app/mpt, Terms, Privacy and Help.
+
+Removal (his choices, 2026-11-14): existing free members lose access when it ships (no email); the code is in mac-app
+PR #608 (version 8.66.0; full end-to-end run passed) and the site in coachbronson-site PR #24, both waiting for his OK
+to merge. After merge: run Actions → **End Masters Collective** (dry run first, then apply). The Circle Zaps were turned
+off on 2026-11-15. The same key also secures the Zapier email workflow, so it stays and moves to Maintenance → Email
+sending.
 
 ## Coupons
 
