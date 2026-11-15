@@ -8,6 +8,14 @@ interlinked pages here, and this file is the rulebook for keeping them right.
 **Read `index.md` first in every session** that touches MetabolicHQ, MPT or the coaching business. Open the pages it
 points to before asking Bronson something the wiki may already answer.
 
+## The wiki is a starting point, not the limit
+
+The wiki is where to start, not the only thing to go on. Claude still uses its memory, the conversation, connected
+apps and the source repos to do the work. When Claude finds something the wiki doesn't have (a decision, a file, a
+fact from another source) or that the wiki has wrong, it adds a short line to [`inbox.md`](inbox.md): what it is,
+where it came from (or a link or reference to it), and the date. The nightly update files those lines into the wiki.
+Don't stop work to edit wiki pages mid-task; drop a line in the inbox and keep going.
+
 ## Layers
 
 1. **Sources** (not copied here; listed in `sources/README.md`): the code and CHANGELOG in `coachbronson/mac-app`,
@@ -56,7 +64,10 @@ The repo is private, but treat it as shareable.
 1. Read `log.md` for the last update date.
 2. In `coachbronson/mac-app`: CHANGELOG entries since then, issues closed since then (read each "How this was
    resolved" comment), issues opened or re-prioritized since then. Same for `coachbronson/coachbronson-site` commits.
-3. Fold changes into the pages (current truth first), then lint.
-4. Commit straight to `main` with message `Nightly update YYYY-MM-DD`, and append a dated entry to `log.md` listing the
+3. Process [`inbox.md`](inbox.md): file each line into the right page (with its source) or, if it only points to
+   something, add the reference to `sources/README.md` or the page it belongs on. Remove each line once filed; leave
+   anything unclear under "Open questions" in `log.md`.
+4. Fold changes into the pages (current truth first), then lint.
+5. Commit straight to `main` with message `Nightly update YYYY-MM-DD`, and append a dated entry to `log.md` listing the
    pages changed. If nothing changed, commit nothing.
-5. Never change the app or site repos from this task. It only reads them.
+6. Never change the app or site repos from this task. It only reads them.

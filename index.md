@@ -1,6 +1,8 @@
 # Index
 
 Start here. One line per page; read the ones that bear on the task. Rules for maintaining the wiki: `CLAUDE.md`.
+The wiki is a starting point: memory, conversation and sources still count. Anything found outside it goes in
+[`inbox.md`](inbox.md) for the nightly update to file.
 
 ## MetabolicHQ (the platform and app)
 

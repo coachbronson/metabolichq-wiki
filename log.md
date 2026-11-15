@@ -14,6 +14,13 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-15 — Wiki is a starting point; inbox added
+
+- CLAUDE.md: new section saying the wiki is a starting point (memory, conversation and sources still count) and that
+  anything found outside it goes in `inbox.md`; the nightly update now processes the inbox (step 3).
+- New `inbox.md`, seeded with the logo files in Drive and the MetHQ demo video decisions.
+- index.md: pointer to the inbox. (notes, chat 2026-11-15)
+
 ## 2026-11-15 — Nightly update
 
 Covered mac-app from `a58bf06` to `1fdafdb` (CHANGELOG 2026-11-14 late entries and 2026-11-15, version 8.66.1),
