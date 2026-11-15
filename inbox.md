@@ -19,3 +19,8 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   secrets (`YOUTUBE_CLIENT_ID`/`YOUTUBE_CLIENT_SECRET`) and the Firebase service account: e.g. `transcripts.yml` runs
   `scripts/transcripts.mjs`; `functions/youtube.js` handles playlist sync. Note: the YouTube API reads captions,
   metadata and playlists but can't download a video's audio · notes (chat 2026-11-15); mac-app `.github/workflows/transcripts.yml`
+- 2026-11-15 · Artlist now has Bronson's cloned voice, "Coach Bronson" (made from the 26 s Riverside "masters
+  collective intro" clip in Drive; he approved Artlist's consent statement). Artlist's audio-driven video models won't
+  take a real person's photo, so a lip-synced talking avatar of him needs HeyGen or real footage · notes (chat 2026-11-15)
+- 2026-11-15 · MetHQ demo video cut 3: narrated in his cloned voice, first person, his headshot
+  (Bronson_Horizontal_Headshot_Small.png) on the opening and closing; about 2:15 · notes (chat 2026-11-15)
