@@ -10,7 +10,7 @@ Raw material stays where it lives. The wiki cites these; it doesn't copy them.
 | Memory notes | Decisions and preferences Bronson stated in chat | Claude's memory (cited as `notes`) |
 | AI coach material | Training guides, scaling and movement sources | Google Drive "AI Training" folder; mac-app `functions/coach/` |
 | Programming library | 2017–2018 programs for import | Google Drive: Workout App → Programming |
-| Book draft | *The New Essentials of Sports Nutrition* | Google Drive: Social Media Share › Book Copies |
+| Book draft | *The New Essentials of Sports Nutrition* v5 (Oct 12 2026, Drive file `1GAaeXNoFuBrqMVnvGbmB4AYKi7Ab85Q-`) | Google Drive: Social Media Share › Book Copies |
 | Content guideline | Coach Bronson content strategy | Google Doc "Content Guideline" |
 | Social media assets | Videos, images, weekly folders | Google Drive: Social Media Share › Automated Content; MetabolicHQ Instagram folder |
 | Load test results | Pass rules and runs | Issue #359; "Morning Rush Load Test" spreadsheet |

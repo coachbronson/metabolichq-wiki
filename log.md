@@ -10,6 +10,14 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
+- **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
+  on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-15 — Book
+
+Ingested the book draft *The New Essentials of Sports Nutrition* v5 (Oct 12 2026). New page:
+wiki/business/new-essentials-book.md. Changed: coaching-methods, books-and-research, sources, index.
+
 ## 2026-11-15 — Content and artifacts
 
 Added the Content Strategy & 13-Week Calendar doc, the MetHQ homepage messaging preview, both blog drafting guides and

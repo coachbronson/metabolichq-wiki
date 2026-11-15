@@ -37,6 +37,7 @@ Start here. One line per page; read the ones that bear on the task. Rules for ma
 - [Content and social](wiki/business/content-and-social.md) — hub: how content runs across both brands, approvals, schedules
 - [Coach Bronson content](wiki/business/coach-bronson-content.md) — positioning, tagline, 8 key messages, pillars, weekly social template, production rules, book breadcrumbs, blog and newsletter rules
 - [Coaching methods](wiki/business/coaching-methods.md) — book concepts: fuel and function, adaptive economy, macros over calories
+- [The New Essentials of Sports Nutrition](wiki/business/new-essentials-book.md) — his book (v5 draft): chapter-by-chapter summary, key numbers, open edits
 - [Books and research](wiki/business/books-and-research.md) — sports nutrition book, S&C PM book, publications, client jobs
 
 ## Rules

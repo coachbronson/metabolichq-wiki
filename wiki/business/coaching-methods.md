@@ -1,7 +1,7 @@
 ---
 title: Coaching methods (from The New Essentials of Sports Nutrition)
 summary: The concepts behind his methods — fuel and function, adaptive economy, physiological resilience, macros over calories
-updated: 2026-11-14
+updated: 2026-11-15
 sources: [notes; book draft v5, Oct 2026]
 ---
 
@@ -33,7 +33,14 @@ coaching content about metabolic health.
   efficiently and stay metabolically stable for years, leaving sport healthier than you entered.
 - **Ketogenic adaptation phases:** fat-adapted → keto-adapted → keto-optimized. Ketosis is not adaptation. Lean
   athletes often need more fat.
+- **Simple macro formula:** lean mass in lb → grams; protein at least that, carbs + fat no more than that; at least
+  100 g fat; about 50 g carbs or less to stay fat-adapted. Lean, hard-training athletes often need more fat.
+- **Carbohydrate is a targeted tool:** minimum effective dose, mainly for recovery; 10–20 g/h to start in long
+  endurance efforts; post-event carbs tapering off before the next event; carbs after training to hold body mass.
+- **Watch the trend, not one number:** HRV-CV and repeated heart-rate-recovery tests show rising physiological cost.
 - Metabolic health is the foundation of all performance, in competition or in life.
+
+Full chapter summary and the draft's open edits: [The New Essentials of Sports Nutrition](new-essentials-book.md).
 
 How MetabolicHQ reflects these: macros in grams, calories off by default, whole-food %, signals against each client's
 own normal, no achievements for under-eating or weight loss.

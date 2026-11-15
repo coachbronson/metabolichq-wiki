@@ -1,8 +1,8 @@
 ---
 title: Books, publications and other projects
 summary: His sports nutrition book, the S&C project management book/credential, publications, client jobs
-updated: 2026-11-14
-sources: [notes]
+updated: 2026-11-15
+sources: [notes; book draft v5, Oct 2026]
 ---
 
 # Books, publications and other projects
@@ -10,7 +10,8 @@ sources: [notes]
 ## The New Essentials of Sports Nutrition
 
 Book due **late 2028**; draft copy in Drive (Social Media Share › Book Copies). Content leaves breadcrumbs about it; the
-mailing list is its audience. Concepts: [Coaching methods](coaching-methods.md).
+mailing list is its audience. Latest draft: v5 (Oct 12 2026). Chapter summary and open edits:
+[The New Essentials of Sports Nutrition](new-essentials-book.md). Concepts: [Coaching methods](coaching-methods.md).
 
 ## S&C project management book
 
