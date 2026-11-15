@@ -4,12 +4,17 @@ Newest at the top. Each entry: date, what changed, pages touched.
 
 ## Open questions for Bronson
 
-- **#156 (Resources)** is still open, but the CHANGELOG and notes say Resources stage 2 (worksheets, timed release)
-  shipped. Close it, or is something left?
-- **Masters Collective and Circle**: the app no longer integrates with Circle, but Collective members still get MPT
-  free via codes emailed "when they join on Circle". Is that code flow still running, and does the Collective stay on
-  Circle?
-- **Wearables**: still choosing between Terra and Junction (or another managed service)?
+- **Masters Collective removal** waits on Bronson's go-ahead and his calls on existing free members (see
+  [Memberships](wiki/metabolichq/mpt-membership.md)). Once it ships, drop the remaining shutdown notes from the pages.
+
+## 2026-11-14 (evening) — Bronson's answers
+
+- #156 closed with a resolution note; stage 3 moved to #607. Page: resources-and-files.
+- Masters Collective is being shut down and wiped. Pages: platform-and-brands, mpt-membership, offers,
+  content-and-social, coachbronson-site, coach-portal, messaging-and-community, index.
+- Wearables: still undecided between Terra and Junction. Page: wearables.
+
+Last update covered: 2026-11-14.
 
 ## 2026-11-14 — Wiki created
 

@@ -13,7 +13,7 @@ sources: [notes, CHANGELOG v2.0, admin/portal.js]
 
 ## Menu shape
 
-- **Platform** (Bronson only): Masters Collective, add-ons configuration, Costs, performance, backlog, and other
+- **Platform** (Bronson only): add-ons configuration, Costs, performance, backlog, and other
   platform services.
 - **MPT** stacked under Platform, with exactly the same menu a partner coach gets (Get help stays in MPT). For MPT he
   wants Finances but not the Stripe Connect setup or manual pay-by selector.

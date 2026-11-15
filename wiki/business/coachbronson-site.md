@@ -27,8 +27,9 @@ sources: [notes, coachbronson-site README and CLAUDE.md]
 ## Forms and email
 
 - **Resend** (free tier) for email capture, sending from metabolichq.app for now. Every form has Turnstile.
-- Form embeds (`/embed/`) let the hosting company paste the free-guide, Masters Collective interest list and contact
-  forms on coachbronson.com without keys. Only add new embed settings; never change an existing one's meaning.
+- Form embeds (`/embed/`) let the hosting company paste the free-guide and contact forms on coachbronson.com without
+  keys. The Masters Collective page and interest-list embed are to be removed with the Collective's shutdown
+  (2026-11-14). Only add new embed settings; never change an existing one's meaning.
 
 ## Content automation
 

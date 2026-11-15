@@ -11,8 +11,9 @@ sources: [notes, CHANGELOG, "#162"]
 
 - Started on **Open Wearables** (open-source, self-hosted on his Google Cloud). Wants its releases checked from its
   GitHub repo, emailed with release notes, and installed only after his approval.
-- Found the per-brand effort of connecting each service through Open Wearables untenable (Nov 8); **leaning toward a
-  managed service** (Terra API, ~$499/month). Also created a Junction account.
+- Found the per-brand effort of connecting each service through Open Wearables untenable (Nov 8); moving to a
+  **managed service**. **Undecided between Terra** (API, ~$499/month) **and Junction** (he has an account) — still
+  open as of 2026-11-14.
 - Interested in Open Wearables' mobile SDKs for Apple Health, Google and Health Connect without Connect App fees.
 - **Oura is out** (no commercial use allowed). Don't describe Oura as first or as a pilot.
 - **Samsung Health** not used (can't scale right away), though he uses it himself.

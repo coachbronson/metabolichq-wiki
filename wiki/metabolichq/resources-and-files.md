@@ -7,7 +7,7 @@ sources: [notes, CHANGELOG, "#156", "#491", "#410", "#431", "#332"]
 
 # Resources and shared files
 
-## Resources (#156)
+## Resources (#156, closed 2026-11-14; stage 3 in #607)
 
 - On the **Files** page: clickable tiles per resource area (by topic or group), each opening its own file area.
   Managed in the coach portal; coaches can also work with libraries in the app.
@@ -15,6 +15,8 @@ sources: [notes, CHANGELOG, "#156", "#491", "#410", "#431", "#332"]
   links don't. If a coach shares something a client can't be given, the coach gets an error with the reason.
 - Stage 2 shipped: **worksheets** and **timed release**. Worksheet answers are kept out of research releases; the
   assigned coach and head coaches read answers; no reminders yet.
+- Stage 3 (#607, low): an MPT resource pack for Premium spaces, MPT Coach pointing to pack items, recipe collections
+  once recipes exist.
 - Later: timed release from enrollment/program start (#491), client groups (#410), search in the `/` list (#431),
   coach-customizable onboarding workflows (#332).
 

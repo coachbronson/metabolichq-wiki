@@ -26,8 +26,9 @@ sources: [notes]
   shadow, word highlight in purple `#7C33ED`, one line per segment, width 0.62, rounded corners, y 0.7.
 - Hashtags: few and post-specific (Instagram ≤5, Facebook 1–2, LinkedIn 3); search phrases in captions; alt text on
   every post.
-- At least one post a week promotes the Masters Collective interest list. Leave breadcrumbs about his book.
-- Blur member names/faces in Circle screenshots.
+- Leave breadcrumbs about his book. (The weekly Masters Collective interest-list post stops with the Collective's
+  shutdown, 2026-11-14.)
+- Blur member names/faces in any community screenshots.
 - Storage: Google Drive "Social Media Share › Automated Content", one folder per week with subfolders per content
   type; talking-head videos come from Riverside (he uploads them).
 - Future: talk about Voice Studio.

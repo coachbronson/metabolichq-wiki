@@ -20,7 +20,7 @@ sources: [notes, CHANGELOG, mac-app README, "#420", "#334"]
 
 - Community feed per space; feed topics managed from a **Community** menu in the portal (room for group management
   later). Round 2 ideas (#420): GIFs, media, link previews, scheduled posts, report.
-- Circle is not integrated (his Masters Collective still runs on Circle).
+- Circle is not integrated.
 
 ## Tagging and links
 

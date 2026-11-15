@@ -13,7 +13,7 @@ sources: [notes, mac-app README, CHANGELOG]
 |---|---|
 | **MetabolicHQ** ("MetHQ", likely the official abbreviation) | The platform: a coaching-business app for health, wellness, nutrition and fitness coaches, starting in the keto/carnivore community. Owned by BD Solutions LLC. |
 | **MPT — Metabolic Performance Training** | Coach Bronson's coaching program and his space on MetabolicHQ (space id `mpt`). Formerly "MAC" / "Coach Bronson Workouts". Shown under the Coach Bronson wordmark. |
-| **Masters Collective** | His community membership (on Circle). Members get MPT free while they belong. See [Memberships](mpt-membership.md). |
+| ~~Masters Collective~~ | **Being shut down** (decided 2026-11-14). Its app, portal and site pieces are to be removed; see [Memberships](mpt-membership.md). The Google Cloud project id `masters-collective-app` and the `masterscollective.app` domain are infrastructure names and stay. |
 
 His main group program is called the **"Metabolic Performance Training" program** — not "MPT Strength & Conditioning".
 

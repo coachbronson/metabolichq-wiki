@@ -4,12 +4,12 @@ Start here. One line per page; read the ones that bear on the task. Rules for ma
 
 ## MetabolicHQ (the platform and app)
 
-- [Platform and brands](wiki/metabolichq/platform-and-brands.md) — MetabolicHQ vs MPT vs Masters Collective; mission, positioning, branding
+- [Platform and brands](wiki/metabolichq/platform-and-brands.md) — MetabolicHQ vs MPT; mission, positioning, branding
 - [Architecture](wiki/metabolichq/architecture.md) — repos, Firebase projects, domains, data model, email, services, backups, nightly jobs
 - [Versions](wiki/metabolichq/versions.md) — version scheme, majors 1.0–8.0, current version, release process after beta
 - [Spaces and roles](wiki/metabolichq/spaces-and-roles.md) — spaces, main/team coaches, client assignment, coach vs client accounts, sign-up
 - [Partner program](wiki/metabolichq/partner-program.md) — tiers and pricing, Premium add-on, agreement, onboarding, coach payments and packages
-- [MPT memberships](wiki/metabolichq/mpt-membership.md) — $47.99/$450 plan, trial, Masters Collective free access, coupons, launch targets, test accounts
+- [MPT memberships](wiki/metabolichq/mpt-membership.md) — $47.99/$450 plan, trial, coupons, launch targets, test accounts, Masters Collective shutdown
 - [Training](wiki/metabolichq/training.md) — programs, logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
 - [Program library import](wiki/metabolichq/program-library-import.md) — importing his 2017–2018 programming; review-before-publish
 - [Nutrition](wiki/metabolichq/nutrition.md) — macro rules, calories opt-in, food diary, whole-food %, macro calculator, recipes
@@ -32,7 +32,7 @@ Start here. One line per page; read the ones that bear on the task. Rules for ma
 ## Coaching business
 
 - [coachbronson.com](wiki/business/coachbronson-site.md) — site rebuild, audience, hosting situation, forms, blog/newsletter automation
-- [Offers](wiki/business/offers.md) — business priorities, offer ladder, lead magnet, 1:1 coaching, Masters Collective
+- [Offers](wiki/business/offers.md) — business priorities, offer ladder, lead magnet, 1:1 coaching
 - [Content and social](wiki/business/content-and-social.md) — both brands' social, content types, approvals, MetHQ messaging framework
 - [Coaching methods](wiki/business/coaching-methods.md) — book concepts: fuel and function, adaptive economy, macros over calories
 - [Books and research](wiki/business/books-and-research.md) — sports nutrition book, S&C PM book, publications, client jobs
