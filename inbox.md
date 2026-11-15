@@ -28,3 +28,7 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   1QC4LTRBJ35UKQgUlrcDfKoo6CfP1CdII) replaces the first clone. He prefers its neutral ("Best Fit") delivery at normal
   speed; write the brand as "Metabolic H-Q" in voice-over text so it isn't read as "metabolich". MetHQ demo video is at
   cut 5 (2:25) · notes (chat 2026-11-15)
+- 2026-11-15 · Real app/portal footage for marketing videos can be filmed from the how-to demo app (mac-app
+  `e2e/howto`: `seed.mjs` + `seed-coach.mjs`, `serve.mjs`, `howto.record()`), no production data. MetHQ demo video cut 7
+  uses it, narrated by Bronson's own recording; the in-app call uses two fictional AI-generated people (he asked not to
+  use his likeness there) · notes (chat 2026-11-15)
