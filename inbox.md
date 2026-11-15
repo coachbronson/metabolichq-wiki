@@ -24,3 +24,7 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   take a real person's photo, so a lip-synced talking avatar of him needs HeyGen or real footage · notes (chat 2026-11-15)
 - 2026-11-15 · MetHQ demo video cut 3: narrated in his cloned voice, first person, his headshot
   (Bronson_Horizontal_Headshot_Small.png) on the opening and closing; about 2:15 · notes (chat 2026-11-15)
+- 2026-11-15 · Artlist voice "Coach Bronson v2" (cloned from 3.5 min of his Riverside short clips in Drive folder
+  1QC4LTRBJ35UKQgUlrcDfKoo6CfP1CdII) replaces the first clone. He prefers its neutral ("Best Fit") delivery at normal
+  speed; write the brand as "Metabolic H-Q" in voice-over text so it isn't read as "metabolich". MetHQ demo video is at
+  cut 5 (2:25) · notes (chat 2026-11-15)
