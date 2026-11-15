@@ -14,3 +14,8 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   under-eating"), and the MPT Coach scene is 5 AM in a hotel gym, not 10 PM · notes (chat 2026-11-15)
 - 2026-11-15 · Artlist (AI voice, video, music) is connected to Claude; voice-overs saved in the Artlist folder
   "MetHQ demo video" · notes (chat 2026-11-15)
+- 2026-11-15 · Decision: when Bronson asks for something in YouTube, Claude does it from his cloud, not from the chat
+  session (chat sessions can't reach Google APIs). The route is GitHub Actions in mac-app, which hold the YouTube OAuth
+  secrets (`YOUTUBE_CLIENT_ID`/`YOUTUBE_CLIENT_SECRET`) and the Firebase service account: e.g. `transcripts.yml` runs
+  `scripts/transcripts.mjs`; `functions/youtube.js` handles playlist sync. Note: the YouTube API reads captions,
+  metadata and playlists but can't download a video's audio · notes (chat 2026-11-15); mac-app `.github/workflows/transcripts.yml`
