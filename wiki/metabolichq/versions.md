@@ -1,7 +1,7 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-14
+updated: 2026-11-15
 sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320"]
 ---
 
@@ -9,7 +9,8 @@ sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320"]
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on 2026-11-14: **8.65.0**.
+- Current on 2026-11-15: **8.66.1** (8.66.0 removed the Masters Collective; 8.66.1 fixed account switching in one
+  tab, #404; CHANGELOG 2026-11-14/15).
 - Full detail: `CHANGELOG.md` in mac-app (newest at the bottom of each day).
 
 | Major | Area |
@@ -29,6 +30,7 @@ A major version gets a full end-to-end test before rollout.
 
 - 2026-10-29: first in-app session form on the Google Sheet version.
 - 2026-10-30: moved to Firebase; change log moved into the repo.
+- 2026-11-14/15: 8.66.0 Masters Collective removed (#608); 8.66.1 account switch fix (#404).
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 

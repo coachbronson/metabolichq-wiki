@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-14
+updated: 2026-11-15
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,17 +12,19 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-14)
+## Snapshot (2026-11-15)
 
-68 open issues: 41 features, 14 ops, 9 R&D, 1 bug; 10 on the roadmap; 17 need a decision. No critical.
+63 open `backlog` issues: 41 features, 13 ops, 8 R&D, no bugs (one, #410, has no lane); 11 on the roadmap (#570 and
+#575 added 2026-11-15); 14 need a decision. 5 high, 22 medium, 36 low, no critical. Closed since 2026-11-14: #404,
+#595, #322, #156.
 
 **High priority:** #575 release process after beta · #512/#514/#515 security auditing, breach monitoring, Security
-page · #558 Google Cloud owner steps · #355 recipe/meal and history import from other nutrition apps.
+page · #558 Google Cloud owner steps (not labeled `backlog`) · #355 recipe/meal and history import from other nutrition apps.
 
 **Medium (selection):** #382 client add-ons · #356 recipes · #162 wearable sync · #570 free coach marketplace ·
 #358 coach custom reports · #602 progress photos · #603 save check-ins partway · #478 rep-max table · #479 suggested
 weights · #410 client groups · #332 coach onboarding workflows · #256 MCP server · #174 integrations ·
-#319/#320/#321 trust page, release notes, status page · #548/#550/#595 security hardening · #381 HIPAA-ready.
+#319/#320/#321 trust page, release notes, status page · #548/#550 security hardening · #381 HIPAA-ready.
 
 The nightly update refreshes this snapshot; GitHub is always the live list.
 

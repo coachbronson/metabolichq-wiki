@@ -1,8 +1,8 @@
 ---
 title: coachbronson.com
 summary: The athlete site rebuild, audience, hosting situation, forms/embeds, Resend email capture, blog/newsletter automation, site admin
-updated: 2026-11-14
-sources: [notes, coachbronson-site README and CLAUDE.md]
+updated: 2026-11-15
+sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25", "mac-app #611", "mac-app #613"]
 ---
 
 # coachbronson.com
@@ -11,8 +11,11 @@ sources: [notes, coachbronson-site README and CLAUDE.md]
 
 - Rebuilt from the ground up by Claude in repo `coachbronson/coachbronson-site`, live at **coachbronson.web.app**.
 - **Can't move the domain yet**: his hosting company holds coachbronson.com under a contract with monthly payments
-  until it ends. Meanwhile the hosting company updates the existing pages (not a rebuild), adds his forms and images,
+  until it ends, in **July 2027** (mac-app CHANGELOG 2026-11-14). Meanwhile the hosting company updates the existing pages (not a rebuild), adds his forms and images,
   adds MPT as the only new page, and drops the sport-specific pages. Cut-over checklist is in the site README.
+- The cut-over checklist now includes MetabolicHQ's side: set mac-app's `COACHBRONSON_URL` to
+  `https://coachbronson.com` and deploy, and re-run the API-key script from mac-app #595 so the key allows the domain
+  (coachbronson-site #25). coachbronson.com stays on Firebase sign-in's authorized domains meanwhile (mac-app #613).
 - The MPT page lives at `coachbronson.com/mpt` (see [metabolichq.app site](../metabolichq/marketing-site.md)).
 
 ## Audience and offers

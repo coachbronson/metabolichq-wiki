@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-14
-sources: [notes, mac-app README, CHANGELOG]
+updated: 2026-11-15
+sources: [notes, mac-app README, CHANGELOG, "#404"]
 ---
 
 # Spaces, coaches and roles
@@ -31,7 +31,9 @@ sources: [notes, mac-app README, CHANGELOG]
 
 - Coaches are separate from clients. The coach's phone app is a **minimized coach portal**, not a client view with
   extras (no "Today's workout" tile; no portal link on phones; resource libraries available).
-- The main coach gets a free, full **client view** switch.
+- The main coach gets a free, full **client view** switch. Client view belongs to the account that turned it on;
+  Sign out turns it off and puts the tab back on Home, so the next account in that tab never opens in client view
+  or on the last person's page (#404, v8.66.1).
 - Team coaches are blocked from client functions (so free seats aren't used as free client accounts). A team coach
   who wants a client account subscribes through their own space's client sign-up with their coach email — no "+"
   aliases (not universal). They're billed and counted like any client, filed under the main coach, and reach it via

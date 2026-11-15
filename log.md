@@ -7,8 +7,28 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
+- **coachbronson.com on sign-in**: the site README's cut-over step 7 (coachbronson-site #25) says coachbronson.com
+  was taken off Firebase sign-in's authorized domains in Nov 2026 and must be added back; mac-app #613 (later the
+  same night) says he kept it on until July. The wiki follows #613. Should the site README step be corrected?
+
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-15 — Nightly update
+
+Covered mac-app from `a58bf06` to `1fdafdb` (CHANGELOG 2026-11-14 late entries and 2026-11-15, version 8.66.1),
+issues #404, #595 and #322 closed, #548 progress, roadmap labels on #570 and #575, and coachbronson-site #24/#25.
+
+- versions: current 8.66.1.
+- security: App Check stage 1 reverted and the next plan (#548); API key restricted (#595 done); security.txt and
+  /security page (#322); coachbronson.com counted as ours (#613).
+- roadmap-and-backlog: snapshot refreshed (63 open).
+- marketing-site, architecture: Coach Bronson links go to coachbronson.web.app via `COACHBRONSON_URL` (#611).
+- coachbronson-site: domain contract ends July 2027; cut-over steps for MetabolicHQ (site #25, #613).
+- spaces-and-roles: client view belongs to one account (#404).
+- New open question: site README step 7 vs #613.
+
+Last update covered: 2026-11-15.
 
 ## 2026-11-15 — Masters Collective wiped
 

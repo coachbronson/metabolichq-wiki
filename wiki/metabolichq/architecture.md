@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-14
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes]
+updated: 2026-11-15
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611"]
 ---
 
 # Architecture and infrastructure
@@ -35,7 +35,7 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 | `admin.metabolichq.app` | Coach portal (desktop, ≥1024 px) |
 | `admin.metabolichq.app/monitor/` | MetHQ Monitor (phone-friendly ops view) |
 | `masterscollective.app` | Owned (Squarespace); DNS forwarding; was the original app domain |
-| `coachbronson.web.app` | New coachbronson.com site, until the domain moves (see [coachbronson.com](../business/coachbronson-site.md)) |
+| `coachbronson.web.app` | New coachbronson.com site, until the domain moves (see [coachbronson.com](../business/coachbronson-site.md)). MetabolicHQ links to it through the repo variable `COACHBRONSON_URL` (#611) |
 
 ## Data model (short)
 
