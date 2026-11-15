@@ -1,7 +1,7 @@
 ---
 title: MPT memberships and coupons
 summary: MPT client pricing and trial, Stripe flow, coupons, launch targets, Masters Collective shutdown
-updated: 2026-11-14
+updated: 2026-11-15
 sources: [public/js/config.js, notes, CHANGELOG]
 ---
 
@@ -15,18 +15,13 @@ sources: [public/js/config.js, notes, CHANGELOG]
 - Includes nutrition tracking in the base membership.
 - 1:1 coaching clients get MPT access as part of coaching (see [Offers](../business/offers.md)).
 
-## Masters Collective — being shut down (2026-11-14)
+## Masters Collective — shut down (2026-11-15)
 
-Bronson is shutting the Masters Collective down, and it is to be wiped from the app and the sites. Until the removal
-ships, the old flow is still in the code: Circle → Zapier → `circleMember` function → single-use `MC-…` code on the
-Stripe coupon `masters-collective`, the Platform → Masters Collective portal page, `collective/{email}` records, and
-mentions on metabolichq.app/mpt, Terms, Privacy and Help.
-
-Removal (his choices, 2026-11-14): existing free members lose access when it ships (no email); the code is in mac-app
-PR #608 (version 8.66.0; full end-to-end run passed) and the site in coachbronson-site PR #24, both waiting for his OK
-to merge. After merge: run Actions → **End Masters Collective** (dry run first, then apply). The Circle Zaps were turned
-off on 2026-11-15. The same key also secures the Zapier email workflow, so it stays and moves to Maintenance → Email
-sending.
+The Masters Collective is gone from the app and both sites (mac-app #608, version 8.66.0; coachbronson-site #24). The
+remaining 3 free memberships were ended with no email, the 14 `MC-…` codes turned off and the 18 `collective/` records
+deleted (End Masters Collective workflow, 2026-11-15; #615). The Stripe coupon `masters-collective` stays, unused: the
+live key can't delete coupons and he chose not to widen it (notes, 2026-11-15). The Circle Zaps are off. Their key
+still secures the Zapier email workflow: Maintenance → Email sending → Zapier key.
 
 ## Coupons
 
@@ -36,7 +31,7 @@ sending.
 ## Launch status and targets (Nov 10, 2026)
 
 - Not launched to the public yet (0 paying members); he thinks it's ready.
-- 12-month targets: ~250 paying members, ~10 partner coaches with ~15 clients each (the ~150 free Masters Collective
+- 12-month targets: ~250 paying members, ~10 partner coaches with ~15 clients each (the free Masters Collective
   members are out with the shutdown), ~75% of clients one-on-one with four 60-minute calls a month.
 - Before opening: load testing (#359, done on staging) and error alerts.
 

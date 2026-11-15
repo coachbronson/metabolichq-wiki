@@ -12,7 +12,7 @@ sources: [notes]
 1. Fill the **MPT app** with subscribers.
 2. Grow the mailing list as the audience for his book.
 
-(Previously growing the Masters Collective came first; it's being shut down as of 2026-11-14.)
+(Previously growing the Masters Collective came first; it was shut down on 2026-11-15.)
 
 Only a few discovery calls a month are needed.
 

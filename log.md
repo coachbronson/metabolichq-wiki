@@ -4,14 +4,16 @@ Newest at the top. Each entry: date, what changed, pages touched.
 
 ## Open questions for Bronson
 
-- **Masters Collective removal** waits on Bronson's go-ahead and his calls on existing free members (see
-  [Memberships](wiki/metabolichq/mpt-membership.md)). Once it ships, drop the remaining shutdown notes from the pages.
-
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-15 — Masters Collective wiped
+
+Cleanup ran (mac-app #615): 3 memberships ended, 14 codes off, 18 records deleted; the unused coupon stays. Pages:
+mpt-membership, platform-and-brands, offers, coachbronson-site.
 
 ## 2026-11-15 — Book
 
