@@ -32,3 +32,6 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   `e2e/howto`: `seed.mjs` + `seed-coach.mjs`, `serve.mjs`, `howto.record()`), no production data. MetHQ demo video cut 7
   uses it, narrated by Bronson's own recording; the in-app call uses two fictional AI-generated people (he asked not to
   use his likeness there) · notes (chat 2026-11-15)
+- 2026-11-15 · For voice-over clean-up (echo, flubs, normalizing, production polish) Bronson uses Riverside, which is
+  connected to Claude; suggest or use it before doing audio fixes by hand. MetHQ demo video cut 9 uses his
+  Riverside-edited narration · notes (chat 2026-11-15)
