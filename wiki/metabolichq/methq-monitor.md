@@ -1,8 +1,8 @@
 ---
 title: MetHQ Monitor
 summary: Phone-friendly ops view at admin.metabolichq.app/monitor — tabs, Claude action menus, security and quality tiles
-updated: 2026-11-14
-sources: [notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md]
+updated: 2026-11-16
+sources: [notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515"]
 ---
 
 # MetHQ Monitor — admin.metabolichq.app/monitor/
@@ -14,7 +14,9 @@ desktop. Kept separate from the portal so it needn't mix role-based access into 
 - **Support**: reply from the phone.
 - **Dashboards, not counters**: Money, Costs, Performance, Usage.
 - **Security**: where each finding came from and when; every scan (daily and PR-level, not just nightly); charts by
-  criticality, by category and a 30-night trend.
+  criticality, by category and a 30-night trend. Also security events, alerts, lockouts and accepted risks, with
+  **Accept this risk** in each finding's ⋯ menu; phone alert links open this tab (#515). The portal's Security page
+  is the desktop version ([Security](security.md)).
 - **Quality** (the nightly tile): end-to-end results and CodeRabbit questions (questions count as fixed once a PR
   linking the comment merges).
 - **Content review**: coachbronson.com newsletter and blog drafts and MetHQ blog drafts.

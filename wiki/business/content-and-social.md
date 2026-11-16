@@ -1,8 +1,8 @@
 ---
 title: Content and social media (hub)
 summary: How content runs across both brands — schedules, approvals, where each brand's plan lives
-updated: 2026-11-15
-sources: [notes]
+updated: 2026-11-16
+sources: [notes, "mac-app #636"]
 ---
 
 # Content and social media
@@ -23,6 +23,7 @@ Two brands, separate audiences, separate accounts:
 - Daily scheduled tasks: "Blog and newsletter drafts" (coachbronson.com) and "MetHQ Blog Drafts" (metabolichq.app).
 - Publer is not used for either brand.
 - Riverside is the recording studio; Drive is the central store; Voice Studio is something he wants to talk about later.
+- Videos (demo video, voice-overs, footage, YouTube): [Video production](video-production.md).
 
 ## Related
 

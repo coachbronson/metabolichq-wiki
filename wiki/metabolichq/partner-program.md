@@ -1,8 +1,8 @@
 ---
 title: Partner coach program
 summary: Partner tiers and pricing, Premium (MPT Programming) add-on, agreement terms, onboarding, coach payments and packages
-updated: 2026-11-14
-sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313"]
+updated: 2026-11-16
+sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633"]
 ---
 
 # Partner coach program
@@ -25,6 +25,9 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 | over 95 | Contact us |
 
 - Tier follows client count automatically; nothing to choose. Card on file even on the free tier.
+- Planned: a **coach add-on marketplace** (Add-ons section on Space settings; Premium moves onto it without changing
+  price or access) and a second coach add-on, the GLP-1 companion at $57.99/month (#633, #628; see
+  [Client add-ons](client-add-ons.md#coach-add-ons-planned)).
 - **Premium = MPT Programming add-on, $199/month flat**, any tier, cancel anytime: Coach Bronson's programs, his demo
   videos, guided swaps and [MPT Coach](mpt-coach.md).
 - Team coaches free. Month-to-month; on cancellation the plan runs to the end of the paid month, no proration.
@@ -50,7 +53,11 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - Get-started journey and onboarding checklist, with feedback CTAs (positive and negative) and a testimonial ask.
 - Only the main coach opens support tickets to MetabolicHQ; free-tier tickets are tagged free tier; replies in the
   portal and by email.
-- Partner agreement must cover the research opt-in, the Hosted-by badge and client add-ons (no revenue share).
+- Partner agreement must cover the research opt-in, the "Provided by MetabolicHQ" badge and client add-ons (no
+  revenue share). Section 7.5 names the badge; agreement version **2026-11-15.1** (coaches who signed earlier keep
+  the version they signed) (v8.66.3, #618).
+- Planned: a coach add-on clause (month-to-month, cancel anytime, MetabolicHQ owns the modules, coach responsible for
+  their own scope with health modules) for the coach add-on marketplace (#633).
 
 ## Coach payments and packages (#173, #517)
 

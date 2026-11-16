@@ -13,6 +13,8 @@ Raw material stays where it lives. The wiki cites these; it doesn't copy them.
 | Book draft | *The New Essentials of Sports Nutrition* v5 (Oct 12 2026, Drive file `1GAaeXNoFuBrqMVnvGbmB4AYKi7Ab85Q-`) | Google Drive: Social Media Share › Book Copies |
 | Content guideline | Coach Bronson content strategy | Google Doc "Content Guideline" |
 | Social media assets | Videos, images, weekly folders | Google Drive: Social Media Share › Automated Content; MetabolicHQ Instagram folder |
+| Video and voice | Demo video voice-overs (Artlist folder "MetHQ demo video"); his Riverside short clips used for the cloned voice (Drive folder `1QC4LTRBJ35UKQgUlrcDfKoo6CfP1CdII`); headshot `Bronson_Horizontal_Headshot_Small.png` | Artlist; Google Drive; Riverside |
+| Brand files | MetabolicHQ logo, icon, Central Hub SVG, LinkedIn banner, promo reel | Google Drive |
 | Load test results | Pass rules and runs | Issue #359; "Morning Rush Load Test" spreadsheet |
 | Security audit | CIS Google Cloud audit | mac-app `docs/security/` |
 | Blog guides and topics | coachbronson.com: `content/DRAFTING.md`, `NEWSLETTER.md`, `blog-topics.md`, `newsletter-topics.md`; MetHQ: `content/blog/DRAFTING.md`, `blog-topics.md` | coachbronson-site; mac-app |

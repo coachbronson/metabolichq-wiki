@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-14
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md]
+updated: 2026-11-16
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #617", "coachbronson-site #26"]
 ---
 
 # Engineering and working rules
@@ -12,6 +12,8 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 ## Before doing anything
 
 - **Tell him the plan first and wait for his go-ahead** before building or changing things.
+- **Read this wiki's `index.md` first** in every session; both repos' CLAUDE.md say so, and say not to edit the wiki
+  from app or site work (the nightly update picks changes up) (mac-app #617, coachbronson-site #26).
 - **Check the live code on GitHub (mac-app) first** before mockups or app work; project copies may be stale.
 - **Project the blast radius** of any change before making it — he doesn't want a fix that breaks something else.
 

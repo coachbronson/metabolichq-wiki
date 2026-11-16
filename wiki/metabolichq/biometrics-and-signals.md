@@ -1,8 +1,8 @@
 ---
 title: Biometrics, check-ins and signals
 summary: Biometrics metrics, daily check-ins, signals and patterns from combined data, aging rules, AI-on-data rule
-updated: 2026-11-14
-sources: [notes, CHANGELOG, mac-app README, "#603", "#602"]
+updated: 2026-11-16
+sources: [notes, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644"]
 ---
 
 # Biometrics, check-ins and signals
@@ -30,6 +30,9 @@ partway with an end-of-day reminder (#603); coach-customizable questions (#157).
 - Aging: clear from Home; wins/patterns leave Home after 3 days, others after 7; safety signals stay until
   acknowledged; Signals page shows 90 days (older hidden, not deleted).
 - Coaches see every client's signals; the coach can mute kinds and set thresholds per client.
+- Planned: a "same weight for weeks or lighter than usual: check in" signal (#644); protocol/medication logging and
+  GLP-1 signals with a dose-change adjustment window, part of the GLP-1 coach add-on (#629–#631; see
+  [Client add-ons](client-add-ons.md#coach-add-ons-planned)).
 
 ## Rule for device data and AI
 

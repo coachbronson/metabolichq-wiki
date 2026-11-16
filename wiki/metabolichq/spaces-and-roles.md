@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-15
-sources: [notes, mac-app README, CHANGELOG, "#404"]
+updated: 2026-11-16
+sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652"]
 ---
 
 # Spaces, coaches and roles
@@ -49,6 +49,20 @@ sources: [notes, mac-app README, CHANGELOG, "#404"]
   links work the same way when Stripe is their processor; coaches see their own sign-up link in the portal.
 - Clients are **group** or **one-on-one** (`track = 'one'`): one-on-one clients see only their own programming, not
   the group program.
+
+## Demo spaces
+
+- Demo coach spaces show the product with fictional clients: [Casey Ruff](../people/casey-ruff.md)'s Boundless Body
+  Fitness, and **Smitty Fitness** (coach Bubba Smith, space `smitty-fitness`) on a test account with MPT Programming on
+  (comp), seeded with all 10 demo clients (16 weeks) and every extra; no how-to-get-in email (notes 2026-11-15, #647).
+- **Actions → Demo data → seed** fills a partner space so every app and portal page works: messages, Community,
+  calls with AI notes, coaching notes, signals, Inbox items, a Start here collection, pending sign-ups, onboarding,
+  Deals, Community topics, a team coach (Alex Morgan, can't sign in), a program and calendar, one-on-one workouts,
+  workout library items, a worksheet and free memberships. It never replaces the space's own content; Payments,
+  Finances and Your brand stay the coach's own. Everything is marked demo and **remove** deletes it. Demo addresses
+  get no emails. The space's coach must have signed in once (#647, #652).
+- `mpt_addon` with seed turns MPT Programming on (no charge) in a demo space. Cohort reports count demo clients only
+  in spaces marked `demoData` (#647).
 
 ## Related
 

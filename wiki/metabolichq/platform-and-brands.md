@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ, MPT and the brands
 summary: What MetabolicHQ is, how it relates to MPT and Coach Bronson, mission, positioning and branding
-updated: 2026-11-14
-sources: [notes, mac-app README, CHANGELOG]
+updated: 2026-11-16
+sources: [notes, mac-app README, CHANGELOG, "#618", Google Drive]
 ---
 
 # MetabolicHQ, MPT and the brands
@@ -37,10 +37,15 @@ coach's, so he sees what they see. Platform-level functions sit under **Platform
 ## Branding
 
 - MetabolicHQ: own logo, deep navy `#142B3D`, teal `#007F79`. The coach portal uses MetabolicHQ branding.
-- Each coach space keeps its own look; only a "Hosted by: [MetabolicHQ logo]" mark appears next to the version on
-  the Help page.
-- A **"Hosted by MetabolicHQ" badge** must appear on partner coaches' sites (portal Branding tile, partner agreement,
-  onboarding checklist). coachbronson.com's MPT page footer carries it.
+- Logo files are in Google Drive: `MetabolicHQ-logo.png` (full lockup, navy/teal on white), `MetabolicHQ-icon-512.png`,
+  `MetabolicHQ-Central-Hub.svg`, `MetabolicHQ-LinkedIn-banner.png`, plus `MetabolicHQ-promo-reel.mp4`. The logo is
+  navy and teal, so it needs a white backing on navy backgrounds (notes, Drive, 2026-11-15).
+- Each coach space keeps its own look; only a "Provided by: [MetabolicHQ logo]" mark appears next to the version on
+  the Help page (v8.66.3, #618).
+- A **"Provided by MetabolicHQ" badge** must appear on partner coaches' sites (portal Your brand tile, partner
+  agreement 7.5, onboarding checklist). coachbronson.com's MPT page footer carries it. It said "Hosted by" until
+  v8.66.3; changed because many coaches' sites are hosted elsewhere. Badge file names and addresses didn't change, so
+  placed badges switch on their own (#618; image cache fix v8.66.4, #621).
 - Coach brand setup in the portal works like the website's branding demo widget (pull logo and colors from the
   coach's website, approve or edit); changes show the client sample first, before saving.
 - A coach's own icon appears when their clients install the app on a phone home screen.

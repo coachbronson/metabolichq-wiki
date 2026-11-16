@@ -1,8 +1,8 @@
 ---
 title: coachbronson.com
 summary: The athlete site rebuild, audience, hosting situation, forms/embeds, Resend email capture, blog/newsletter automation, site admin
-updated: 2026-11-15
-sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25", "mac-app #611", "mac-app #613"]
+updated: 2026-11-16
+sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25", "coachbronson-site #27", "coachbronson-site #28", "coachbronson-site #29", "mac-app #611", "mac-app #613", "mac-app #646"]
 ---
 
 # coachbronson.com
@@ -16,7 +16,15 @@ sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25"
 - The cut-over checklist now includes MetabolicHQ's side: set mac-app's `COACHBRONSON_URL` to
   `https://coachbronson.com` and deploy, and re-run the API-key script from mac-app #595 so the key allows the domain
   (coachbronson-site #25). coachbronson.com stays on Firebase sign-in's authorized domains meanwhile (mac-app #613).
-- The MPT page lives at `coachbronson.com/mpt` (see [metabolichq.app site](../metabolichq/marketing-site.md)).
+- **Decided: the site moves into its own Google Cloud project, `coachbronson-site`** (notes 2026-11-15). Its
+  temporary address becomes `coachbronson-site.web.app`; `coachbronson.web.app` becomes a 301 redirect and is never
+  deleted (Firebase can't reuse a site name). Kept linked on purpose: the /mpt trial buttons, the "Provided by" badge,
+  the newsletter's partner deal (through a new public mac-app `mptDeals` endpoint) and Resend sending from
+  metabolichq.app. Steps and Cloud Shell scripts: coachbronson-site `scripts/split/`. Both PRs are open, waiting for
+  his OK (coachbronson-site #29, mac-app #646). Until they merge, the site still deploys into MetabolicHQ's project.
+- Site functions run as `functions-runtime`, not the default compute account (coachbronson-site #27, mac-app #558).
+- The MPT page lives at `coachbronson.com/mpt` (see [metabolichq.app site](../metabolichq/marketing-site.md)); its
+  badge and the Kiltz preview say "Provided by MetabolicHQ" (coachbronson-site #28).
 
 ## Audience and offers
 

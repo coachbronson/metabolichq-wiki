@@ -14,6 +14,29 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-16 — Nightly update
+
+Covered mac-app from `1fdafdb` to `f57f5d7` (CHANGELOG 2026-11-15 late entries and 2026-11-16, version 8.67.1),
+issues #514, #515, #623, #626 closed and #548 moved into #512, 17 new issues, mac-app CLAUDE.md (read the wiki first;
+Help review covers the portal), coachbronson-site #26–#28, and the 12 inbox lines.
+
+- versions: current 8.67.1; 8.66.2–8.67.1 in the timeline.
+- security: rewritten around what's live: security events and sign-in/Google Cloud alerts (alert-only), the Security
+  page, staging's own deploy account (#626); open work now in #512 (lockout around Nov 29, App Check).
+- coach-portal: Help ? on every page, Security page, Roadmap type badges and Show chips, demo data, #648.
+- help-and-howto: "Provided by MetabolicHQ"; portal Help, its video and the review rule.
+- methq-monitor, architecture: Security tab; staging account, security jobs, site functions account.
+- platform-and-brands, partner-program, marketing-site: "Provided by" badge and agreement 7.5 (#618); logo files;
+  homepage demo video (#636); coach add-on marketplace and GLP-1 companion plans (#633, #628).
+- client-add-ons: new coach add-ons section; #382 header fixed to medium. biometrics-and-signals: planned signals.
+- spaces-and-roles (new Demo spaces section), casey-ruff: demo data seeding (#647, #652) and Smitty Fitness.
+- coachbronson-site: decided split into its own Google Cloud project (PRs open, awaiting his OK); #27, #28.
+- New page: wiki/business/video-production.md (demo video, Artlist voice, Riverside, real footage, YouTube route).
+- engineering-rules: read the wiki first. roadmap-and-backlog: snapshot refreshed (77 open). index, sources, content
+  hub updated; inbox emptied.
+
+Last update covered: 2026-11-16.
+
 ## 2026-11-15 — Wiki is a starting point; inbox added
 
 - CLAUDE.md: new section saying the wiki is a starting point (memory, conversation and sources still count) and that

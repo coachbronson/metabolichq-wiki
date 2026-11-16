@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-14
-sources: [notes, CHANGELOG v2.0, admin/portal.js]
+updated: 2026-11-16
+sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, admin/portal.js, "#515", "#623", "#645", "#648", "#652"]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -15,9 +15,16 @@ sources: [notes, CHANGELOG v2.0, admin/portal.js]
 
 - **Platform** (Bronson only): add-ons configuration, Costs, performance, backlog, and other
   platform services.
+- **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
+  (#515; see [Security](security.md)).
+- **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Two tabs:
+  **Coach portal** (how to use each page, coaching from the phone app) and **Client app** (what clients see in their
+  Help, so a coach can walk a client through it). Opens on the topics for the current page; same search, chips and
+  how-to videos as the app. See [Help and how-to](help-and-howto.md).
 - **MPT** stacked under Platform, with exactly the same menu a partner coach gets (Get help stays in MPT). For MPT he
   wants Finances but not the Stripe Connect setup or manual pay-by selector.
 - Partner coaches using Stripe have a Memberships page; every space has Payments (tiers, client counter, coupons).
+- Team coaches opening Finances get an error box today; a clear message is planned (#648, high).
 
 ## Client management
 
@@ -35,6 +42,18 @@ sources: [notes, CHANGELOG v2.0, admin/portal.js]
   titles; tray sortable by date, filter by user-submitted. Roadmap tag lives in metadata only.
 - Dependencies many-to-many; he wants linking to work like Microsoft Project Gantt charts (current version felt
   unintuitive). Change priority from the dashboard.
+- Every card shows its type badge (**Feature**, **O&M**, **Bug**, **R&D**, plus **Security** and/or **Enhancement**
+  when tagged). **Show** chips filter one type across every lane (they replaced the tray's lane chips). A card's
+  **Security** and **Enhancement** switches set the GitHub label without moving its lane (#623, CHANGELOG
+  2026-11-15/16).
+
+## Demo data
+
+**Actions → Demo data → seed** fills a partner space so a demo coach sees every portal page working: Deals, Community
+topics, a team coach who can't sign in, a program and calendar, one-on-one workouts, workout library, a worksheet,
+free memberships, plus messages, calls, signals and Inbox items. It never replaces the space's own content; Payments,
+Finances and Your brand stay the coach's own. **remove** takes it all away (#647, #652). See
+[Spaces and roles](spaces-and-roles.md#demo-spaces).
 
 ## Costs and performance
 

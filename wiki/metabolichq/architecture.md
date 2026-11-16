@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-15
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611"]
+updated: 2026-11-16
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27"]
 ---
 
 # Architecture and infrastructure
@@ -20,7 +20,10 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 ## Google Cloud / Firebase
 
 - Production project: **`masters-collective-app`** (Blaze plan). Staging: **`metabolichq-staging`** (testing, load
-  tests; try Google Cloud setting changes there first).
+  tests; try Google Cloud setting changes there first). Staging workflows sign in as their own staging-only account
+  through GitHub keyless sign-in; the production deploy key no longer reaches staging (#626).
+- coachbronson-site's functions run as `functions-runtime`, not the default compute account (coachbronson-site #27,
+  mac-app #558).
 - Firebase Hosting, Authentication, Cloud Firestore, Cloud Functions, Storage.
 - History: started as a Google Apps Script + "Workout App" Google Sheet; moved to Firebase **2026-10-30**. The sheet is
   no longer used.
@@ -66,6 +69,8 @@ Circle is **not** part of the app.
   Restore workflow can restore everything, one person or a path; dry run first.
 - Nightly: CodeRabbit review pass (~12:06 AM ET), full end-to-end run (~2:13 AM ET, emails only when something needs
   action), 7 AM workout digest.
+- Security jobs: **securityWatch** (every 5 min), **securityLogWatch** (every minute), **geoDbRefresh** (weekly
+  country file) (#514; see [Security](security.md)).
 - Any auto-update to servers/software must email him with release notes and wait for approval. OS security patches
   can install automatically.
 

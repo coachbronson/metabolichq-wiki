@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, blog, research and trust pages
-updated: 2026-11-15
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611"]
+updated: 2026-11-16
+sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636"]
 ---
 
 # metabolichq.app site
@@ -16,6 +16,14 @@ sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611"]
   (#322). A Security link is in every page's footer (CHANGELOG 2026-11-14).
 - Website messaging comes first in the messaging plan: a "Replace your stack" home section (see
   [Content and social](../business/content-and-social.md)).
+
+## Demo video on the homepage (#636)
+
+- **See it in 2½ minutes** section right under the hero plays "A coaching day on MetabolicHQ" (2:36). Bronson narrates
+  a coaching day over the real app and portal, filmed from the how-to demo spaces (no real client data). Subtitles
+  are burned in, so it works muted. Hero button **▶ Watch the demo (2½ min)** scrolls down and starts it.
+- Self-hosted at `/video/methq-demo.mp4` (no YouTube); nothing plays until clicked. Structured data has a VideoObject;
+  `llms.txt` links it (CHANGELOG 2026-11-15). How it was made: [Video production](../business/video-production.md).
 
 ## Branding demo widget
 
@@ -31,7 +39,7 @@ built on the site (not the real app). The approved brand carries into partner si
   MetHQ blog post go to **coachbronson.web.app**. Pages keep coachbronson.com in the source; deploys swap in the repo
   variable `COACHBRONSON_URL`. In July: set it to `https://coachbronson.com` (#611, CHANGELOG 2026-11-14).
   (Previously the links pointed straight at coachbronson.com/mpt/.)
-- Footer carries the Hosted-by badge.
+- Footer carries the "Provided by MetabolicHQ" badge (previously "Hosted by", #618; coachbronson-site #28).
 
 ## MetHQ blog (metabolichq.app/blog)
 
