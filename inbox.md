@@ -35,3 +35,6 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
 - 2026-11-15 · For voice-over clean-up (echo, flubs, normalizing, production polish) Bronson uses Riverside, which is
   connected to Claude; suggest or use it before doing audio fixes by hand. MetHQ demo video cut 9 uses his
   Riverside-edited narration · notes (chat 2026-11-15)
+- 2026-11-15 · The MetHQ demo video ("A coaching day on MetabolicHQ", 2:36) is live on the metabolichq.app homepage:
+  a "See it in 2½ minutes" section under the hero plus a "▶ Watch the demo" hero button; self-hosted at
+  /video/methq-demo.mp4 · mac-app #636, CHANGELOG 2026-11-15
