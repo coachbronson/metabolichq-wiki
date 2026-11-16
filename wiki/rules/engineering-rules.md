@@ -36,6 +36,13 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 | Full end-to-end (~20–25 min) | Nightly, before a major version, before cross-cutting changes |
 | None | Wording, styling, Help or change-log edits |
 
+**What "end-to-end" means** (notes, Nov 16, 2026): every function, button, field entry and display gets tested —
+not just the main journeys. Each step checks there's no error pop-up or console error, and that what changed actually
+saved and shows. To make that checkable, the app keeps an index of every function, button, field and display, updated
+every time one is added or removed, and a test fails when something in the index has no end-to-end coverage. (Came out
+of a card-level **Skip** on the workout screen crashing with "Cannot read properties of null (reading 'original')"
+on Nov 16, 2026: no journey ever tapped it.)
+
 Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359).
 
 ## CodeRabbit

@@ -2,6 +2,11 @@
 
 Newest at the top. Each entry: date, what changed, pages touched.
 
+## 2026-11-16 (in-session)
+
+- Added the definition of end-to-end testing (every function, button, field and display; index of all of them kept
+  current) to [Engineering rules](wiki/rules/engineering-rules.md). Source: notes.
+
 ## Open questions for Bronson
 
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
