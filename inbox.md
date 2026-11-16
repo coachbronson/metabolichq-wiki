@@ -38,3 +38,10 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
 - 2026-11-15 · The MetHQ demo video ("A coaching day on MetabolicHQ", 2:36) is live on the metabolichq.app homepage:
   a "See it in 2½ minutes" section under the hero plus a "▶ Watch the demo" hero button; self-hosted at
   /video/methq-demo.mp4 · mac-app #636, CHANGELOG 2026-11-15
+- 2026-11-15 · Decision: coachbronson.com's site splits out of MetabolicHQ's Google Cloud project into its own
+  project `coachbronson-site`; temporary address becomes coachbronson-site.web.app (coachbronson.web.app becomes a
+  301 redirect, never deleted since Firebase can't reuse a site name). Kept linked on purpose: /mpt trial buttons,
+  Hosted-by badge, newsletter partner deal (via new public mac-app `mptDeals` endpoint), Resend sending from
+  metabolichq.app. Steps and Cloud Shell scripts in coachbronson-site `scripts/split/`. Pages to update once merged:
+  coachbronson-site, architecture (repos/domains/projects), marketing-site, security · notes (chat 2026-11-15);
+  coachbronson-site #29, mac-app #646 (both open, awaiting his OK)
