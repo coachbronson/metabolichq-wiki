@@ -45,3 +45,4 @@ into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`
   metabolichq.app. Steps and Cloud Shell scripts in coachbronson-site `scripts/split/`. Pages to update once merged:
   coachbronson-site, architecture (repos/domains/projects), marketing-site, security · notes (chat 2026-11-15);
   coachbronson-site #29, mac-app #646 (both open, awaiting his OK)
+- 2026-11-15 · Smitty Fitness (coach Bubba Smith, space `smitty-fitness`): demo coach space on a +test Gmail account, like Casey Ruff's. MPT Programming on (comp). Seeded with all 10 demo clients (16 weeks) plus the new extras (messages, Community, calls and notes, signals, Inbox, resources, pending sign-ups). No how-to-get-in email (demo account) · notes (chat 2026-11-15); mac-app #647, Demo data run 43784249710
