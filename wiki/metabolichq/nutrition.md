@@ -1,8 +1,8 @@
 ---
 title: Nutrition (food diary and macros)
 summary: Macro rules, targets, calories opt-in, food diary layout, whole-food %, electrolytes, macro calculator, recipes
-updated: 2026-11-14
-sources: [notes, CHANGELOG, "#355", "#356", "#335"]
+updated: 2026-11-17
+sources: [notes, CHANGELOG, "#355", "#356", "#335", "#666"]
 ---
 
 # Nutrition
@@ -50,9 +50,15 @@ gain), fat ≤ lean mass + activity (×0.75 for fat loss); warns under 70 g fat.
 
 ## Planned
 
-Recipes (#356), recipe and history import from other nutrition apps (#355, high), meal-photo AI logging (#335),
+Recipes (#356), recipe and history import from other nutrition apps (#355, medium), meal-photo AI logging (#335),
 recipe grabber from an image (#357). Once recipes exist: license cookbook authors' recipes (#333; usage metric vs flat
 fee undecided). Oxalate add-on (#477): see [Client add-ons](client-add-ons.md).
+
+## Known bugs
+
+- Food diary: after changing days inside the diary, opening a food and tapping **‹ Back** can land on another day,
+  and the next food or water logs there; check the date at the top meanwhile (#666, medium, found by the nutrition
+  end-to-end run).
 
 ## Related
 

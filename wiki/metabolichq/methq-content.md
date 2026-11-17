@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ content and messaging
 summary: MetHQ messaging framework, homepage "Replace your stack" structure, differentiators, social plan, blog rules and topic queue
-updated: 2026-11-15
-sources: [notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md]
+updated: 2026-11-17
+sources: [notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
 ---
 
 # MetabolicHQ content and messaging
@@ -75,7 +75,9 @@ Footer shows city and state only (address rule).
 ## MetHQ blog (metabolichq.app/blog)
 
 Rules in `mac-app/content/blog/DRAFTING.md`:
-- Every other Monday, on the Mondays **between** coachbronson.com's posts (from Nov 23, 2026). Claude drafts, Bronson
+- Every other Monday from Nov 23, 2026 (#675; previously described as the Mondays between coachbronson.com's posts;
+  the dates didn't change). The daily go-live run fails on its last step, "Save the go-live log"; posts still go live
+  but the log isn't saved (#679, low). Claude drafts, Bronson
   approves by merging (`hq-blog-draft` PRs); weekly email of anything awaiting approval.
 - Coach's problem and real advice first; MetHQ comes in where it genuinely solves it, usually the last third, at most one
   short product section. 700–1,000 words, first person, coach to coach.

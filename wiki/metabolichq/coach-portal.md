@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-16
-sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, admin/portal.js, "#515", "#623", "#645", "#648", "#652"]
+updated: 2026-11-17
+sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683"]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -25,6 +25,16 @@ sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, admin/portal.js, "#515", 
   wants Finances but not the Stripe Connect setup or manual pay-by selector.
 - Partner coaches using Stripe have a Memberships page; every space has Payments (tiers, client counter, coupons).
 - Team coaches opening Finances get an error box today; a clear message is planned (#648, high).
+
+## Program calendar and one-on-one workouts
+
+- Right-click a workout (or its **⋯** on hover) on the **Program calendar** or **One-on-one workouts** for a menu:
+  **Approve** (pending review only; it goes live and waits for Send update), **Approve all N pending this week**
+  (after a confirm), **Edit** (or **Open**), **Copy**, **Delete** (after a confirm). A plain click still opens the day.
+  An open pending workout has **Approve** at the top too (v8.68.0, #653).
+- Tapping one Approve disables both until it finishes, and the calendar no longer redraws over another page after an
+  approve or delete from the menu (#683, from the nightly CodeRabbit review).
+- Pending review workouts come from the [program library import](program-library-import.md).
 
 ## Client management
 

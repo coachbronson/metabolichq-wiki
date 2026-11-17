@@ -1,8 +1,8 @@
 ---
 title: Program library import (2017–2018 programming)
 summary: How his old programming library is converted into MPT program days, review-before-publish, import rules
-updated: 2026-11-14
-sources: [notes, skill mpt-program-import, CHANGELOG]
+updated: 2026-11-17
+sources: [notes, skill mpt-program-import, CHANGELOG, "#653"]
 ---
 
 # Program library import
@@ -26,7 +26,8 @@ normalize it (previously ran imports himself). Skill: **`mpt-program-import`**.
 ## Review before publish
 
 - The remaining 53 weeks are preloaded as **pending review** in the workout builder; published only after he
-  approves (first batch: up to week 8).
+  approves (first batch: up to week 8). He can approve one at a time or a whole week from the Program calendar's
+  workout menu (v8.68.0, #653; see [Coach portal](coach-portal.md)).
 - Changes he makes to pending workouts before approving are checked so the import rules get updated.
 - Weekly email listing anything not yet approved (workouts plus blogs, social posts, newsletters).
 

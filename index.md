@@ -21,7 +21,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [Coaching calls](wiki/metabolichq/coaching-calls.md) — in-app video, recording/transcripts, AI notes, scheduling and calendar sync
 - [Messaging and community](wiki/metabolichq/messaging-and-community.md) — DMs, multi-coach chats, community, @ and / linking, push, Deals
 - [Resources and files](wiki/metabolichq/resources-and-files.md) — resource libraries, worksheets, timed release, private shared files
-- [Coach portal](wiki/metabolichq/coach-portal.md) — menus, Help, Security page, client management, Inbox, Backlog roadmap, demo data, Costs, Performance
+- [Coach portal](wiki/metabolichq/coach-portal.md) — menus, Help, Security page, Program calendar workout menu, client management, Inbox, Backlog roadmap, demo data, Costs, Performance
 - [MetHQ Monitor](wiki/metabolichq/methq-monitor.md) — phone ops view: dashboards, Security, Quality, "Fix this" Claude menus
 - [Security](wiki/metabolichq/security.md) — security events and sign-in alerts, Security page, scanning, App Check/Turnstile, CSP, open work
 - [Client add-ons](wiki/metabolichq/client-add-ons.md) — client add-on rules and ideas; planned coach add-ons (marketplace, GLP-1 companion)
@@ -34,7 +34,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 
 ## Coaching business
 
-- [coachbronson.com](wiki/business/coachbronson-site.md) — site rebuild, audience, hosting situation, forms, blog/newsletter automation
+- [coachbronson.com](wiki/business/coachbronson-site.md) — site rebuild, its own Google Cloud project (full split from MetabolicHQ), rebuild to-do, audience, hosting situation, forms, blog/newsletter automation
 - [Offers](wiki/business/offers.md) — business priorities, offer ladder, lead magnet, 1:1 coaching
 - [Content and social](wiki/business/content-and-social.md) — hub: how content runs across both brands, approvals, schedules
 - [Video production](wiki/business/video-production.md) — MetHQ demo video, Artlist voices, Riverside clean-up, real app footage, YouTube via Actions
@@ -45,7 +45,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 
 ## Rules
 
-- [Engineering rules](wiki/rules/engineering-rules.md) — plan first, branches, blast radius, testing, merging, issues, priorities
+- [Engineering rules](wiki/rules/engineering-rules.md) — plan first, branches, one area per PR, blast radius, testing (a wrong result is never a pass), outside services, issues, priorities
 - [Writing and brand rules](wiki/rules/writing-and-brand-rules.md) — no "practice", no "fuel" for food, captchas, addresses, senders
 - [Programming conventions](wiki/rules/programming-conventions.md) — workout-entry conventions and swap standards
 

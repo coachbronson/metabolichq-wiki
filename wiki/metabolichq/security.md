@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, staging account, open work
-updated: 2026-11-16
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", CHANGELOG, docs/security]
+updated: 2026-11-17
+sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", CHANGELOG, docs/security]
 ---
 
 # Security
@@ -58,8 +58,10 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Reporting: `/.well-known/security.txt` on metabolichq.app and app.metabolichq.app, plus a policy page at
   **metabolichq.app/security** (reply within 3 business days, good-faith testing rules, no bounty). Renew `Expires`
   before 2027-11-14; a test fails once it passes (#322). Legal review of the wording goes with the trust page (#319).
-- The security scan counts `metabolichq.app`, `coachbronson.web.app` and `coachbronson.com` as ours; coachbronson.com
-  stays on sign-in's authorized domains until it moves in July 2027 (owner's call, #613).
+- The security scan counts `metabolichq.app`, `coachbronson.web.app` and `coachbronson.com` as ours, and
+  coachbronson.com is on sign-in's authorized domains (owner's call, #613). Open PR #676 removes coachbronson.web.app
+  and the site's functions, secrets and data from MetabolicHQ's project and has the scan count only MetabolicHQ's own
+  domains (the full split, Nov 16; high risk, waits for his OK).
 - CIS Google Cloud audit (2026-11-12) in `docs/security/`.
 - Scans: nightly plus PR-level (`pr-security.yml`, `security-scan.yml`); shown on the Security page and in the Monitor.
 
@@ -68,7 +70,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
   App Check key, functions account instead of Editor).
 - **Medium:** #550 full Content-Security-Policy (report-only first); #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
-- **Low:** #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
+- **Low:** #678 security rules: `clientAcctOn()` throws when an account has no `clientAcct` field (access is still
+  refused; noise in every e2e report; a rules change, so high-risk to fix) · #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
 
 ## Related
 

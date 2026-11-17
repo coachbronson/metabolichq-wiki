@@ -1,8 +1,8 @@
 ---
 title: Training (workouts, programs, swaps)
 summary: Programs, workout logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
-updated: 2026-11-14
-sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479"]
+updated: 2026-11-17
+sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655"]
 ---
 
 # Training
@@ -25,6 +25,9 @@ sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479"]
 - Cards by type (Warm-up, Strength, Metcon, Accessory, Cool-down), timers (For Time, AMRAP, EMOM, Tabata), session
   timer with a 2.5-hour limit, weight carry-forward, per-side / alternating reps, units from Profile, PR references.
 - Clients can build their own workouts (visible only to them).
+- A card's **Skip** and **Undo** (e.g. the whole Warm-up) crashed with "reading 'original'" and didn't save until
+  8.68.2 fixed it (#655). An end-to-end journey now uses every button, field and display on the workout screen
+  (#657 stage 2).
 - Desktop layout for 1024 px+ with mouse/trackpad; phones and tablets get the phone layout.
 
 ## Swaps

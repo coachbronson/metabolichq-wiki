@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, blog, research and trust pages
-updated: 2026-11-16
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636"]
+updated: 2026-11-17
+sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672"]
 ---
 
 # metabolichq.app site
@@ -34,11 +34,12 @@ built on the site (not the real app). The approved brand carries into partner si
 
 - MPT is promoted as an all-in-one training, nutrition and lifestyle tracker for individuals, with call-outs on the HQ
   site. Membership only (no one-on-one coaching offered there).
-- The MPT page moves onto coachbronson.com (`/mpt`) and `metabolichq.app/mpt` redirects to it.
-- Until coachbronson.com moves (July 2027), the "MPT for individuals" and Coach Bronson links on the site and every
-  MetHQ blog post go to **coachbronson.web.app**. Pages keep coachbronson.com in the source; deploys swap in the repo
-  variable `COACHBRONSON_URL`. In July: set it to `https://coachbronson.com` (#611, CHANGELOG 2026-11-14).
-  (Previously the links pointed straight at coachbronson.com/mpt/.)
+- MPT's page is **metabolichq.app/mpt**. The "For individuals", "MPT for individuals", "Explore MPT →" and "Join MPT
+  as an individual →" links on the home, About, Compare, Research and Security pages and in the blog open it in the
+  same tab; nothing on metabolichq.app links to Coach Bronson's own site (#672, CHANGELOG 2026-11-17). (Previously the
+  links went to coachbronson.web.app/mpt/ through the repo variable `COACHBRONSON_URL`, #611; that swap step is gone.)
+- MPT is one coach space like any other, ahead of the coach marketplace (mac-app CLAUDE.md, Nov 16).
+- The site end-to-end journey checks these links and that none points at coachbronson.web.app (#672).
 - Footer carries the "Provided by MetabolicHQ" badge (previously "Hosted by", #618; coachbronson-site #28).
 
 ## MetHQ blog (metabolichq.app/blog)

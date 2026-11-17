@@ -2,22 +2,49 @@
 
 Newest at the top. Each entry: date, what changed, pages touched.
 
-## 2026-11-16 (in-session)
-
-- Added the definition of end-to-end testing (every function, button, field and display; index of all of them kept
-  current) to [Engineering rules](wiki/rules/engineering-rules.md). Source: notes.
-
 ## Open questions for Bronson
 
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
-- **coachbronson.com on sign-in**: the site README's cut-over step 7 (coachbronson-site #25) says coachbronson.com
-  was taken off Firebase sign-in's authorized domains in Nov 2026 and must be added back; mac-app #613 (later the
-  same night) says he kept it on until July. The wiki follows #613. Should the site README step be corrected?
-
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-17 — Nightly update
+
+Covered mac-app from `f57f5d7` to `16b37c2` (CHANGELOG 2026-11-16 late entries and 2026-11-17, version 8.68.2),
+issues #567, #655, #668 closed and #646 closed for the full split, 9 new issues (#657, #660, #666, #667, #678, #679,
+#681; #655 and #668 already closed), mac-app CLAUDE.md (self-contained, one area per PR, coverage index, a wrong test
+result is never a pass), coachbronson-site #29 and #32–#34 (README, CLAUDE.md, `scripts/split/README.md`, to-do #30),
+and the 5 inbox lines.
+
+- coachbronson-site: rewritten for the full split: own project `coachbronson-site`, coachbronson-site.web.app,
+  coachbronson.web.app deleted (not redirected), no `mptDeals`, rebuild to-do, cut-over in the site's own project.
+- architecture: domains row, the site's project, removal PR #676, deploy CLI 15 vs emulators 14.23.0, Cloud Run quota
+  retry (#668).
+- marketing-site: MPT links stay on metabolichq.app/mpt (#672); the old "moves to coachbronson.com/mpt" line removed.
+- security: scan/authorized-domains line now notes open #676; #678 under Open.
+- methq-monitor: Content review is the MetHQ blog only (#673); Quality shows red on any failed journey.
+- engineering-rules: one area per PR, self-contained MetabolicHQ, coverage index, a wrong test result is never a pass,
+  outside services through workflows and MCP; blast-radius search no longer spans both repos.
+- versions: current 8.68.2; Nov 16 timeline; #681 proposal under After beta.
+- roadmap-and-backlog: snapshot refreshed (83 open, 5 high).
+- coach-portal: Program calendar workout menu (#653, #683). program-library-import: approving from the menu.
+- training: card Skip/Undo fix (#655). nutrition: #666 known bug; #355 corrected to medium. mpt-membership: trial
+  cancel returns to metabolichq.app (#674). methq-content: Monday wording (#675), go-live log failure (#679).
+  help-and-howto: Nov 16 Help review, skip video to re-make. coach-bronson-content: newsletter deals from the site's own
+  list. natalie: mock-up address. index updated; inbox emptied.
+- Removed the open question on coachbronson.com and sign-in: the site README's step 7 now refers to the site's own
+  project, so it no longer contradicts #613.
+- Noticed: the site's `content/NEWSLETTER.md` still says the deal comes from the MPT app's Deals, while its README says
+  the built-in list; the wiki follows the README.
+
+Last update covered: 2026-11-17.
+
+## 2026-11-16 (in-session)
+
+- Added the definition of end-to-end testing (every function, button, field and display; index of all of them kept
+  current) to [Engineering rules](wiki/rules/engineering-rules.md). Source: notes.
 
 ## 2026-11-16 — Nightly update
 

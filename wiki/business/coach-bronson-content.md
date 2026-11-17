@@ -1,8 +1,8 @@
 ---
 title: Coach Bronson content (athlete brand)
 summary: Positioning, tagline, 8 key messages, pillars, weekly social template, production rules, book breadcrumbs, blog and newsletter rules
-updated: 2026-11-15
-sources: [Content Strategy & 13-Week Calendar doc (Nov 5, 2026), coachbronson-site content/DRAFTING.md and NEWSLETTER.md, notes]
+updated: 2026-11-17
+sources: [Content Strategy & 13-Week Calendar doc (Nov 5, 2026), coachbronson-site content/DRAFTING.md and NEWSLETTER.md, coachbronson-site README, notes]
 ---
 
 # Coach Bronson content (athlete brand)
@@ -116,8 +116,8 @@ Rules in `coachbronson-site/content/DRAFTING.md`:
 ## Weekly newsletter (Thursdays)
 
 Rules in `coachbronson-site/content/NEWSLETTER.md`: one main idea (300–500 words), the latest blog post, one call to
-action (`mpt`, `guide` or `call`; not the same three weeks running), and one partner deal from the app's Deals in
-rotation. Drafted about a week ahead from `content/newsletter-topics.md`; approved in the site portal. Weekly site report
+action (`mpt`, `guide` or `call`; not the same three weeks running), and one partner deal in
+rotation, from the site's own built-in list since the split (coachbronson-site README; previously the MPT app's Deals). Drafted about a week ahead from `content/newsletter-topics.md`; approved in the site portal. Weekly site report
 Fridays.
 
 ## Related
