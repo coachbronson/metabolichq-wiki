@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-17
-sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655"]
+updated: 2026-11-18
+sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701"]
 ---
 
 # Help, how-to videos and support
@@ -24,6 +24,8 @@ sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618
 - Help review Nov 16 (v8.68.1): the Program calendar walkthrough explains pending review workouts and approving them
   from the workout menu; One-on-one workouts gets the same shortcut (#654). The "skip" how-to video taps card Skip, so
   its recording may show the old error and should be re-made (#655).
+- Help review Nov 17: nothing to change (#685). The "Your brand and sign-up link" topic and the `your-brand` video
+  steps were updated with the Business name and Change the main coach cards (#700, #701).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).
 - Planned: tell suggesters when their request ships, and announce launches (#423); user-facing release notes (#320).

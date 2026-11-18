@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-17
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677"]
+updated: 2026-11-18
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677"]
 ---
 
 # Engineering and working rules
@@ -60,12 +60,22 @@ on Nov 16, 2026: no journey ever tapped it.)
   counts only once you've seen what the outside page did. The coverage index fails on any unsure reading (mac-app
   CLAUDE.md, #657, #660, #664).
 
+- The end-to-end run can't check production hosts that are local test servers there (our other sites, the Firebase
+  emulators). Enforcing the Content-Security-Policy showed two such gaps, so a change that depends on outside hosts
+  is also checked in code and in a browser (mac-app #702, #704, #550).
+
 Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359).
 
 ## CodeRabbit
 
 Reviews **once a night** (~12:06 AM ET) everything merged since the last review. Claude fixes easy low-risk findings
 in one PR; anything risky or unclear becomes a question in the nightly report.
+
+## Status updates
+
+Every status update (chat messages while waiting on a run or PR, progress notes on issues and PRs) starts with the
+current time in Eastern from the machine (e.g. **8:41 PM Eastern, Tue Nov 17**) and gives the next check as a clock
+time, not "in 30 minutes" (his rule, Nov 17; mac-app CLAUDE.md, #715).
 
 ## Closing issues
 
@@ -95,6 +105,9 @@ Every backlog issue gets exactly one priority label.
 - Auto-updates email him with release notes and wait for approval.
 - Don't bring up FatSecret (e.g. for barcode lookups) unless he raises it.
 - Test sign-ups use "+" alias emails; remind him when a fresh one is needed.
+- Claude Code's built-in privacy plugin is off in both repos (his call, Nov 17): it refused shell commands on files
+  holding his email address. Its job was keeping that address out of web requests (mac-app #709,
+  coachbronson-site #39).
 
 ## Related
 

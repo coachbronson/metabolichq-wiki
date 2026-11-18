@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ, MPT and the brands
 summary: What MetabolicHQ is, how it relates to MPT and Coach Bronson, mission, positioning and branding
-updated: 2026-11-16
-sources: [notes, mac-app README, CHANGELOG, "#618", Google Drive]
+updated: 2026-11-18
+sources: [notes, mac-app README, CHANGELOG, "#618", "#703", "#705", "#706", "#707", Google Drive]
 ---
 
 # MetabolicHQ, MPT and the brands
@@ -49,6 +49,10 @@ coach's, so he sees what they see. Platform-level functions sit under **Platform
 - Coach brand setup in the portal works like the website's branding demo widget (pull logo and colors from the
   coach's website, approve or edit); changes show the client sample first, before saving.
 - A coach's own icon appears when their clients install the app on a phone home screen.
+- **Partners run their spaces "on MetabolicHQ"**, not on MPT: MPT is Coach Bronson's own space (owner, Nov 17). The
+  app header under a partner's brand, the installed app's description ("<business> on MetabolicHQ"), partner invites,
+  the brand preview and the sales demo pages say so; MPT's own space is unchanged (#703, #705–#707, CHANGELOG
+  2026-11-17). (Previously they said "on Metabolic Performance Training".)
 
 ## Related
 

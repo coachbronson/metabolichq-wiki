@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-17
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672"]
+updated: 2026-11-18
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696"]
 ---
 
 # Architecture and infrastructure
@@ -22,9 +22,12 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 - Production project: **`masters-collective-app`** (Blaze plan). Staging: **`metabolichq-staging`** (testing, load
   tests; try Google Cloud setting changes there first). Staging workflows sign in as their own staging-only account
   through GitHub keyless sign-in; the production deploy key no longer reaches staging (#626).
-- coachbronson-site has its own project, `coachbronson-site`, and shares nothing with these two (coachbronson-site
-  #29). Its leftovers in `masters-collective-app` (the old Hosting site, functions, secrets, data) are removed by
-  `scripts/remove-coachbronson-site.sh` in open PR #676.
+- coachbronson-site has its own project, `coachbronson-site` (coachbronson-site #29). Its leftovers in
+  `masters-collective-app` (functions, secrets, data, sign-in and API-key domains) were removed by
+  `scripts/remove-coachbronson-site.sh` (#676), and the old coachbronson.web.app Hosting site by the one-time
+  workflow **Delete old site address** on Nov 17 (#695, #696). The one thing still shared: the site sends email
+  through MetabolicHQ's Resend key until July 2027 (see [coachbronson.com](../business/coachbronson-site.md)).
+  MetabolicHQ has its own Turnstile widget since the shared one was deleted (#684).
 - Firebase Hosting, Authentication, Cloud Firestore, Cloud Functions, Storage.
 - History: started as a Google Apps Script + "Workout App" Google Sheet; moved to Firebase **2026-10-30**. The sheet is
   no longer used.

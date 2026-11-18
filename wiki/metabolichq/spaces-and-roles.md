@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-16
-sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652"]
+updated: 2026-11-18
+sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711"]
 ---
 
 # Spaces, coaches and roles
@@ -26,6 +26,25 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652"]
 - The main coach sees all information for clients assigned to other coaches, **except** those clients' conversations
   with their other coach.
 - Team coaches are free (no seat charge).
+- In the data the main coach is `spaces/{sid}.coach`, the coach who signed the space up. It decides who opens support
+  requests, renames the business, sees Finances and Payments and uses the client view (#699).
+
+## Business name and main coach
+
+- Coaches must be able to change their business name themselves (his decision, Nov 17). Since 8.69.0 the main coach
+  does it on **Your brand → Business name**: the space's own name (emails, sign-in help, calls, receipts, exports,
+  Spaces, Monitor), the app header, the sign-up page and the email sender name change at once. The email address and
+  the sign-up link (space id) stay the same. MetabolicHQ is emailed about each change and it's kept in the space's
+  name history (`renameSpace`, `functions/rename.js`, #700). (Previously the brand editor's name changed only the app
+  header and sign-up page.)
+- **The name in the app must be separate from the business name** and not forced by it, since a business name may be
+  too long for the app header (his decision, Nov 17). Today a rename also overwrites the app name; #710 (high) brings
+  back an editable "Name in the app" and a rename checkbox.
+- **Changing the main coach** (business sold, or something else happens) is not self-service: it needs MetabolicHQ
+  support (his decision, Nov 17). Since 8.70.0 Your brand's **Change the main coach** card opens a pre-filled support
+  request (#701; fixed so it stays filled in, #711). The Platform tool MetabolicHQ uses for the switch, with its
+  checklist (agreement, Stripe Connect, billing, the old coach's role and conversations), is #699 (needs decisions,
+  high risk).
 
 ## Coach accounts vs client accounts
 

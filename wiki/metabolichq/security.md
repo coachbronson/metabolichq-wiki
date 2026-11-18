@@ -1,8 +1,8 @@
 ---
 title: Security
-summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, staging account, open work
-updated: 2026-11-17
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", CHANGELOG, docs/security]
+summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
+updated: 2026-11-18
+sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", CHANGELOG, docs/security]
 ---
 
 # Security
@@ -40,13 +40,36 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 ## Bot protection: App Check with Turnstile (#512)
 
 - Firebase **App Check with Cloudflare Turnstile** (custom provider; reCAPTCHA ruled out). Every form gets Turnstile.
+- MetabolicHQ has its **own Turnstile widget** ("MetabolicHQ", its own hostnames only), used by the partner apply form,
+  Custom Build form, brand preview, sign-in help and feedback page. The old widget was shared with coachbronson.web.app
+  and was deleted in the split on Nov 17, which stopped those captchas until the new one went in (#684, CHANGELOG
+  2026-11-17). Its secret is the `TURNSTILE_SECRET` GitHub secret.
 - Stage 1 (metrics only) went live on 2026-11-14 and was reverted the same hour: the invisible check timed out and the
   widget couldn't retry (#605, reverted by #606). The owner then made a separate **Invisible** widget for App Check,
   its secret in Secret Manager (#548).
 - Next (#512): stage 1 again with the fixes, tested on a preview link first; the owner registers the app in App Check;
   a week of metrics; then enforce one service at a time (Firestore, Storage, Auth, callable functions), each with
-  the owner's OK. Before Auth: coachbronson-site's admin sign-in needs the same provider or Auth stays unenforced.
-  (#548 closed as not done, moved to #512.)
+  the owner's OK. Turnstile is already allowed in the app's Content-Security-Policy, so stage 1 needs no CSP change
+  (#550). (#548 closed as not done, moved to #512. Previously coachbronson-site's admin sign-in also had to be
+  covered before Auth; the site now has its own project and sign-in, coachbronson-site #29.)
+
+## Content-Security-Policy (#550, done)
+
+- **All three sites enforce a full policy** (scripts, styles, fonts, images, connections, frames, workers, form
+  targets) in the one header that also carries the framing rules: metabolichq.app (#693), the coach portal and MetHQ
+  Monitor (#697), the app (#708, Nov 18). Violations still report to `/__csp` (counters in `ops/csp/seen`).
+- **Styles allow `'unsafe-inline'`, scripts never** (owner's call; the screens use over 1,200 inline style
+  attributes). `test/cspreport.test.mjs` fails if scripts get `'unsafe-inline'` or `'unsafe-eval'`, or if an inline
+  `<script>` or handler comes back (#690–#692).
+- Allowed because the report week showed they're needed: `apis.google.com` (Google sign-in), `www.google.com` for
+  connections (the text-message two-step check), Turnstile on the app (#690, #691).
+- The **CSP reports** workflow (by hand, read-only) summarizes the report counters by site, directive and source
+  (#671).
+- Two gaps the end-to-end run couldn't see, because production hosts are local test servers there: Vimeo, Loom and
+  file-preview frames (#702) and SVG logos read with `fetch` of a `data:` URL in the brand editor (#704). Both fixed,
+  each with a test. Before enforcing the app, its policy was also checked in code and in a browser (#550).
+- Follow-up: the nightly scan should flag a live policy that loses `script-src`, allows unsafe scripts or falls back
+  to report-only (#716, open).
 
 ## Other protections
 
@@ -58,10 +81,11 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Reporting: `/.well-known/security.txt` on metabolichq.app and app.metabolichq.app, plus a policy page at
   **metabolichq.app/security** (reply within 3 business days, good-faith testing rules, no bounty). Renew `Expires`
   before 2027-11-14; a test fails once it passes (#322). Legal review of the wording goes with the trust page (#319).
-- The security scan counts `metabolichq.app`, `coachbronson.web.app` and `coachbronson.com` as ours, and
-  coachbronson.com is on sign-in's authorized domains (owner's call, #613). Open PR #676 removes coachbronson.web.app
-  and the site's functions, secrets and data from MetabolicHQ's project and has the scan count only MetabolicHQ's own
-  domains (the full split, Nov 16; high risk, waits for his OK).
+- The security scan counts only MetabolicHQ's own domains, so a coachbronson domain left on sign-in would show up as
+  a finding. `scripts/remove-coachbronson-site.sh` (run once by the owner) took the site's functions, secrets, data
+  and sign-in/API-key domains out of MetabolicHQ's project (#676, CHANGELOG 2026-11-17). Its Hosting-site step was
+  skipped, so the old coachbronson.web.app address was deleted afterwards by the one-time workflow **Delete old site
+  address** (#695, #696). (Previously the scan counted coachbronson.web.app and coachbronson.com as ours, #613.)
 - CIS Google Cloud audit (2026-11-12) in `docs/security/`.
 - Scans: nightly plus PR-level (`pr-security.yml`, `security-scan.yml`); shown on the Security page and in the Monitor.
 
@@ -69,7 +93,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 
 - **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
   App Check key, functions account instead of Editor).
-- **Medium:** #550 full Content-Security-Policy (report-only first); #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
+- **Medium:** #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
+- **No priority yet:** #716 scan check for a weakened Content-Security-Policy.
 - **Low:** #678 security rules: `clientAcctOn()` throws when an account has no `clientAcct` field (access is still
   refused; noise in every e2e report; a rules change, so high-risk to fix) · #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
 

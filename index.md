@@ -9,7 +9,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [Platform and brands](wiki/metabolichq/platform-and-brands.md) — MetabolicHQ vs MPT; mission, positioning, branding
 - [Architecture](wiki/metabolichq/architecture.md) — repos, Firebase projects, domains, data model, email, services, backups, nightly jobs
 - [Versions](wiki/metabolichq/versions.md) — version scheme, majors 1.0–8.0, current version, release process after beta
-- [Spaces and roles](wiki/metabolichq/spaces-and-roles.md) — spaces, main/team coaches, client assignment, coach vs client accounts, sign-up, demo spaces
+- [Spaces and roles](wiki/metabolichq/spaces-and-roles.md) — spaces, main/team coaches, business name and main-coach changes, client assignment, coach vs client accounts, sign-up, demo spaces
 - [Partner program](wiki/metabolichq/partner-program.md) — tiers and pricing, Premium add-on, agreement, onboarding, coach payments and packages
 - [MPT memberships](wiki/metabolichq/mpt-membership.md) — $47.99/$450 plan, trial, coupons, launch targets, test accounts, Masters Collective shutdown
 - [Training](wiki/metabolichq/training.md) — programs, logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
@@ -21,14 +21,14 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [Coaching calls](wiki/metabolichq/coaching-calls.md) — in-app video, recording/transcripts, AI notes, scheduling and calendar sync
 - [Messaging and community](wiki/metabolichq/messaging-and-community.md) — DMs, multi-coach chats, community, @ and / linking, push, Deals
 - [Resources and files](wiki/metabolichq/resources-and-files.md) — resource libraries, worksheets, timed release, private shared files
-- [Coach portal](wiki/metabolichq/coach-portal.md) — menus, Help, Security page, Program calendar workout menu, client management, Inbox, Backlog roadmap, demo data, Costs, Performance
+- [Coach portal](wiki/metabolichq/coach-portal.md) — menus, Help, Security page, Your brand (business name, main coach), Program calendar workout menu, client management, Inbox, Backlog roadmap, demo data, Costs, Performance
 - [MetHQ Monitor](wiki/metabolichq/methq-monitor.md) — phone ops view: dashboards, Security, Quality, "Fix this" Claude menus
-- [Security](wiki/metabolichq/security.md) — security events and sign-in alerts, Security page, scanning, App Check/Turnstile, CSP, open work
+- [Security](wiki/metabolichq/security.md) — security events and sign-in alerts, Security page, scanning, App Check/Turnstile, enforced CSP, open work
 - [Client add-ons](wiki/metabolichq/client-add-ons.md) — client add-on rules and ideas; planned coach add-ons (marketplace, GLP-1 companion)
 - [Research and privacy](wiki/metabolichq/research-and-privacy.md) — citizen-science opt-in, privacy, data ownership
 - [HIPAA](wiki/metabolichq/hipaa.md) — health-practice integration prospect; HIPAA-ready MetabolicHQ
 - [Help and how-to](wiki/metabolichq/help-and-howto.md) — Help page, how-to videos, support, review after e2e runs
-- [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, MetHQ blog
+- [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, sales demo pages (Kiltz, Ovadia), MetHQ blog
 - [MetabolicHQ content](wiki/metabolichq/methq-content.md) — messaging framework (one claim, five pillars), homepage "Replace your stack", social, blog rules and topic queue
 - [Roadmap and backlog](wiki/metabolichq/roadmap-and-backlog.md) — where the backlog lives, snapshot of open work, roadmap shape
 

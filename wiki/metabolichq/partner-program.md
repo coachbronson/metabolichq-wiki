@@ -1,8 +1,8 @@
 ---
 title: Partner coach program
 summary: Partner tiers and pricing, Premium (MPT Programming) add-on, agreement terms, onboarding, coach payments and packages
-updated: 2026-11-16
-sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633"]
+updated: 2026-11-18
+sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706"]
 ---
 
 # Partner coach program
@@ -76,7 +76,11 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - Free coach marketplace / directory (#570); coach sales pages + custom domains (#523).
 - MetabolicHQ affiliate program (#312) and coach-run affiliates (#313): low priority, needs decision.
 - MetabolicHQ MCP server (#256); Zapier integration in development; CRM/automation integrations (#174).
-- Prospects mentioned: a pitch to Dr. Robert Kiltz (Kiltz Health); a coach wanting to migrate from Everfit.
+- Prospects mentioned: a pitch to Dr. Robert Kiltz (Kiltz Health; demo page metabolichq.app/demos/kiltz/, #694); Dr.
+  Philip Ovadia (I Fix Hearts; telehealth clinic Ovadia Heart Health, whose NPs and health coaches coach clinic
+  members, I Fix Hearts wellness clients and employer wellness groups), sales call the week of Nov 16, demo page
+  metabolichq.app/demos/ovadia/ (notes 2026-11-17, #698); a coach wanting to migrate from Everfit.
+- Partner invites (email and invite page) say the coach runs their space "on MetabolicHQ" (#706).
 
 ## Related
 

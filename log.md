@@ -10,6 +10,34 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-18 — Nightly update
+
+Covered mac-app from `16b37c2` to `0cc98d3` (CHANGELOG 2026-11-17 late entries and 2026-11-18, version 8.70.0),
+issues #550 and #711 closed, 5 new issues (#686, #699, #710, #711, #716), #410 raised to high, mac-app CLAUDE.md
+(status updates say when), coachbronson-site #35–#39 and the #30 progress note, and the 11 inbox lines.
+
+- security: new Content-Security-Policy section (enforced on all three sites, styles-only inline, #693/#697/#708,
+  fixes #702/#704, follow-up #716); MetabolicHQ's own Turnstile widget (#684); the scan and removal-script line
+  rewritten now that #676 ran and the old address is deleted (#695, #696); stale coachbronson-site App Check line
+  replaced.
+- coachbronson-site: removal script run, old address deleted Nov 17, Resend still shared (own Resend on hold until
+  July 2027, draft #35), rebuild to-do progress (own Turnstile, new form snippets), `invoker: 'public'` (#36),
+  `X-Site-Auth` (#37), Kiltz page removed (#38), privacy plugin off (#39).
+- architecture: the site's leftovers removed, the one shared key, own Turnstile.
+- marketing-site: CSP enforced; new Sales demo pages section (Kiltz, Ovadia; visual only, #694, #698, #703); brand
+  widget "on MetabolicHQ" and SVG logo fix.
+- spaces-and-roles (new Business name and main coach section) and coach-portal (new Your brand section): business
+  name change (8.69.0, #700), Change the main coach via support (8.70.0, #701, #711), app name separate (#710),
+  Platform tool (#699); portal CSP and #686.
+- platform-and-brands: partners run their spaces "on MetabolicHQ" (#703, #705–#707). partner-program: Ovadia
+  prospect and demo page; invites say on MetabolicHQ.
+- versions: current 8.70.0; Nov 17 timeline. mpt-membership: test-mode trial is card only (#688). help-and-howto: Nov
+  17 review, Your brand Help. engineering-rules: status-update rule (#715), e2e can't see local-only hosts, privacy
+  plugin off. roadmap-and-backlog: snapshot refreshed (86 open, 7 high). index updated; inbox emptied.
+- No new open questions.
+
+Last update covered: 2026-11-18.
+
 ## 2026-11-17 — Nightly update
 
 Covered mac-app from `f57f5d7` to `16b37c2` (CHANGELOG 2026-11-16 late entries and 2026-11-17, version 8.68.2),

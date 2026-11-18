@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-17
+updated: 2026-11-18
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,31 +12,37 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-17)
+## Snapshot (2026-11-18)
 
-83 open `backlog` issues: 57 features, 15 ops, 7 R&D, 2 bugs (#660, #666; #410 and #678 have no lane); 10 on the roadmap (#681,
-#679, #678, #667, #620, #575, #570, #550, #512, #162); 22 need a decision. 5 high, 27 medium, 51 low, no critical.
-Closed since 2026-11-16: #567 (deploy CLI already on 15; the emulators moved to #667), #655 (card Skip/Undo, 8.68.2),
-#668 (deploy retry on Cloud Run's quota), #646 (replaced by the full split, #672–#677). 9 opened since 2026-11-16
-(two of them already closed). #620 added to the roadmap.
+86 open `backlog` issues: 59 features, 14 ops, 7 R&D, 3 bugs (#660, #666, #686; #410, #678 and #716 have no lane); 9
+on the roadmap (#681, #679, #678, #667, #620, #575, #570, #512, #162); 23 need a decision. 7 high, 26 medium, 52 low,
+no critical; #716 has no priority yet.
+Closed since 2026-11-17: #550 full Content-Security-Policy, now enforced on all three sites; #711 Change the main
+coach opened an empty support request. 5 opened since 2026-11-17 (#711 already closed). #410 raised from medium to
+high.
 
 **High priority:** #575 release process after beta · #512 security pending actions (lockout stage C around Nov 29,
 App Check) · #620 acquisition readiness: raise platform maturity from beta (about 2 of 5) toward enterprise-grade
-(needs a decision) · #648 a clear Finances message for team coaches · #558 Google Cloud owner steps (not labeled
-`backlog`) · #681 development and staging: PR previews, staging as a production mirror, a testing period before
-production (needs decisions; changes #575's staging gate).
+(needs a decision) · #648 a clear Finances message for team coaches · #681 development and staging: PR previews,
+staging as a production mirror, a testing period before production (needs decisions; changes #575's staging gate) ·
+#410 client groups: coach-made groups with assigned coaches and group managers (raised Nov 18) · **new** #710 Your
+brand: an app name separate from the business name · #558 Google Cloud owner steps (not labeled `backlog`).
 
 **Medium (selection):** #382 client add-ons · #634 import a returning client's history from a MetabolicHQ export
 (needs a decision) · #355 recipe/meal and history import from other nutrition apps · #356 recipes · #162 wearable sync
 · #570 free coach marketplace · #358 coach custom reports · #602 progress photos · #603 save check-ins partway ·
-#478 rep-max table · #479 suggested weights · #410 client groups · #332 coach onboarding workflows · #256 MCP server
-· #174 integrations · #319/#320/#321 trust page, release notes, status page · #550 CSP · #381 HIPAA-ready.
+#478 rep-max table · #479 suggested weights · #332 coach onboarding workflows · #256 MCP server · #174 integrations ·
+#319/#320/#321 trust page, release notes, status page · #381 HIPAA-ready · #657 end-to-end coverage of every button,
+field and display (stages 1–2 done) · #660 e2e: Stripe Checkout sometimes shows Link + hCaptcha instead of the card
+form (bug; test-mode card-only and a Link-screen step went in, #687, #688) · #666 food diary ‹ Back after changing
+days can land on the wrong day (bug).
 
-**New, medium:** #657 end-to-end coverage of every button, field and display (stages 1–2 done) · #660 e2e: Stripe
-Checkout sometimes shows Link + hCaptcha instead of the card form (bug) · #666 food diary ‹ Back after changing days
-can land on the wrong day (bug).
+**New, medium:** #699 change a space's main coach: the Platform tool after support checks (needs decisions).
 
-**New, low:** #667 test emulators to firebase-tools 15 (blocked on a fixed 15.x) · #678 security rules
+**New, low:** #686 owner's Spaces & coaches table wider than a 1366 px screen (bug). **New, no priority:** #716 nightly
+scan flags a weakened Content-Security-Policy.
+
+**Low (recent):** #667 test emulators to firebase-tools 15 (blocked on a fixed 15.x) · #678 security rules
 `clientAcctOn()` error noise · #679 MetHQ blog go-live run fails daily on "Save the go-live log" (posts still go
 live; the log is never saved). Earlier: coach add-on marketplace #633 and the GLP-1 companion module #628 (#629–#632); Challenges #639; Fasting
 tracker #640; AI progress troubleshooting #642; Leads CRM and discovery calls #643; call prep brief #637; own
