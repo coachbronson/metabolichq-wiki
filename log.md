@@ -13,7 +13,7 @@ Newest at the top. Each entry: date, what changed, pages touched.
 ## 2026-11-19 — Nightly update
 
 Covered mac-app from `0cc98d3` to `ea7def7` (CHANGELOG 2026-11-18 late entries and 2026-11-19, version 8.70.1),
-issue #716 closed, 2 new issues (#742, #746), #570 taken off the roadmap, the #620 and #381 comments, and the 9 new
+issue #716 closed, 2 new issues (#742, #746), #570 taken off the roadmap, the #620 and #381 comments, and the 7 new
 inbox lines. No coachbronson-site commits since #39; no mac-app CLAUDE.md or README changes.
 
 - acquisition-readiness (**new**): #620's assessment, the owner's Nov 18 decisions (accepted risks, Stripe account
@@ -28,7 +28,7 @@ inbox lines. No coachbronson-site commits since #39; no mac-app CLAUDE.md or REA
   coach-written waivers (#746), MCP skill toolkit (#742).
 - versions: current 8.70.1 (#722); Nov 18 timeline. help-and-howto: Nov 18 Help review.
 - roadmap-and-backlog: snapshot refreshed (87 open, 7 high). index updated; inbox emptied.
-- Noticed: the inbox held 11 lines from Nov 17 that the Nov 18 update had already filed (a session wrote back an old
+- Noticed: the inbox held 9 lines from Nov 17 that the Nov 18 update had already filed (a session wrote back an old
   copy); they were checked against the pages and removed. #678 is still open on GitHub though #740 fixed it.
 - No new open questions.
 
