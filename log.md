@@ -10,6 +10,30 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-19 — Nightly update
+
+Covered mac-app from `0cc98d3` to `ea7def7` (CHANGELOG 2026-11-18 late entries and 2026-11-19, version 8.70.1),
+issue #716 closed, 2 new issues (#742, #746), #570 taken off the roadmap, the #620 and #381 comments, and the 9 new
+inbox lines. No coachbronson-site commits since #39; no mac-app CLAUDE.md or README changes.
+
+- acquisition-readiness (**new**): #620's assessment, the owner's Nov 18 decisions (accepted risks, Stripe account
+  and Google Cloud project stay, both QR-code copies kept), what's open, and the file split (phase 0 checks, phase 1
+  server split #718–#741).
+- architecture: fixed a stale Repositories row (the site deploys into its own project); project keeps its name
+  (#620); Firebase default addresses (mac-app `.firebaserc`); new Server code section.
+- security: #716 done (scan flags a weakened CSP); new Code scanning section (#720, #729, #730, #736, #737, #741);
+  the `clientAcctOn()` rules fix (#740) replaces the #678 Open line.
+- hipaa: #381's plan, cost research and BAA email options (nothing decided). wearables: vendors' BAA terms.
+- marketing-site: CCI demo page (#743–#745, #747). partner-program: CCI prospect, the client waiver as it is in code,
+  coach-written waivers (#746), MCP skill toolkit (#742).
+- versions: current 8.70.1 (#722); Nov 18 timeline. help-and-howto: Nov 18 Help review.
+- roadmap-and-backlog: snapshot refreshed (87 open, 7 high). index updated; inbox emptied.
+- Noticed: the inbox held 11 lines from Nov 17 that the Nov 18 update had already filed (a session wrote back an old
+  copy); they were checked against the pages and removed. #678 is still open on GitHub though #740 fixed it.
+- No new open questions.
+
+Last update covered: 2026-11-19.
+
 ## 2026-11-18 — Nightly update
 
 Covered mac-app from `16b37c2` to `0cc98d3` (CHANGELOG 2026-11-17 late entries and 2026-11-18, version 8.70.0),

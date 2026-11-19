@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-18
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", CHANGELOG, docs/security]
+updated: 2026-11-19
+sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security]
 ---
 
 # Security
@@ -68,8 +68,9 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Two gaps the end-to-end run couldn't see, because production hosts are local test servers there: Vimeo, Loom and
   file-preview frames (#702) and SVG logos read with `fetch` of a `data:` URL in the brand editor (#704). Both fixed,
   each with a test. Before enforcing the app, its policy was also checked in code and in a browser (#550).
-- Follow-up: the nightly scan should flag a live policy that loses `script-src`, allows unsafe scripts or falls back
-  to report-only (#716, open).
+- The nightly scan flags (medium, on the Security page and Monitor) a live policy that limits no scripts, a script
+  rule that allows `'unsafe-inline'`, `'unsafe-eval'`, `*`, `https:`, `http:` or `data:`, and a site sending only a
+  report-only policy. Styles are not judged (#716, #717, CHANGELOG 2026-11-18).
 
 ## Other protections
 
@@ -87,16 +88,30 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   skipped, so the old coachbronson.web.app address was deleted afterwards by the one-time workflow **Delete old site
   address** (#695, #696). (Previously the scan counted coachbronson.web.app and coachbronson.com as ours, #613.)
 - CIS Google Cloud audit (2026-11-12) in `docs/security/`.
+- Security rules: `clientAcctOn()` now reads the client-account field with a default of false, so accounts without it
+  get a clean "no" instead of a rules error. Access is unchanged (owner's OK, #740, CHANGELOG 2026-11-18).
+
+## Code scanning
+
 - Scans: nightly plus PR-level (`pr-security.yml`, `security-scan.yml`); shown on the Security page and in the Monitor.
+- The check that every callable or web function checks who is calling reads every file under `functions/`, so moved
+  functions stay checked; a deployed function it can't find is its own finding (#720).
+- A file Semgrep couldn't fully check (timeout, memory, parse error, too big) is a medium finding, "Semgrep couldn't
+  fully check <file>". `functions/index.js`, `public/js/app.js` and `admin/portal.js` show it until the split makes
+  them smaller (owner's OK, #729, #620).
+- Found once code moved into smaller files (#620), fixed with the owner's OK: the signed-agreement download always
+  sends a fixed file type with `nosniff`, as an attachment (#730); the Stripe Checkout logo is sent with `nosniff`
+  (#736).
+- Reviewed exceptions in `scripts/security/allow.json`, each with a test that keeps it to that one function: the
+  packages table's open CORS (on purpose, public data only, #737) and the Checkout logo's Semgrep data-flow warning
+  (#741).
 
 ## Open
 
 - **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
   App Check key, functions account instead of Editor).
 - **Medium:** #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
-- **No priority yet:** #716 scan check for a weakened Content-Security-Policy.
-- **Low:** #678 security rules: `clientAcctOn()` throws when an account has no `clientAcct` field (access is still
-  refused; noise in every e2e report; a rules change, so high-risk to fix) · #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
+- **Low:** #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
 
 ## Related
 

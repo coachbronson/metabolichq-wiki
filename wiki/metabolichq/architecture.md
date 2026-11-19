@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-18
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696"]
+updated: 2026-11-19
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc]
 ---
 
 # Architecture and infrastructure
@@ -12,14 +12,15 @@ sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGE
 | Repo | What |
 |---|---|
 | `coachbronson/mac-app` | The app (`public/`), coach portal (`admin/`), MetHQ Monitor (`admin/monitor/`), metabolichq.app site (`site/`), Cloud Functions (`functions/`), scripts, tests, end-to-end journeys (`e2e/`), load tests (`load/`). |
-| `coachbronson/coachbronson-site` | coachbronson.com: site, blog, newsletter, form embeds, site admin. Deploys into the **same** Google Cloud project. |
+| `coachbronson/coachbronson-site` | coachbronson.com: site, blog, newsletter, form embeds, site admin. Deploys into its **own** Google Cloud project, `coachbronson-site` (coachbronson-site #29). (Previously into MetabolicHQ's project.) |
 | `coachbronson/metabolichq-wiki` | This wiki. |
 
 Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 
 ## Google Cloud / Firebase
 
-- Production project: **`masters-collective-app`** (Blaze plan). Staging: **`metabolichq-staging`** (testing, load
+- Production project: **`masters-collective-app`** (Blaze plan). It keeps this name and ID: no move or rename
+  (owner, Nov 18, #620; see [Acquisition readiness](acquisition-readiness.md)). Staging: **`metabolichq-staging`** (testing, load
   tests; try Google Cloud setting changes there first). Staging workflows sign in as their own staging-only account
   through GitHub keyless sign-in; the production deploy key no longer reaches staging (#626).
 - coachbronson-site has its own project, `coachbronson-site` (coachbronson-site #29). Its leftovers in
@@ -41,6 +42,7 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 | `app.metabolichq.app` | The app (clients and light coach tools) |
 | `admin.metabolichq.app` | Coach portal (desktop, ≥1024 px) |
 | `admin.metabolichq.app/monitor/` | MetHQ Monitor (phone-friendly ops view) |
+| `masters-collective-app.web.app`, `masters-collective-admin.web.app`, `metabolichq-home.web.app` | Firebase default addresses of the app, coach portal and landing site; staging's are `metabolichq-staging`, `metabolichq-staging-admin`, `metabolichq-staging-home` (.web.app) (mac-app `.firebaserc`) |
 | `masterscollective.app` | Owned (Squarespace); DNS forwarding; was the original app domain |
 | `coachbronson-site.web.app` | Coach Bronson's own site, in its **own** Google Cloud project `coachbronson-site`; MetabolicHQ doesn't link to, call or share anything with it (mac-app CLAUDE.md, #672–#677; see [coachbronson.com](../business/coachbronson-site.md)). (Previously coachbronson.web.app in MetabolicHQ's project, linked through `COACHBRONSON_URL`, #611; that variable and its deploy step are gone, #672) |
 
@@ -50,6 +52,14 @@ Spaces: one per coach business; MPT is `mpt`. `accounts/{uid}` says which space 
 Shared platform data (group program `programDays/{date}_all`, exercises, videos, search cache) sits at the top level;
 everything else lives under `spaces/{sid}/…` (users, logs, check-ins, biometrics, threads, signals, feed…).
 Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.rules` (tested in `test/rules.test.mjs`).
+
+## Server code
+
+Cloud Functions (107 deployed) were split out of `functions/index.js` into area files on Nov 18: shared setup in
+`base.js`, then `fn-calls.js`, `fn-push.js`, `fn-site.js`, `fn-invites.js`, `fn-spaces.js`, `fn-privacy.js`,
+`members.js` (membership core, no endpoints), `fn-payments.js`, `fn-signup.js` and `fn-partner.js`. `index.js`
+re-exports them, so names and addresses are unchanged; `ops/function-names.json` and a test guard the names (#718,
+#724–#739, CHANGELOG 2026-11-18). The rest of `index.js`, then the portal and app, follow (#620).
 
 ## Email
 

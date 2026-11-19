@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-18
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704"]
+updated: 2026-11-19
+sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747"]
 ---
 
 # metabolichq.app site
@@ -44,6 +44,14 @@ enforced policy (#704).
 - **metabolichq.app/demos/ovadia/**: Ovadia Heart Health, built on the Kiltz layout: the member app in their
   branding, a care-team view with clinic, I Fix Hearts wellness and employer groups in one space, and a mock sign-up
   page. Colors and the "OH" mark are placeholders (#698).
+- **metabolichq.app/demos/cci/**: Carnivore Coach International. Each CCI graduate runs their own branded coaching
+  business on MetabolicHQ with a CCI starter kit inside: the graduate's client app (carnivore food diary, transition
+  lessons opening week by week, biometrics, waiver and readiness questions, packages and payments, calls and notes),
+  their getting-started checklist and the pricing ladder from free. The "CCI Certified" coach directory, sales pages
+  and referral share are marked Coming (#743, CHANGELOG 2026-11-18). In CCI's black (#2D2B2A, owner's call) and white
+  with CCI's logo, supplied by the owner (#744, #745). No lab-tracking claims: lab results only reach a coach as a
+  shared file, so the screen shows Biometrics (#744). It shows the real standard waiver and says coach-written
+  waivers are coming (#746, #747).
 - Partners show "on MetabolicHQ" / "Provided by MetabolicHQ", not on MPT (#703). Prospects:
   [Partner program](partner-program.md#ideas-parked-or-later).
 

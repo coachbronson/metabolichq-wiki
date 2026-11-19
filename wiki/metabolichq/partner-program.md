@@ -1,8 +1,8 @@
 ---
 title: Partner coach program
 summary: Partner tiers and pricing, Premium (MPT Programming) add-on, agreement terms, onboarding, coach payments and packages
-updated: 2026-11-18
-sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706"]
+updated: 2026-11-19
+sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706", "#742", "#743", "#746", "#256", public/js/agreement-text.js, public/js/spaces.js]
 ---
 
 # Partner coach program
@@ -49,7 +49,16 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - E-sign in the app; PDF emailed to the coach and to Bronson. Payment details at signing, before the setup
   questionnaire; billing starts when the space goes live.
 - MPT programming stays his property.
-- Client waiver based on his past waivers (Ultimate Ketogenic Fitness, The APEX Training System).
+- **Client waiver:** every space uses MetabolicHQ's standard **Waiver and release** (agreement Schedule C,
+  `public/js/agreement-text.js`, `WAIVER_VERSION` 2026-11-04), with the coach's business name filled in; it was based
+  on his past waivers (Ultimate Ketogenic Fitness, The APEX Training System). It covers training risk only: risk,
+  release, assumption of risk, health, rhabdomyolysis, covenant not to sue, minors, acceptance. Clients tick each part
+  and type their full name; the record is kept per version and can't be changed. On per space (`features.waiver`, on
+  by default, `public/js/spaces.js`). Coaches can't edit it; the PAR-Q readiness questions are a separate step (#746,
+  code read Nov 18).
+- Planned: **coach-written waivers** (#746, medium, needs decision): each space's own parts in the coach's words
+  (credentials and scope of service, nutrition and diet risk), with MetabolicHQ's platform release always kept.
+  Raised for newly certified carnivore coaches (Carnivore Coach International).
 - Get-started journey and onboarding checklist, with feedback CTAs (positive and negative) and a testimonial ask.
 - Only the main coach opens support tickets to MetabolicHQ; free-tier tickets are tagged free tier; replies in the
   portal and by email.
@@ -75,11 +84,18 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - Custom development tier: his team customizes MetabolicHQ for one business; priced per project.
 - Free coach marketplace / directory (#570); coach sales pages + custom domains (#523).
 - MetabolicHQ affiliate program (#312) and coach-run affiliates (#313): low priority, needs decision.
-- MetabolicHQ MCP server (#256); Zapier integration in development; CRM/automation integrations (#174).
+- MetabolicHQ MCP server (#256), with a companion **MCP skill toolkit** (#742, medium, needs decision): ready-made
+  skills (Agent Skills format, plus a plain-prompt version) so a coach's own AI assistant uses the data the right way:
+  basics and house rules, building workouts in MetabolicHQ's entry format, client and cohort dashboards, nutrition
+  analysis, check-in reviews and exports, versioned with the server's v1 tools. Zapier integration in development; CRM/automation integrations (#174).
 - Prospects mentioned: a pitch to Dr. Robert Kiltz (Kiltz Health; demo page metabolichq.app/demos/kiltz/, #694); Dr.
   Philip Ovadia (I Fix Hearts; telehealth clinic Ovadia Heart Health, whose NPs and health coaches coach clinic
   members, I Fix Hearts wellness clients and employer wellness groups), sales call the week of Nov 16, demo page
-  metabolichq.app/demos/ovadia/ (notes 2026-11-17, #698); a coach wanting to migrate from Everfit.
+  metabolichq.app/demos/ovadia/ (notes 2026-11-17, #698); **Carnivore Coach International** (Coach Peter; one
+  certification course on Thinkific, Facebook and Skool support groups), demo the week of Nov 23, demo page
+  metabolichq.app/demos/cci/ (#743). He's weighing hosting CCI's certified coaches on a CCI-branded portal vs an
+  affiliate deal where CCI promotes MetabolicHQ for a percentage, and wants to help new graduates start their
+  businesses and build credibility (notes 2026-11-18); a coach wanting to migrate from Everfit.
 - Partner invites (email and invite page) say the coach runs their space "on MetabolicHQ" (#706).
 
 ## Related

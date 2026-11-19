@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-18
+updated: 2026-11-19
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,21 +12,21 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-18)
+## Snapshot (2026-11-19)
 
-86 open `backlog` issues: 59 features, 14 ops, 7 R&D, 3 bugs (#660, #666, #686; #410, #678 and #716 have no lane); 9
-on the roadmap (#681, #679, #678, #667, #620, #575, #570, #512, #162); 23 need a decision. 7 high, 26 medium, 52 low,
-no critical; #716 has no priority yet.
-Closed since 2026-11-17: #550 full Content-Security-Policy, now enforced on all three sites; #711 Change the main
-coach opened an empty support request. 5 opened since 2026-11-17 (#711 already closed). #410 raised from medium to
-high.
+87 open `backlog` issues: 61 features, 14 ops, 7 R&D, 3 bugs (#660, #666, #686; #410 and #678 have no lane); 8 on
+the roadmap (#681, #679, #678, #667, #620, #575, #512, #162; #570 taken off the roadmap Nov 18); 25 need a decision.
+7 high, 28 medium, 52 low, no critical.
+Closed since 2026-11-18: #716 the nightly scan flags a weakened Content-Security-Policy. 2 opened (#742, #746). #678
+is fixed by #740 (merged Nov 18) but still open.
 
 **High priority:** #575 release process after beta · #512 security pending actions (lockout stage C around Nov 29,
-App Check) · #620 acquisition readiness: raise platform maturity from beta (about 2 of 5) toward enterprise-grade
-(needs a decision) · #648 a clear Finances message for team coaches · #681 development and staging: PR previews,
-staging as a production mirror, a testing period before production (needs decisions; changes #575's staging gate) ·
-#410 client groups: coach-made groups with assigned coaches and group managers (raised Nov 18) · **new** #710 Your
-brand: an app name separate from the business name · #558 Google Cloud owner steps (not labeled `backlog`).
+App Check) · #620 acquisition readiness (needs a decision; owner's accepted risks and the server split done Nov 18,
+see [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
+development and staging: PR previews, staging as a production mirror, a testing period before production (needs
+decisions; changes #575's staging gate) · #410 client groups: coach-made groups with assigned coaches and group
+managers · #710 Your brand: an app name separate from the business name · #558 Google Cloud owner steps (not labeled
+`backlog`; step 4 waits to Nov 23).
 
 **Medium (selection):** #382 client add-ons · #634 import a returning client's history from a MetabolicHQ export
 (needs a decision) · #355 recipe/meal and history import from other nutrition apps · #356 recipes · #162 wearable sync
@@ -37,13 +37,15 @@ field and display (stages 1–2 done) · #660 e2e: Stripe Checkout sometimes sho
 form (bug; test-mode card-only and a Link-screen step went in, #687, #688) · #666 food diary ‹ Back after changing
 days can land on the wrong day (bug).
 
-**New, medium:** #699 change a space's main coach: the Platform tool after support checks (needs decisions).
+**New, medium:** #742 MCP skill toolkit for coaches' own AI assistants, companion to #256 (needs a decision) ·
+#746 coach-written waivers, with MetabolicHQ's release kept (needs a decision; see
+[Partner program](partner-program.md#agreement-and-onboarding)). Earlier: #699 change a space's main coach: the
+Platform tool after support checks (needs decisions).
 
-**New, low:** #686 owner's Spaces & coaches table wider than a 1366 px screen (bug). **New, no priority:** #716 nightly
-scan flags a weakened Content-Security-Policy.
+**Low, Nov 17–18:** #686 owner's Spaces & coaches table wider than a 1366 px screen (bug).
 
 **Low (recent):** #667 test emulators to firebase-tools 15 (blocked on a fixed 15.x) · #678 security rules
-`clientAcctOn()` error noise · #679 MetHQ blog go-live run fails daily on "Save the go-live log" (posts still go
+`clientAcctOn()` error noise (fixed by #740) · #679 MetHQ blog go-live run fails daily on "Save the go-live log" (posts still go
 live; the log is never saved). Earlier: coach add-on marketplace #633 and the GLP-1 companion module #628 (#629–#632); Challenges #639; Fasting
 tracker #640; AI progress troubleshooting #642; Leads CRM and discovery calls #643; call prep brief #637; own
 equipment in a training location #641; weight-plateau signal #644; wiki system documentation #638; MPT resource pack

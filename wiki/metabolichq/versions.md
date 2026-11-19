@@ -1,17 +1,17 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-18
-sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701"]
+updated: 2026-11-19
+sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620"]
 ---
 
 # Versions and release history
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on 2026-11-18: **8.70.0** (8.69.0 Business name card on Your brand, #700; 8.70.0 Change the main coach
-  through MetabolicHQ support, #701; CHANGELOG 2026-11-17; `APP_VERSION` in `public/js/config.js`). The Nov 18
-  changes (enforced CSP on the app, the #711 fix, rules) didn't bump the version.
+- Current on 2026-11-19: **8.70.1** (Help review Nov 18, #722; CHANGELOG 2026-11-18; `APP_VERSION` in
+  `public/js/config.js`). The other Nov 18–19 changes (server split, scan checks, rules fix, demo pages) didn't bump
+  the version.
 - Full detail: `CHANGELOG.md` in mac-app (newest at the bottom of each day).
 
 | Major | Area |
@@ -39,6 +39,8 @@ A major version gets a full end-to-end test before rollout.
 - 2026-11-17: 8.69.0 coaches change their business name on Your brand (#700); 8.70.0 Change the main coach card that
   opens a support request (#701). Same day: Content-Security-Policy enforced on metabolichq.app and the portal
   (#693, #697), then the app on Nov 18 (#708).
+- 2026-11-18: 8.70.1 Help review (#722). Same day: `functions/index.js` split into area files with no behaviour
+  change (#724–#739; see [Acquisition readiness](acquisition-readiness.md)).
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 
