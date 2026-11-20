@@ -1,8 +1,8 @@
 ---
 title: Partner coach program
 summary: Partner tiers and pricing, Premium (MPT Programming) add-on, agreement terms, onboarding, coach payments and packages
-updated: 2026-11-19
-sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706", "#742", "#743", "#746", "#256", public/js/agreement-text.js, public/js/spaces.js]
+updated: 2026-11-20
+sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706", "#742", "#743", "#746", "#256", public/js/agreement-text.js, public/js/spaces.js, #751, #752, #792–#800]
 ---
 
 # Partner coach program
@@ -49,6 +49,11 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - E-sign in the app; PDF emailed to the coach and to Bronson. Payment details at signing, before the setup
   questionnaire; billing starts when the space goes live.
 - MPT programming stays his property.
+- **Going live** (Nov 19 fixes, #752): an invite link replaced by a newer invite can't be used to sign (#797). The
+  space id and every coach email are held for 10 minutes before Stripe is called, so two go-lives at once can't
+  double-charge a coach or share a space (`goLiveHolds`, #799). A retry resends the saved Stripe request, so it gets
+  the same subscription back (`goLiveRequest`, #800). A space that went live is never reported as failed; a tidy-up
+  step that fails is noted on the proposal's history (#798).
 - **Client waiver:** every space uses MetabolicHQ's standard **Waiver and release** (agreement Schedule C,
   `public/js/agreement-text.js`, `WAIVER_VERSION` 2026-11-04), with the coach's business name filled in; it was based
   on his past waivers (Ultimate Ketogenic Fitness, The APEX Training System). It covers training risk only: risk,
@@ -78,6 +83,11 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - Plans: monthly/annual, other intervals, free trials, one-time/fixed-length. Clients self-manage in Stripe's billing
   portal. On tenancy end, client subscriptions cancel at period end.
 - Partners' Payments page shows the tiers and a client counter.
+- Stripe edge cases fixed Nov 19 (#751): turning off the only open package is refused before any Stripe change
+  (#792); a resent Stripe event can't give back access from an expired one-time package (#793); a refused cancel or
+  refund on a coach-site checkout is kept and retried daily, then alerts the owner (#794); when a space's ending is
+  undone, a client's plan is marked renewing only once Stripe confirms it (#795); "I've already paid · check again"
+  applies the newest payment that still gives access (#796).
 
 ## Ideas parked or later
 

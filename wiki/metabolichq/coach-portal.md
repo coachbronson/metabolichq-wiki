@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-18
-sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#697", "#700", "#701", "#710", "#711"]
+updated: 2026-11-20
+sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -35,7 +35,8 @@ sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, adm
   the name read-only for now; a separate, editable app name is planned (#710, high).
 - **Change the main coach** card (v8.70.0, #701): **Contact support** opens a New request on Get help, filled in
   (Account & setup, subject "Change the main coach", and the questions support needs). Fixed on Nov 18 so the form
-  stays filled when Get help redraws from the page cache (#711). See
+  stays filled when Get help redraws from the page cache (#711). The header's **Get help** always starts an empty
+  request, even after an unsent "Change the main coach" one (#755, #789). See
   [Spaces and roles](spaces-and-roles.md#business-name-and-main-coach).
 
 ## Program calendar and one-on-one workouts

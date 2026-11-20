@@ -10,6 +10,33 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-20 — Nightly update
+
+Covered mac-app from `ea7def7` to `218e79d` (CHANGELOG 2026-11-19 late entries and 2026-11-20, version still
+8.70.1), issues #751–#757, #806 and #808 closed (each "How this was resolved" read), 3 new issues (#785, #805,
+#816), #805 labeled backlog and high, the #620 progress comments, and the 1 inbox line. coachbronson-site: only the
+automated newsletter send log (Nov 19); no CLAUDE.md or README changes in either repo.
+
+- acquisition-readiness: phase 1 (server) finished Nov 19 (#762–#779), the endpoint check (#758), exceptions move
+  with code (#768); phase 3 (client app) next by owner's direction, 3.1 and 3.2 done (#780, #809); the full
+  functional audit after the split (#805).
+- architecture: Server code rewritten (108 functions, `index.js` only re-exports, app split started); daily retry
+  jobs `coachPayWork` and `wearablesForgetWork` (#791, #794, #795).
+- security: Semgrep `--verbose` and 30 s per rule (#756, #759, #760), icon `nosniff` (#761), reviewed exceptions
+  (#760, #783, #768); the Nov 20 review's twelve OK'd fixes under Open (#816).
+- research-and-privacy: account deletion and the wearables server (#754, #790, #791). coaching-calls: recordings never
+  lost or transcribed twice (#787). partner-program: go-live fixes (#752, #797–#800) and coach payment edge cases
+  (#751, #792–#796). mpt-membership: resend, checkout flow, welcome post (#753). spaces-and-roles: client-account flag
+  in one transaction (#803, #808), Getting started card (#788). coach-portal: Get help starts empty (#789).
+- marketing-site: demo pages must match the app; CCI and Ovadia corrected (#781, from the inbox).
+- engineering-rules: coverage index refiling (1,499 → 1,503, owner's OK, #786) and #785; e2e report push retry
+  (#782) and `menuGo` wait (#807); how OK'd nightly questions are fixed (#751–#757, #816).
+- versions: current 8.70.1 on Nov 20; Nov 19 timeline. roadmap-and-backlog: snapshot refreshed (88 open, 8 high).
+  index: acquisition-readiness line. Inbox emptied.
+- No new open questions.
+
+Last update covered: 2026-11-20.
+
 ## 2026-11-19 — Nightly update
 
 Covered mac-app from `0cc98d3` to `ea7def7` (CHANGELOG 2026-11-18 late entries and 2026-11-19, version 8.70.1),

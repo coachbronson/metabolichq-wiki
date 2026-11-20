@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-18
-sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711"]
+updated: 2026-11-20
+sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810]
 ---
 
 # Spaces, coaches and roles
@@ -57,6 +57,11 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
   who wants a client account subscribes through their own space's client sign-up with their coach email — no "+"
   aliases (not universal). They're billed and counted like any client, filed under the main coach, and reach it via
   the client view switch. Main coaches can give their coaches coupon codes.
+- A coach's client-account flag is kept in two places (the space's user record and `accounts/{uid}`, which the
+  security rules read); every path that turns it on or off, subscriptions and one-time packages, now writes both in
+  one transaction (#803, #808, #810).
+- A partner space's **Getting started** card belongs to its main coach: only the main coach can close or reopen it
+  (#755, #788).
 
 ## Client sign-up
 

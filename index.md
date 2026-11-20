@@ -30,7 +30,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [Help and how-to](wiki/metabolichq/help-and-howto.md) — Help page, how-to videos, support, review after e2e runs
 - [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, sales demo pages (Kiltz, Ovadia, CCI), MetHQ blog
 - [MetabolicHQ content](wiki/metabolichq/methq-content.md) — messaging framework (one claim, five pillars), homepage "Replace your stack", social, blog rules and topic queue
-- [Acquisition readiness](wiki/metabolichq/acquisition-readiness.md) — how mature MetabolicHQ looks to a buyer (#620), accepted risks, open items, splitting the big files
+- [Acquisition readiness](wiki/metabolichq/acquisition-readiness.md) — how mature MetabolicHQ looks to a buyer (#620), accepted risks, open items, splitting the big files, the full functional audit after the split (#805)
 - [Roadmap and backlog](wiki/metabolichq/roadmap-and-backlog.md) — where the backlog lives, snapshot of open work, roadmap shape
 
 ## Coaching business

@@ -1,8 +1,8 @@
 ---
 title: Coaching calls and scheduling
 summary: In-app video calls (Daily), scheduling calendar and sync, recording/transcription rules, AI draft notes
-updated: 2026-11-14
-sources: [notes, CHANGELOG v5.0]
+updated: 2026-11-20
+sources: [notes, CHANGELOG v5.0, #755, #787]
 ---
 
 # Coaching calls (v5.0)
@@ -12,6 +12,9 @@ sources: [notes, CHANGELOG v5.0]
 - **Always recorded and transcribed** as part of the coaching terms: clients get a reminder each time they join (not a
   choice). A client who doesn't want recording doesn't get the call. (Previously a per-call record choice.)
 - Video recording deleted once transcribed; full transcripts kept.
+- A recording is never lost (a notice from Daily that fails to save is answered with an error, so Daily resends) and
+  never transcribed twice (each queued recording is claimed by one run; a stale claim is retried after 15 minutes)
+  (#755, #787).
 - AI drafts call notes; the coach reviews and publishes them on the client's **Coaching notes** page (newest first,
   latest 3 on the overview; each note tagged manual or transcribed).
 - Clients see only the call summary and action items. Client data export includes call summaries only.

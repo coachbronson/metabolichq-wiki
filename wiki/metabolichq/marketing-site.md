@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-19
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747"]
+updated: 2026-11-20
+sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781]
 ---
 
 # metabolichq.app site
@@ -37,13 +37,17 @@ enforced policy (#704).
 ## Sales demo pages
 
 - One-prospect concept pages live under `site/demos/<name>/` on metabolichq.app. They're a visual, content-only sales
-  tool: their buttons and forms don't need to work (owner, Nov 17), so the coverage index leaves them out. A site test
+  tool: their buttons and forms don't need to work (owner, Nov 17), so the coverage index leaves them out.
+- **Every screen must show the app as it works today**; anything planned is marked "Coming" (owner, Nov 19; #781).
+  So the pages show Home's daily quote (no coach tip), no lesson progress or worksheet due dates (items open "on day
+  15" and so on, as timed release works), and call notes the AI drafts and the coach publishes (#781). A site test
   keeps each one noindex, out of the sitemap and free of links to Coach Bronson's sites (#694, CHANGELOG 2026-11-17).
 - **metabolichq.app/demos/kiltz/**: Kiltz Health (moved from coachbronson-site's `/kiltz-preview`, #694,
   coachbronson-site #38).
 - **metabolichq.app/demos/ovadia/**: Ovadia Heart Health, built on the Kiltz layout: the member app in their
   branding, a care-team view with clinic, I Fix Hearts wellness and employer groups in one space, and a mock sign-up
-  page. Colors and the "OH" mark are placeholders (#698).
+  page. Colors and the "OH" mark are placeholders (#698). Since #781: no group breathwork session (group calls aren't
+  in the app); the care-team view, employer groups and per-group feeds are marked Coming (client groups, #410).
 - **metabolichq.app/demos/cci/**: Carnivore Coach International. Each CCI graduate runs their own branded coaching
   business on MetabolicHQ with a CCI starter kit inside: the graduate's client app (carnivore food diary, transition
   lessons opening week by week, biometrics, waiver and readiness questions, packages and payments, calls and notes),
@@ -51,7 +55,9 @@ enforced policy (#704).
   and referral share are marked Coming (#743, CHANGELOG 2026-11-18). In CCI's black (#2D2B2A, owner's call) and white
   with CCI's logo, supplied by the owner (#744, #745). No lab-tracking claims: lab results only reach a coach as a
   shared file, so the screen shows Biometrics (#744). It shows the real standard waiver and says coach-written
-  waivers are coming (#746, #747).
+  waivers are coming (#746, #747). Since #781: no coach card or CCI Certified badge on Home (neither exists yet); the
+  packages screen is the real **Choose a package** (What's included, **Continue to payment** to Stripe's checkout);
+  the getting-started checklist is marked as example steps.
 - Partners show "on MetabolicHQ" / "Provided by MetabolicHQ", not on MPT (#703). Prospects:
   [Partner program](partner-program.md#ideas-parked-or-later).
 

@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-18
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677"]
+updated: 2026-11-20
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816]
 ---
 
 # Engineering and working rules
@@ -54,6 +54,9 @@ on Nov 16, 2026: no journey ever tapped it.)
   any PR that adds, removes or renames a button, field, link, screen section or server call, or changes a journey.
   **Known gaps** `ops/ui-gaps.json` only shrinks: something new ships with the journey step that tests it. How-to
   video scripts don't count as coverage (mac-app CLAUDE.md, #657).
+- Since Nov 19 the index files each element under the function that really holds it; 330 gaps were renamed and the
+  list went from 1,499 to 1,503, a one-time addition the owner OK'd (#757, #786). Server calls keep the old matching
+  (132 of 321 covered) until #785 matches each call to the control that triggers it (medium, needs the owner's OK).
 - **A wrong test result is never a pass** (his rule, Nov 16): any false positive or false negative blocks (not
   treated or reported as passed, not merged on) until it's explained or fixed, written on the issue or PR. The
   end-to-end run now fails when any journey fails or a bug is recorded (it used to show green, #660). "Looks external"
@@ -64,12 +67,18 @@ on Nov 16, 2026: no journey ever tapped it.)
   emulators). Enforcing the Content-Security-Policy showed two such gaps, so a change that depends on outside hosts
   is also checked in code and in a browser (mac-app #702, #704, #550).
 
+- Runs finishing together no longer turn red over the shared `e2e-results` branch: the report push retries up to
+  five times (#782). After a reload, the runner waits for the app's first page before tapping a menu (#807).
+
 Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359).
 
 ## CodeRabbit
 
 Reviews **once a night** (~12:06 AM ET) everything merged since the last review. Claude fixes easy low-risk findings
 in one PR; anything risky or unclear becomes a question in the nightly report.
+- Questions the owner OKs are grouped into issues and fixed one PR per fix: confirmed against the code first, a test
+  that fails before the fix, a Blast radius section, and a link to the review comment (#751–#757, #816). For #816
+  (Nov 20, twelve fixes) each PR also gets a full end-to-end run before merging (#816).
 
 ## Status updates
 

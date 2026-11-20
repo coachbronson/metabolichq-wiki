@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-19
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc]
+updated: 2026-11-20
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809]
 ---
 
 # Architecture and infrastructure
@@ -55,11 +55,15 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-Cloud Functions (107 deployed) were split out of `functions/index.js` into area files on Nov 18: shared setup in
-`base.js`, then `fn-calls.js`, `fn-push.js`, `fn-site.js`, `fn-invites.js`, `fn-spaces.js`, `fn-privacy.js`,
-`members.js` (membership core, no endpoints), `fn-payments.js`, `fn-signup.js` and `fn-partner.js`. `index.js`
-re-exports them, so names and addresses are unchanged; `ops/function-names.json` and a test guard the names (#718,
-#724–#739, CHANGELOG 2026-11-18). The rest of `index.js`, then the portal and app, follow (#620).
+- **108 Cloud Functions**, each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+  shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
+  addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
+  is `wearablesForgetWork` (#791).
+- `ops/function-names.json` and `ops/function-endpoints.json` record every function; each PR loads the server the way
+  the deploy does and checks name, trigger, account, region, secrets, limits and schedule (#718, #758).
+- The client app is being split the same way: `public/js/page-signals.js` (#780) and `public/js/page-files.js`
+  (#809) load right after `app.js`. The portal follows (#620). See
+  [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5).
 
 ## Email
 
@@ -89,6 +93,9 @@ Circle is **not** part of the app.
   action), 7 AM workout digest.
 - Security jobs: **securityWatch** (every 5 min), **securityLogWatch** (every minute), **geoDbRefresh** (weekly
   country file) (#514; see [Security](security.md)).
+- Daily retry jobs: **coachPayWork** also retries refused coach-site refunds and renewals (#794, #795);
+  **wearablesForgetWork** (5:37 AM ET) finishes wearables deletions (#791). Both email a security alert after three
+  failed tries.
 - Any auto-update to servers/software must email him with release notes and wait for approval. OS security patches
   can install automatically.
 

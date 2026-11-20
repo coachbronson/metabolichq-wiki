@@ -1,8 +1,8 @@
 ---
 title: MPT memberships and coupons
 summary: MPT client pricing and trial, Stripe flow, coupons, launch targets, Masters Collective shutdown
-updated: 2026-11-18
-sources: [public/js/config.js, notes, CHANGELOG, "#674", "#688"]
+updated: 2026-11-20
+sources: [public/js/config.js, notes, CHANGELOG, "#674", "#688", #753, #801, #802, #804]
 ---
 
 # MPT memberships and coupons
@@ -12,6 +12,10 @@ sources: [public/js/config.js, notes, CHANGELOG, "#674", "#688"]
 - One plan: **Monthly $47.99** or **Annual $450** (save $125), **3-day free trial**. Live on the "Coach Bronson" Stripe
   account (a sandbox exists for testing).
 - Paying approves the client automatically. Trial buttons go straight to Stripe, then a sign-in link is emailed.
+  On the thank-you screen, **Send it again** only counts a resend that actually went out; if mail is down it says to
+  try again in a minute (#801). A stored checkout result is tied to its flow, so a coach's checkout is never run
+  through MPT's trial setup (#802). A new member's Community welcome post is made on the retry if the first save
+  failed (#804) (all #753).
   Cancelling at Stripe always returns to metabolichq.app/mpt#pricing (#674, CHANGELOG 2026-11-17; previously back to
   coachbronson.com's or coachbronson.web.app's /mpt/ page when the visitor started there).
 - With a Stripe **test** key (end-to-end tests, staging) the trial Checkout offers card only, because Stripe sometimes

@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-19
-sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741"]
+updated: 2026-11-20
+sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, #750, #758, #762–#780, #805, #809]
 ---
 
 # Acquisition readiness (#620, high)
@@ -68,8 +68,28 @@ and memberships in `fn-signup.js` (#738); a partner's steps after signing in `fn
 all 107 functions unchanged and passed the full end-to-end run (58/58) (#620). The order changed so sign-up and coach
 payments wouldn't import from each other in a circle (#620 comment, Nov 18).
 
-**Next:** the rest of `index.js` (reports, wearables, owner tools, AI coach and others), tidy-up 1.7, then phase 2:
-the portal, by menu group (#620).
+**Phase 1 finished Nov 19** (1.7b–1.7q and a tidy, #762–#779): the rest moved into `fn-files.js`, `fn-biometrics.js`,
+`fn-coach.js`, `fn-food.js`, `fn-ops.js`, `fn-coupons.js`, `fn-github.js`, `fn-messaging.js`, `fn-install.js`,
+`fn-youtube.js`, `fn-portal.js`, `fn-mptprogramming.js`, `fn-announce.js`, `fn-mail.js`, `fn-signinhelp.js` and
+`fn-csp.js`. `functions/index.js` is now about 100 lines: shared start-up and re-exports, no functions of its own
+(#778, #779). Each step passed its own full end-to-end run (58/58) (#620 comment, Nov 19).
+- A step whose run was red only because the report push collided, and one whose runner stopped reporting, were
+  explained or re-run before merging, never counted as passed (#620 comments, Nov 19).
+- Every PR now loads the server the way the deploy does and checks each function's trigger, account, region,
+  secrets, limits and schedule against `ops/function-endpoints.json` (`tools/function-endpoints.mjs`, #758). The move
+  check closed three more ways to be fooled (#750).
+- A reviewed Semgrep exception keyed to the old file has to move with its code: one didn't in 1.7c and the scan
+  flagged it (#768). Each move now checks `scripts/security/allow.json` first (#620 comment, Nov 19).
+
+**Phase 3, the client app, next** (owner's direction, Nov 19: finish phase 1, then the app; #620): 3.1 Signals and
+"Notifications on this device" → `public/js/page-signals.js` (#780); 3.2 the Files page → `public/js/page-files.js`
+(#809). Next: 3.3 MPT Coach → `page-coachai.js`. Phase 2, the portal, by menu group, comes later (#620).
+
+**After the split:** a full functional audit (#805, high, needs the owner's go-ahead): an inventory of every screen
+control, function, data field, role, integration, key and use case, the expected result written before each test,
+tests in layers up to staging and real devices, an independent re-check, and a finish line (no high issues open,
+`ops/ui-gaps.json` at zero or explained, three green nights in a row). Until then, problems the owner finds are
+logged as `audit-intake` issues, as the audit's answer key. Open decision: where the inventory Sheet lives (#805).
 
 Findings the smaller files let the scan see, fixed with the owner's OK: see [Security](security.md#code-scanning).
 

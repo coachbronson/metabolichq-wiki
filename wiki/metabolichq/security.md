@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-19
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security]
+updated: 2026-11-20
+sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816]
 ---
 
 # Security
@@ -97,20 +97,31 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - The check that every callable or web function checks who is calling reads every file under `functions/`, so moved
   functions stay checked; a deployed function it can't find is its own finding (#720).
 - A file Semgrep couldn't fully check (timeout, memory, parse error, too big) is a medium finding, "Semgrep couldn't
-  fully check <file>". `functions/index.js`, `public/js/app.js` and `admin/portal.js` show it until the split makes
-  them smaller (owner's OK, #729, #620).
+  fully check <file>" (#729). Semgrep runs `--verbose`, so skipped and timed-out files are listed, not hidden (#759),
+  and gets 30 seconds per rule and file (was 5), so the biggest files are now checked fully; a parse error names the
+  line (owner's OK, #756, #760).
+- The function check also reads other ways of writing a function and reports any deployed function it can't inspect;
+  the Content-Security-Policy check covers `script-src-elem` and `script-src-attr` (#756, #759).
 - Found once code moved into smaller files (#620), fixed with the owner's OK: the signed-agreement download always
   sends a fixed file type with `nosniff`, as an attachment (#730); the Stripe Checkout logo is sent with `nosniff`
   (#736).
+- Found once Semgrep could finish the server's main file: the coach's home-screen icon is now sent with `nosniff`
+  (#761).
 - Reviewed exceptions in `scripts/security/allow.json`, each with a test that keeps it to that one function: the
-  packages table's open CORS (on purpose, public data only, #737) and the Checkout logo's Semgrep data-flow warning
-  (#741).
+  packages table's open CORS (on purpose, public data only, #737), the Checkout logo's Semgrep data-flow warning
+  (#741), the server warnings found with the longer timeout (#760), and the client app's three (two fixed regex
+  patterns, one escaped `insertAdjacentHTML`; owner's decision Nov 19, #783). An exception names its file, so it moves
+  with code that moves (#768).
 
 ## Open
 
 - **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
   App Check key, functions account instead of Editor).
 - **Medium:** #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
+- **Nightly review Nov 20:** twelve fixes the owner OK'd, in order privacy, payments, then the rest (#816): wearables
+  deletion retry bookkeeping, private MPT Coach text kept out of the owner report, clients and coaches can't write a
+  user's `wearables` field (rules), Signals safety checks, checkout-undo and package-expiry timing, partner go-live
+  and MPT Programming retries, team-invite seats, the email queue, and a size limit on the CSP report collector.
 - **Low:** #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
 
 ## Related

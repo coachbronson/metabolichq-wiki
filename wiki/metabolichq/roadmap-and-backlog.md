@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-19
+updated: 2026-11-20
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,17 +12,21 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-19)
+## Snapshot (2026-11-20)
 
-87 open `backlog` issues: 61 features, 14 ops, 7 R&D, 3 bugs (#660, #666, #686; #410 and #678 have no lane); 8 on
-the roadmap (#681, #679, #678, #667, #620, #575, #512, #162; #570 taken off the roadmap Nov 18); 25 need a decision.
-7 high, 28 medium, 52 low, no critical.
-Closed since 2026-11-18: #716 the nightly scan flags a weakened Content-Security-Policy. 2 opened (#742, #746). #678
-is fixed by #740 (merged Nov 18) but still open.
+88 open `backlog` issues: 61 features, 15 ops, 7 R&D, 3 bugs (#660, #666, #686; #410 and #678 have no lane); 8 on
+the roadmap (#681, #679, #678, #667, #620, #575, #512, #162); 26 need a decision.
+8 high, 28 medium, 52 low, no critical.
+Opened and closed since 2026-11-19 (none were `backlog`): the Nov 19 nightly review's groups #751–#757, and #806,
+#808. Opened: #805 (backlog, high), and outside the backlog #785 (coverage index: server calls matched too loosely)
+and #816 (the Nov 20 nightly review's twelve fixes the owner OK'd). #678 is fixed by #740 (merged Nov 18) but still
+open.
 
-**High priority:** #575 release process after beta · #512 security pending actions (lockout stage C around Nov 29,
-App Check) · #620 acquisition readiness (needs a decision; owner's accepted risks and the server split done Nov 18,
-see [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
+**High priority:** #805 full functional audit after the code split (new Nov 20; needs the owner's go-ahead; see
+[Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after beta ·
+#512 security pending actions (lockout stage C around Nov 29, App Check) · #620 acquisition readiness (needs a
+decision; owner's accepted risks; server split done Nov 19, app split under way; see
+[Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
 development and staging: PR previews, staging as a production mirror, a testing period before production (needs
 decisions; changes #575's staging gate) · #410 client groups: coach-made groups with assigned coaches and group
 managers · #710 Your brand: an app name separate from the business name · #558 Google Cloud owner steps (not labeled
@@ -37,7 +41,7 @@ field and display (stages 1–2 done) · #660 e2e: Stripe Checkout sometimes sho
 form (bug; test-mode card-only and a Link-screen step went in, #687, #688) · #666 food diary ‹ Back after changing
 days can land on the wrong day (bug).
 
-**New, medium:** #742 MCP skill toolkit for coaches' own AI assistants, companion to #256 (needs a decision) ·
+**Recent, medium:** #742 MCP skill toolkit for coaches' own AI assistants, companion to #256 (needs a decision) ·
 #746 coach-written waivers, with MetabolicHQ's release kept (needs a decision; see
 [Partner program](partner-program.md#agreement-and-onboarding)). Earlier: #699 change a space's main coach: the
 Platform tool after support checks (needs decisions).
