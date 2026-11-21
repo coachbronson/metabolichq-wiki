@@ -2,7 +2,7 @@
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
 updated: 2026-11-20
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816]
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868]
 ---
 
 # Engineering and working rules
@@ -79,6 +79,17 @@ in one PR; anything risky or unclear becomes a question in the nightly report.
 - Questions the owner OKs are grouped into issues and fixed one PR per fix: confirmed against the code first, a test
   that fails before the fix, a Blast radius section, and a link to the review comment (#751–#757, #816). For #816
   (Nov 20, twelve fixes) each PR also gets a full end-to-end run before merging (#816).
+
+## System documentation: keep it current
+
+Any significant change to security, components, operations, configuration, resources or the change process
+updates the matching document in Google Drive › Documentation (see [System documentation](../metabolichq/system-documentation.md))
+as part of the same work: SSP (security, roles, data types, outside services, secrets, risks), Configuration
+Management Plan (config-controlled items and settings), Change Management Plan (approval, testing, staging, release,
+rollback), Resource Management Plan (resources, services, plans, licenses, secrets), O&M Plan (monitoring, alerts,
+jobs, backups, incidents, support), Detailed System Design (components, data flows, hosts, ports, interconnections,
+diagrams). Each PR's Blast radius has a **Docs to update** line. If the Drive connectors aren't in the session, it
+goes under "What's left" on the issue. (Owner's rule, Nov 20; mac-app CLAUDE.md, #638, PR #868.)
 
 ## Status updates
 

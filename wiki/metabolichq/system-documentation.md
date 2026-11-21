@@ -2,7 +2,7 @@
 title: System documentation
 summary: Where the enterprise system documents live (SSP, config, change, resource, O&M, detailed design) and what each covers
 updated: 2026-11-20
-sources: ["#638", "#620", notes]
+sources: ["#638", "#620", "#868", notes]
 ---
 
 # System documentation
@@ -23,6 +23,10 @@ auditor or new engineer, and support [Acquisition readiness](acquisition-readine
 
 ## Keeping them current
 
+- **Owner's rule (Nov 20):** any significant change to security, components, operations, configuration, resources or
+  the change process updates the matching document in the same work; see
+  [Engineering rules](../rules/engineering-rules.md#system-documentation-keep-it-current) for which change goes
+  where (mac-app CLAUDE.md, PR #868).
 - Each document has a "Last reviewed" date. Review when a new outside service, function area, data type or role is
   added, and at least every quarter (#638).
 - The nightly update flags drift: a function, secret or outside host in the code that these documents don't list

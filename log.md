@@ -10,6 +10,12 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-20 — Rule: keep the system documents current
+
+Owner's rule: significant changes to security, components, operations, configuration or resources update the
+matching Drive document in the same work. Pages: engineering-rules (new section), system-documentation, CLAUDE.md
+(nightly lint flags documents older than the change).
+
 ## 2026-11-20 — System documentation pointer (#638)
 
 The #638 documents (SSP, configuration, change and resource management, O&M plan, detailed system design, diagrams)

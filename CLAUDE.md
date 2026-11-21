@@ -56,7 +56,9 @@ The repo is private, but treat it as shareable.
 - **Ingest** (new source or decision): update every page it touches, add/adjust `index.md`, append to `log.md`.
 - **Query**: answer from the wiki, citing pages; if the answer came from a source the wiki lacks, file it back.
 - **Lint** (nightly): look for contradictions between pages, stale lines the CHANGELOG or closed issues have
-  superseded, pages missing from `index.md`, broken links, orphan pages, and facts with no source. Fix what is clear;
+  superseded, pages missing from `index.md`, broken links, orphan pages, and facts with no source. Also flag, under "Open questions", any CHANGELOG entry or closed issue
+  that changed security, components, operations, configuration or resources while the matching system document's
+  "Last reviewed" date (wiki/metabolichq/system-documentation.md) is older than it. Fix what is clear;
   list the rest under "Open questions" at the top of `log.md` for Bronson.
 
 ## Nightly update (scheduled task, about 4:41 AM Eastern)
