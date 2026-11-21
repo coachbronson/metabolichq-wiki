@@ -10,6 +10,13 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-20 — SSP replaced; link updated (mac-app #867)
+
+The owner had the System Security Plan replaced with an updated copy (new link): §5 "Secure development" now says
+every scanned file must be fully parsed (public/js/data.js was unscanned until mac-app #867; #870) and that the nightly
+scan lists the lines each reviewed exception covers (#854). The old document is in Drive's trash. Last reviewed stays
+2026-11-20. Pages: system-documentation (SSP link).
+
 ## 2026-11-20 — Rule: keep the system documents current
 
 Owner's rule: significant changes to security, components, operations, configuration or resources update the

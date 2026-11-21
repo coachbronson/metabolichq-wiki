@@ -13,7 +13,7 @@ auditor or new engineer, and support [Acquisition readiness](acquisition-readine
 
 | Document | Covers | Last reviewed |
 |---|---|---|
-| [System Security Plan (SSP)](https://docs.google.com/document/d/1JCXrOTivA9QIUinGEJzqXHXhwS3s81jwhAhJKkFX-wU/edit) | System boundary, data types (incl. health data), roles and access, controls in place, open risks R1–R11 and planned controls | 2026-11-20 |
+| [System Security Plan (SSP)](https://docs.google.com/document/d/11Abg3dJ8m-4QIg2aODJgqDUM-k6K6zne81bPWv6iTn8/edit) | System boundary, data types (incl. health data), roles and access, controls in place, open risks R1–R11 and planned controls | 2026-11-20 |
 | [Configuration management plan](https://docs.google.com/document/d/1WzqvXqVJLVnC-whtHIc--gdAC4A7-U-4Va4esy3RmR8/edit) | What's under config control (in the repo and outside it), baselines, how config changes are made and recorded, drift detection | 2026-11-20 |
 | [Change management plan](https://docs.google.com/document/d/1MleX6QdFwW8xEamny3fBqo6RUiC6vHS1OeIqmkGvVpw/edit) | Branch-per-change, blast radius, risk levels and approval, testing levels, staging gate, rollback, release notes | 2026-11-20 |
 | [Resource management plan](https://docs.google.com/document/d/1VkLBUxfWAS74H-Tx2WidTGa6DH9dc_eZcOxDugwZDds/edit) | Google Cloud/Firebase resources, GitHub, third-party services and license inventory, secret names, capacity | 2026-11-20 |
