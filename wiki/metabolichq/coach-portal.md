@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-20
-sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-21
+sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -26,7 +26,12 @@ sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, adm
 - Partner coaches using Stripe have a Memberships page; every space has Payments (tiers, client counter, coupons).
 - Team coaches opening Finances get an error box today; a clear message is planned (#648, high).
 - The portal and Monitor enforce their Content-Security-Policy (#697; see [Security](security.md)).
-- Known bug: the owner's Spaces & coaches table can run wider than a 1366 px screen (#686, low).
+- The owner's Spaces & coaches table scrolls inside its card, so the page keeps its width at 1366 px (#850, #851).
+  #686, the older issue for the same bug, is still open.
+- Code: the Platform pages (Costs, Backlog with Roadmap and Claude sessions, Blog, Performance, Security) are in
+  `admin/portal-platform.js`, and the portal starts from `admin/portal-start.js` (#620 phase 2, #874, #878). The
+  owner's email shown in the portal comes from `config.js` (#875).
+- The MPT Coach report shows topics and flags, never question or answer text (#818; see [MPT Coach](mpt-coach.md)).
 
 ## Your brand
 

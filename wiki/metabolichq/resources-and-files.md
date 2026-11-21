@@ -1,8 +1,8 @@
 ---
 title: Resources and shared files
 summary: Coach resource libraries, / linking and sharing rules, worksheets and timed release, private coach–client files
-updated: 2026-11-14
-sources: [notes, CHANGELOG, "#156", "#491", "#410", "#431", "#332"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG, "#156", "#491", "#410", "#431", "#332", "#860"]
 ---
 
 # Resources and shared files
@@ -18,7 +18,8 @@ sources: [notes, CHANGELOG, "#156", "#491", "#410", "#431", "#332"]
 - Stage 3 (#607, low): an MPT resource pack for Premium spaces, MPT Coach pointing to pack items, recipe collections
   once recipes exist.
 - Later: timed release from enrollment/program start (#491), client groups (#410), search in the `/` list (#431),
-  coach-customizable onboarding workflows (#332).
+  coach-customizable onboarding workflows (#332), several items of different types (video, notes, worksheet) in one
+  section released together for drip content (#860, medium).
 
 ## Shared files (coach ↔ client)
 

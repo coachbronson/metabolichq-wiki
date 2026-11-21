@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-20
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781]
+updated: 2026-11-21
+sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
 ---
 
 # metabolichq.app site
@@ -73,6 +73,20 @@ enforced policy (#704).
 - The site end-to-end journey checks these links and that none points at coachbronson.web.app (#672).
 - Footer carries the "Provided by MetabolicHQ" badge (previously "Hosted by", #618; coachbronson-site #28).
 
+## Trust page (metabolichq.app/trust, #319, done Nov 20)
+
+- Plain-words page on how MetabolicHQ handles data: what's collected and who sees it, where AI is used (MPT Coach on
+  Gemini through Vertex AI, private to the client; AI-drafted call notes the coach checks; device readings never fed
+  raw to AI), the service providers that receive personal data (the privacy policy's list, plus Cloudflare Turnstile,
+  USDA FoodData Central and Open Food Facts), how long things are kept, data export, backups, the research choice and
+  the partner agreement in brief (#865, #871, `site/trust.html`).
+- The site's Trust, Research and MPT pages and `llms.txt` point to **Settings → Privacy & documents** for the research
+  choice (previously Profile → Documents; #871).
+- Linked from the app's Help (see [Help and how-to](help-and-howto.md)) (#872).
+- What's left (#866, closed Nov 20 at the owner's request): the owner handles the legal review himself; the HIPAA line
+  waits for #381 (the site test blocks any HIPAA wording on the page until then); link release notes (#320) and the
+  status page (#321) when they ship. An accessibility statement and a link from sign-up weren't carried anywhere (#866).
+
 ## MetHQ blog (metabolichq.app/blog)
 
 Prepopulated with launch posts, each reviewed and approved before posting; a different cover photo for each article
@@ -80,7 +94,7 @@ whenever possible. Drive photos are coaching-oriented, so combine them with text
 
 ## Later
 
-Trust page (#319), public status page (#321), Search Console/Bing verification (#265).
+Release notes (#320), public status page (#321), Search Console/Bing verification (#265).
 
 ## Related
 

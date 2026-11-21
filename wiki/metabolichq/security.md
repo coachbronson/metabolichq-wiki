@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-20
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816]
+updated: 2026-11-21
+sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -64,7 +64,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Allowed because the report week showed they're needed: `apis.google.com` (Google sign-in), `www.google.com` for
   connections (the text-message two-step check), Turnstile on the app (#690, #691).
 - The **CSP reports** workflow (by hand, read-only) summarizes the report counters by site, directive and source
-  (#671).
+  (#671). The collector keeps up to 2,000 report kinds; once full, a new kind replaces the one seen longest ago, and
+  a report over 20,000 bytes is refused even without a size header (#816 item 12, #826).
 - Two gaps the end-to-end run couldn't see, because production hosts are local test servers there: Vimeo, Loom and
   file-preview frames (#702) and SVG logos read with `fetch` of a `data:` URL in the brand editor (#704). Both fixed,
   each with a test. Before enforcing the app, its policy was also checked in code and in a browser (#550).
@@ -81,7 +82,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   then production (#595). A new partner coach custom domain means re-running the script (#595).
 - Reporting: `/.well-known/security.txt` on metabolichq.app and app.metabolichq.app, plus a policy page at
   **metabolichq.app/security** (reply within 3 business days, good-faith testing rules, no bounty). Renew `Expires`
-  before 2027-11-14; a test fails once it passes (#322). Legal review of the wording goes with the trust page (#319).
+  before 2027-11-14; a test fails once it passes (#322). The owner is handling legal review of the public wording
+  (security and Trust pages) himself (#866).
 - The security scan counts only MetabolicHQ's own domains, so a coachbronson domain left on sign-in would show up as
   a finding. `scripts/remove-coachbronson-site.sh` (run once by the owner) took the site's functions, secrets, data
   and sign-in/API-key domains out of MetabolicHQ's project (#676, CHANGELOG 2026-11-17). Its Hosting-site step was
@@ -90,6 +92,11 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - CIS Google Cloud audit (2026-11-12) in `docs/security/`.
 - Security rules: `clientAcctOn()` now reads the client-account field with a default of false, so accounts without it
   get a clean "no" instead of a rules error. Access is unchanged (owner's OK, #740, CHANGELOG 2026-11-18).
+- Security rules, Nov 20 nightly review (owner's OK): only the server writes a person's `wearables` link, so it can't
+  be pointed at another wearables account (#819); a new MPT client's "waiting" record accepts only the normal sign-up
+  fields, so nobody can start it with free access, a demo flag or a billing plan (#816, 13th item, #830).
+- Team-coach invites are created in one step, so two spaces can't take over the same email's invite; withdrawing
+  checks ownership in the same step (#825).
 
 ## Code scanning
 
@@ -112,16 +119,24 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   (#741), the server warnings found with the longer timeout (#760), and the client app's three (two fixed regex
   patterns, one escaped `insertAdjacentHTML`; owner's decision Nov 19, #783). An exception names its file, so it moves
   with code that moves (#768).
+- The nightly scan lists, for each reviewed exception, how many findings it hid and where (rule, file, line). Its
+  first listing showed exceptions left behind by the #620 moves; they now name the files the code is in, and the five
+  that covered nothing are gone (#853, #854, #855). A made-up stand-in key in a test is listed in `.gitleaksignore`
+  with its reason (#855).
+- `public/js/data.js` (the app's data layer) was unscanned until Nov 20: a variable named `using` (a keyword in newer
+  JavaScript) made Semgrep's parser give up on the file. It was renamed, a test keeps any scanned file from using that
+  name, and the scan log now says why Semgrep couldn't check a file (#867, #870). Its 10 new findings are of kinds
+  already reviewed (CHANGELOG 2026-11-20).
 
 ## Open
 
 - **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
   App Check key, functions account instead of Editor).
 - **Medium:** #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
-- **Nightly review Nov 20:** twelve fixes the owner OK'd, in order privacy, payments, then the rest (#816): wearables
-  deletion retry bookkeeping, private MPT Coach text kept out of the owner report, clients and coaches can't write a
-  user's `wearables` field (rules), Signals safety checks, checkout-undo and package-expiry timing, partner go-live
-  and MPT Programming retries, team-invite seats, the email queue, and a size limit on the CSP report collector.
+- **Gaps written into the SSP as open risks** (no issues yet): production deploys use a long-lived JSON service
+  account key (staging is keyless); Cloud Storage files aren't in either backup layer; secret rotation dates aren't
+  recorded (#638 resolution).
+- (Done Nov 20: the nightly review's twelve fixes plus a 13th, each with a full end-to-end run, #816, #817–#830.)
 - **System Security Plan** (#638, done Nov 20): in Google Drive, with the open risks list; see
   [System documentation](system-documentation.md).
 

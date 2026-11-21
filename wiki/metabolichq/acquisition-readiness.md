@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-20
-sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, #750, #758, #762–#780, #805, #809]
+updated: 2026-11-21
+sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878"]
 ---
 
 # Acquisition readiness (#620, high)
@@ -81,15 +81,36 @@ payments wouldn't import from each other in a circle (#620 comment, Nov 18).
 - A reviewed Semgrep exception keyed to the old file has to move with its code: one didn't in 1.7c and the scan
   flagged it (#768). Each move now checks `scripts/security/allow.json` first (#620 comment, Nov 19).
 
-**Phase 3, the client app, next** (owner's direction, Nov 19: finish phase 1, then the app; #620): 3.1 Signals and
-"Notifications on this device" → `public/js/page-signals.js` (#780); 3.2 the Files page → `public/js/page-files.js`
-(#809). Next: 3.3 MPT Coach → `page-coachai.js`. Phase 2, the portal, by menu group, comes later (#620).
+**Phase 3, the client app, finished Nov 20** (owner's direction, Nov 19; #620): 13 page files now hold the page
+code, each a plain script loaded in order after `app.js`: `page-signals.js` (3.1, #780), `page-files.js` (3.2, #809),
+`page-coachai.js` MPT Coach (3.3, #815), `page-calls.js` calls and messages (3.4, #832), `page-community.js` (3.5,
+#835), `page-biometrics.js` check-in, Library, Achievements, Biometrics (3.6, #836), `page-reports.js` (3.7, #837),
+`page-help.js` (3.8, #840), `page-clients.js` (3.9, #841), `page-parq.js` (3.10, #843), `page-home.js` (3.11, #844),
+`page-profile.js` (3.12, #845) and `page-account.js` memberships, two-step sign-in, your data (3.13, #846).
+`public/js/app.js` went from 7,073 lines to 2,505 (#620 comment, Nov 20). Each step passed a full end-to-end run
+(58/58) (#620).
+- What stays in `app.js` is the app shell: start-up and the sign-in gate, the space, navigation, Workouts itself,
+  the exercise videos and sheet/video player, the profile and client view, and live space refreshes (#620 comment,
+  Nov 20). Four shared helpers stayed when Reports moved, because other pages use them (#837).
+- The app now starts from its own last script, `public/js/start.js`, so every page file is loaded before it starts
+  (#849, CHANGELOG 2026-11-20).
+- The coverage index tool misread templates inside templates; it was fixed before 3.10, with the owner's go-ahead
+  (#842). Saving a bio on Profile had never been tested; 3.12 added a real journey step instead of a gaps entry (#845).
+- Found along the way: a Workouts day that answered late could draw over another page (#847, fixed by #848; see
+  [Training](training.md)).
+
+**Phase 2, the coach portal, started Nov 21** (#620 comment, Nov 21): 2.1 the portal starts from
+`admin/portal-start.js`, loaded last (#874); the owner's email comes from `config.js` instead of being written into
+the portal five times (#875); 2.2 the Platform pages (Costs, Backlog, Blog, Performance, Security) →
+`admin/portal-platform.js` (#878). `admin/portal.js` is down from 6,701 to 5,450 lines. Next: 2.3, the Business pages
+(payments, finance, deals, coupons) (#620).
 
 **After the split:** a full functional audit (#805, high, needs the owner's go-ahead): an inventory of every screen
 control, function, data field, role, integration, key and use case, the expected result written before each test,
 tests in layers up to staging and real devices, an independent re-check, and a finish line (no high issues open,
 `ops/ui-gaps.json` at zero or explained, three green nights in a row). Until then, problems the owner finds are
 logged as `audit-intake` issues, as the audit's answer key. Open decision: where the inventory Sheet lives (#805).
+Added to the roadmap Nov 21 (#805).
 
 Findings the smaller files let the scan see, fixed with the owner's OK: see [Security](security.md#code-scanning).
 

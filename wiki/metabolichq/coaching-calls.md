@@ -1,8 +1,8 @@
 ---
 title: Coaching calls and scheduling
 summary: In-app video calls (Daily), scheduling calendar and sync, recording/transcription rules, AI draft notes
-updated: 2026-11-20
-sources: [notes, CHANGELOG v5.0, #755, #787]
+updated: 2026-11-21
+sources: [notes, CHANGELOG v5.0, #755, #787, #857]
 ---
 
 # Coaching calls (v5.0)
@@ -18,6 +18,8 @@ sources: [notes, CHANGELOG v5.0, #755, #787]
 - AI drafts call notes; the coach reviews and publishes them on the client's **Coaching notes** page (newest first,
   latest 3 on the overview; each note tagged manual or transcribed).
 - Clients see only the call summary and action items. Client data export includes call summaries only.
+- Planned (medium): structured **SOAP notes** (Subjective, Objective, Assessment, Plan) for practitioners, dated,
+  private to the coaching team, with the Objective section able to pull in current data (#857; related #637, #381).
 
 ## Scheduling
 

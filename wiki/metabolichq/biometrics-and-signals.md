@@ -1,8 +1,8 @@
 ---
 title: Biometrics, check-ins and signals
 summary: Biometrics metrics, daily check-ins, signals and patterns from combined data, aging rules, AI-on-data rule
-updated: 2026-11-16
-sources: [notes, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644", "#820", "#856", "#859"]
 ---
 
 # Biometrics, check-ins and signals
@@ -13,7 +13,8 @@ sources: [notes, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#63
   ([Wearables](wearables.md)).
 - Home tile: the week's average glucose, ketones, HRV and RHR, with add-data.
 - The Biometrics page shows every metric; no per-client coach toggles.
-- Planned: progress photos with coach comments (#602); optional cycle tracking as an add-on (#165).
+- Planned: progress photos with coach comments (#602); optional cycle tracking as an add-on (#165); phase angle and
+  visceral fat as body composition fields, logged by hand or from BIA scans and devices (#856, medium).
 
 ## Check-ins
 
@@ -30,7 +31,10 @@ partway with an end-of-day reminder (#603); coach-customizable questions (#157).
 - Aging: clear from Home; wins/patterns leave Home after 3 days, others after 7; safety signals stay until
   acknowledged; Signals page shows 90 days (older hidden, not deleted).
 - Coaches see every client's signals; the coach can mute kinds and set thresholds per client.
-- Planned: a "same weight for weeks or lighter than usual: check in" signal (#644); protocol/medication logging and
+- Safety signals are checked right after a client saves a reading (up to 30 times an hour; the hourly job covers the
+  rest). Each check reserves its slot first, and a closed space's clients are skipped (#816 item 5, #820).
+- Planned: a "same weight for weeks or lighter than usual: check in" signal (#644); a signal that tells the coach
+  when a client's progress would make a good testimonial (#859, medium); protocol/medication logging and
   GLP-1 signals with a dose-change adjustment window, part of the GLP-1 coach add-on (#629–#631; see
   [Client add-ons](client-add-ons.md#coach-add-ons-planned)).
 

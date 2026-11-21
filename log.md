@@ -4,11 +4,52 @@ Newest at the top. Each entry: date, what changed, pages touched.
 
 ## Open questions for Bronson
 
+- **This wiki repo is public on GitHub** (repo settings; the rulebook said private and now says public). It links the
+  system documents in Drive and describes security controls, scan exceptions and open risks. Keep it public, or make
+  it private?
+
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-21 — Nightly update
+
+Covered mac-app from `218e79d` to `614f3eb` (CHANGELOG 2026-11-20 late entries and 2026-11-21, version still 8.70.1),
+issues #319, #638, #816, #831, #847, #850, #853 and #866 closed (each "How this was resolved" read), 13 new backlog
+issues (#856–#864, #866, #876, #877), 6 issues added to the roadmap, the #620 progress comments, mac-app CLAUDE.md
+(two nightly reviewers, the system-documents rule, a quiet night skips only mac-app's steps), and the 4 inbox lines.
+coachbronson-site: no commits since dc12429; no CLAUDE.md or README changes. Checked the O&M plan and Detailed System
+Design in Drive against the new jobs and hosts (`mailStuckWatch`, Turnstile, USDA, Open Food Facts): they already list
+them, so no document is behind.
+
+- acquisition-readiness: phase 3 (client app) finished Nov 20, 3.3–3.13 (#815–#846), `start.js` (#849), app.js
+  7,073 → 2,505 lines; phase 2 (portal) started Nov 21 (#874, #875, #878); #805 on the roadmap.
+- architecture: 109 functions (`mailStuckWatch`, #829); the app split done and portal split begun; email: the Zapier
+  route as it is in code (`functions/mail.js`) and the stuck-mail alert; deploys one at a time with the change-quota
+  retry (#833); backup time 07:17 UTC and Storage not backed up (from the inbox); nightly review line.
+- security: Nov 20 review fixes in rules (#819, #830), team invites (#825), CSP collector (#826); scan exceptions
+  listing (#853–#855) and data.js scannable again (#867, #870); SSP open risks (from the inbox); owner handles legal
+  review of public wording (#866).
+- engineering-rules: "CodeRabbit" section is now "Nightly review (CodeRabbit + Claude)" (#838, #881, from the inbox);
+  coverage index template fix (#842), #873/#876/#877, portal page wait (#852), Stripe-currency false negative (#839),
+  deploy concurrency (#833).
+- marketing-site: new Trust page section (#319, #865, #871, #866). research-and-privacy: wearables deletion (#817),
+  owner report without conversation text (#818), privacy policy Settings paths and new providers (#869), Trust page.
+  help-and-howto: Trust and policy links (#872), Nov 20 review (#834). mpt-coach: owner report (#818, #834).
+- coach-portal: Spaces table fixed (#851), Platform pages file, owner email from config. training: late-load fix
+  (#848), planned #863/#864. wearables: disconnect always works (#821), server-only link (#819). biometrics-and-signals:
+  safety check slots (#820), planned #856/#859. partner-program: go-live retries (#828), refund and expiry fixes (#822,
+  #823), MPT Programming keys (#824), custom builds idea (#862). spaces-and-roles: invites (#825), delegated admins
+  (#861). nutrition (#858), resources-and-files (#860), coaching-calls (#857).
+- versions: current 8.70.1 on Nov 21; Nov 20–21 timeline. roadmap-and-backlog: snapshot refreshed (97 open backlog,
+  8 high, 14 on the roadmap).
+- CLAUDE.md: says the repo is public (it is; from the inbox). Inbox emptied.
+- Noticed: #686 is still open on GitHub though #851 fixed it (like #678 and #740).
+- New open question: whether this repo should stay public.
+
+Last update covered: 2026-11-21.
 
 ## 2026-11-20 — SSP replaced; link updated (mac-app #867)
 

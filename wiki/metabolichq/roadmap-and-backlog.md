@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-20
+updated: 2026-11-21
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,20 +12,24 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-20)
+## Snapshot (2026-11-21)
 
-88 open `backlog` issues: 61 features, 15 ops, 7 R&D, 3 bugs (#660, #666, #686; #410 and #678 have no lane); 8 on
-the roadmap (#681, #679, #678, #667, #620, #575, #512, #162); 26 need a decision.
-8 high, 28 medium, 52 low, no critical.
-Opened and closed since 2026-11-19 (none were `backlog`): the Nov 19 nightly review's groups #751–#757, and #806,
-#808. Opened: #805 (backlog, high), and outside the backlog #785 (coverage index: server calls matched too loosely)
-and #816 (the Nov 20 nightly review's twelve fixes the owner OK'd). #678 is fixed by #740 (merged Nov 18) but still
-open.
+97 open `backlog` issues: 69 features, 16 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
+(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162; #805, #710, #686, #666, #660 and
+#410 were added since Nov 20); 26 need a decision. 8 high, 37 medium, 52 low, no critical.
+Closed since 2026-11-20: #319 Trust page (done, #865), #638 system documents (done, in Drive), #866 Trust page
+follow-ups (closed at the owner's request), and outside the backlog #816 (13 nightly-review fixes), #831 deploy
+quota, #847 late Workouts load, #850 Spaces table width, #853 scan exceptions. Opened (backlog, medium, Nov 20): #856
+phase angle and visceral fat · #857 SOAP notes · #858 macro diet presets · #859 testimonial signal · #860 several item
+types in one resource section · #861 delegated admin roles · #862 custom builds offering · #863 assign programs to
+individuals, groups or everyone · #864 save a workout to a program, duplicate a program. From #785's coverage work: #877
+authenticator-app two-step journey on staging (medium) and #876 delete 14 unused data-layer calls (low). #678 (fixed by
+#740) and #686 (fixed by #851) are still open.
 
-**High priority:** #805 full functional audit after the code split (new Nov 20; needs the owner's go-ahead; see
-[Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after beta ·
-#512 security pending actions (lockout stage C around Nov 29, App Check) · #620 acquisition readiness (needs a
-decision; owner's accepted risks; server split done Nov 19, app split under way; see
+**High priority:** #805 full functional audit after the code split (needs the owner's go-ahead; on the roadmap since
+Nov 21; see [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after
+beta · #512 security pending actions (lockout stage C around Nov 29, App Check) · #620 acquisition readiness (needs a
+decision; owner's accepted risks; server and app splits done, portal split under way; see
 [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
 development and staging: PR previews, staging as a production mirror, a testing period before production (needs
 decisions; changes #575's staging gate) · #410 client groups: coach-made groups with assigned coaches and group
@@ -36,7 +40,7 @@ managers · #710 Your brand: an app name separate from the business name · #558
 (needs a decision) · #355 recipe/meal and history import from other nutrition apps · #356 recipes · #162 wearable sync
 · #570 free coach marketplace · #358 coach custom reports · #602 progress photos · #603 save check-ins partway ·
 #478 rep-max table · #479 suggested weights · #332 coach onboarding workflows · #256 MCP server · #174 integrations ·
-#319/#320/#321 trust page, release notes, status page · #381 HIPAA-ready · #657 end-to-end coverage of every button,
+#320/#321 release notes, status page · #381 HIPAA-ready · #657 end-to-end coverage of every button,
 field and display (stages 1–2 done) · #660 e2e: Stripe Checkout sometimes shows Link + hCaptcha instead of the card
 form (bug; test-mode card-only and a Link-screen step went in, #687, #688) · #666 food diary ‹ Back after changing
 days can land on the wrong day (bug).
@@ -46,13 +50,13 @@ days can land on the wrong day (bug).
 [Partner program](partner-program.md#agreement-and-onboarding)). Earlier: #699 change a space's main coach: the
 Platform tool after support checks (needs decisions).
 
-**Low, Nov 17–18:** #686 owner's Spaces & coaches table wider than a 1366 px screen (bug).
+**Low, Nov 17–18:** #686 owner's Spaces & coaches table wider than a 1366 px screen (bug; fixed by #851, still open).
 
 **Low (recent):** #667 test emulators to firebase-tools 15 (blocked on a fixed 15.x) · #678 security rules
 `clientAcctOn()` error noise (fixed by #740) · #679 MetHQ blog go-live run fails daily on "Save the go-live log" (posts still go
 live; the log is never saved). Earlier: coach add-on marketplace #633 and the GLP-1 companion module #628 (#629–#632); Challenges #639; Fasting
 tracker #640; AI progress troubleshooting #642; Leads CRM and discovery calls #643; call prep brief #637; own
-equipment in a training location #641; weight-plateau signal #644; wiki system documentation #638; MPT resource pack
+equipment in a training location #641; weight-plateau signal #644; MPT resource pack
 for Premium spaces #607.
 
 The nightly update refreshes this snapshot; GitHub is always the live list.

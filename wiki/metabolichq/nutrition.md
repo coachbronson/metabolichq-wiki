@@ -1,8 +1,8 @@
 ---
 title: Nutrition (food diary and macros)
 summary: Macro rules, targets, calories opt-in, food diary layout, whole-food %, electrolytes, macro calculator, recipes
-updated: 2026-11-17
-sources: [notes, CHANGELOG, "#355", "#356", "#335", "#666"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG, "#355", "#356", "#335", "#666", "#858"]
 ---
 
 # Nutrition
@@ -52,7 +52,8 @@ gain), fat ≤ lean mass + activity (×0.75 for fat loss); warns under 70 g fat.
 
 Recipes (#356), recipe and history import from other nutrition apps (#355, medium), meal-photo AI logging (#335),
 recipe grabber from an image (#357). Once recipes exist: license cookbook authors' recipes (#333; usage metric vs flat
-fee undecided). Oxalate add-on (#477): see [Client add-ons](client-add-ons.md).
+fee undecided). Diet presets (keto, carnivore, low carb, high protein, balanced) that fill in starting macro
+targets, still adjustable by hand (#858, medium). Oxalate add-on (#477): see [Client add-ons](client-add-ons.md).
 
 ## Known bugs
 

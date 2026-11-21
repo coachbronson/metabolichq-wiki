@@ -1,8 +1,8 @@
 ---
 title: Training (workouts, programs, swaps)
 summary: Programs, workout logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
-updated: 2026-11-17
-sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
 ---
 
 # Training
@@ -19,6 +19,8 @@ sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655"]
   more challenging.
 - Every workout has scaling and equipment options, so no minimum equipment or experience level is promised.
 - Program loading and import rules: [Program library import](program-library-import.md).
+- Planned (backlog, medium, Nov 20): assign a program to an individual, a group or everyone, at creation or after
+  (#863, with client groups #410); save a workout to an existing or new program, and duplicate a program (#864).
 
 ## Logging and the workout screen
 
@@ -28,6 +30,9 @@ sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655"]
 - A card's **Skip** and **Undo** (e.g. the whole Warm-up) crashed with "reading 'original'" and didn't save until
   8.68.2 fixed it (#655). An end-to-end journey now uses every button, field and display on the workout screen
   (#657 stage 2).
+- A workout day that loads slowly no longer draws over a page opened meanwhile, and of two days opened quickly
+  the newer one shows; only the newest load draws, and only while Workouts is open. It was the intermittent
+  "Self-start program" end-to-end failure on Nov 20 (#847, #848, CHANGELOG 2026-11-20).
 - Desktop layout for 1024 px+ with mouse/trackpad; phones and tablets get the phone layout.
 
 ## Swaps

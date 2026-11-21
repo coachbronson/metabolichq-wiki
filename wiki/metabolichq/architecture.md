@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-20
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809]
+updated: 2026-11-21
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -55,21 +55,28 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **108 Cloud Functions**, each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+- **109 Cloud Functions** (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
   shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
   addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
-  is `wearablesForgetWork` (#791).
+  is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829).
 - `ops/function-names.json` and `ops/function-endpoints.json` record every function; each PR loads the server the way
   the deploy does and checks name, trigger, account, region, secrets, limits and schedule (#718, #758).
-- The client app is being split the same way: `public/js/page-signals.js` (#780) and `public/js/page-files.js`
-  (#809) load right after `app.js`. The portal follows (#620). See
+- The client app is split the same way (done Nov 20): 13 `public/js/page-*.js` files load in order after `app.js`,
+  which keeps the app shell, and `public/js/start.js`, loaded last, starts the app (#815–#849). The coach portal's
+  split started Nov 21: `admin/portal-platform.js`, with `admin/portal-start.js` loaded last (#874, #878). See
   [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5).
 
 ## Email
 
 - App email sends through **Resend** from `metabolichq.app` (verified Nov 2026). Each space sends as its program
   abbreviation (MPT → `mpt@metabolichq.app`). Resend stays on the Free plan for now.
-- Earlier app emails went through his Zapier + Gmail setup.
+- The other route is his Zapier + Gmail workflow "mpt-send-email": the app queues each message in `mailOutbox` and
+  the workflow picks it up and reports it sent. MPT's own emails go that way until switched to Resend in the portal
+  (Maintenance → Email sending); sign-in links and platform emails always go by Resend once it's set up
+  (`functions/mail.js`).
+- Only a picked-up message can be marked sent (#827). An hourly check, `mailStuckWatch`, emails him once (through
+  Resend) about any message picked up over an hour ago and never reported sent; the app never re-sends it on its own
+  (owner's choice, #816, #829).
 - Demo/test account emails he sends himself go from his coachbronson.com Google account.
 - Keep his mailing address out of email footers and anything public unless legally required (then city and state).
 
@@ -85,11 +92,14 @@ Circle is **not** part of the app.
 - Push to `main` → tests → deploy (`.github/workflows/deploy.yml`). Staging has its own deploy workflow.
 - Deploy CLI `tools/firebase-cli` is on firebase-tools ^15; the test emulators (root `package.json`) stay pinned at
   14.23.0 until a 15.x release fixes their slowdown (#567 closed, #592, #667).
-- A functions deploy that hits Cloud Run's per-minute read quota (HTTP 429) waits 60 s and retries once, on
-  production and staging; any other failure fails at once (#668, CHANGELOG 2026-11-17).
-- Backups: Firebase daily Firestore backups (14 weeks) + nightly JSON backup in GitHub Actions (30 days, ~3:15 AM ET).
+- A functions deploy that hits Cloud Run's per-minute read quota or Cloud Functions' per-minute change quota
+  (HTTP 429) waits 60 s and retries once, on production and staging; any other failure fails at once (#668, #831,
+  #833). Functions deploys on main run one at a time; if several wait, only the newest runs (#833).
+- Backups: Firebase daily Firestore backups (14 weeks) + nightly JSON backup in GitHub Actions (30 days; cron 07:17 UTC, so 2:17 AM ET in winter, 3:17 AM in summer;
+  `.github/workflows/backup.yml`). Cloud Storage files aren't in either backup layer (an open risk in the SSP, #638).
   Restore workflow can restore everything, one person or a path; dry run first.
-- Nightly: CodeRabbit review pass (~12:06 AM ET), full end-to-end run (~2:13 AM ET, emails only when something needs
+- Nightly: review pass, CodeRabbit + Claude, in one ongoing Claude session (~12:06 AM ET; see
+  [Engineering rules](../rules/engineering-rules.md#nightly-review-coderabbit--claude)), full end-to-end run (~2:13 AM ET, emails only when something needs
   action), 7 AM workout digest.
 - Security jobs: **securityWatch** (every 5 min), **securityLogWatch** (every minute), **geoDbRefresh** (weekly
   country file) (#514; see [Security](security.md)).

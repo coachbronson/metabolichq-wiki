@@ -1,8 +1,8 @@
 ---
 title: Partner coach program
 summary: Partner tiers and pricing, Premium (MPT Programming) add-on, agreement terms, onboarding, coach payments and packages
-updated: 2026-11-20
-sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706", "#742", "#743", "#746", "#256", public/js/agreement-text.js, public/js/spaces.js, #751, #752, #792–#800]
+updated: 2026-11-21
+sources: [notes, site/index.html, CHANGELOG, "#173", "#517", "#570", "#312", "#313", "#618", "#628", "#633", "#694", "#698", "#706", "#742", "#743", "#746", "#256", public/js/agreement-text.js, public/js/spaces.js, #751, #752, #792–#800, #816, #822, #823, #824, #828, #862]
 ---
 
 # Partner coach program
@@ -29,7 +29,10 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
   price or access) and a second coach add-on, the GLP-1 companion at $57.99/month (#633, #628; see
   [Client add-ons](client-add-ons.md#coach-add-ons-planned)).
 - **Premium = MPT Programming add-on, $199/month flat**, any tier, cancel anytime: Coach Bronson's programs, his demo
-  videos, guided swaps and [MPT Coach](mpt-coach.md).
+  videos, guided swaps and [MPT Coach](mpt-coach.md). Keep / Cancel / Keep in quick succession always leaves it
+  renewing: each change has its own Stripe key, and only one change per space runs at a time (#816 item 9, #824).
+- Idea (backlog, medium): a **custom build** offering for organizations that need more than a standard space (a
+  separate environment with its own O&M, one-off development, training) (#862).
 - Team coaches free. Month-to-month; on cancellation the plan runs to the end of the paid month, no proration.
 - Fixed Stripe products/prices; no per-coach special terms or discounts.
 - Paused or archived clients still count (they take resources). An active client is whoever the coach gives access.
@@ -51,8 +54,10 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
 - MPT programming stays his property.
 - **Going live** (Nov 19 fixes, #752): an invite link replaced by a newer invite can't be used to sign (#797). The
   space id and every coach email are held for 10 minutes before Stripe is called, so two go-lives at once can't
-  double-charge a coach or share a space (`goLiveHolds`, #799). A retry resends the saved Stripe request, so it gets
-  the same subscription back (`goLiveRequest`, #800). A space that went live is never reported as failed; a tidy-up
+  double-charge a coach or share a space (`goLiveHolds`, #799). A retry first looks for the subscription this proposal
+  already made (Stripe forgets a request's key after 24 hours or more) and only resends the saved request if there's
+  none; it keeps the add-on price in the saved request, and the holds stay while Stripe's result is unknown (#800;
+  Nov 20 fix, #816 item 8, #828). A space that went live is never reported as failed; a tidy-up
   step that fails is noted on the proposal's history (#798).
 - **Client waiver:** every space uses MetabolicHQ's standard **Waiver and release** (agreement Schedule C,
   `public/js/agreement-text.js`, `WAIVER_VERSION` 2026-11-04), with the coach's business name filled in; it was based
@@ -88,6 +93,9 @@ from his network first, then Instagram/Facebook, a Facebook group later, then ad
   refund on a coach-site checkout is kept and retried daily, then alerts the owner (#794); when a space's ending is
   undone, a client's plan is marked renewing only once Stripe confirms it (#795); "I've already paid · check again"
   applies the newest payment that still gives access (#796).
+- Nov 20 fixes (#816): a refund or cancel Stripe turned down is saved for the daily retry before any email work, so
+  it can't be lost (#822); the daily expiry of a one-time package rechecks the fresh record and leaves a just-renewed
+  package on (#823).
 
 ## Ideas parked or later
 

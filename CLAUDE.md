@@ -42,7 +42,7 @@ Don't stop work to edit wiki pages mid-task; drop a line in the inbox and keep g
 
 His home or mailing address, business ID numbers (D-U-N-S, EIN), anyone's email address or phone number, API keys,
 secrets, tokens, passwords, payment or account numbers, client health data, and anything about his personal health.
-The repo is private, but treat it as shareable.
+The repo is public on GitHub (repo settings, checked 2026-11-21), so treat everything here as public.
 
 ## Writing rules (his standing preferences)
 

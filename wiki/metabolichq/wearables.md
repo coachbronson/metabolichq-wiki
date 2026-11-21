@@ -1,8 +1,8 @@
 ---
 title: Wearables and health-app sync
 summary: Status of wearable/health-app sync — Open Wearables vs managed services, decisions on Oura and Samsung Health
-updated: 2026-11-19
-sources: [notes, CHANGELOG, "#162", "#381"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG, "#162", "#381", "#816", "#817", "#819", "#821"]
 ---
 
 # Wearables and health-app sync (#162)
@@ -21,6 +21,11 @@ sources: [notes, CHANGELOG, "#162", "#381"]
   enterprise tier (sales quote, not the ~$499 plan); Junction publishes no BAA terms (ask them); Sahha from its Pro
   tier at $1,499/month; self-hosted Open Wearables on Google Cloud would sit under Google's BAA (#381 comment; see
   [HIPAA](hipaa.md)).
+- A connected device can always be disconnected: when connecting new devices closes (pilot list or "open to
+  everyone" off, or a device type no longer offered), Settings still lists it with Disconnect under "Connecting new
+  devices isn't available right now" (#816 item 4, #821).
+- Only the server writes a person's link to their wearables-server account (security rules, #819). Account deletion
+  removes their data there too (see [Research and privacy](research-and-privacy.md)) (#817).
 - Device data rule: no raw device data into AI (see [Biometrics and signals](biometrics-and-signals.md)).
 
 ## Related

@@ -1,17 +1,17 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-20
-sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806]
+updated: 2026-11-21
+sources: [CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880"]
 ---
 
 # Versions and release history
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on 2026-11-20: **8.70.1** (Help review Nov 18, #722; CHANGELOG 2026-11-18; `APP_VERSION` in
-  `public/js/config.js`). The Nov 18–20 changes (server split, the app split's first steps, scan checks, nightly
-  review fixes, demo pages) didn't bump the version.
+- Current on 2026-11-21: **8.70.1** (Help review Nov 18, #722; CHANGELOG 2026-11-18; `APP_VERSION` in
+  `public/js/config.js`). The Nov 18–21 changes (server and app splits, the portal split's start, scan checks,
+  nightly review fixes, the Trust page, demo pages) didn't bump the version.
 - Full detail: `CHANGELOG.md` in mac-app (newest at the bottom of each day).
 
 | Major | Area |
@@ -44,6 +44,10 @@ A major version gets a full end-to-end test before rollout.
 - 2026-11-19: server split finished (#762–#779); app split started (#780, #809); the Nov 19 nightly review's fixes for
   payments, partner sign-up, memberships, privacy and calls (#751–#755, #787–#804); a page tapped right after a
   refresh stays open (#806, #811, #814). No version bump.
+- 2026-11-20: the app split finished (3.3–3.13, #815–#846; `start.js`, #849); the Nov 20 nightly review's 13 fixes
+  (#816, #817–#830); Trust page at metabolichq.app/trust and Help links to it (#865, #872); deploys one at a time
+  (#833); late Workouts load fixed (#848). No version bump.
+- 2026-11-21: portal split started (#874, #875, #878); report names escaped (#880). No version bump.
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 

@@ -1,8 +1,8 @@
 ---
 title: Research opt-in, privacy and data ownership
 summary: Citizen-science research opt-in, privacy policy versioning, data export and ownership, retention rules
-updated: 2026-11-20
-sources: [notes, public/js/config.js, "#319", #754, #790, #791]
+updated: 2026-11-21
+sources: [notes, public/js/config.js, "#319", #754, #790, #791, "#816", "#817", "#818", "#869", "#865"]
 ---
 
 # Research opt-in, privacy and data ownership
@@ -27,7 +27,16 @@ sources: [notes, public/js/config.js, "#319", #754, #790, #791]
   app and portal say the device data "is still being removed and will be gone within a few days" (#754, #791). A
   coach's deletion removes the client's sign-in first, so a failed try can simply be retried (#790); a client's own
   deletion keeps records-first, since they need their sign-in to retry (#754).
-- Planned Trust page (privacy, AI use, subprocessors, retention; #319).
+- Only a real "not found" from the wearables server counts as already deleted (an outage or "API key not found" no
+  longer does); deleting the same person again keeps the retry count and doesn't re-send the alert (#816 item 1, #817).
+- The owner's MPT Coach report in the portal shows only when, the topic, the exercise and the pain/swap/note flags,
+  never what clients asked or were told (#816 item 2, #818; see [MPT Coach](mpt-coach.md)).
+- The privacy policy (last updated Nov 20, 2026; wording only, so `PRIVACY_VERSION` is unchanged) points to
+  **Settings → Your data** (Download my data, Delete my account, Who has viewed my data) and **Settings → Privacy &
+  documents**, and lists Cloudflare Turnstile (sees IP address and browser details), USDA FoodData Central and Open
+  Food Facts (only the search term or barcode is sent, from the server) as service providers (#869).
+- **Trust page** at metabolichq.app/trust: privacy in brief, AI use, service providers, retention, export, backups
+  (#319, #865; see [metabolichq.app site](marketing-site.md#trust-page-metabolichqapptrust-319-done-nov-20)).
 
 ## Data ownership
 

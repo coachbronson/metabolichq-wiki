@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-20
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868]
+updated: 2026-11-21
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881"]
 ---
 
 # Engineering and working rules
@@ -56,7 +56,12 @@ on Nov 16, 2026: no journey ever tapped it.)
   video scripts don't count as coverage (mac-app CLAUDE.md, #657).
 - Since Nov 19 the index files each element under the function that really holds it; 330 gaps were renamed and the
   list went from 1,499 to 1,503, a one-time addition the owner OK'd (#757, #786). Server calls keep the old matching
-  (132 of 321 covered) until #785 matches each call to the control that triggers it (medium, needs the owner's OK).
+  (132 of 321 covered) until #785 matches each call to the control that triggers it (medium, needs the owner's OK;
+  PR #873 open). Its findings so far: 14 data-layer calls no screen uses (#876) and no journey for authenticator-app
+  two-step setup, to be run on staging (#877).
+- The index tool now reads templates the way JavaScript does (strings, comments, regular expressions, nested
+  templates), checked against a real parser; that took 29 gaps off the list (1,503 → 1,475 with #845's bio step;
+  #842, #845, #620).
 - **A wrong test result is never a pass** (his rule, Nov 16): any false positive or false negative blocks (not
   treated or reported as passed, not merged on) until it's explained or fixed, written on the issue or PR. The
   end-to-end run now fails when any journey fails or a bug is recorded (it used to show green, #660). "Looks external"
@@ -69,13 +74,25 @@ on Nov 16, 2026: no journey ever tapped it.)
 
 - Runs finishing together no longer turn red over the shared `e2e-results` branch: the report push retries up to
   five times (#782). After a reload, the runner waits for the app's first page before tapping a menu (#807).
+- A portal page in a journey counts as open only once its own content shows, not just its name in the side menu;
+  the old wait hid a too-wide table in most runs (#850, #852).
+- False negative explained and fixed (Nov 20): Stripe showed a US$600 package in Canadian dollars because the test
+  machine was in Canada; the step now accepts a correctly converted price (#837, #839).
+- Functions deploys on main go one at a time (only the newest waiting one runs) and retry once after 60 s on Cloud
+  Functions' change quota as well as Cloud Run's read quota; staging retries the same way. Twelve merges in an hour on
+  Nov 20 had made two deploys fail (#831, #833).
 
 Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359).
 
-## CodeRabbit
+## Nightly review (CodeRabbit + Claude)
 
-Reviews **once a night** (~12:06 AM ET) everything merged since the last review. Claude fixes easy low-risk findings
-in one PR; anything risky or unclear becomes a question in the nightly report.
+Reviews **once a night** (~12:06 AM ET) everything merged since the last review, in one PR. **Two reviewers** (owner's
+call, Nov 20): CodeRabbit, plus Claude's own review of the same diff on the same PR, one report for both, titles
+starting `CodeRabbit:` or `Claude:`. The pass runs in one ongoing Claude session that sets up its next night's wake-up
+(the old fresh-session scheduled task is off). It also reviews coachbronson-site (Claude only, marker branch
+`claude-reviewed`) and checks this wiki without changing it. A quiet night in mac-app skips only mac-app's steps
+(mac-app CLAUDE.md, #838, #881). Claude fixes easy low-risk findings in one PR; anything risky or unclear becomes a
+question in the nightly report.
 - Questions the owner OKs are grouped into issues and fixed one PR per fix: confirmed against the code first, a test
   that fails before the fix, a Blast radius section, and a link to the review comment (#751–#757, #816). For #816
   (Nov 20, twelve fixes) each PR also gets a full end-to-end run before merging (#816).

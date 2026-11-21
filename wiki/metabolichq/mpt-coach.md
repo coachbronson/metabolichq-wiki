@@ -1,8 +1,8 @@
 ---
 title: MPT Coach (AI coach)
 summary: Who gets the AI coach, what it answers, safety rules, privacy, limits, model, sources and paid extras
-updated: 2026-11-14
-sources: [notes, CHANGELOG v8.0, functions/coach/, "#383", "#326", "#254"]
+updated: 2026-11-21
+sources: [notes, CHANGELOG v8.0, functions/coach/, "#383", "#326", "#254", "#816", "#818", "#834", "#815"]
 ---
 
 # MPT Coach (v8.0)
@@ -30,7 +30,12 @@ sources: [notes, CHANGELOG v8.0, functions/coach/, "#383", "#326", "#254"]
 - Conversations are private to the client; coaches can't read them. Kept while the client is active; deleted with the
   account; included in data export.
 - **10 questions per client per day**, shared between training and app-help questions.
-- Bronson gets an anonymized cross-space report. A counts-only summary for partner coaches is low-priority (#326).
+- Bronson gets a cross-space report in the portal (MPT Coach): totals, topics, movements, spaces and videos, and for
+  recent questions only when, the topic, the exercise and whether there was pain, a swap or a note to the coach. Since
+  Nov 20 it never shows question or answer text, since a question can hold a name or health details (#816 item 2,
+  #818); MPT Coach's rules (`policy.md`) say the same (#834). (Previously it listed recent questions and answers word
+  for word with names taken off.) A counts-only summary for partner coaches is low-priority (#326).
+- Code: the MPT Coach page is in `public/js/page-coachai.js` since the app split (#815).
 
 ## Model and sources
 

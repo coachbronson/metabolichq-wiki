@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-20
-sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810]
+updated: 2026-11-21
+sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
 ---
 
 # Spaces, coaches and roles
@@ -28,6 +28,11 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
 - Team coaches are free (no seat charge).
 - In the data the main coach is `spaces/{sid}.coach`, the coach who signed the space up. It decides who opens support
   requests, renames the business, sees Finances and Payments and uses the client view (#699).
+- A team-coach invite is made in one step: if two spaces invite the same email at once, the second is told the email
+  already has an invite, instead of silently replacing the first (#816 item 10, #825).
+- Planned (medium): **delegated admin roles** the main coach assigns on the Coaches page, so other coaches can help
+  run the space; which permissions an admin gets is still to decide, billing likely staying with the main coach
+  (#861).
 
 ## Business name and main coach
 
