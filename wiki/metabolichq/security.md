@@ -122,7 +122,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   deletion retry bookkeeping, private MPT Coach text kept out of the owner report, clients and coaches can't write a
   user's `wearables` field (rules), Signals safety checks, checkout-undo and package-expiry timing, partner go-live
   and MPT Programming retries, team-invite seats, the email queue, and a size limit on the CSP report collector.
-- **Low:** #638 wiki documentation set (system security plan, config, change and resource management, O&M plan).
+- **System Security Plan** (#638, done Nov 20): in Google Drive, with the open risks list; see
+  [System documentation](system-documentation.md).
 
 ## Related
 

@@ -17,6 +17,7 @@ Raw material stays where it lives. The wiki cites these; it doesn't copy them.
 | Brand files | MetabolicHQ logo, icon, Central Hub SVG, LinkedIn banner, promo reel | Google Drive |
 | Load test results | Pass rules and runs | Issue #359; "Morning Rush Load Test" spreadsheet |
 | Security audit | CIS Google Cloud audit | mac-app `docs/security/` |
+| System documentation | SSP, config/change/resource management, O&M plan, detailed system design, diagrams (#638) | Google Drive: Documentation (`12gDgMAQDVP8vYBttR0YmZtInsewirAEP`); see [System documentation](../wiki/metabolichq/system-documentation.md) |
 | Blog guides and topics | coachbronson.com: `content/DRAFTING.md`, `NEWSLETTER.md`, `blog-topics.md`, `newsletter-topics.md`; MetHQ: `content/blog/DRAFTING.md`, `blog-topics.md` | coachbronson-site; mac-app |
 
 ## Artifacts (claude.ai)
@@ -39,6 +40,6 @@ Retired: Partner Coach Onboarding Forms (Nov 2 mockups), Masters Collective page
 
 ## Drive folders
 
-Social video: `1etO3MwJhfRCt99fZQNTKagQPbUNAd7Qg` · Blog/cover photos: `1TeRdsBJesR9I63gpMo4YHxTzRqeoi6ai` · MetHQ
+System documentation: `12gDgMAQDVP8vYBttR0YmZtInsewirAEP` · Social video: `1etO3MwJhfRCt99fZQNTKagQPbUNAd7Qg` · Blog/cover photos: `1TeRdsBJesR9I63gpMo4YHxTzRqeoi6ai` · MetHQ
 Instagram: `1tang2HzNEOvK91Dfy1eJ6vpyG0h5mnwx` · Social Media Share (Automated Content, Science Content, Published Papers,
 Images, Video, Book Copies) · Topics and Ideas · AI Training · Workout App › Programming.

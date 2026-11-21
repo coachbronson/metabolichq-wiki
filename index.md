@@ -31,6 +31,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, sales demo pages (Kiltz, Ovadia, CCI), MetHQ blog
 - [MetabolicHQ content](wiki/metabolichq/methq-content.md) — messaging framework (one claim, five pillars), homepage "Replace your stack", social, blog rules and topic queue
 - [Acquisition readiness](wiki/metabolichq/acquisition-readiness.md) — how mature MetabolicHQ looks to a buyer (#620), accepted risks, open items, splitting the big files, the full functional audit after the split (#805)
+- [System documentation](wiki/metabolichq/system-documentation.md) — where the SSP, config, change, resource and O&M plans and the detailed system design live (Google Drive); last-reviewed dates
 - [Roadmap and backlog](wiki/metabolichq/roadmap-and-backlog.md) — where the backlog lives, snapshot of open work, roadmap shape
 
 ## Coaching business

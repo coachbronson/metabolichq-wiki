@@ -10,6 +10,15 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-20 — System documentation pointer (#638)
+
+The #638 documents (SSP, configuration, change and resource management, O&M plan, detailed system design, diagrams)
+went into Google Drive › Documentation, not the wiki (owner's call). Added a pointer page.
+
+- New: system-documentation (links, what each covers, last-reviewed dates); index line added.
+- security: #638 moved from Open to a pointer to the SSP.
+- sources/README: Documentation folder added.
+
 ## 2026-11-20 — Nightly update
 
 Covered mac-app from `ea7def7` to `218e79d` (CHANGELOG 2026-11-19 late entries and 2026-11-20, version still
