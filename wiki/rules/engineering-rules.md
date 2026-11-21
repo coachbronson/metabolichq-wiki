@@ -2,7 +2,7 @@
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
 updated: 2026-11-21
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881"]
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881"]
 ---
 
 # Engineering and working rules
@@ -27,6 +27,14 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
   portal, the site, or docs and rules. Different areas go in separate PRs unless one doesn't work without the other;
   then the PR names the areas and why. Each PR carries its own change-log entry and says which area it touches
   (mac-app CLAUDE.md, #664).
+- **Where code goes: the code map** (his rule, Nov 21): the app, the portal and the server were split out of three big
+  files (#620), and new code must not pile back into one. mac-app's `docs/code-map.md` lists every script and what it
+  holds; new code goes in the file for its area (`public/js/page-*.js`, `admin/portal-*.js`, `functions/fn-*.js`), a
+  new area gets a new file, and the main files (`app.js`, `portal.js`) keep only the shared shell under size limits
+  that only go down. `functions/index.js` only re-exports. **Keeping the map current is part of every PR**: a new,
+  renamed or removed file changes its row, moved code updates both files' rows, and a shrunk main file lowers its
+  limit. A component test (`test/codemap.test.mjs`) fails the PR when the map and the repo disagree. The map lives
+  only in mac-app, so it can't go stale in two places (mac-app CLAUDE.md, #883).
 - **MetabolicHQ is self-contained** (his call, Nov 16): nothing in mac-app links to, calls or shares a service,
   secret, key, account or data with Coach Bronson's own site (mac-app CLAUDE.md, #677).
 - **Low risk** merges once tests pass, without waiting for his review. **Medium/high** waits for his OK.

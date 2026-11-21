@@ -14,6 +14,13 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-21 — Where code goes: the code map (mac-app #883)
+
+His rule (Nov 21): new code must not pile back into one big file now that the app, portal and server are split
+(#620). mac-app's docs/code-map.md lists every script and what it holds, with the process for keeping it current; a
+component test fails a PR when the map and the repo disagree. Pages: engineering-rules (new bullet under Branches and
+merging), system-documentation (Change management plan reviewed 2026-11-21: step 3 of the flow now covers it).
+
 ## 2026-11-21 — Nightly update
 
 Covered mac-app from `218e79d` to `614f3eb` (CHANGELOG 2026-11-20 late entries and 2026-11-21, version still 8.70.1),
