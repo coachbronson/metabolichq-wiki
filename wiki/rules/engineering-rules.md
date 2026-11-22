@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-21
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881"]
+updated: 2026-11-22
+sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -63,10 +63,14 @@ on Nov 16, 2026: no journey ever tapped it.)
   **Known gaps** `ops/ui-gaps.json` only shrinks: something new ships with the journey step that tests it. How-to
   video scripts don't count as coverage (mac-app CLAUDE.md, #657).
 - Since Nov 19 the index files each element under the function that really holds it; 330 gaps were renamed and the
-  list went from 1,499 to 1,503, a one-time addition the owner OK'd (#757, #786). Server calls keep the old matching
-  (132 of 321 covered) until #785 matches each call to the control that triggers it (medium, needs the owner's OK;
-  PR #873 open). Its findings so far: 14 data-layer calls no screen uses (#876) and no journey for authenticator-app
-  two-step setup, to be run on staging (#877).
+  list went from 1,499 to 1,503, a one-time addition the owner OK'd (#757, #786).
+- Since Nov 21 each **server call** counts as tested only through the control or screen that really triggers it
+  (`tools/ui-calls.mjs`; `node tools/ui-index.mjs --why <name>` shows why) (#785, PR #873, with the owner's OK). The
+  calls that had only looked tested got journey steps the same day: **305 of 320** server calls are tested (was 140
+  of 321 under the old, looser matching). The 15 left: 13 functions nothing calls, kept until a **Dec 19, 2026
+  review** with a tripwire (`apiUsage` logs any use; Actions → Function logs → match `unused-api-called`; owner's
+  call, #876, #893), plus `accessLog` (#876) and `mfaFinish`, authenticator-app setup, to be tested on staging (#877)
+  (#785 comments, CHANGELOG 2026-11-21).
 - The index tool now reads templates the way JavaScript does (strings, comments, regular expressions, nested
   templates), checked against a real parser; that took 29 gaps off the list (1,503 → 1,475 with #845's bio step;
   #842, #845, #620).
@@ -80,6 +84,12 @@ on Nov 16, 2026: no journey ever tapped it.)
   emulators). Enforcing the Content-Security-Policy showed two such gaps, so a change that depends on outside hosts
   is also checked in code and in a browser (mac-app #702, #704, #550).
 
+- The CI functions emulator keeps one process per function ever called; after each journey the runner logs the count
+  and free memory, and over 25 it reloads the functions so idle processes stop. Late-run deletes had been failing
+  for lack of memory (#896, #897).
+- A run doesn't start across midnight UTC: when 00:00 UTC is less than 55 minutes away (15 for one area), the
+  workflow waits until 00:01 UTC, since journeys read "today" all through the run. The nightly run never waits
+  (#899, #904). Steps read a confirmation toast only after waiting for it (#894).
 - Runs finishing together no longer turn red over the shared `e2e-results` branch: the report push retries up to
   five times (#782). After a reload, the runner waits for the app's first page before tapping a menu (#807).
 - A portal page in a journey counts as open only once its own content shows, not just its name in the side menu;

@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-21
+updated: 2026-11-22
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,24 +12,24 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-21)
+## Snapshot (2026-11-22)
 
 97 open `backlog` issues: 69 features, 16 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
-(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162; #805, #710, #686, #666, #660 and
-#410 were added since Nov 20); 26 need a decision. 8 high, 37 medium, 52 low, no critical.
-Closed since 2026-11-20: #319 Trust page (done, #865), #638 system documents (done, in Drive), #866 Trust page
-follow-ups (closed at the owner's request), and outside the backlog #816 (13 nightly-review fixes), #831 deploy
-quota, #847 late Workouts load, #850 Spaces table width, #853 scan exceptions. Opened (backlog, medium, Nov 20): #856
-phase angle and visceral fat · #857 SOAP notes · #858 macro diet presets · #859 testimonial signal · #860 several item
-types in one resource section · #861 delegated admin roles · #862 custom builds offering · #863 assign programs to
-individuals, groups or everyone · #864 save a workout to a program, duplicate a program. From #785's coverage work: #877
-authenticator-app two-step journey on staging (medium) and #876 delete 14 unused data-layer calls (low). #678 (fixed by
-#740) and #686 (fixed by #851) are still open.
+(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162); 26 need a decision. 8 high,
+37 medium, 52 low, no critical. Unchanged since Nov 21.
+Closed since 2026-11-21, all outside the backlog: #785 server calls matched to the controls that trigger them (done,
+#873), #888 (duplicate of #876), #896 emulator memory in full runs (#897), #899 runs crossing midnight UTC (#904).
+#876 now stays open until the Dec 19 review of the 13 unused functions (owner's call, #893). Still open from #785:
+#877 authenticator-app two-step journey on staging (medium). Earlier this week (Nov 20, medium): #856 phase angle
+and visceral fat · #857 SOAP notes · #858 macro diet presets · #859 testimonial signal · #860 several item types in
+one resource section · #861 delegated admin roles · #862 custom builds offering · #863 assign programs to
+individuals, groups or everyone · #864 save a workout to a program, duplicate a program. #678 (fixed by #740) and
+#686 (fixed by #851) are still open.
 
 **High priority:** #805 full functional audit after the code split (needs the owner's go-ahead; on the roadmap since
 Nov 21; see [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after
 beta · #512 security pending actions (lockout stage C around Nov 29, App Check) · #620 acquisition readiness (needs a
-decision; owner's accepted risks; server and app splits done, portal split under way; see
+decision; owner's accepted risks; server, app and portal splits done (Nov 21); see
 [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
 development and staging: PR previews, staging as a production mirror, a testing period before production (needs
 decisions; changes #575's staging gate) · #410 client groups: coach-made groups with assigned coaches and group

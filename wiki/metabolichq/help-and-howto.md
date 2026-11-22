@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-21
-sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840"]
+updated: 2026-11-22
+sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -32,6 +32,8 @@ sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618
   menu list now says Your brand holds the sign-up link, business name, logo and colors. No MPT Coach changes (#722).
 - Help review Nov 20: Help walkthroughs, portal Help and video scripts still matched (mostly code moves and the
   #816 fixes); MPT Coach's rules now say the owner's report shows no question or answer text (#834).
+- Help review Nov 21: everything still matched, including the new Privacy Policy and Trust page links and their FAQ
+  answers (#872). MPT Coach got test question 50: who can see my data and where to read how it's handled (#885).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).

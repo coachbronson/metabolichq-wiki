@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-21
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-22
+sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -55,15 +55,18 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **109 Cloud Functions** (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+- **110 Cloud Functions** (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
   shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
   addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
-  is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829).
+  is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829); the 110th, `apiUsage`, the tripwire that
+  logs any use of 13 app functions nothing calls, until a Dec 19 review (#876, #893).
 - `ops/function-names.json` and `ops/function-endpoints.json` record every function; each PR loads the server the way
   the deploy does and checks name, trigger, account, region, secrets, limits and schedule (#718, #758).
 - The client app is split the same way (done Nov 20): 13 `public/js/page-*.js` files load in order after `app.js`,
   which keeps the app shell, and `public/js/start.js`, loaded last, starts the app (#815–#849). The coach portal's
-  split started Nov 21: `admin/portal-platform.js`, with `admin/portal-start.js` loaded last (#874, #878). See
+  split finished Nov 21: seven `admin/portal-*.js` files, one per menu group, with `admin/portal.js` kept as the
+  shell (746 lines) and `admin/portal-start.js` loaded last (#874, #878, #882, #895, #898, #900–#903). mac-app's
+  `docs/code-map.md` lists every script (#883). See
   [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5).
 
 ## Email

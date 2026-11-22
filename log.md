@@ -14,6 +14,29 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-22 — Nightly update
+
+Covered mac-app from `614f3eb` to `4ba0530` (CHANGELOG 2026-11-21 later entries; version still 8.70.1), issues
+#785, #888, #896 and #899 closed (each "How this was resolved" read), the #620 and #876 progress comments, mac-app
+CLAUDE.md (the code-map rule, already filed Nov 21; rule 8 now points to the portal's `admin/portal*.js` scripts) and
+the 2 inbox lines. No new backlog issues; the snapshot's counts are unchanged. coachbronson-site: no commits since
+dc12429; no CLAUDE.md or README changes.
+
+- acquisition-readiness: phase 2 (the coach portal) finished Nov 21: seven `admin/portal-*.js` files (#882, #895,
+  #898, #900–#903), `portal.js` 5,450 → 746 lines, tidy-up #905, what was left in place on purpose.
+- architecture: 110 functions (`apiUsage`, #893); portal split done; code map (#883). coach-portal: code line.
+- engineering-rules: server calls matched to their triggers (#785, #873), 305 of 320 tested, the Dec 19 review of
+  the 13 unused functions with its tripwire (#876, #893); e2e runner emulator reloads (#896, #897), waits across
+  midnight UTC (#899, #904), toast waits (#894).
+- system-documentation: SSP, configuration, resource and O&M plans and the Detailed System Design reviewed
+  2026-11-21 (110 functions); component diagram PNG still says 109 (from the inbox).
+- versions: current 8.70.1 on Nov 22; Nov 21 timeline line (incl. the Clients list fix, #891).
+- help-and-howto: Help review Nov 21 (#885). roadmap-and-backlog: snapshot refreshed.
+- Inbox emptied.
+- Noticed: #686 is still open on GitHub though #851 fixed it (like #678).
+
+Last update covered: 2026-11-22.
+
 ## 2026-11-21 — Where code goes: the code map (mac-app #883)
 
 His rule (Nov 21): new code must not pile back into one big file now that the app, portal and server are split

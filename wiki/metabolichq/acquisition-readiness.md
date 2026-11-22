@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-21
-sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878"]
+updated: 2026-11-22
+sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
 ---
 
 # Acquisition readiness (#620, high)
@@ -99,11 +99,34 @@ code, each a plain script loaded in order after `app.js`: `page-signals.js` (3.1
 - Found along the way: a Workouts day that answered late could draw over another page (#847, fixed by #848; see
   [Training](training.md)).
 
-**Phase 2, the coach portal, started Nov 21** (#620 comment, Nov 21): 2.1 the portal starts from
+**Phase 2, the coach portal, finished Nov 21** (#620 comments, Nov 21): `admin/portal.js` went from 6,701 lines to
+**746**, and is now only the portal shell (page cache, gates, `start()`, the menu, Back and Forward, shared helpers
+including `fnBase`, Yes/No, shared clicks), Coach Home and the Spaces list. 2.1 the portal starts from
 `admin/portal-start.js`, loaded last (#874); the owner's email comes from `config.js` instead of being written into
-the portal five times (#875); 2.2 the Platform pages (Costs, Backlog, Blog, Performance, Security) →
-`admin/portal-platform.js` (#878). `admin/portal.js` is down from 6,701 to 5,450 lines. Next: 2.3, the Business pages
-(payments, finance, deals, coupons) (#620).
+the portal five times (#875). The pages moved, unchanged, into one file per menu group:
+
+| File | Holds | PR |
+|---|---|---|
+| `portal-platform.js` | Costs, Backlog (Roadmap, Claude sessions), Blog, Performance, Security | 2.2, #878 |
+| `portal-business.js` | Payments, Finances and Memberships, Deals, MPT coupons | 2.3, #882 |
+| `portal-content.js` | Resources, Community | 2.4, #895 |
+| `portal-programming.js` | Your offer, exercise videos, Program calendar and One-on-one editor, Workout library | 2.5, #898 |
+| `portal-coaching.js` | Clients and a client's page (with its Notes tab), welcome note, Signals, Cohort, Inbox and Messages, Coaching calls | 2.6, #900; 2.9, #903 |
+| `portal-space.js` | Coaches, Your data, Your brand, Space settings, Help (?), Support | 2.7, #901 |
+| `portal-owner.js` | Partner coaches, Tools and Maintenance (wearables, video, mail cards), AI coach test lab, Programs, Add-ons, MPT Coach report | 2.8, #902 |
+
+- Every step was moves only (`tools/move-check.mjs`), had its row in mac-app's `docs/code-map.md` with `portal.js`'s
+  limit lowered, gave the same offline portal output as main, and passed a full end-to-end run (62 of 62, 0 bugs)
+  before merging (#620 comment, Nov 21).
+- Where a move showed a control had only been counted as tested through another one (the access-link and Sign-up
+  link Copy buttons), a real journey check was added, never a gaps entry; the gaps list stayed at 1,157 (#882, #901).
+- Tidy-up (#905): the Coaches page and wearables-card buttons have their own click handlers beside their pages. Left
+  as is on purpose, with the code map saying where: the Tools pages' shared button handler (in `portal-space.js`;
+  moving it would change the order of click handlers) and `busy()` (moving it would push `portal.js` past its limit)
+  (#620 comment, Nov 21).
+- Found on the way, both fixed: the CI functions emulator ran out of memory late in full runs (#896, #897), and a run
+  crossing midnight UTC failed the "today" journeys (#899, #904). See [Engineering rules](../rules/engineering-rules.md#testing-levels).
+- Where new code goes from now on: [Engineering rules](../rules/engineering-rules.md) → the code map (#883).
 
 **After the split:** a full functional audit (#805, high, needs the owner's go-ahead): an inventory of every screen
 control, function, data field, role, integration, key and use case, the expected result written before each test,

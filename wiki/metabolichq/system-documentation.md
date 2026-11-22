@@ -1,8 +1,8 @@
 ---
 title: System documentation
 summary: Where the enterprise system documents live (SSP, config, change, resource, O&M, detailed design) and what each covers
-updated: 2026-11-21
-sources: ["#638", "#620", "#868", notes]
+updated: 2026-11-22
+sources: ["#638", "#620", "#868", "#876", "#893", notes]
 ---
 
 # System documentation
@@ -13,13 +13,13 @@ auditor or new engineer, and support [Acquisition readiness](acquisition-readine
 
 | Document | Covers | Last reviewed |
 |---|---|---|
-| [System Security Plan (SSP)](https://docs.google.com/document/d/11Abg3dJ8m-4QIg2aODJgqDUM-k6K6zne81bPWv6iTn8/edit) | System boundary, data types (incl. health data), roles and access, controls in place, open risks R1–R11 and planned controls | 2026-11-20 |
-| [Configuration management plan](https://docs.google.com/document/d/1WzqvXqVJLVnC-whtHIc--gdAC4A7-U-4Va4esy3RmR8/edit) | What's under config control (in the repo and outside it), baselines, how config changes are made and recorded, drift detection | 2026-11-20 |
+| [System Security Plan (SSP)](https://docs.google.com/document/d/11Abg3dJ8m-4QIg2aODJgqDUM-k6K6zne81bPWv6iTn8/edit) | System boundary, data types (incl. health data), roles and access, controls in place, open risks R1–R11 and planned controls | 2026-11-21 |
+| [Configuration management plan](https://docs.google.com/document/d/1WzqvXqVJLVnC-whtHIc--gdAC4A7-U-4Va4esy3RmR8/edit) | What's under config control (in the repo and outside it), baselines, how config changes are made and recorded, drift detection | 2026-11-21 |
 | [Change management plan](https://docs.google.com/document/d/1MleX6QdFwW8xEamny3fBqo6RUiC6vHS1OeIqmkGvVpw/edit) | Branch-per-change, blast radius, risk levels and approval, testing levels, staging gate, rollback, release notes | 2026-11-21 |
-| [Resource management plan](https://docs.google.com/document/d/1VkLBUxfWAS74H-Tx2WidTGa6DH9dc_eZcOxDugwZDds/edit) | Google Cloud/Firebase resources, GitHub, third-party services and license inventory, secret names, capacity | 2026-11-20 |
-| [O&M plan](https://docs.google.com/document/d/1-2ESI-k1sJ5RJNdUI09OGitxvIzKxUE2r3mt1tkLLmA/edit) | Monitoring and alerts, scheduled jobs, backup and restore, maintenance, incident procedure, support | 2026-11-20 |
-| [Detailed System Design](https://docs.google.com/document/d/1vo86_tCDzbLNYM0QKQHw83O2UjKKd5eKNC39IV0eYbM/edit) | Components, data flows, ports and protocols, interconnections; Mermaid source of the diagrams in its appendix | 2026-11-20 |
-| [Component diagram](https://drive.google.com/file/d/1qkUHVN8ZaTftbV9h9NhDr5UE5xwjXk2C/view) · [Data flow diagram](https://drive.google.com/file/d/1UWFMITu3WJLqeMODEXUs9JrX94zpPAr4/view) | Rendered PNGs | 2026-11-20 |
+| [Resource management plan](https://docs.google.com/document/d/1VkLBUxfWAS74H-Tx2WidTGa6DH9dc_eZcOxDugwZDds/edit) | Google Cloud/Firebase resources, GitHub, third-party services and license inventory, secret names, capacity | 2026-11-21 |
+| [O&M plan](https://docs.google.com/document/d/1-2ESI-k1sJ5RJNdUI09OGitxvIzKxUE2r3mt1tkLLmA/edit) | Monitoring and alerts, scheduled jobs, backup and restore, maintenance, incident procedure, support | 2026-11-21 |
+| [Detailed System Design](https://docs.google.com/document/d/1vo86_tCDzbLNYM0QKQHw83O2UjKKd5eKNC39IV0eYbM/edit) | Components, data flows, ports and protocols, interconnections; Mermaid source of the diagrams in its appendix | 2026-11-21 |
+| [Component diagram](https://drive.google.com/file/d/1qkUHVN8ZaTftbV9h9NhDr5UE5xwjXk2C/view) · [Data flow diagram](https://drive.google.com/file/d/1UWFMITu3WJLqeMODEXUs9JrX94zpPAr4/view) | Rendered PNGs (the component diagram still says 109 functions; re-render from the Mermaid source at the next diagram change, #893) | 2026-11-20 |
 
 ## Keeping them current
 
@@ -32,6 +32,9 @@ auditor or new engineer, and support [Acquisition readiness](acquisition-readine
 - The nightly update flags drift: a function, secret or outside host in the code that these documents don't list
   (#638).
 - Update this table's dates when a document is reviewed.
+- Nov 21 review: the SSP, configuration, resource and O&M plans and the Detailed System Design now count 110
+  functions (69 callable), with the new `apiUsage` tripwire; the O&M plan has a Maintenance line for the Dec 19
+  unused-function review (#876, #893).
 
 ## Related
 
