@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-22
-sources: [notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
+updated: 2026-11-23
+sources: ["mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -26,7 +26,9 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 - **One area per PR** (his rule, Nov 16): one app area, the coverage index tool, the end-to-end runner/workflows, the
   portal, the site, or docs and rules. Different areas go in separate PRs unless one doesn't work without the other;
   then the PR names the areas and why. Each PR carries its own change-log entry and says which area it touches
-  (mac-app CLAUDE.md, #664).
+  (mac-app CLAUDE.md, #664). Since Nov 22 that entry is its own file, `changelog/YYYY-MM/YYYY-MM-DD-<short-name>.md`,
+  never `CHANGELOG.md` (now only an index) or the frozen month files, so two PRs never edit the same file; `node
+  tools/changelog.mjs` reads a month back (#939).
 - **Where code goes: the code map** (his rule, Nov 21): the app, the portal and the server were split out of three big
   files (#620), and new code must not pile back into one. mac-app's `docs/code-map.md` lists every script and what it
   holds; new code goes in the file for its area (`public/js/page-*.js`, `admin/portal-*.js`, `functions/fn-*.js`), a
@@ -100,7 +102,34 @@ on Nov 16, 2026: no journey ever tapped it.)
   Functions' change quota as well as Cloud Run's read quota; staging retries the same way. Twelve merges in an hour on
   Nov 20 had made two deploys fail (#831, #833).
 
-Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359).
+Load tests only at ≥250 regular users or before a big cross-area feature; staging only (#359). The load tests'
+**restore** scenario (staging only) backs up all of staging, restores it and checks nothing is missing; pass rules:
+backup under 30 minutes, full restore under 60 (#926).
+
+## Type checking
+
+The component tests include a type check (`test/typecheck.test.mjs`, `tools/typecheck.mjs`): TypeScript reads the
+plain JavaScript of the server, app, portal, Monitor and site, with no build step. **Since Nov 22 no file has a type
+error**, and `ops/type-baseline.json` only goes down, so any new type error fails the tests. Fix the code or add a
+JSDoc type, never raise a count. Browser declarations: `tools/types/web.d.ts`; names scripts put on `window` are
+declared automatically (mac-app CLAUDE.md, #909, #911–#913). It found one dead line (invite.js) and no other real
+bugs (#913).
+
+## Release notes
+
+Every PR with a change a client or coach can see adds a plain one- or two-sentence note at the top of
+`public/js/releasenotes.js` (date, who: clients / coaches / internal, kind: New / Improved / Fixed, version when it
+bumps `APP_VERSION`), then rebuilds metabolichq.app/releases with `node tools/releases-page.mjs`. Written like Help:
+what changed for the reader, no issue numbers or code. No note for changes nobody sees. A version bump without a
+note, or an out-of-date page, fails `test/releasenotes.test.mjs` (his rule, Nov 22; mac-app CLAUDE.md, #919, #922).
+
+## Scheduled jobs
+
+A new timed job is a **scheduled Cloud Function** (`onSchedule`, `timeZone: 'America/New_York'`, in its area's
+`fn-*.js`, logic in its own module). A job that needs a full build machine stays a workflow, started at its time from
+Google Cloud, never by a `schedule:` line; `test/schedules.test.mjs` fails on any `schedule:` (his rule, Nov 22,
+after GitHub ran them 6–9 hours late, #927; mac-app CLAUDE.md, #928, #932). See
+[Architecture](../metabolichq/architecture.md#deploys-backups-and-jobs).
 
 ## Nightly review (CodeRabbit + Claude)
 
@@ -123,7 +152,8 @@ as part of the same work: SSP (security, roles, data types, outside services, se
 Management Plan (config-controlled items and settings), Change Management Plan (approval, testing, staging, release,
 rollback), Resource Management Plan (resources, services, plans, licenses, secrets), O&M Plan (monitoring, alerts,
 jobs, backups, incidents, support), Detailed System Design (components, data flows, hosts, ports, interconnections,
-diagrams). Each PR's Blast radius has a **Docs to update** line. If the Drive connectors aren't in the session, it
+diagrams), Engineer Onboarding Guide (code layout, setup, how to run and test, testing levels), Incident Response
+Procedure (incident steps, with the O&M Plan) (#907, #924). Each PR's Blast radius has a **Docs to update** line. If the Drive connectors aren't in the session, it
 goes under "What's left" on the issue. (Owner's rule, Nov 20; mac-app CLAUDE.md, #638, PR #868.)
 
 ## Status updates
@@ -155,8 +185,10 @@ Every backlog issue gets exactly one priority label.
 - **Outside services** (Google Cloud, Firestore, Stripe, etc.): reach them through GitHub Actions workflows (repo
   secrets, keyless sign-in on staging) and MCP connectors. A small workflow just to get access (e.g. a read-only
   report) is the normal route; propose it as soon as a direct call fails. A credential saved in the session is a last
-  resort. gcloud failing with CREDENTIALS_MISSING in a session is expected, not a broken key (notes 2026-11-17;
-  mac-app #550, #671).
+  resort. gcloud failing with CREDENTIALS_MISSING in a session is expected, not a broken key; don't retry it or ask
+  him to look in a console. The read-only workflow is its own PR (workflows area, medium risk), built like
+  `live-config.yml`: Run workflow only, read-only, a failed read fails the run (notes 2026-11-17; now in mac-app
+  CLAUDE.md, #945; mac-app #550, #671, #943).
 - Auto-updates email him with release notes and wait for approval.
 - Don't bring up FatSecret (e.g. for barcode lookups) unless he raises it.
 - Test sign-ups use "+" alias emails; remind him when a fresh one is needed.

@@ -4,7 +4,7 @@ Raw material stays where it lives. The wiki cites these; it doesn't copy them.
 
 | Source | What's there | Where |
 |---|---|---|
-| App repo | Code, `CHANGELOG.md` (every change), `README.md` (data model), `CLAUDE.md` (working rules), Help topics, e2e journeys | `coachbronson/mac-app` |
+| App repo | Code, change log (one file per entry in `changelog/YYYY-MM/` since Nov 22, earlier months frozen in `changelog/2026-10.md` and `2026-11.md`; `CHANGELOG.md` is only an index; `node tools/changelog.mjs --since YYYY-MM-DD` prints everything since a day, #939), `README.md` (data model), `CLAUDE.md` (working rules), Help topics, e2e journeys | `coachbronson/mac-app` |
 | Backlog | Ideas, bugs, client suggestions, with priority and lane labels; "How this was resolved" comments | GitHub issues in `coachbronson/mac-app` (label `backlog`) |
 | Site repo | coachbronson.com pages, blog archive, newsletter, form embeds, SEO scripts, `CLAUDE.md` | `coachbronson/coachbronson-site` |
 | Memory notes | Decisions and preferences Bronson stated in chat | Claude's memory (cited as `notes`) |
@@ -17,7 +17,7 @@ Raw material stays where it lives. The wiki cites these; it doesn't copy them.
 | Brand files | MetabolicHQ logo, icon, Central Hub SVG, LinkedIn banner, promo reel | Google Drive |
 | Load test results | Pass rules and runs | Issue #359; "Morning Rush Load Test" spreadsheet |
 | Security audit | CIS Google Cloud audit | mac-app `docs/security/` |
-| System documentation | SSP, config/change/resource management, O&M plan, detailed system design, diagrams (#638) | Google Drive: Documentation (`12gDgMAQDVP8vYBttR0YmZtInsewirAEP`); see [System documentation](../wiki/metabolichq/system-documentation.md) |
+| System documentation | SSP, config/change/resource management, O&M plan, detailed system design, diagrams, Engineer Onboarding Guide, Incident Response Procedure (#638, #620) | Google Drive: Documentation (`12gDgMAQDVP8vYBttR0YmZtInsewirAEP`); see [System documentation](../wiki/metabolichq/system-documentation.md) |
 | Blog guides and topics | coachbronson.com: `content/DRAFTING.md`, `NEWSLETTER.md`, `blog-topics.md`, `newsletter-topics.md`; MetHQ: `content/blog/DRAFTING.md`, `blog-topics.md` | coachbronson-site; mac-app |
 
 ## Artifacts (claude.ai)

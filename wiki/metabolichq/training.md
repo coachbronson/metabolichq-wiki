@@ -1,8 +1,8 @@
 ---
 title: Training (workouts, programs, swaps)
 summary: Programs, workout logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
-updated: 2026-11-21
-sources: [notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
+updated: 2026-11-23
+sources: ["#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
 ---
 
 # Training
@@ -52,7 +52,8 @@ workout: client chooses to keep or skip the existing one. Coaches moving workout
 
 ## Notifications
 
-"Send update" button with a running count of unsent workouts, plus a ~7 AM daily digest. Group program → everyone in
+"Send update" button with a running count of unsent workouts, plus a daily digest at 7:03 AM Eastern
+(the scheduled function `morningDigest` since Nov 22; GitHub had been sending it in the afternoon, #927, #930). Group program → everyone in
 the group; custom work → only that client.
 
 ## Reports, history, achievements

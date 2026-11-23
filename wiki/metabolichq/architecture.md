@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-22
-sources: [mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-23
+sources: ["#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -55,11 +55,12 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **110 Cloud Functions** (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+- **120 Cloud Functions**, 27 of them scheduled (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
   shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
   addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
   is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829); the 110th, `apiUsage`, the tripwire that
-  logs any use of 13 app functions nothing calls, until a Dec 19 review (#876, #893).
+  logs any use of 13 app functions nothing calls, until a Dec 19 review (#876, #893). Nov 22 added the 10 scheduled
+  functions that took over GitHub's timed jobs (#928, see below).
 - `ops/function-names.json` and `ops/function-endpoints.json` record every function; each PR loads the server the way
   the deploy does and checks name, trigger, account, region, secrets, limits and schedule (#718, #758).
 - The client app is split the same way (done Nov 20): 13 `public/js/page-*.js` files load in order after `app.js`,
@@ -88,22 +89,43 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 Zapier Pro, Resend Free, FatSecret Premier, USDA API, Daily (video, pay-as-you-go, with Daily transcription), Stripe
 (standard rates; Connect Standard for coaches), Google Workspace Business Standard (1 seat), Gemini on Vertex AI
 (MPT Coach), Cloudflare Turnstile (bot protection; App Check uses it, not reCAPTCHA), CodeRabbit, Dependabot.
-Circle is **not** part of the app.
+Circle is **not** part of the app. Status page: **Better Stack** (free plan, owner's account) at
+`status.metabolichq.app`, checking the app, portal and site every 3 minutes (#321).
 
 ## Deploys, backups and jobs
 
-- Push to `main` → tests → deploy (`.github/workflows/deploy.yml`). Staging has its own deploy workflow.
+- Push to `main` → tests → deploy (`.github/workflows/deploy.yml`). Since Nov 23 "Deploy to staging" runs the same
+  `deploy.yml` with `target: staging` (only the project, sign-in and secrets differ; a test fails if they drift).
+  Production now also deploys the Firestore indexes and Storage rules, without `--force`; staging also deploys
+  metabolichq.app's site (metabolichq-staging-home.web.app) (#681 build step 1, #946). (Previously staging had its
+  own copy of the steps, which fell behind and failed for about 5 days, #931.)
+- **Live config report** (Run workflow only, read-only): compares production's Firestore indexes and overrides and
+  live Firestore and Storage rules with the repo; on Nov 22–23 they matched (#943, #944, #681).
+- Package names: `metabolichq` and `metabolichq-functions` (previously masters-collective-app and mpt-functions);
+  the Google Cloud project keeps its name (#915).
 - Deploy CLI `tools/firebase-cli` is on firebase-tools ^15; the test emulators (root `package.json`) stay pinned at
   14.23.0 until a 15.x release fixes their slowdown (#567 closed, #592, #667).
 - A functions deploy that hits Cloud Run's per-minute read quota or Cloud Functions' per-minute change quota
   (HTTP 429) waits 60 s and retries once, on production and staging; any other failure fails at once (#668, #831,
   #833). Functions deploys on main run one at a time; if several wait, only the newest runs (#833).
-- Backups: Firebase daily Firestore backups (14 weeks) + nightly JSON backup in GitHub Actions (30 days; cron 07:17 UTC, so 2:17 AM ET in winter, 3:17 AM in summer;
-  `.github/workflows/backup.yml`). Cloud Storage files aren't in either backup layer (an open risk in the SSP, #638).
+- Backups: Firebase daily Firestore backups (14 weeks) + the nightly JSON backup, the scheduled function
+  **`nightlyBackup`** (2:17 AM Eastern), which streams `mac-backup-YYYY-MM-DD.json.gz` into the private bucket
+  `masters-collective-app-backups` (us-central1, public access prevented, files deleted after 30 days; staging:
+  `metabolichq-staging-backups`; setup and undo in `docs/backup-bucket.md`) (#928 step 5, #937). (Previously a
+  GitHub workflow at 07:17 UTC with the file kept as a 30-day download.) Restore takes a date and reads the bucket;
+  it now reads and writes in parallel (`RESTORE_PARALLEL` 16) and a dry run lists documents that differ (#926). Cloud Storage files aren't in either backup layer (an open risk in the SSP, #638).
   Restore workflow can restore everything, one person or a path; dry run first.
+- **Timed jobs run in Google Cloud** (owner's rule, Nov 22): GitHub started scheduled workflows 6–9 hours late from
+  Nov 15 (#927), so every one moved (#928, steps 1–6 done Nov 22). Scheduled functions (Eastern time):
+  `nightlyBackup` 2:17, `transcriptPull` 3:20, `purgeArchived` 3:41, `partnerBilling` 4:17, `morningDigest` 7:03.
+  Jobs that need a full build machine stay GitHub workflows, started on time by starter functions with the
+  fine-grained token `WORKFLOW_START_TOKEN` (mac-app only, Actions): `nightlyE2EStart` 2:13, `securityScanStart`
+  2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23. A start or job that
+  fails saves a security alert for the owner; starters give up after 15 seconds (nightly review Nov 23, #948). Each
+  moved workflow keeps "Run workflow"; `test/schedules.test.mjs` fails on any new `schedule:` (#930–#938).
 - Nightly: review pass, CodeRabbit + Claude, in one ongoing Claude session (~12:06 AM ET; see
-  [Engineering rules](../rules/engineering-rules.md#nightly-review-coderabbit--claude)), full end-to-end run (~2:13 AM ET, emails only when something needs
-  action), 7 AM workout digest.
+  [Engineering rules](../rules/engineering-rules.md#nightly-review-coderabbit--claude)), full end-to-end run (2:13 AM ET, emails only when something needs
+  action), 7:03 AM workout digest.
 - Security jobs: **securityWatch** (every 5 min), **securityLogWatch** (every minute), **geoDbRefresh** (weekly
   country file) (#514; see [Security](security.md)).
 - Daily retry jobs: **coachPayWork** also retries refused coach-site refunds and renewals (#794, #795);

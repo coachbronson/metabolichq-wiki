@@ -64,7 +64,8 @@ The repo is public on GitHub (repo settings, checked 2026-11-21), so treat every
 ## Nightly update (scheduled task, about 4:41 AM Eastern)
 
 1. Read `log.md` for the last update date.
-2. In `coachbronson/mac-app`: CHANGELOG entries since then, issues closed since then (read each "How this was
+2. In `coachbronson/mac-app`: change log entries since then (`node tools/changelog.mjs --since <last update date>`
+   in mac-app; entries are one file each under `changelog/` since Nov 22, `CHANGELOG.md` is only an index), issues closed since then (read each "How this was
    resolved" comment), issues opened or re-prioritized since then. Same for `coachbronson/coachbronson-site` commits.
 3. Process [`inbox.md`](inbox.md): file each line into the right page (with its source) or, if it only points to
    something, add the reference to `sources/README.md` or the page it belongs on. Remove each line once filed; leave

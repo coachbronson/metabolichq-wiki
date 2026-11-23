@@ -14,6 +14,37 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-23 — Nightly update
+
+Covered mac-app from `4ba0530` to `87adc42` (CHANGELOG 2026-11-22 and 2026-11-23, read with `tools/changelog.mjs`;
+version 8.71.0), issues #320, #321 and #558 closed (each "How this was resolved" read), new issues #921, #927, #928,
+#940, the #620, #681, #928 and #940 progress comments, mac-app CLAUDE.md (release notes, scheduled jobs, outside
+services, change-log files, type checking, the documents table) and the 17 inbox lines. coachbronson-site: no
+commits since dc12429; no CLAUDE.md or README changes.
+
+- acquisition-readiness: owner's Nov 22 calls (ownership and accounts accepted, SOC 2 and HIPAA deferred, one
+  region, browser error reporting deferred to #921); "Still open (Nov 18)" replaced by status by section: §2, §4 and
+  §5 done or accepted except #575; #512 left in §3.
+- architecture: 120 functions (27 scheduled); timed jobs in Google Cloud (#928) with the starter functions and
+  `WORKFLOW_START_TOKEN`; nightlyBackup into the private backups bucket (#937) and faster restore (#926); one deploy
+  workflow for production and staging (#946); Live config report (#943); package names (#915); Better Stack.
+- security: new "Google Cloud accounts" section (#558 closed, #940 follow-ups, `ops/cloud-accounts.json` checked
+  nightly, #942); open work updated. hipaa: deferred.
+- engineering-rules: new sections Type checking, Release notes, Scheduled jobs; change-log entry files (#939);
+  outside-services rule now in mac-app CLAUDE.md (#945); the documents table's two new documents; restore load test.
+- system-documentation: Engineer Onboarding Guide and Incident Response Procedure added; all six plans reviewed
+  2026-11-22; #946 updates on Nov 23; component diagram also lacks Better Stack.
+- versions: current 8.71.0; release notes; Nov 22–23 timeline; #681's staging decisions and build step 1 part 1.
+- help-and-howto (status FAQ, What's new, Nov 22 review #910), coach-portal (What's new tab), marketing-site (CoachRx
+  on Compare #908, Privacy and Terms on the site #925, /releases #922, Trust links), research-and-privacy (policy and
+  research question worded for MetabolicHQ, #925, #929), training (7:03 AM digest, #930).
+- roadmap-and-backlog: snapshot refreshed (95 open backlog, 8 high, 14 on the roadmap, 25 need a decision).
+- sources/README and this repo's CLAUDE.md (nightly step 2): change log location and `tools/changelog.mjs` (from the
+  inbox, #939). Inbox emptied.
+- Noticed: #678 and #686 are still open on GitHub though fixed (#740, #851).
+
+Last update covered: 2026-11-23.
+
 ## 2026-11-22 — Nightly update
 
 Covered mac-app from `614f3eb` to `4ba0530` (CHANGELOG 2026-11-21 later entries; version still 8.70.1), issues

@@ -1,8 +1,8 @@
 ---
 title: HIPAA — practice integration and HIPAA-ready MetabolicHQ
 summary: The health-practice integration prospect and the idea of making MetabolicHQ fully HIPAA compliant
-updated: 2026-11-19
-sources: [notes, "#171", "#381"]
+updated: 2026-11-23
+sources: ["#620", notes, "#171", "#381"]
 ---
 
 # HIPAA
@@ -21,7 +21,8 @@ sources: [notes, "#171", "#381"]
 
 None of his current or likely partner coaches are healthcare providers billing insurance, but he's considering full
 HIPAA compliance for market positioning with clinical partners, plus a health-data privacy baseline.
-Needs his decision (#381; deciding on it is also a #620 item).
+**Deferred** (owner, Nov 22): HIPAA and SOC 2 are not on the table now and may come back; no work needed, #381
+stays open (#620, #381). (Previously it needed his decision as a #620 item.)
 
 - **Plan in the issue:** phase 1, a HIPAA-ready baseline now (sign-in on Identity Platform, which Google's BAA covers;
   health data only in BAA-eligible services and kept out of email and Zapier; MFA for coaches and admins; audit logs of

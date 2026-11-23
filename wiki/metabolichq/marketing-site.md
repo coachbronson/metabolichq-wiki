@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-21
-sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
+updated: 2026-11-23
+sources: ["#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
 ---
 
 # metabolichq.app site
@@ -11,7 +11,17 @@ sources: [notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#
 - Audience: coaches and coaching businesses. Main button: **"Apply to become a partner"**. The app is live and coaches
   can sign up free now (it's not "prelaunch").
 - Sells Basic and Premium (see [Partner program](partner-program.md)); shows real screens and what's coming.
-- Pages: home, about, compare, research (citizen science, footer menu), security, `/mpt`, blog. `llms.txt` for AI search.
+- Pages: home, about, compare, research (citizen science, footer menu), security, trust, privacy, terms, releases,
+  `/mpt`, blog. `llms.txt` for AI search.
+- **Compare** (metabolichq.app/compare) has five products since Nov 22: CoachRx (OPEX Fitness) joined after
+  TrueCoach, from coachrx.app and its help centre; "Not advertised" where no public mention was found (#908). The
+  home page's compare call-out, FAQ and `llms.txt` name it too.
+- **Privacy Policy and Terms** moved from the app host to **metabolichq.app/privacy** and **/terms** on Nov 22, with
+  the site's header, menu and footer; the app's old addresses redirect (301), so app links, emails and bookmarks keep
+  working. Same PR: both now describe MetabolicHQ, owned and run by BD Solutions LLC, with MPT as one coach's space
+  (#925; see [Research and privacy](research-and-privacy.md#privacy)).
+- **metabolichq.app/releases** (What's new): the release notes for clients and coaches, plain HTML built from the
+  app's notes by `node tools/releases-page.mjs`; linked from the Trust page, sitemap and `llms.txt` (#320, #922).
 - **metabolichq.app/security** says how to report a security problem; `/.well-known/security.txt` points to it
   (#322). A Security link is in every page's footer (CHANGELOG 2026-11-14).
 - The site **enforces** its Content-Security-Policy (the first of the three sites, #693); its inline scripts are now
@@ -84,8 +94,10 @@ enforced policy (#704).
   choice (previously Profile → Documents; #871).
 - Linked from the app's Help (see [Help and how-to](help-and-howto.md)) (#872).
 - What's left (#866, closed Nov 20 at the owner's request): the owner handles the legal review himself; the HIPAA line
-  waits for #381 (the site test blocks any HIPAA wording on the page until then); link release notes (#320) and the
-  status page (#321) when they ship. An accessibility statement and a link from sign-up weren't carried anywhere (#866).
+  waits for #381 (the site test blocks any HIPAA wording on the page until then). An accessibility statement and a
+  link from sign-up weren't carried anywhere (#866).
+- Linked from it since Nov 22: the status page (an "Is everything working?" line and a Better Stack row in the
+  providers table, #321, #917) and the release notes ("What changed lately", #922).
 
 ## MetHQ blog (metabolichq.app/blog)
 
@@ -94,7 +106,7 @@ whenever possible. Drive photos are coaching-oriented, so combine them with text
 
 ## Later
 
-Release notes (#320), public status page (#321), Search Console/Bing verification (#265).
+Search Console/Bing verification (#265). (Release notes and the status page shipped Nov 22, #320, #321.)
 
 ## Related
 

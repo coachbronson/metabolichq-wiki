@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-22
-sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
+updated: 2026-11-23
+sources: ["#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -12,7 +12,14 @@ sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618
 - Version number at the bottom, labeled BETA; "Provided by MetabolicHQ" mark beside it (v8.66.3; previously
   "Hosted by", #618). Under them, links to the **Privacy Policy** and **How your data is handled** (the Trust page,
   metabolichq.app/trust), each in a new tab; new FAQ answers for clients and coaches link the Trust page, and the Help
-  journey checks both links and that searching "trust page" finds the FAQ (#319, #872).
+  journey checks both links and that searching "trust page" finds the FAQ (#319, #872). A **Status** link sits
+  beside them, and the FAQ "Is the app down?" (in the app and the portal's Help) points to status.metabolichq.app,
+  then your own connection, then Contact support (#321, #918).
+- The version line reads "Version BETA 8.71.0 · What's new" and opens **What's new**, the release notes grouped by
+  day; coaches see clients' and coaches' notes with Everything / For clients / For coaches chips. The portal's Help has
+  a third tab, **What's new** (#320, #920; see [Versions](versions.md)).
+- The Privacy Policy and Terms are site pages now (metabolichq.app/privacy and /terms); the app's old addresses
+  redirect, so Help's links keep working (#925).
 - **Ask MPT Coach** from Help (Premium spaces only; see [MPT Coach](mpt-coach.md)).
 - Help topics: `public/js/help.js`. Video scripts: `e2e/howto/videos.py`; re-made by the "How-to videos" workflow.
 - **Coach portal Help** (v8.67.0, #645): the same `help.js` feeds a ? on every portal page, with **Coach portal** and
@@ -34,10 +41,14 @@ sources: [notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618
   #816 fixes); MPT Coach's rules now say the owner's report shows no question or answer text (#834).
 - Help review Nov 21: everything still matched, including the new Privacy Policy and Trust page links and their FAQ
   answers (#872). MPT Coach got test question 50: who can see my data and where to read how it's handled (#885).
+- Help review Nov 22: Help, videos and MPT Coach still matched the portal moves, the Clients list fix (#891) and the
+  tripwire (#910). The portal Help video now shows a third tab (What's new); check it at the next review after a
+  full run (#320 resolution).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).
-- Planned: tell suggesters when their request ships, and announce launches (#423); user-facing release notes (#320).
+- Planned: tell suggesters when their request ships, and announce launches (#423). (User-facing release notes done
+  Nov 22, #320.)
 
 ## Related
 

@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-22
-sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
+updated: 2026-11-23
+sources: ["#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
 ---
 
 # Acquisition readiness (#620, high)
@@ -26,17 +26,33 @@ sources: ["#620", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHA
 - **QR-code library:** keep both copies (`public/js/qrcode.js`, `admin/qrcode.js`), because each site loads scripts
   only from itself; a test fails if they ever differ (#620, #718).
 
-## Still open (Nov 18)
+## Owner's decisions (Nov 22)
 
-- §2: the project ownership note; Workspace, Resend and Zapier accounts under BD Solutions LLC; `package.json` name
-  and description (#620).
-- §3 security: #512 (lockout stage C around Nov 29, App Check), #558 step 4 (taking Editor off the default compute
-  account) waits to **Nov 23**; SOC 2 readiness roadmap; decide on #381 (#620). Done: error alerting (#433), #515,
-  #550 and #716.
-- §4: #575 release process, #320 release notes, #321 status page, incident procedure, backup time at 10× data,
-  second-region decision (#620).
-- §5: split the big files (below), type checking, an architecture and engineer-onboarding guide, `cohortCache`
-  review (#620).
+- **Accepted risk, not changing:** project ownership as written in docs/, and the Workspace, Resend and Zapier
+  accounts staying where they are rather than moving to BD Solutions LLC (#620).
+- **Deferred:** SOC 2 and HIPAA (#381): not on the table now, may come back, no work needed; #381 stays open (#620).
+- **One region** (us-central1): a second region or regional disaster recovery isn't needed now (accepted risk, may be
+  revisited) (#620).
+- **Error alerting:** server errors were already alerted (Google Cloud alerts in `ops/alerts/`, uptime checks,
+  performance watch); browser error reporting is deferred to #921 (medium, ops) (#620).
+- Order for the rest of §4: incident procedure, then backup timing at 10× data, then the release process (#575) (#620).
+
+## Status by section (Nov 23)
+
+- §2: done or accepted. Package names are `metabolichq` and `metabolichq-functions` (#915); ownership and accounts
+  are accepted risk (above).
+- §3 security: **#558 done Nov 22**: no service account of ours holds Editor in production or staging (see
+  [Security](security.md#google-cloud-accounts)); follow-ups in #940. Still open: #512 (lockout stage C around
+  Nov 29, App Check). SOC 2 and #381 deferred. Done earlier: error alerting (#433), #515, #550 and #716 (#620).
+- §4: done Nov 22: release notes (#320), status page (#321, status.metabolichq.app), the Incident Response
+  Procedure (#924), backup timing at 10× data (#926: on staging with 85,176 documents, backup 222 s and full restore
+  143 s against limits of 30 and 60 minutes). Second region: not now. Left: the release process (#575), which waits
+  on #681's staging work (see [Versions](versions.md#after-beta-575-high)).
+- §5: done Nov 22: the big-file split (below), type checking (#909–#913: no type errors anywhere; see
+  [Engineering rules](../rules/engineering-rules.md#type-checking)), the Engineer Onboarding Guide (#907; see
+  [System documentation](system-documentation.md)), the `cohortCache` review (#916: reads only the last 200 days of
+  workout logs, warns past 5 minutes). Also: the change log is one file per entry (#939), and scheduled jobs run in
+  Google Cloud (#928). Next: the full functional audit (#805, below).
 
 ## Splitting the big files (§5)
 

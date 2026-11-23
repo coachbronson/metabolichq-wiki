@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-21
-sources: [notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-23
+sources: ["#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -98,6 +98,26 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Team-coach invites are created in one step, so two spaces can't take over the same email's invite; withdrawing
   checks ownership in the same step (#825).
 
+## Google Cloud accounts
+
+- **No service account of ours holds Editor** in production or staging (Nov 22, done by the owner, staging first;
+  #558 closed). In production only Google's own `cloudservices` agent keeps Editor. The default compute account keeps
+  only the four roles it needs to build functions (Cloud Build builder, Artifact Registry writer, Logs writer, Storage
+  object viewer); the 12 older scheduler jobs now call their functions as `functions-runtime`; the security scan
+  closed both "Editor on the whole project" findings (#558).
+- Follow-ups done the same night (#940): staging's `github-deploy` has production's deploy roles instead of Editor;
+  the production compute account's unused project-wide Token Creator is gone (`functions-runtime` signs as itself);
+  production's deploy account can no longer act as staging's `functions-runtime`; the old site deploy account
+  `github-deploy-727` (last used Nov 15) and a one-time key on Firebase's admin account are disabled, to be deleted
+  around Nov 29 with the owner's OK. Still open on #940: the first production build under the new roles (the next
+  merge that changes server code) (#558, #940).
+- `ops/cloud-accounts.json` lists every service account in production and staging: what uses it, why, its
+  project-wide roles and whether it may have a key. The nightly scan checks production against it and flags any
+  unlisted account, role or key, a missing role, a listed account that's gone, or one that should be disabled but
+  isn't (#942). Owner's ask: keep track of which accounts are used by which services and why (#940).
+- `WORKFLOW_START_TOKEN`: a fine-grained GitHub token that can only start workflows in mac-app, used by the
+  starter functions (#928, #936).
+
 ## Code scanning
 
 - Scans: nightly plus PR-level (`pr-security.yml`, `security-scan.yml`); shown on the Security page and in the Monitor.
@@ -130,9 +150,10 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 
 ## Open
 
-- **High:** #512 pending actions (lockout stage C, App Check); #558 owner steps in Google Cloud (scan read access,
-  App Check key, functions account instead of Editor).
-- **Medium:** #381 HIPAA-ready MetabolicHQ (see [HIPAA](hipaa.md)).
+- **High:** #512 pending actions (lockout stage C, App Check). (#558, the Google Cloud owner steps, closed Nov 22.)
+- #940 least-privilege follow-ups (see above). Browser error reporting deferred to #921 (medium).
+- Nov 22 scan: sign-in still allowed from a leftover PR preview domain (medium finding, #558 resolution).
+- **Medium:** #381 HIPAA-ready MetabolicHQ, deferred with SOC 2 (owner, Nov 22; see [HIPAA](hipaa.md)).
 - **Gaps written into the SSP as open risks** (no issues yet): production deploys use a long-lived JSON service
   account key (staging is keyless); Cloud Storage files aren't in either backup layer; secret rotation dates aren't
   recorded (#638 resolution).

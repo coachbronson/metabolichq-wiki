@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-22
-sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-23
+sources: ["#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -17,10 +17,11 @@ sources: [notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, adm
   platform services.
 - **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
   (#515; see [Security](security.md)).
-- **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Two tabs:
+- **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Tabs:
   **Coach portal** (how to use each page, coaching from the phone app) and **Client app** (what clients see in their
   Help, so a coach can walk a client through it). Opens on the topics for the current page; same search, chips and
-  how-to videos as the app. See [Help and how-to](help-and-howto.md).
+  how-to videos as the app. A third tab, **What's new**, shows clients' and coaches' release notes; the version line
+  under the menu opens it (#920). See [Help and how-to](help-and-howto.md).
 - **MPT** stacked under Platform, with exactly the same menu a partner coach gets (Get help stays in MPT). For MPT he
   wants Finances but not the Stripe Connect setup or manual pay-by selector.
 - Partner coaches using Stripe have a Memberships page; every space has Payments (tiers, client counter, coupons).

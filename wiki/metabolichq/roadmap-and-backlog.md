@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-22
+updated: 2026-11-23
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,35 +12,32 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-22)
+## Snapshot (2026-11-23)
 
-97 open `backlog` issues: 69 features, 16 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
-(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162); 26 need a decision. 8 high,
-37 medium, 52 low, no critical. Unchanged since Nov 21.
-Closed since 2026-11-21, all outside the backlog: #785 server calls matched to the controls that trigger them (done,
-#873), #888 (duplicate of #876), #896 emulator memory in full runs (#897), #899 runs crossing midnight UTC (#904).
-#876 now stays open until the Dec 19 review of the 13 unused functions (owner's call, #893). Still open from #785:
-#877 authenticator-app two-step journey on staging (medium). Earlier this week (Nov 20, medium): #856 phase angle
-and visceral fat · #857 SOAP notes · #858 macro diet presets · #859 testimonial signal · #860 several item types in
-one resource section · #861 delegated admin roles · #862 custom builds offering · #863 assign programs to
-individuals, groups or everyone · #864 save a workout to a program, duplicate a program. #678 (fixed by #740) and
+95 open `backlog` issues: 68 features, 15 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
+(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162); 25 need a decision (#681 no
+longer does: his six decisions came Nov 22). 8 high, 35 medium, 52 low, no critical.
+Closed since 2026-11-22: **#320** release notes (#919, #920, #922) and **#321** status page (#917, #918), both from the
+backlog; **#558** Google Cloud owner steps (not labeled `backlog`; Editor off the default accounts, follow-ups in
+#940). New since Nov 22, outside the backlog: #927 scheduled workflows 6–9 hours late (bug, high, ops) and #928 move
+every scheduled job to Google Cloud (high, ops; steps 1–6 merged Nov 22, both still open); #921 browser error
+reporting (medium, ops, deferred); #940 least-privilege follow-ups after #558 (no labels). #678 (fixed by #740) and
 #686 (fixed by #851) are still open.
 
 **High priority:** #805 full functional audit after the code split (needs the owner's go-ahead; on the roadmap since
 Nov 21; see [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after
 beta · #512 security pending actions (lockout stage C around Nov 29, App Check) · #620 acquisition readiness (needs a
-decision; owner's accepted risks; server, app and portal splits done (Nov 21); see
+decision; §2, §4 and §5 nearly all done or accepted by Nov 22, #575 and #512 left; see
 [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
-development and staging: PR previews, staging as a production mirror, a testing period before production (needs
-decisions; changes #575's staging gate) · #410 client groups: coach-made groups with assigned coaches and group
-managers · #710 Your brand: an app name separate from the business name · #558 Google Cloud owner steps (not labeled
-`backlog`; step 4 waits to Nov 23).
+development and staging: PR previews, staging as a production mirror, a testing period before production
+(decisions made Nov 22; build step 1 part 1 done, #946; see [Versions](versions.md#after-beta-575-high)) · #410 client groups: coach-made groups with assigned coaches and group
+managers · #710 Your brand: an app name separate from the business name · outside the backlog: #927/#928 scheduled jobs (above).
 
 **Medium (selection):** #382 client add-ons · #634 import a returning client's history from a MetabolicHQ export
 (needs a decision) · #355 recipe/meal and history import from other nutrition apps · #356 recipes · #162 wearable sync
 · #570 free coach marketplace · #358 coach custom reports · #602 progress photos · #603 save check-ins partway ·
 #478 rep-max table · #479 suggested weights · #332 coach onboarding workflows · #256 MCP server · #174 integrations ·
-#320/#321 release notes, status page · #381 HIPAA-ready · #657 end-to-end coverage of every button,
+#381 HIPAA-ready (deferred, owner Nov 22) · #657 end-to-end coverage of every button,
 field and display (stages 1–2 done) · #660 e2e: Stripe Checkout sometimes shows Link + hCaptcha instead of the card
 form (bug; test-mode card-only and a Link-screen step went in, #687, #688) · #666 food diary ‹ Back after changing
 days can land on the wrong day (bug).

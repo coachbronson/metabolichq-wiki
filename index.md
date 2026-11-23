@@ -7,8 +7,8 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 ## MetabolicHQ (the platform and app)
 
 - [Platform and brands](wiki/metabolichq/platform-and-brands.md) — MetabolicHQ vs MPT; mission, positioning, branding
-- [Architecture](wiki/metabolichq/architecture.md) — repos, Firebase projects, domains, data model, server code layout, email, services, backups, nightly jobs
-- [Versions](wiki/metabolichq/versions.md) — version scheme, majors 1.0–8.0, current version, release process after beta
+- [Architecture](wiki/metabolichq/architecture.md) — repos, Firebase projects, domains, data model, server code layout, email, services, backups (nightlyBackup into a private bucket), scheduled jobs in Google Cloud, one deploy for production and staging
+- [Versions](wiki/metabolichq/versions.md) — version scheme, majors 1.0–8.0, current version, release notes (What's new, /releases), release process after beta and #681 staging decisions
 - [Spaces and roles](wiki/metabolichq/spaces-and-roles.md) — spaces, main/team coaches, business name and main-coach changes, client assignment, coach vs client accounts, sign-up, demo spaces
 - [Partner program](wiki/metabolichq/partner-program.md) — tiers and pricing, Premium add-on, agreement, client waiver, onboarding, coach payments and packages
 - [MPT memberships](wiki/metabolichq/mpt-membership.md) — $47.99/$450 plan, trial, coupons, launch targets, test accounts, Masters Collective shutdown
@@ -23,15 +23,15 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 - [Resources and files](wiki/metabolichq/resources-and-files.md) — resource libraries, worksheets, timed release, private shared files
 - [Coach portal](wiki/metabolichq/coach-portal.md) — menus, Help, Security page, Your brand (business name, main coach), Program calendar workout menu, client management, Inbox, Backlog roadmap, demo data, Costs, Performance
 - [MetHQ Monitor](wiki/metabolichq/methq-monitor.md) — phone ops view: dashboards, Security, Quality, "Fix this" Claude menus
-- [Security](wiki/metabolichq/security.md) — security events and sign-in alerts, Security page, code scanning and reviewed exceptions, App Check/Turnstile, enforced CSP, open work
+- [Security](wiki/metabolichq/security.md) — security events and sign-in alerts, Security page, code scanning and reviewed exceptions, App Check/Turnstile, enforced CSP, Google Cloud accounts (no Editor, the account list), open work
 - [Client add-ons](wiki/metabolichq/client-add-ons.md) — client add-on rules and ideas; planned coach add-ons (marketplace, GLP-1 companion)
 - [Research and privacy](wiki/metabolichq/research-and-privacy.md) — citizen-science opt-in, privacy, data ownership
 - [HIPAA](wiki/metabolichq/hipaa.md) — health-practice integration prospect; HIPAA-ready MetabolicHQ, its plan, cost research and BAA vendors
-- [Help and how-to](wiki/metabolichq/help-and-howto.md) — Help page, how-to videos, support, review after e2e runs
-- [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, sales demo pages (Kiltz, Ovadia, CCI), MetHQ blog
+- [Help and how-to](wiki/metabolichq/help-and-howto.md) — Help page, How-to videos, What's new, status FAQ, support, review after e2e runs
+- [metabolichq.app site](wiki/metabolichq/marketing-site.md) — coach landing page, branding widget, MPT page, Compare, Privacy/Terms, releases page, sales demo pages (Kiltz, Ovadia, CCI), MetHQ blog
 - [MetabolicHQ content](wiki/metabolichq/methq-content.md) — messaging framework (one claim, five pillars), homepage "Replace your stack", social, blog rules and topic queue
-- [Acquisition readiness](wiki/metabolichq/acquisition-readiness.md) — how mature MetabolicHQ looks to a buyer (#620), accepted risks, open items, splitting the big files, the full functional audit after the split (#805)
-- [System documentation](wiki/metabolichq/system-documentation.md) — where the SSP, config, change, resource and O&M plans and the detailed system design live (Google Drive); last-reviewed dates
+- [Acquisition readiness](wiki/metabolichq/acquisition-readiness.md) — how mature MetabolicHQ looks to a buyer (#620), accepted risks (incl. Nov 22 calls), status by section, splitting the big files, the full functional audit after the split (#805)
+- [System documentation](wiki/metabolichq/system-documentation.md) — where the SSP, config, change, resource and O&M plans the detailed system design, Engineer Onboarding Guide and Incident Response Procedure live (Google Drive); last-reviewed dates
 - [Roadmap and backlog](wiki/metabolichq/roadmap-and-backlog.md) — where the backlog lives, snapshot of open work, roadmap shape
 
 ## Coaching business
@@ -47,7 +47,7 @@ The wiki is a starting point: memory, conversation and sources still count. Anyt
 
 ## Rules
 
-- [Engineering rules](wiki/rules/engineering-rules.md) — plan first, branches, one area per PR, blast radius, testing (a wrong result is never a pass), outside services, issues, priorities
+- [Engineering rules](wiki/rules/engineering-rules.md) — plan first, branches, one area per PR, blast radius, testing (a wrong result is never a pass), type checking, release notes, scheduled jobs, outside services, issues, priorities
 - [Writing and brand rules](wiki/rules/writing-and-brand-rules.md) — no "practice", no "fuel" for food, captchas, addresses, senders
 - [Programming conventions](wiki/rules/programming-conventions.md) — workout-entry conventions and swap standards
 
