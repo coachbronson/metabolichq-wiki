@@ -14,6 +14,28 @@ Newest at the top. Each entry: date, what changed, pages touched.
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
 
+## 2026-11-24 — Nightly update
+
+Covered mac-app from `87adc42` to `5496a55` (CHANGELOG 2026-11-23 and 2026-11-24, read with `tools/changelog.mjs`;
+version 8.71.1), issues #940 and #964 closed (each "How this was resolved" read), new issue #960, the #681 progress
+comments, PR #967 (open) and the six system documents' Drive edit dates. mac-app CLAUDE.md and README unchanged.
+coachbronson-site: no commits since dc12429; no CLAUDE.md or README changes. Inbox was empty.
+
+- architecture: 121 functions (28 scheduled, `stagingDemoStart` Mondays 4:17 AM); new lines on staging as a
+  production mirror (email copies and the Staging inbox, real AI, USDA and Open Food Facts outside load tests,
+  authenticator-only two-step, Staging sign-in link, Staging demo data) and a staging preview of each PR (#962).
+- versions: current 8.71.1 (#951); Nov 23 timeline; #681 build steps 1–3 done, owner's staging checks, what's left
+  (step 4 gate, step 5 drift check, #960, #967).
+- security: #940 closed (first production builds under the new roles passed; deletions wait for Nov 29); the owner's
+  two-step set-up screen (#964, #966); staging two-step without text codes.
+- coach-portal: staging tools on Maintenance (#955, #959, #961). help-and-howto: Help review Nov 23 (#951); the
+  portal Help video doesn't show the What's new tab (replaces the Nov 22 note that it did).
+- system-documentation: SSP, CMP, Change plan, RMP, O&M and DSD last reviewed 2026-11-23 (Drive edit dates, the
+  #681 PRs' Docs to update lines).
+- roadmap-and-backlog: snapshot refreshed (96 open backlog, 8 high, 14 on the roadmap, 26 need a decision).
+
+Last update covered: 2026-11-24.
+
 ## 2026-11-23 — Nightly update
 
 Covered mac-app from `4ba0530` to `87adc42` (CHANGELOG 2026-11-22 and 2026-11-23, read with `tools/changelog.mjs`;

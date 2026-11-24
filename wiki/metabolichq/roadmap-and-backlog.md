@@ -1,7 +1,7 @@
 ---
 title: Roadmap and backlog
 summary: Where the backlog lives, priority rules, the current shape of open work, and the member/coach roadmap
-updated: 2026-11-23
+updated: 2026-11-24
 sources: [GitHub issues in mac-app, notes]
 ---
 
@@ -12,17 +12,17 @@ sources: [GitHub issues in mac-app, notes]
 - Lanes: `lane: features`, `lane: ops`, `lane: bugs`, `lane: rnd`. Other labels: `roadmap`, `needs-decision`,
   `client-request`, `priority: …`.
 
-## Snapshot (2026-11-23)
+## Snapshot (2026-11-24)
 
-95 open `backlog` issues: 68 features, 15 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
-(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162); 25 need a decision (#681 no
-longer does: his six decisions came Nov 22). 8 high, 35 medium, 52 low, no critical.
-Closed since 2026-11-22: **#320** release notes (#919, #920, #922) and **#321** status page (#917, #918), both from the
-backlog; **#558** Google Cloud owner steps (not labeled `backlog`; Editor off the default accounts, follow-ups in
-#940). New since Nov 22, outside the backlog: #927 scheduled workflows 6–9 hours late (bug, high, ops) and #928 move
-every scheduled job to Google Cloud (high, ops; steps 1–6 merged Nov 22, both still open); #921 browser error
-reporting (medium, ops, deferred); #940 least-privilege follow-ups after #558 (no labels). #678 (fixed by #740) and
-#686 (fixed by #851) are still open.
+96 open `backlog` issues: 68 features, 16 ops, 8 R&D, 3 bugs (#660, #666, #686; #678 has no lane); 14 on the roadmap
+(#805, #710, #686, #681, #679, #678, #667, #666, #660, #620, #575, #512, #410, #162); 26 need a decision. 8 high,
+36 medium, 52 low, no critical.
+Closed since 2026-11-23: **#964** the owner's first sign-in without two-step showed a raw permission error (bug,
+medium; fixed by #966, opened and closed the same day) and **#940** least-privilege follow-ups (not labeled
+`backlog`; see [Security](security.md#google-cloud-accounts)). New: **#960** staging demo data billing edge cases
+(mid-trial, lapsed, paid packages) in Stripe test mode (medium, ops, needs a decision; split out of #681). Still open
+outside the backlog: #927 and #928 scheduled jobs (high, ops), #921 browser error reporting (deferred). #678 (fixed
+by #740) and #686 (fixed by #851) are still open.
 
 **High priority:** #805 full functional audit after the code split (needs the owner's go-ahead; on the roadmap since
 Nov 21; see [Acquisition readiness](acquisition-readiness.md#splitting-the-big-files-5)) · #575 release process after
@@ -30,7 +30,7 @@ beta · #512 security pending actions (lockout stage C around Nov 29, App Check)
 decision; §2, §4 and §5 nearly all done or accepted by Nov 22, #575 and #512 left; see
 [Acquisition readiness](acquisition-readiness.md)) · #648 a clear Finances message for team coaches · #681
 development and staging: PR previews, staging as a production mirror, a testing period before production
-(decisions made Nov 22; build step 1 part 1 done, #946; see [Versions](versions.md#after-beta-575-high)) · #410 client groups: coach-made groups with assigned coaches and group
+(decisions made Nov 22; build steps 1–3 done Nov 23, step 4 the gate itself next; see [Versions](versions.md#after-beta-575-high)) · #410 client groups: coach-made groups with assigned coaches and group
 managers · #710 Your brand: an app name separate from the business name · outside the backlog: #927/#928 scheduled jobs (above).
 
 **Medium (selection):** #382 client add-ons · #634 import a returning client's history from a MetabolicHQ export

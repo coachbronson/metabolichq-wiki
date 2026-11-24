@@ -1,16 +1,16 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-23
-sources: ["#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
+updated: 2026-11-24
+sources: ["#951", "#956", "#960", "#962", "#964", "#966", "#967", CHANGELOG 2026-11-23, "#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
 ---
 
 # Versions and release history
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on 2026-11-23: **8.71.0** (What's new in the app and the portal, #920; CHANGELOG 2026-11-22; `APP_VERSION`
-  in `public/js/config.js`). (Previously 8.70.1 from Nov 18 to 22, #722.)
+- Current on 2026-11-24: **8.71.1** (Help review Nov 23: a What's new walkthrough in Help, #951; CHANGELOG 2026-11-23;
+  `APP_VERSION` in `public/js/config.js`). (Previously 8.71.0 from Nov 22, #920.)
 - **Release notes** for people who use it: `public/js/releasenotes.js` (104 notes backfilled from 5.0), shown on
   **What's new** in the app (tap the version at the bottom of Help), in the coach portal (Help → What's new, or the
   version under the menu) and publicly at **metabolichq.app/releases**. Clients see their own notes; coaches see
@@ -60,7 +60,9 @@ A major version gets a full end-to-end test before rollout.
   #918); Privacy Policy and Terms moved to metabolichq.app and worded for MetabolicHQ (#925); type checking with no
   type errors (#909–#913); every scheduled job moved to Google Cloud (#928, #930–#938); CoachRx on the Compare page
   (#908); change log one file per entry (#939).
-- 2026-11-23: one deploy workflow for production and staging (#946).
+- 2026-11-23: one deploy workflow for production and staging (#946); 8.71.1 Help review (#951); staging as a
+  production mirror, demo data reset weekly, and a staging preview of each PR (#681, #950–#965); the owner's first
+  sign-in without two-step shows the set-up screen (#964, #966).
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 
@@ -81,9 +83,13 @@ and no real client data on staging (an anonymized copy only with his OK each tim
 - No partner coaches on staging or preview links yet; revisit when early-access coaches are chosen (#575).
 - Staging data resets weekly by a scheduled Cloud Function, plus a reset button in the Monitor.
 
-Build step 1, part 1 done Nov 23: one deploy workflow for both (#946). Still in step 1: outside services in test mode
-wired like production, the catch-all inbox for staging email, and the production-only settings steps (#681 comment).
-The gate itself is built in #575.
+Build steps 1–3 done Nov 23 (#681 comments): staging as a mirror (#946, #950, #952–#955), seeded demo data reset
+weekly and on demand (#956–#959, #963; the reset link is on the portal's Maintenance page, not the Monitor: staging
+can't start GitHub workflows itself), and a preview of each PR (#962). The owner checked on staging: MPT Coach's real
+answers, barcode and food lookups (#965), and owner sign-in with two-step (#966); the Staging inbox showed "No emails
+yet" and its fix is #967 (open). Left: step 4, the testing period, Promote and the Releases view (the gate itself);
+step 5, the drift check (the Live config report, #943, is its start); #960, billing edge cases in the demo data
+(Stripe test mode; needs a decision).
 
 ## Related
 

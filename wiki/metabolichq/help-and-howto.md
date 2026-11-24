@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-23
-sources: ["#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
+updated: 2026-11-24
+sources: ["#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -15,7 +15,7 @@ sources: ["#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.
   journey checks both links and that searching "trust page" finds the FAQ (#319, #872). A **Status** link sits
   beside them, and the FAQ "Is the app down?" (in the app and the portal's Help) points to status.metabolichq.app,
   then your own connection, then Contact support (#321, #918).
-- The version line reads "Version BETA 8.71.0 · What's new" and opens **What's new**, the release notes grouped by
+- The version line reads "Version BETA 8.71.1 · What's new" and opens **What's new**, the release notes grouped by
   day; coaches see clients' and coaches' notes with Everything / For clients / For coaches chips. The portal's Help has
   a third tab, **What's new** (#320, #920; see [Versions](versions.md)).
 - The Privacy Policy and Terms are site pages now (metabolichq.app/privacy and /terms); the app's old addresses
@@ -42,8 +42,11 @@ sources: ["#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.
 - Help review Nov 21: everything still matched, including the new Privacy Policy and Trust page links and their FAQ
   answers (#872). MPT Coach got test question 50: who can see my data and where to read how it's handled (#885).
 - Help review Nov 22: Help, videos and MPT Coach still matched the portal moves, the Clients list fix (#891) and the
-  tripwire (#910). The portal Help video now shows a third tab (What's new); check it at the next review after a
-  full run (#320 resolution).
+  tripwire (#910).
+- Help review Nov 23 (v8.71.1, #951): a new client walkthrough **What's new in the app** (the version line at the
+  bottom of Help is the way in; no Take me there button); the portal walkthrough **Help in the coach portal** now
+  describes the What's new tab and the version line under the menu; MPT Coach test question 51 (where to see what
+  changed). The portal Help video's steps are unchanged and it doesn't show the What's new tab (CHANGELOG 2026-11-23).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).

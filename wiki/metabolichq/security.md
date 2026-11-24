@@ -1,13 +1,15 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-23
-sources: ["#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-24
+sources: ["#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
 
-- Two-step sign-in for coaches; authenticator-app codes on staging for load-test coaches.
+- Two-step sign-in for coaches; staging's two-step is authenticator-app codes only, no text codes (#952). When start-up
+  is refused for the owner's email (no account record yet), the app shows the two-step set-up or "Sign in again"
+  screen instead of a raw permission error; the rules didn't change (#964, #966).
 - **All open security work lives in #512** (Pending actions), at the owner's request; #514 and #548 were closed into
   it on 2026-11-15.
 
@@ -109,8 +111,9 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   the production compute account's unused project-wide Token Creator is gone (`functions-runtime` signs as itself);
   production's deploy account can no longer act as staging's `functions-runtime`; the old site deploy account
   `github-deploy-727` (last used Nov 15) and a one-time key on Firebase's admin account are disabled, to be deleted
-  around Nov 29 with the owner's OK. Still open on #940: the first production build under the new roles (the next
-  merge that changes server code) (#558, #940).
+  around Nov 29 with the owner's OK. The first production builds under the new roles passed (116 and 118 functions,
+  no permission errors; #940 closed Nov 23). Left: deleting `github-deploy-727` and the Firebase key after the owner's
+  OK at the Nov 29 reminder, then 727 comes off `ops/cloud-accounts.json` (#940).
 - `ops/cloud-accounts.json` lists every service account in production and staging: what uses it, why, its
   project-wide roles and whether it may have a key. The nightly scan checks production against it and flags any
   unlisted account, role or key, a missing role, a listed account that's gone, or one that should be disabled but
@@ -151,7 +154,7 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 ## Open
 
 - **High:** #512 pending actions (lockout stage C, App Check). (#558, the Google Cloud owner steps, closed Nov 22.)
-- #940 least-privilege follow-ups (see above). Browser error reporting deferred to #921 (medium).
+- Deleting the two disabled accounts' leftovers around Nov 29 (#940, see above). Browser error reporting deferred to #921 (medium).
 - Nov 22 scan: sign-in still allowed from a leftover PR preview domain (medium finding, #558 resolution).
 - **Medium:** #381 HIPAA-ready MetabolicHQ, deferred with SOC 2 (owner, Nov 22; see [HIPAA](hipaa.md)).
 - **Gaps written into the SSP as open risks** (no issues yet): production deploys use a long-lived JSON service

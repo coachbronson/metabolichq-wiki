@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-23
-sources: ["#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-24
+sources: ["#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -23,6 +23,20 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
   (owner, Nov 18, #620; see [Acquisition readiness](acquisition-readiness.md)). Staging: **`metabolichq-staging`** (testing, load
   tests; try Google Cloud setting changes there first). Staging workflows sign in as their own staging-only account
   through GitHub keyless sign-in; the production deploy key no longer reaches staging (#626).
+- **Staging as a production mirror** (#681 build steps 1–3, done Nov 23): staging never sends email but keeps a full
+  copy of each one (`stagingMail`), shown in the portal's **Staging inbox** (#950, #955; an empty-inbox fix for emails
+  that take the Zapier route is #967, open); MPT Coach asks the real AI (staging's own bill), food search uses real
+  USDA (its own key, `USDA_STAGING_API_KEY`) and barcodes the real Open Food Facts, except while load-test data is
+  seeded (`ops/staging.loadTest`) (#950, #952, #965). Daily calls, Resend, Zapier, GitHub and Turnstile stay stand-ins.
+  The deploy's sign-in settings steps now run for staging too, with authenticator-app two-step only, no text codes
+  (#952). Workflows **Staging sign-in link** (a one-time link on the run page; #953, #954) and **Staging demo data**
+  (seed, reset, status, add-client: fictional spaces Smitty Fitness and Peak Kettlebell, a year of history, plus MPT,
+  10 demo clients each; #956, #957, #963), reset every Monday at 4:17 AM Eastern by `stagingDemoStart` (#958); the
+  portal's staging tools live in `admin/portal-staging.js` (#959, #961).
+- **A preview of each PR** (#962): a PR that changes the app, portal or site gets a Firebase Hosting preview channel
+  on staging, `pr-<number>`, built by `deploy.yml` target `preview` (screens only; server and rules changes aren't in
+  it), with one PR comment holding the three links; expires after 7 days, deleted on close; not for forks or
+  Dependabot. Sign in with Staging sign-in link → preview.
 - coachbronson-site has its own project, `coachbronson-site` (coachbronson-site #29). Its leftovers in
   `masters-collective-app` (functions, secrets, data, sign-in and API-key domains) were removed by
   `scripts/remove-coachbronson-site.sh` (#676), and the old coachbronson.web.app Hosting site by the one-time
@@ -55,7 +69,7 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **120 Cloud Functions**, 27 of them scheduled (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+- **121 Cloud Functions**, 28 of them scheduled (the 121st, `stagingDemoStart`, #958) (`ops/function-endpoints.json`), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
   shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
   addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
   is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829); the 110th, `apiUsage`, the tripwire that
@@ -120,7 +134,7 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   `nightlyBackup` 2:17, `transcriptPull` 3:20, `purgeArchived` 3:41, `partnerBilling` 4:17, `morningDigest` 7:03.
   Jobs that need a full build machine stay GitHub workflows, started on time by starter functions with the
   fine-grained token `WORKFLOW_START_TOKEN` (mac-app only, Actions): `nightlyE2EStart` 2:13, `securityScanStart`
-  2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23. A start or job that
+  2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23, `stagingDemoStart` Mondays 4:17 (#958). A start or job that
   fails saves a security alert for the owner; starters give up after 15 seconds (nightly review Nov 23, #948). Each
   moved workflow keeps "Run workflow"; `test/schedules.test.mjs` fails on any new `schedule:` (#930–#938).
 - Nightly: review pass, CodeRabbit + Claude, in one ongoing Claude session (~12:06 AM ET; see

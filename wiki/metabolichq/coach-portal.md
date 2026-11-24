@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-23
-sources: ["#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-24
+sources: ["#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -15,6 +15,9 @@ sources: ["#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11
 
 - **Platform** (Bronson only): add-ons configuration, Costs, performance, backlog, and other
   platform services.
+- **Staging tools** (staging only, owner only): Platform → Maintenance gets a **Staging inbox** (the emails staging
+  kept instead of sending, shown in a sandbox) and a **Staging demo data** card (Reset demo data and Staging sign-in
+  link links to the workflows); code in `admin/portal-staging.js` (#955, #959, #961).
 - **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
   (#515; see [Security](security.md)).
 - **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Tabs:
