@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-24
-sources: ["#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-25
+sources: ["#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -113,7 +113,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   `github-deploy-727` (last used Nov 15) and a one-time key on Firebase's admin account are disabled, to be deleted
   around Nov 29 with the owner's OK. The first production builds under the new roles passed (116 and 118 functions,
   no permission errors; #940 closed Nov 23). Left: deleting `github-deploy-727` and the Firebase key after the owner's
-  OK at the Nov 29 reminder, then 727 comes off `ops/cloud-accounts.json` (#940).
+  OK at the Nov 29 reminder (now in `functions/reminders.json`: on Nov 29 at 10 AM Eastern it emails the owner and
+  starts the `key-cleanup` Claude job, which checks nothing broke and deletes nothing, #989), then 727 comes off `ops/cloud-accounts.json` (#940).
 - `ops/cloud-accounts.json` lists every service account in production and staging: what uses it, why, its
   project-wide roles and whether it may have a key. The nightly scan checks production against it and flags any
   unlisted account, role or key, a missing role, a listed account that's gone, or one that should be disabled but

@@ -1,8 +1,8 @@
 ---
 title: Nutrition (food diary and macros)
 summary: Macro rules, targets, calories opt-in, food diary layout, whole-food %, electrolytes, macro calculator, recipes
-updated: 2026-11-21
-sources: [notes, CHANGELOG, "#355", "#356", "#335", "#666", "#858"]
+updated: 2026-11-25
+sources: ["#981", CHANGELOG 2026-11-24, notes, CHANGELOG, "#355", "#356", "#335", "#666", "#858"]
 ---
 
 # Nutrition
@@ -33,6 +33,8 @@ Shipped as major version 4.0. Included in the base membership; partner coaches g
 - Cronometer-style top summary with progress bars: Macros slide left/right to a **Hydration** window. Water entered at
   the bottom of the Food log, shown as a count; no water target.
 - **Electrolytes**: sodium, potassium and magnesium in mg.
+- ‹ Back from a food returns to the day on screen, however the day was changed (‹ ›, Today, the calendar, Copy day
+  to today) (#666 fixed Nov 24 by #981; previously it could land on an earlier day and log the next food there).
 - Food data: USDA and FatSecret APIs; 7-day search cache (revisit once usage is known).
 
 ## Whole-food %
@@ -57,9 +59,7 @@ targets, still adjustable by hand (#858, medium). Oxalate add-on (#477): see [Cl
 
 ## Known bugs
 
-- Food diary: after changing days inside the diary, opening a food and tapping **‹ Back** can land on another day,
-  and the next food or water logs there; check the date at the top meanwhile (#666, medium, found by the nutrition
-  end-to-end run).
+- None open in this area (#666 fixed Nov 24, above).
 
 ## Related
 

@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-24
-sources: ["#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
+updated: 2026-11-25
+sources: ["#972", "#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -47,6 +47,7 @@ sources: ["#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app
   bottom of Help is the way in; no Take me there button); the portal walkthrough **Help in the coach portal** now
   describes the What's new tab and the version line under the menu; MPT Coach test question 51 (where to see what
   changed). The portal Help video's steps are unchanged and it doesn't show the What's new tab (CHANGELOG 2026-11-23).
+- Help review Nov 24: nothing to change; review marker moved to 5b65fe1 (#972).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).

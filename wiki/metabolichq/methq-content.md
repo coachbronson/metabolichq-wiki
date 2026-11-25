@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ content and messaging
 summary: MetHQ messaging framework, homepage "Replace your stack" structure, differentiators, social plan, blog rules and topic queue
-updated: 2026-11-17
-sources: [notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
+updated: 2026-11-25
+sources: ["#441", "#949", content/blog/posts/, notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
 ---
 
 # MetabolicHQ content and messaging
@@ -89,9 +89,13 @@ Rules in `mac-app/content/blog/DRAFTING.md`:
 - Covers: his Drive photo with the navy/teal MetHQ fade, logo, category tag, short title and one or two real app screens
   (`scripts/hq_cover.py`); a different photo every time, logged in `cover-images.json`.
 - Published so far: AI vs. human coach, at-risk clients and signals, coaching-app revenue share, gamification and
-  retention, coaching without spreadsheets, professional fitness coach.
+  retention, coaching without spreadsheets, professional fitness coach. Approved Nov 24: "Your Online Coaching Tech
+  Stack Is Costing You Clients" (dated Mon, Nov 23, #441) and "Who Owns Your Coaching History?" (goes live Mon,
+  Dec 7, #949) (`content/blog/posts/`).
+- Drafts are started at 7:10 AM Eastern by Google Cloud as a "Claude job" run (`hqBlogDraftsStart`, #983, #986;
+  previously a Claude scheduled task).
 - Queue (from coach complaints in Capterra/G2/App Store reviews and r/personaltraining): the app is part of your
-  service; who owns your coaching history; the add-on tax at 5/15/45 clients; keto clients need more than a macro tracker;
+  service; the add-on tax at 5/15/45 clients; keto clients need more than a macro tracker;
   five apps, one client; clients feeling guilty for messaging; stop retyping call notes; reading glucose, ketones and GKI
   with training; the client overview that should exist; month to month as the default; coaching under your own brand;
   desktop for building, phone for coaching.

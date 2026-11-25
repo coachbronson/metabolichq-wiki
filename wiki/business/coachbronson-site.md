@@ -1,8 +1,8 @@
 ---
 title: coachbronson.com
 summary: The athlete site rebuild, audience, hosting situation, forms/embeds, Resend email capture, blog/newsletter automation, site admin
-updated: 2026-11-18
-sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25", "coachbronson-site #27", "coachbronson-site #28", "coachbronson-site #29", "mac-app #611", "mac-app #613", "mac-app #646", "coachbronson-site #30", "coachbronson-site #32–#39", "mac-app #672–#677", "mac-app #684", "mac-app #694–#696", scripts/split/README.md]
+updated: 2026-11-25
+sources: ["mac-app #983", "coachbronson-site #41", notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25", "coachbronson-site #27", "coachbronson-site #28", "coachbronson-site #29", "mac-app #611", "mac-app #613", "mac-app #646", "coachbronson-site #30", "coachbronson-site #32–#39", "mac-app #672–#677", "mac-app #684", "mac-app #694–#696", scripts/split/README.md]
 ---
 
 # coachbronson.com
@@ -72,6 +72,10 @@ sources: [notes, coachbronson-site README and CLAUDE.md, "coachbronson-site #25"
   portal Blog tab stay). New posts not announced on Facebook/LinkedIn for now.
 - Weekly **newsletter**: Thursday mornings, one main idea + latest blog post + one call to action, its own topic list
   with intents; includes one partner deal in rotation (the site's own list since the split); replaces separate blog-post emails.
+- **Its own scheduler** (owner's decision, Nov 24, mac-app #983; coachbronson-site #41, merged Nov 24): six scheduled
+  starts in the `coachbronson-site` project (site review 12:06 AM, deploy 6:23 AM, newsletter Thu 6:47 AM, content
+  drafts 7:13 AM, uptime every 2 hours, weekly report Fri 7:41 AM, Eastern) and its own Claude job workflow. MetabolicHQ's
+  jobs leave the site out. (Previously Claude scheduled tasks, some shared with MetabolicHQ's nightly review.)
 - Drafts are reviewed in the site's own portal (/admin/), no longer in MetHQ Monitor (mac-app #673).
 - Weekly site report email on **Fridays** (incl. newsletters, pending approvals). Daily drafting task keeps running.
 - Site admin area (Google sign-in): blog review/approval with the next 4 topics and their intent, SEO (GA4, Search

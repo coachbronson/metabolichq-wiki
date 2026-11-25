@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-24
-sources: ["#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-25
+sources: ["#978", "#988", "#980", "#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -18,6 +18,10 @@ sources: ["#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-
 - **Staging tools** (staging only, owner only): Platform → Maintenance gets a **Staging inbox** (the emails staging
   kept instead of sending, shown in a sandbox) and a **Staging demo data** card (Reset demo data and Staging sign-in
   link links to the workflows); code in `admin/portal-staging.js` (#955, #959, #961).
+- **Releases** (Platform, owner only, two-step): the stages from PR to production side by side, with Promote now,
+  Promote all on staging, Hold and Re-run smoke tests in each card's ⋯ menu; the same cards as the Monitor's Releases
+  page (`public/js/releaseskit.js`). No Help walkthrough, like the other owner-only pages (#978, #988; see
+  [Versions](versions.md#after-beta-575-high)).
 - **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
   (#515; see [Security](security.md)).
 - **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Tabs:
@@ -28,6 +32,7 @@ sources: ["#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-
 - **MPT** stacked under Platform, with exactly the same menu a partner coach gets (Get help stays in MPT). For MPT he
   wants Finances but not the Stripe Connect setup or manual pay-by selector.
 - Partner coaches using Stripe have a Memberships page; every space has Payments (tiers, client counter, coupons).
+  Switching how clients pay right after turning sign-ups on or off now always shows the option picked (#976, #980).
 - Team coaches opening Finances get an error box today; a clear message is planned (#648, high).
 - The portal and Monitor enforce their Content-Security-Policy (#697; see [Security](security.md)).
 - The owner's Spaces & coaches table scrolls inside its card, so the page keeps its width at 1366 px (#850, #851).

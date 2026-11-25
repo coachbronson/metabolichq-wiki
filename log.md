@@ -8,11 +8,46 @@ Newest at the top. Each entry: date, what changed, pages touched.
   system documents in Drive and describes security controls, scan exceptions and open risks. Keep it public, or make
   it private?
 
+- **The wiki can't see coachbronson.com's changes** (#983, Nov 24): the site repo is private and mac-app's jobs may not
+  hold a token for it, so this nightly update skips the site's commits. Options in #983: the site's own Claude job adds
+  a line to this wiki's inbox.md (its token would also need this repo), or the site repo becomes public. Which?
+
+- **mac-app CLAUDE.md still describes the old nightly pass** (one ongoing Claude session that also reviews
+  coachbronson-site). Since Nov 24 Google Cloud starts it as a "Claude job" run and the site reviews itself (#983,
+  #986). #983 plans the CLAUDE.md update (its step 4); is the Detailed System Design also getting the Claude jobs and
+  reminders? The #983 comments list SSP, CMP, RMP and O&M only.
+
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-25 — Nightly update
+
+First run started by Google Cloud as a "Claude job" (#983, #986). Covered mac-app from `5496a55` to `0a8ebe2`
+(CHANGELOG 2026-11-24 and 2026-11-25, read with `tools/changelog.mjs`; version still 8.71.1), issues #666, #960 and
+#976 closed (each "How this was resolved" read), new issues #970, #974 and #983, the #681 and #983 progress comments
+and mac-app CLAUDE.md (new "Releases: every merge goes through staging first" section, #979). README unchanged. No
+priority changes on open backlog issues. **coachbronson-site's commits skipped** (not in this job yet, #983). Inbox
+was empty. Drive not reachable from this job: document dates come from the issues' comments.
+
+- versions: the staging gate is on (Nov 24, #681 step 4 done): smoke tests, Promote, `releasePromote`, the Releases
+  page; Nov 24 timeline; #960 and the Staging inbox done; left on #681: step 5.
+- architecture: 128 functions (34 scheduled); staging gate; Claude jobs and reminders from Google Cloud (#983);
+  staging's billing demo clients in Stripe test mode (#960); Staging inbox fix (#967).
+- engineering-rules: releases through staging first; Claude jobs and reminders on the Google Cloud scheduler;
+  nightly review now a Claude job, the site's review on its own scheduler.
+- coach-portal and methq-monitor: the Releases page (#977, #978, #988); Payments page fix (#980).
+- nutrition: ‹ Back keeps the day (#666 fixed); known bugs emptied. help-and-howto: Help review Nov 24 (#972).
+- methq-content: two blog posts approved (#441, #949); drafts started by Google Cloud. security: the Nov 29 key
+  clean-up reminder now in `functions/reminders.json` (#989). coachbronson-site: its own scheduler (site #41).
+- system-documentation: SSP, CMP, Change plan, RMP, O&M, DSD and Onboarding Guide last reviewed 2026-11-24.
+- roadmap-and-backlog: snapshot refreshed (97 open backlog, 1 critical (#970), 9 high, 13 on the roadmap, 26 need a
+  decision). index: descriptions for the staging gate, Releases and the Claude jobs.
+- New open questions: the site's commits and this wiki; mac-app CLAUDE.md's nightly pass and the DSD for #983.
+
+Last update covered: 2026-11-25.
 
 ## 2026-11-24 — Nightly update
 

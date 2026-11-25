@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-23
-sources: ["mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
+updated: 2026-11-25
+sources: ["mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -43,6 +43,12 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 - High = saved data/migrations, security rules, sign-in/sign-up, payments/Stripe, permissions/IAM/Google Cloud
   settings, keys, secrets, anything affecting every space, anything hard to undo. Try Cloud changes on staging first.
 - Claude may start GitHub Actions workflows on mac-app itself — don't ask him to.
+- **Releases go through staging first** (his rule, Nov 24, with the gate on): a merge deploys to staging, the smoke
+  tests run there, and the change waits until it's promoted: low risk within 15 minutes of passing, medium and high
+  24 hours after, each on its own clock, in merge order, or sooner with Promote now / Hold in Releases. The risk is
+  the PR's "Risk:" line; none counts as high. Say "merged; on staging", not "live". Urgent fixes: label `incident`,
+  the owner promotes after the smoke tests (mac-app CLAUDE.md, #979, #681). Details:
+  [Versions](../metabolichq/versions.md#after-beta-575-high).
 
 ## Testing levels
 
@@ -131,13 +137,18 @@ Google Cloud, never by a `schedule:` line; `test/schedules.test.mjs` fails on an
 after GitHub ran them 6–9 hours late, #927; mac-app CLAUDE.md, #928, #932). See
 [Architecture](../metabolichq/architecture.md#deploys-backups-and-jobs).
 
+Since Nov 24 the same goes for **Claude's work**: every recurring Claude job and one-time reminder runs from
+MetabolicHQ's Google Cloud scheduler (the "Claude job" workflow and `functions/reminders.json`), not Claude scheduled
+tasks (his rule, #983). mac-app's jobs leave coachbronson-site out; the site has its own scheduler (#983).
+
 ## Nightly review (CodeRabbit + Claude)
 
 Reviews **once a night** (~12:06 AM ET) everything merged since the last review, in one PR. **Two reviewers** (owner's
 call, Nov 20): CodeRabbit, plus Claude's own review of the same diff on the same PR, one report for both, titles
-starting `CodeRabbit:` or `Claude:`. The pass runs in one ongoing Claude session that sets up its next night's wake-up
-(the old fresh-session scheduled task is off). It also reviews coachbronson-site (Claude only, marker branch
-`claude-reviewed`) and checks this wiki without changing it. A quiet night in mac-app skips only mac-app's steps
+starting `CodeRabbit:` or `Claude:`. Since Nov 24 Google Cloud starts the pass as a "Claude job" run (`nightlyReviewStart`,
+#983, #986; previously one ongoing Claude session with its own wake-up; mac-app CLAUDE.md still describes that, to be
+updated under #983). coachbronson-site's review now runs from the site's own scheduler (owner's decision, Nov 24, #983;
+previously part of this pass). It checks this wiki without changing it. A quiet night in mac-app skips only mac-app's steps
 (mac-app CLAUDE.md, #838, #881). Claude fixes easy low-risk findings in one PR; anything risky or unclear becomes a
 question in the nightly report.
 - Questions the owner OKs are grouped into issues and fixed one PR per fix: confirmed against the code first, a test

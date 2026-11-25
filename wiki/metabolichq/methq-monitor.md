@@ -1,8 +1,8 @@
 ---
 title: MetHQ Monitor
 summary: Phone-friendly ops view at admin.metabolichq.app/monitor — tabs, Claude action menus, security and quality tiles
-updated: 2026-11-17
-sources: [notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
+updated: 2026-11-25
+sources: ["#977", "#988", notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
 ---
 
 # MetHQ Monitor — admin.metabolichq.app/monitor/
@@ -20,6 +20,10 @@ desktop. Kept separate from the portal so it needn't mix role-based access into 
 - **Quality** (the nightly tile): end-to-end results (a run with any failed journey or recorded bug now shows red,
   #657) and CodeRabbit questions (questions count as fixed once a PR
   linking the comment merges).
+- **Releases** (owner only, two-step): what's in each stage on the way to production (PR open, On staging,
+  Promoting, Being watched, Live), each card's status, last action and next action as an Eastern clock time; ⋯ menus
+  with Promote now (it asks first and lists what it takes along), Promote all on staging, Hold / Release the hold,
+  Re-run smoke tests, links and Claude options (#977, #988; see [Versions](versions.md#after-beta-575-high)).
 - **Content review**: MetHQ blog drafts and scheduled posts only; Review and Revise run against
   `content/blog/DRAFTING.md`. (Previously also coachbronson.com's newsletter and blog drafts, through that site's
   portal; removed in the split, #673. Those are now reviewed in the site's own portal.)
