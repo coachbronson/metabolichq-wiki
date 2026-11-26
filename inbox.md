@@ -2,3 +2,4 @@
 
 Lines Claude adds during work when it finds something the wiki lacks or has wrong. The nightly update files each one
 into the wiki and removes it. Format: `- YYYY-MM-DD · what · source/reference`.
+- 2026-11-26 · Groups stage B1 (#410): a Resources collection can be shared with a group ("Who sees it"). The server checks group membership when a client asks, clients who join get the usual notice, and team coaches pick only groups they coach or manage. PR open, medium risk, waiting for the owner's OK. System Security Plan and Detailed System Design updated (Last reviewed 2026-11-26, unchanged date) · mac-app PR #1081
