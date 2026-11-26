@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-23
-sources: ["#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
+updated: 2026-11-26
+sources: ["#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
 ---
 
 # metabolichq.app site
@@ -21,7 +21,8 @@ sources: ["#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-ap
   working. Same PR: both now describe MetabolicHQ, owned and run by BD Solutions LLC, with MPT as one coach's space
   (#925; see [Research and privacy](research-and-privacy.md#privacy)).
 - **metabolichq.app/releases** (What's new): the release notes for clients and coaches, plain HTML built from the
-  app's notes by `node tools/releases-page.mjs`; linked from the Trust page, sitemap and `llms.txt` (#320, #922).
+  app's notes by `node tools/releases-page.mjs`; linked from the Trust page, sitemap and `llms.txt` (#320, #922). A
+  feature behind a feature switch is left out while its switch exists (#1064).
 - **metabolichq.app/security** says how to report a security problem; `/.well-known/security.txt` points to it
   (#322). A Security link is in every page's footer (CHANGELOG 2026-11-14).
 - The site **enforces** its Content-Security-Policy (the first of the three sites, #693); its inline scripts are now
@@ -93,6 +94,8 @@ enforced policy (#704).
 - The site's Trust, Research and MPT pages and `llms.txt` point to **Settings → Privacy & documents** for the research
   choice (previously Profile → Documents; #871).
 - Linked from the app's Help (see [Help and how-to](help-and-howto.md)) (#872).
+- Shows the owner's service status banner when it's set for every space, and keeps the Better Stack status link (his
+  decision, Nov 25; #1024, #1043).
 - What's left (#866, closed Nov 20 at the owner's request): the owner handles the legal review himself; the HIPAA line
   waits for #381 (the site test blocks any HIPAA wording on the page until then). An accessibility statement and a
   link from sign-up weren't carried anywhere (#866).

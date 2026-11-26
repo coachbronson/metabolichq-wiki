@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-25
-sources: ["#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-26
+sources: ["#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -97,6 +97,12 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Security rules, Nov 20 nightly review (owner's OK): only the server writes a person's `wearables` link, so it can't
   be pointed at another wearables account (#819); a new MPT client's "waiting" record accepts only the normal sign-up
   fields, so nobody can start it with free access, a demo flag or a billing plan (#816, 13th item, #830).
+- Security rules, Nov 25–26: only a space's main coach and head coaches (and the owner) write its brand (#1033,
+  #1046); a coach reads only the check-in notes a client shared (#1020); groups and each client's `groupCoaches` are
+  written only by the server's `groups` callable, and a client's coaches include their group coaches (`coachesOn`;
+  #1059, #1073; see [Spaces and roles](spaces-and-roles.md#client-groups-410)).
+- `releaseSignal` takes status changes only with a GitHub OIDC token from this repository's release-signal workflow
+  on main (no stored secret; #1000).
 - Team-coach invites are created in one step, so two spaces can't take over the same email's invite; withdrawing
   checks ownership in the same step (#825).
 

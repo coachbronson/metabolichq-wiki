@@ -48,7 +48,7 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
   24 hours after, each on its own clock, in merge order, or sooner with Promote now / Hold in Releases. The risk is
   the PR's "Risk:" line; none counts as high. Say "merged; on staging", not "live". Urgent fixes: label `incident`,
   the owner promotes after the smoke tests (mac-app CLAUDE.md, #979, #681). Details:
-  [Versions](../metabolichq/versions.md#after-beta-575-high).
+  [Versions](../metabolichq/versions.md#after-beta-575-done-nov-25).
 
 ## Testing levels
 

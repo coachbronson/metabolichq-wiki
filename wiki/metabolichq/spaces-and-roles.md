@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-21
-sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
+updated: 2026-11-26
+sources: [notes, "#410", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
 ---
 
 # Spaces, coaches and roles
@@ -22,6 +22,10 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
 - **Main coach** = the account holder of a space (not just Bronson). A space can have several coach-level people.
 - Main coach can assign clients to specific coaches. New sign-ups go to the main coach first and default there.
   Clients see who their coach is.
+- **A client's coaches** = the coaches assigned to them (Clients → Coach) plus the coaches of their groups (see
+  Client groups below). Group coaches are the client's coaches for everything: they see and work with the client,
+  and the client sees, messages and books them, but never sees the group's name. A client covered by a group isn't
+  Unassigned. Head coaches still see everyone (his decisions, Nov 25; v8.76.0, #1073).
 - Every coach still sees everyone in workout comments and community.
 - The main coach sees all information for clients assigned to other coaches, **except** those clients' conversations
   with their other coach.
@@ -34,6 +38,26 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
   run the space; which permissions an admin gets is still to decide, billing likely staying with the main coach
   (#861).
 
+## Client groups (#410)
+
+Coach-made groups of clients (e.g. Masters, Competition prep), each with its coaches and managers. Stages A1–A4 are
+done (Nov 25–26); next is stage B, groups as an audience, Resources first (#410 "Stage A4 done").
+- **Who does what:** head coaches create, rename and delete groups and choose each group's coaches and managers; a
+  group's managers (always some of its coaches) add and remove its clients. A client can be in several groups. Only
+  coaches see groups (his decisions, Nov 25; v8.75.0, #1035).
+- Limits: 20 coaches and 2,000 clients per group, 200 groups per space (#1035).
+- **Access through a group** (stage A3, v8.76.0, #1073): a group's coaches are its clients' coaches (above). Since a
+  group's managers in effect give coaches access to client data, that's by design: he chose that managers run
+  membership (#1073).
+- **How it's kept:** every group change goes through the server callable `groups`, which checks the caller and keeps
+  each client's server-only `groupCoaches` field in step; nobody in the app writes groups or that field (stage A2,
+  #1059). His call: a callable, not a Firestore trigger, because the trigger's deploy needed three IAM grants the
+  deploy account can't make (#1059). The MetHQ Monitor's Quality tile flags a client whose field doesn't match their
+  groups (#1059).
+- Still to do: run the **Group coaches backfill** on production once A2 is live (reminder Nov 27, 9:37 AM, #1072).
+- "Group program" is now called **Shared program**, so it isn't mixed up with Groups (his call, Nov 25; #1035).
+- Screens: see [Coach portal](coach-portal.md#client-groups).
+
 ## Business name and main coach
 
 - Coaches must be able to change their business name themselves (his decision, Nov 17). Since 8.69.0 the main coach
@@ -42,9 +66,13 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
   the sign-up link (space id) stay the same. MetabolicHQ is emailed about each change and it's kept in the space's
   name history (`renameSpace`, `functions/rename.js`, #700). (Previously the brand editor's name changed only the app
   header and sign-up page.)
-- **The name in the app must be separate from the business name** and not forced by it, since a business name may be
-  too long for the app header (his decision, Nov 17). Today a rename also overwrites the app name; #710 (high) brings
-  back an editable "Name in the app" and a rename checkbox.
+- **The name in the app is separate from the business name** (his decision, Nov 17): Your brand has an editable
+  **Name in the app** (app header, sign-up page, home-screen icon); a note shows past 13 characters. He asked for the
+  simple version: no rename checkbox, so renaming the business still sets the name in the app too, and it can be
+  shortened after (#710, PR #1032, Nov 25).
+- **Only the main coach and head coaches** (and the platform owner) can change a space's brand: name in the app,
+  logo, colors, bio, home-screen icons. Other team coaches see it read-only, with who to ask. Enforced by the security
+  rules; a space with no head coach on record keeps every coach as a head (his request; #1033, PR #1046).
 - **Changing the main coach** (business sold, or something else happens) is not self-service: it needs MetabolicHQ
   support (his decision, Nov 17). Since 8.70.0 Your brand's **Change the main coach** card opens a pre-filled support
   request (#701; fixed so it stays filled in, #711). The Platform tool MetabolicHQ uses for the switch, with its
@@ -76,8 +104,8 @@ sources: [notes, mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#70
 - Google sign-in is the default; other emails (including Apple/iCloud) work too.
 - MPT trial buttons go straight to Stripe (no login first), then a custom sign-in link is emailed. Partner sign-up
   links work the same way when Stripe is their processor; coaches see their own sign-up link in the portal.
-- Clients are **group** or **one-on-one** (`track = 'one'`): one-on-one clients see only their own programming, not
-  the group program.
+- Clients are on the **shared program** or **one-on-one** (`track = 'one'`): one-on-one clients see only their own
+  programming, not the shared program. (Previously called "group program"; renamed Nov 25, #1035.)
 
 ## Demo spaces
 

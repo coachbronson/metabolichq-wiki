@@ -12,16 +12,52 @@ Newest at the top. Each entry: date, what changed, pages touched.
   hold a token for it, so this nightly update skips the site's commits. Options in #983: the site's own Claude job adds
   a line to this wiki's inbox.md (its token would also need this repo), or the site repo becomes public. Which?
 
-- **mac-app CLAUDE.md still describes the old nightly pass** (one ongoing Claude session that also reviews
-  coachbronson-site). Since Nov 24 Google Cloud starts it as a "Claude job" run and the site reviews itself (#983,
-  #986). #983 plans the CLAUDE.md update (its step 4); is the Detailed System Design also getting the Claude jobs and
-  reminders? The #983 comments list SSP, CMP, RMP and O&M only.
+- **Detailed System Design and the Claude jobs** (#983): mac-app CLAUDE.md now describes the nightly pass as a Claude
+  job (#1034, Nov 25), so that part is answered. Still open: #983's comments list the SSP, CMP, RMP and O&M as updated
+  for Claude jobs and reminders, not the Detailed System Design. Does it need them?
+
+- **A client record with no status counts as "waiting to be let in"** (#1049, not urgent): real sign-ups always get
+  a status from the server, so it likely only affects test data, but a record that lost its status would show the
+  coach a waiting client who never asked to join. Keep it, or count only `pending`?
 
 - **Friday social slot**: the content strategy's fifth pillar (Fridays) was the Masters Collective. What replaces it
   (an MPT pillar, more proof posts, or four posts a week)?
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-26 — Nightly update
+
+Covered mac-app from `0a8ebe2` to `a7b4aaf` (68 commits; CHANGELOG 2026-11-25 and 2026-11-26, read with
+`tools/changelog.mjs`; version 8.77.0 on main), the 20 issues closed since then (each "How this was resolved" read:
+#575, #603, #648, #660, #681, #686, #710, #856, #860, #970, #1017, #1019, #1022, #1024, #1033, #1039, #1045, #1049,
+#1053, #1060; #666, #960 and #976 were covered last night), new issues #1005, #1007, #1010, #1016, #1038, #1079,
+the roadmap labels added Nov 25, and mac-app CLAUDE.md (#1034: Claude jobs and reminders, the nightly pass as a
+Claude job). README unchanged. **coachbronson-site's commits skipped** (not in this job yet, #983). Filed all 22
+inbox lines. Drive not reachable from this job: document dates come from the inbox lines and issue comments.
+
+- versions: current 8.77.0 on main (8.75–8.77 on staging); Nov 25–26 timeline; #575 and #681 done; Releases (live
+  updates, last 24 hours, drift check, Being watched and Roll back), feature switches, release messaging.
+- spaces-and-roles: client groups A1–A4 (#410) and who a client's coaches are; only main and head coaches change the
+  brand (#1033); Name in the app (#710); "Shared program".
+- coach-portal: Groups page and filters, Your brand, Finances for non-main coaches (#648, #1019), Coach Home cards,
+  Releases. methq-monitor: Quality's Claude jobs and reminders, Service status, the major version draft, Releases.
+- biometrics-and-signals: self check-ins, private notes, Skip, reminders (#603); reflection notes stay shared
+  (#1017); phase angle and visceral fat (#856); the When was this taken? dropdown (#1054).
+- training: every day opens, Skip this workout (#970). resources-and-files: drip sections (#860), Files back
+  buttons (#1060, #1045).
+- architecture: 139 functions (74 callable, 26 HTTPS, 39 scheduled), the new scheduled jobs, the Nov 27 backfill
+  reminder, release signals. security: Nov 25–26 rule changes, `releaseSignal`'s OIDC sign-in.
+- marketing-site: Trust page status banner; /releases leaves out switched features. help-and-howto: What's new
+  card, digest, Help review Nov 25 (#998). acquisition-readiness: §4's release process done.
+- system-documentation: SSP, DSD and Onboarding Guide last reviewed 2026-11-26; CMP, Change plan, RMP, O&M and the
+  Incident Response Procedure 2026-11-25; the current diagram PNG names.
+- roadmap-and-backlog: snapshot refreshed (89 open backlog, no critical, 5 high, 16 on the roadmap, 25 need a
+  decision). index: descriptions updated. inbox emptied.
+- Open questions: the CLAUDE.md part of the #983 question answered (the DSD part stays); new: #1049's "no status
+  counts as waiting".
+
+Last update covered: 2026-11-26.
 
 ## 2026-11-25 — Nightly update
 

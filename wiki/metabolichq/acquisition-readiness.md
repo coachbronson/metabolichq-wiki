@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-23
-sources: ["#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
+updated: 2026-11-26
+sources: ["#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
 ---
 
 # Acquisition readiness (#620, high)
@@ -46,8 +46,10 @@ sources: ["#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321",
   Nov 29, App Check). SOC 2 and #381 deferred. Done earlier: error alerting (#433), #515, #550 and #716 (#620).
 - §4: done Nov 22: release notes (#320), status page (#321, status.metabolichq.app), the Incident Response
   Procedure (#924), backup timing at 10× data (#926: on staging with 85,176 documents, backup 222 s and full restore
-  143 s against limits of 30 and 60 minutes). Second region: not now. Left: the release process (#575), which waits
-  on #681's staging work (see [Versions](versions.md#after-beta-575-high)).
+  143 s against limits of 30 and 60 minutes). Second region: not now. The release process (#575) and the staging
+  work (#681) closed Nov 25: staging gate, drift check, post-deploy watch and Roll back, feature switches, release
+  messaging (see [Versions](versions.md#after-beta-575-done-nov-25)). Left from it: the first real watches and one
+  Roll back drill on production (#1005).
 - §5: done Nov 22: the big-file split (below), type checking (#909–#913: no type errors anywhere; see
   [Engineering rules](../rules/engineering-rules.md#type-checking)), the Engineer Onboarding Guide (#907; see
   [System documentation](system-documentation.md)), the `cohortCache` review (#916: reads only the last 200 days of

@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-25
-sources: ["#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-26
+sources: ["#410", "#575", "#603", "#681", "#1022", "#1024", "#996", "#999", "#1000", "#1026", "#1040", "#1042", "#1051", "#1059", "#1064", "#1072", "#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -75,8 +75,10 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **128 Cloud Functions**, 34 of them scheduled (`ops/function-endpoints.json`, Nov 25). Added Nov 24: `releases` and
-  `releasePromote` (#975), four Claude job starts (#986) and `reminderWork` (#989). (Previously 121 and 28, Nov 23), each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
+- **139 Cloud Functions**: 74 callable, 26 HTTPS, 39 scheduled (`ops/function-endpoints.json`, Nov 26). Added Nov 25:
+  `driftCheckStart` (#996), `releaseWatch` (#999), `releaseSignal` (#1000), `checkinReminders` (#1026), `coachDigest`
+  (#1040), `serviceStatus` and `siteStatus` (#1042), `majorAnnounce` (#1051), `groups` (#1059), `features` and
+  `featureWork` (#1064). (Previously 128 and 34 on Nov 25; 121 and 28 on Nov 23.) Each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
   shared setup and `members.js` for the membership core). `functions/index.js` only re-exports them, so names and
   addresses are unchanged (split Nov 18–19, #718, #724–#739, #762–#779; CHANGELOG 2026-11-18, 2026-11-19). The 108th
   is `wearablesForgetWork` (#791); the 109th, `mailStuckWatch` (#829); the 110th, `apiUsage`, the tripwire that
@@ -117,7 +119,7 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
 
 - **Staging gate on since Nov 24** (`RELEASE_GATE` = `on`): a push to `main` runs the tests, then deploys to
   staging and its smoke tests; production gets only a commit that **Promote** passes in. See
-  [Versions](versions.md#after-beta-575-high) (#681, #971, #975, #979).
+  [Versions](versions.md#after-beta-575-done-nov-25) (#681, #971, #975, #979).
 - Push to `main` → tests → deploy (`.github/workflows/deploy.yml`). Since Nov 23 "Deploy to staging" runs the same
   `deploy.yml` with `target: staging` (only the project, sign-in and secrets differ; a test fails if they drift).
   Production now also deploys the Firestore indexes and Storage rules, without `--force`; staging also deploys
@@ -144,7 +146,9 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   `nightlyBackup` 2:17, `transcriptPull` 3:20, `purgeArchived` 3:41, `partnerBilling` 4:17, `morningDigest` 7:03.
   Jobs that need a full build machine stay GitHub workflows, started on time by starter functions with the
   fine-grained token `WORKFLOW_START_TOKEN` (mac-app only, Actions): `nightlyE2EStart` 2:13, `securityScanStart`
-  2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23, `stagingDemoStart` Mondays 4:17 (#958), `releasePromote` every 15 minutes (#975). A start or job that
+  2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23, `stagingDemoStart` Mondays 4:17 (#958), `releasePromote` every 15 minutes (#975), `driftCheckStart` 3:07 (#996). Added
+  Nov 25 as scheduled functions: `releaseWatch` every 5 minutes (#999), `checkinReminders` every 15 minutes (#1026),
+  `coachDigest` Mondays 8:17 (#1040), `featureWork` 8:23 (#1064). A start or job that
   fails saves a security alert for the owner; starters give up after 15 seconds (nightly review Nov 23, #948). Each
   moved workflow keeps "Run workflow"; `test/schedules.test.mjs` fails on any new `schedule:` (#930–#938).
 - **Claude jobs and reminders run from Google Cloud too** (owner's rule, Nov 24, #983): no Claude scheduled tasks.
@@ -154,13 +158,17 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   `nightlyReviewStart` 12:06 AM, `wikiUpdateStart` 4:41 AM, `hqBlogDraftsStart` 7:10 AM, `helpReviewStart` 7:45 AM
   (#986). One-time reminders are `functions/reminders.json` (add one with a PR); `reminderWork` checks every 15
   minutes, emails each due one once, can start a Claude job (started only once, even if the email is retried), and
-  records it in `ops/reminders` (#989, #992). On the list: the Nov 29 key clean-up check (job `key-cleanup`, which
+  records it in `ops/reminders` (#989, #992). On the list: the Nov 27 9:37 AM Group coaches backfill on production
+  (#410, #1072), the Nov 29 key clean-up check (job `key-cleanup`, which
   deletes nothing), the Dec 19 unused-function review (job `unused-functions-review`), the Jan 29 Riverside booking,
   and the Jul 1, 2027 move of coachbronson.com's email off MetabolicHQ's Resend. coachbronson.com's jobs run from its
   own scheduler in its own project (owner's decision, Nov 24, #983; coachbronson-site #41).
 - Nightly: review pass, CodeRabbit + Claude, started by `nightlyReviewStart` (~12:06 AM ET; see
   [Engineering rules](../rules/engineering-rules.md#nightly-review-coderabbit--claude)), full end-to-end run (2:13 AM ET, emails only when something needs
   action), 7:03 AM workout digest.
+- **Releases signals:** `release-signal.yml` posts each PR and workflow status change to production's
+  `releaseSignal`, signed in with the run's GitHub OIDC token (no stored secret); the Releases pages reload when
+  `ops/releaseSignal` moves (#1000–#1002, #1070, #1071). See [Versions](versions.md#after-beta-575-done-nov-25).
 - Security jobs: **securityWatch** (every 5 min), **securityLogWatch** (every minute), **geoDbRefresh** (weekly
   country file) (#514; see [Security](security.md)).
 - Daily retry jobs: **coachPayWork** also retries refused coach-site refunds and renewals (#794, #795);

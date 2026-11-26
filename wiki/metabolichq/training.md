@@ -1,8 +1,8 @@
 ---
 title: Training (workouts, programs, swaps)
 summary: Programs, workout logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
-updated: 2026-11-23
-sources: ["#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
+updated: 2026-11-26
+sources: ["#970", "#1009", "#1010", "#1017", "#1038", "#1052", "#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
 ---
 
 # Training
@@ -44,6 +44,19 @@ sources: ["#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#65
   suggestions. Location-scoped swaps only if usage shows the need.
 - Guided swaps recommended from each client's preferences are complete. Swap standards: see
   [Programming conventions](../rules/programming-conventions.md).
+
+## Every day opens; Skip this workout
+
+- Every day opens (#970, reported by him as critical Nov 24; PR #1009, Nov 25): a rest day is a card that opens, and a
+  client can pick any day from today through "Show workouts for" (a coach any day). An empty day offers **+ Create
+  custom workout**.
+- **Skip this workout** (his addition): skips the whole programmed workout in one tap; the day says "You skipped …"
+  with **Bring it back**, the week tags it Skipped, and the client's own workout for that day shows instead. The
+  coach's views say "Skipped this day's programmed workout to do their own". Refused once anything that day is
+  logged (#1009). Follow-up: a coach editing a one-on-one day after the client added rows drops their "own" tag
+  (#1010, rare).
+- The end-of-session wrap-up says the rating, effort and notes are shared with the coach (#1017, #1052).
+- Requested (#1038, Nov 25): edit a session's start time and length when someone forgot to tap Start workout.
 
 ## Moving a workout
 
