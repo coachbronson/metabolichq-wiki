@@ -203,8 +203,8 @@ Every backlog issue gets exactly one priority label.
 - **Try before saying it can't be done** (his rule, Nov 21; reaffirmed Nov 26): always actually try to connect to a
   repo, connector or other resource, and try the exact action needed (e.g. starting a workflow, not only a related
   read), before saying it can't be reached or done. A first refusal gets one more try. Order of routes: **GitHub
-  Actions workflows first, then his cloud functions directly, then session-level connections or credentials only as
-  a last resort** (notes 2026-11-26: a blocked read of a repo's Actions variables was taken to mean deploys couldn't be
+  Actions workflows first, then his cloud functions directly, then MCP servers and connectors, then session-level
+  connections or credentials only as a last resort** (notes 2026-11-26: a blocked read of a repo's Actions variables was taken to mean deploys couldn't be
   started, when starting the deploy workflow worked).
 - Auto-updates email him with release notes and wait for approval.
 - Don't bring up FatSecret (e.g. for barcode lookups) unless he raises it.
