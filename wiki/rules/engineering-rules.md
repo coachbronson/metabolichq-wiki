@@ -1,7 +1,7 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-25
+updated: 2026-11-26
 sources: ["mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
@@ -200,6 +200,12 @@ Every backlog issue gets exactly one priority label.
   him to look in a console. The read-only workflow is its own PR (workflows area, medium risk), built like
   `live-config.yml`: Run workflow only, read-only, a failed read fails the run (notes 2026-11-17; now in mac-app
   CLAUDE.md, #945; mac-app #550, #671, #943).
+- **Try before saying it can't be done** (his rule, Nov 21; reaffirmed Nov 26): always actually try to connect to a
+  repo, connector or other resource, and try the exact action needed (e.g. starting a workflow, not only a related
+  read), before saying it can't be reached or done. A first refusal gets one more try. Order of routes: **GitHub
+  Actions workflows first, then his cloud functions directly, then MCP servers and connectors, then session-level
+  connections or credentials only as a last resort** (notes 2026-11-26: a blocked read of a repo's Actions variables was taken to mean deploys couldn't be
+  started, when starting the deploy workflow worked).
 - Auto-updates email him with release notes and wait for approval.
 - Don't bring up FatSecret (e.g. for barcode lookups) unless he raises it.
 - Test sign-ups use "+" alias emails; remind him when a fresh one is needed.
