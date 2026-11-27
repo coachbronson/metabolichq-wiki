@@ -2,7 +2,7 @@
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
 updated: 2026-11-27
-sources: ["#1108", "mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
+sources: ["#1108", "mac-app #1126", "mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -181,6 +181,11 @@ time, not "in 30 minutes" (his rule, Nov 17; mac-app CLAUDE.md, #715).
 
 Post a **"How this was resolved"** comment: what changed (PR link), what differed from the plan and why, extras in the
 PR, checks run, what's left (link a follow-up issue). Write failures onto the issue as they happen.
+
+**The note is part of the work** (his rule, Nov 27, 2026; notes, mac-app #1126): Claude posts it unasked, as soon as
+the fix PR is ready (tests pass, checks done), not as a "what's left" item after the merge. It says the issue closes
+when that PR merges and what still waits (his OK, a first real run); a line is added if the merge or a later check
+changes anything. (Previously posted when the PR merged; mac-app #679 and #1122 were the first done this way.)
 
 ## Backlog priorities
 
