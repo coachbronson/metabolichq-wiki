@@ -1,17 +1,17 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-26
-sources: ["#410", "#575", "#603", "#681", "#1005", "#1017", "#1020", "#1022", "#1024", "#1025", "#1026", "#1035", "#1052", "#1073", "#1076", "#993", "#996", "#999", "#1004", "#1068", "#1069", CHANGELOG 2026-11-25, CHANGELOG 2026-11-26, "#666", "#681", "#960", "#967", "#971", "#973", "#975", "#976", "#977", "#978", "#979", "#983", CHANGELOG 2026-11-24, "#951", "#956", "#960", "#962", "#964", "#966", "#967", CHANGELOG 2026-11-23, "#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
+updated: 2026-11-27
+sources: ["#1081", "#1085", "#1086", "#1093", "#1107", "#1110", "#1112", "#410", "#575", "#603", "#681", "#1005", "#1017", "#1020", "#1022", "#1024", "#1025", "#1026", "#1035", "#1052", "#1073", "#1076", "#993", "#996", "#999", "#1004", "#1068", "#1069", CHANGELOG 2026-11-25, CHANGELOG 2026-11-26, "#666", "#681", "#960", "#967", "#971", "#973", "#975", "#976", "#977", "#978", "#979", "#983", CHANGELOG 2026-11-24, "#951", "#956", "#960", "#962", "#964", "#966", "#967", CHANGELOG 2026-11-23, "#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
 ---
 
 # Versions and release history
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on main, 2026-11-26: **8.77.0** (groups A4, #1076; `APP_VERSION` in `public/js/config.js`). Merged is not
-  live: 8.75.0–8.77.0 (groups A1, A3, A4) were on staging on Nov 26, and their release notes are dated Nov 28–30, the
-  days they're expected live (`public/js/releasenotes.js`). (Previously 8.71.1 from Nov 23, #951.)
+- Current on main, 2026-11-27: **8.83.1** (Help review Nov 26, #1085; `APP_VERSION` in `public/js/config.js`).
+  Merged is not live: medium- and high-risk changes wait 24 hours on staging, so release notes carry the day each is
+  expected live (`public/js/releasenotes.js`). (Previously 8.77.0 on Nov 26; 8.71.1 from Nov 23, #951.)
 - **Release notes** for people who use it: `public/js/releasenotes.js` (104 notes backfilled from 5.0), shown on
   **What's new** in the app (tap the version at the bottom of Help), in the coach portal (Help → What's new, or the
   version under the menu) and publicly at **metabolichq.app/releases**. Clients see their own notes; coaches see
@@ -77,7 +77,12 @@ A major version gets a full end-to-end test before rollout.
   Also every day opens and Skip this workout (#970, #1009), phase angle and visceral fat (#856), drip sections in
   Resources (#860), Name in the app and who can change the brand (#710, #1033).
 - 2026-11-26: 8.76.0 groups A3, a group's coaches are its clients' coaches (#1073); 8.77.0 groups A4, coach views by
-  group (#1076); Files back buttons (#1060, #1045, #1062).
+  group (#1076); Files back buttons (#1060, #1045, #1062). 8.78.0 groups B1, Resources shared with a group (#1081);
+  8.79.0 B2, message a group (#1086); 8.80.0 one custom check-in per space (#157, #1093); 8.81.0 B4, group calls
+  (#1107); 8.82.0 C1, a group's own Community feed (#1110); 8.83.0 C2, Cohort reports by group (#1112); 8.83.1 Help
+  review (#1085). **#410 client groups closed.** Also MetabolicHQ social media (#1101–#1104, #1114–#1116, #1120),
+  blog Approve on a draft behind main (#1117, #1123), the Releases end-to-end banner (#1084, #1103), the demo video
+  out of the repo (#1105, #1109), and more portal journeys for #657 (#1078, #1083, #1087, #1088, #1096, #1118).
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 

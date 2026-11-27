@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-25
-sources: ["mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
+updated: 2026-11-27
+sources: ["#1108", "mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -58,6 +58,10 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 | Area end-to-end | A change to how a feature works; before merge if it touches saved data or server code |
 | Full end-to-end (~20–25 min) | Nightly, before a major version, before cross-cutting changes |
 | None | Wording, styling, Help or change-log edits |
+
+Every `test/*.test.mjs` must be in an npm test script: four never ran on PRs until Nov 26, and the guard test
+`test/testlist.test.mjs` now fails on the next one (#1106). The portal area holds 36 journeys and takes about 25
+minutes, as long as a full run; splitting it is #1090 (medium).
 
 **What "end-to-end" means** (notes, Nov 16, 2026): every function, button, field entry and display gets tested —
 not just the main journeys. Each step checks there's no error pop-up or console error, and that what changed actually
@@ -194,12 +198,16 @@ Every backlog issue gets exactly one priority label.
 
 - Google Cloud steps he must do: give `gcloud` commands for Cloud Shell.
 - **Outside services** (Google Cloud, Firestore, Stripe, etc.): reach them through GitHub Actions workflows (repo
-  secrets, keyless sign-in on staging) and MCP connectors. A small workflow just to get access (e.g. a read-only
-  report) is the normal route; propose it as soon as a direct call fails. A credential saved in the session is a last
-  resort. gcloud failing with CREDENTIALS_MISSING in a session is expected, not a broken key; don't retry it or ask
-  him to look in a console. The read-only workflow is its own PR (workflows area, medium risk), built like
-  `live-config.yml`: Run workflow only, read-only, a failed read fails the run (notes 2026-11-17; now in mac-app
-  CLAUDE.md, #945; mac-app #550, #671, #943).
+  secrets, keyless sign-in on staging) and MCP connectors. gcloud failing with CREDENTIALS_MISSING in a session is
+  expected, not a broken key; don't retry it or ask him to look in a console. The same goes for anything GitHub
+  refuses the session itself (e.g. creating a release). **When no workflow fits, build it** straight away, without
+  handing him manual steps (his rule, Nov 26: "if github actions is the default then you obviously need workflows to
+  go with that"; previously: propose a small read-only one). Run workflow only, the narrowest permissions, inputs
+  through `env` and checked first, a failed step fails the run, and a check that the result really happened; its own
+  PR with a test of those points, medium risk at least, high when it changes Google Cloud settings, saved data or
+  secrets (`site-media.yml` is the example). A brand-new workflow can't run from its branch, so it merges (with his
+  OK) before its first run. A credential saved in the session is a last resort, with his OK (mac-app CLAUDE.md, #945,
+  #1108; mac-app #550, #671, #943, #1105).
 - Auto-updates email him with release notes and wait for approval.
 - Don't bring up FatSecret (e.g. for barcode lookups) unless he raises it.
 - Test sign-ups use "+" alias emails; remind him when a fresh one is needed.

@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-26
-sources: ["#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
+updated: 2026-11-27
+sources: ["#1085", "#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -15,7 +15,7 @@ sources: ["#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#92
   journey checks both links and that searching "trust page" finds the FAQ (#319, #872). A **Status** link sits
   beside them, and the FAQ "Is the app down?" (in the app and the portal's Help) points to status.metabolichq.app,
   then your own connection, then Contact support (#321, #918).
-- The version line reads "Version BETA 8.77.0 · What's new" (on main, Nov 26) and opens **What's new**, the release notes grouped by
+- The version line reads "Version BETA 8.83.1 · What's new" (on main, Nov 27) and opens **What's new**, the release notes grouped by
   day; coaches see clients' and coaches' notes with Everything / For clients / For coaches chips. The portal's Help has
   a third tab, **What's new** (#320, #920; see [Versions](versions.md)).
 - **What's new card** (#1036): new features show once on the app's Home (clients) and Coach Home (coaches); See
@@ -52,6 +52,10 @@ sources: ["#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#92
 - Help review Nov 24: nothing to change; review marker moved to 5b65fe1 (#972).
 - Help review Nov 25: nothing to change; review marker moved to fd2680e (#998). Help topics changed with the
   features since (check-ins, groups, Your brand, Finances, Resources, biometrics; CHANGELOG 2026-11-25).
+- Help review Nov 26 (v8.83.1, #1085): filled the gaps from 61 commits: the Home What's new card, Groups and the
+  What's new and Coming up cards in "The coach portal", shared check-in notes on a client's overview, new FAQs for
+  the service status banner and the coaches' Monday updates email, check-in "answers" (custom check-ins). MPT Coach
+  gets seven new app-help test questions (58 in all). How-to videos still matched (CHANGELOG 2026-11-26).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).

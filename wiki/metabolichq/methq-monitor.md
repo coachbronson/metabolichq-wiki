@@ -1,8 +1,8 @@
 ---
 title: MetHQ Monitor
 summary: Phone-friendly ops view at admin.metabolichq.app/monitor — tabs, Claude action menus, security and quality tiles
-updated: 2026-11-26
-sources: ["#1037", "#1043", "#1051", "#1053", "#1058", "#1059", "#1066", "#1069", "#1079", "#977", "#988", notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
+updated: 2026-11-27
+sources: ["#1079", "#1080", "#1084", "#1103", "#1117", "#1037", "#1043", "#1051", "#1053", "#1058", "#1059", "#1066", "#1069", "#1079", "#977", "#988", notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
 ---
 
 # MetHQ Monitor — admin.metabolichq.app/monitor/
@@ -30,9 +30,12 @@ desktop. Kept separate from the portal so it needn't mix role-based access into 
   with Promote now (it asks first and lists what it takes along), Promote all on staging, Hold / Release the hold,
   Re-run smoke tests, links and Claude options (#977, #988). It updates by itself, Live lists the last 24 hours, the
   drift check sits under the heading, Being watched has Roll back and It's fine, and Feature switches have their ⋯
-  menu and calendar (#1002, #1004, #1066, #1069; see [Versions](versions.md#after-beta-575-done-nov-25)). Open:
-  the live refresh resets a half-filled Set a date form (#1079).
-- **Content review**: the major version announcement draft (from 9.0; edit, then Send or Skip, #1051), plus MetHQ blog drafts and scheduled posts; Review and Revise run against
+  menu and calendar (#1002, #1004, #1066, #1069; see [Versions](versions.md#after-beta-575-done-nov-25)). The live
+  refresh no longer resets a half-filled Set a date form (#1079 fixed, #1080). A banner shows each running end-to-end
+  run with a timer, expected finish and what started it, or says it can't tell when GitHub doesn't answer (#1084,
+  #1103).
+- **Content review**: the major version announcement draft (from 9.0; edit, then Send or Skip, #1051), plus MetHQ blog drafts and scheduled posts (Approve on a draft behind main queues it to merge once its tests
+  pass, #1117); Review and Revise run against
   `content/blog/DRAFTING.md`. (Previously also coachbronson.com's newsletter and blog drafts, through that site's
   portal; removed in the split, #673. Those are now reviewed in the site's own portal.)
 - Every alert or item has a context menu that starts a Claude session: "Fix this", "Look into this", or "Make this a

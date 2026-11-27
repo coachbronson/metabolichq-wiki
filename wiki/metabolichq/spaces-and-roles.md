@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-26
-sources: [notes, "#410", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
+updated: 2026-11-27
+sources: [notes, "#410", "#1081", "#1086", "#1107", "#1110", "#1112", "#1095", "#1099", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
 ---
 
 # Spaces, coaches and roles
@@ -40,8 +40,9 @@ sources: [notes, "#410", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", m
 
 ## Client groups (#410)
 
-Coach-made groups of clients (e.g. Masters, Competition prep), each with its coaches and managers. Stages A1–A4 are
-done (Nov 25–26); next is stage B, groups as an audience, Resources first (#410 "Stage A4 done").
+Coach-made groups of clients (e.g. Masters, Competition prep), each with its coaches and managers. **#410 closed
+Nov 26**: stages A1–A4, B1, B2, B4, C1 and C2 merged (v8.75.0–8.83.0); B3 dropped and B5 skipped (his calls, below;
+#410 "How this was resolved").
 - **Who does what:** head coaches create, rename and delete groups and choose each group's coaches and managers; a
   group's managers (always some of its coaches) add and remove its clients. A client can be in several groups. Only
   coaches see groups (his decisions, Nov 25; v8.75.0, #1035).
@@ -54,6 +55,15 @@ done (Nov 25–26); next is stage B, groups as an audience, Resources first (#41
   #1059). His call: a callable, not a Firestore trigger, because the trigger's deploy needed three IAM grants the
   deploy account can't make (#1059). The MetHQ Monitor's Quality tile flags a client whose field doesn't match their
   groups (#1059).
+- **Groups as an audience** (Nov 26): a Resources collection can be shared with a group (B1, v8.78.0, #1081, see
+  [Resources and files](resources-and-files.md)); coaches message a whole group at once (B2, v8.79.0, #1086, see
+  [Messaging and community](messaging-and-community.md)); group calls (B4, v8.81.0, #1107, see
+  [Coaching calls](coaching-calls.md)); a group's own Community feed (C1, v8.82.0, #1110); Cohort reports by group,
+  coaches only (C2, v8.83.0, #1112, see [Coach portal](coach-portal.md#client-groups)).
+- **His calls on the plan (Nov 26):** B3, check-ins by group, dropped for one custom check-in per space (#157, see
+  [Biometrics and signals](biometrics-and-signals.md#check-ins)); B4 kept simple, with recording and AI notes in
+  #1095; B5, onboarding by group, skipped until coach-built client onboarding (#332) exists; C2 coaches only, the
+  outside-sponsor summary is #1099 (#410).
 - Still to do: run the **Group coaches backfill** on production once A2 is live (reminder Nov 27, 9:37 AM, #1072).
 - "Group program" is now called **Shared program**, so it isn't mixed up with Groups (his call, Nov 25; #1035).
 - Screens: see [Coach portal](coach-portal.md#client-groups).

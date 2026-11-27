@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-26
-sources: ["#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#1036", "#1065", "#1066", "#1068", "#1069", "#1073", "#1076", "#978", "#988", "#980", "#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-27
+sources: ["#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102", "#1103", "#1107", "#1110", "#1112", "#1115", "#1120", "#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#1036", "#1065", "#1066", "#1068", "#1069", "#1073", "#1076", "#978", "#988", "#980", "#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -26,6 +26,15 @@ sources: ["#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#
   Refresh; Being watched has Roll back and It's fine; a Feature switches section and turn-on calendar. No Help
   walkthrough, like the other owner-only pages (#978, #988, #1002, #1004, #1066, #1069; see
   [Versions](versions.md#after-beta-575-done-nov-25)).
+- **Releases** also shows a banner for each running "Whole-system end-to-end test": a timer, the expected finish as an
+  Eastern time (amber once past it), and what started it (PR, nightly or by hand). If GitHub can't be read it says
+  "Can't tell whether an end-to-end run is going" instead of hiding the banner (#1084, #1103, owner Nov 26).
+- **Social** (Platform, owner only, since Nov 26): MetabolicHQ's own Instagram and LinkedIn company page. **Posts**
+  (the next two weeks, Looks good / Pause / Resume, New post, Pause all posting, ideas for Claude), **one post**
+  (images, captions, Publish now, Reject, Ask Claude to rewrite it), **Connections**, and **Performance** (Instagram
+  by funnel stage, the week's plan in plain words, the weekly review's suggestions with Use it / Dismiss) (#1102,
+  #1115, #1120; see [MetabolicHQ content](methq-content.md#social)). The Blog editor's Social link opens it again
+  (#1097 closed).
 - **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
   (#515; see [Security](security.md)).
 - **Help**: a **?** at the top of every page and **Help** at the end of the menu (v8.67.0, #645). Tabs:
@@ -79,6 +88,12 @@ sources: ["#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#
 - **Inbox** has a Group filter over Messages, Signals, Workout comments and Help requests (#1076). The coach app's
   Clients has a Group filter too (#1076).
 - The coach data export adds `client-data/groups.csv` (#1035).
+- Each group card has **Message the group** (#1086) and, for head coaches, **Own feed** with its feed name (#1110).
+  **Calls → New call** lists groups for a group call (#1107). Resources' **Who sees it** lists groups (#1081).
+- **Cohort reports** has a **Group** menu: the same report for one group's clients, still only the clients the coach
+  works with, and the 5-client minimum hides small pools (v8.83.0, #1112). Coaches only; a sponsor summary is #1099.
+- **Space settings → Daily check-in** (head coaches): the space's one custom check-in (#157; see
+  [Biometrics and signals](biometrics-and-signals.md#check-ins)).
 
 ## Program calendar and one-on-one workouts
 
@@ -103,7 +118,8 @@ sources: ["#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#
 - Backlog = GitHub issues in mac-app labeled `backlog` (replaced his notepad list).
 - Interactive roadmap, all drag and drop: month timeline (previous month + next 6), each month in 4 weeks; due date set
   by position; lanes **Features, Operations & Maintenance, Bugs & Fixes, Research & Development**; tiles show full
-  titles; tray sortable by date, filter by user-submitted. Roadmap tag lives in metadata only.
+  titles; tray sortable by date, filter by user-submitted. It opens on today, with the today line about a quarter of
+  the way across; the **Today** button (was "This month") jumps back (#1098). Roadmap tag lives in metadata only.
 - Dependencies many-to-many; he wants linking to work like Microsoft Project Gantt charts (current version felt
   unintuitive). Change priority from the dashboard.
 - Every card shows its type badge (**Feature**, **O&M**, **Bug**, **R&D**, plus **Security** and/or **Enhancement**
@@ -123,6 +139,8 @@ Finances and Your brand stay the coach's own. **remove** takes it all away (#647
 
 - **Costs** (Platform): real cost sources in three stages — actuals and trends, Google Cloud billing export, then
   projections and budget alerts. Later: cost by space and per user (#467).
+- **Add-ons** editor: adding or removing a trigger no longer turns a typed price of 4.99 into 0.05 (found by the new
+  Add-ons journey, #1096).
 - **Performance dashboard**: load, performance, utilization, trends; alerts by email only.
 
 ## Related

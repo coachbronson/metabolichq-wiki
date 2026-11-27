@@ -1,8 +1,8 @@
 ---
 title: Biometrics, check-ins and signals
 summary: Biometrics metrics, daily check-ins, signals and patterns from combined data, aging rules, AI-on-data rule
-updated: 2026-11-26
-sources: [notes, "#1013", "#1014", "#1016", "#1017", "#1020", "#1025", "#1026", "#1052", "#1054", CHANGELOG 2026-11-25, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644", "#820", "#856", "#859"]
+updated: 2026-11-27
+sources: ["#157", "#1093", notes, "#1013", "#1014", "#1016", "#1017", "#1020", "#1025", "#1026", "#1052", "#1054", CHANGELOG 2026-11-25, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644", "#820", "#856", "#859"]
 ---
 
 # Biometrics, check-ins and signals
@@ -26,8 +26,19 @@ sources: [notes, "#1013", "#1014", "#1016", "#1017", "#1020", "#1025", "#1026", 
 
 ## Check-ins
 
-Daily check-in plus a session reflection. Check-in lives on Home only (not in the menu). Planned: coach-customizable
-questions (#157).
+Daily check-in plus a session reflection. Check-in lives on Home only (not in the menu).
+
+- **A custom check-in per space** (v8.80.0, #157 closed Nov 26, PR #1093): head coaches make **one** custom
+  check-in for their whole space on **Space settings → Daily check-in**, starting from the default (the 8 ratings
+  and hours slept). They can reword, reorder or remove questions, change the words for 1 and 5, and add questions
+  of six types (rating 1–5, number with a unit, yes/no, choice, short answer, long answer), up to 30. **Save and use
+  it** replaces the default for every client; **Use the default** goes back at any time and keeps the questions to
+  turn on again. Other coaches see which one is used but can't change it. Coaches read the answers on a client's
+  Check-ins tab and the day views; both data exports get `checkin_answers`. Built-in ratings a form keeps still feed
+  trends, readiness, signals and cohort reports; each answer stores the question as asked (#157 "How this was
+  resolved").
+- **No forms by group** (his call, Nov 26): one check-in per space, no per-group or per-coach forms. A form for one
+  group is a Resources worksheet shared with the group. That dropped #410 stage B3, check-ins by group (#157, #410).
 
 - **A self check-in**, for the client's own awareness, not a report to the coach (his call, Nov 25; #603). The
   "your coach sees it" wording is gone (#1025).

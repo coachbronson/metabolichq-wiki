@@ -1,8 +1,8 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-26
-sources: ["#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
+updated: 2026-11-27
+sources: ["#512", "#1105", "#1109", "#1111", "#1113", "#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
 ---
 
 # Acquisition readiness (#620, high)
@@ -42,8 +42,13 @@ sources: ["#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916"
 - §2: done or accepted. Package names are `metabolichq` and `metabolichq-functions` (#915); ownership and accounts
   are accepted risk (above).
 - §3 security: **#558 done Nov 22**: no service account of ours holds Editor in production or staging (see
-  [Security](security.md#google-cloud-accounts)); follow-ups in #940. Still open: #512 (lockout stage C around
-  Nov 29, App Check). SOC 2 and #381 deferred. Done earlier: error alerting (#433), #515, #550 and #716 (#620).
+  [Security](security.md#google-cloud-accounts)); follow-ups in #940. #512 closed Nov 26, its two open
+  parts deferred until there's enough usage: lockout in #1111, App Check with Turnstile in #1113 (his call; #620's
+  old "#548 App Check enforced" tick was wrong and is corrected; #512). SOC 2 and #381 deferred. Done earlier: error alerting (#433), #515, #550 and #716 (#620).
+- **Keep the repo lean** (Nov 26): the 10.5 MB homepage demo video left the repo. It sits on mac-app's private
+  `site-media` GitHub Release (put there by the hand-run Site media workflow, #1105), and the deploy downloads and
+  checks it against `ops/site-media.json` before deploying; a missing or changed file stops the deploy. The address
+  metabolichq.app/video/methq-demo.mp4 is unchanged; old history still holds the file (#1109, CHANGELOG 2026-11-26).
 - §4: done Nov 22: release notes (#320), status page (#321, status.metabolichq.app), the Incident Response
   Procedure (#924), backup timing at 10× data (#926: on staging with 85,176 documents, backup 222 s and full restore
   143 s against limits of 30 and 60 minutes). Second region: not now. The release process (#575) and the staging

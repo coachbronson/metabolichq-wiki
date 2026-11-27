@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-26
-sources: ["#410", "#575", "#603", "#681", "#1022", "#1024", "#996", "#999", "#1000", "#1026", "#1040", "#1042", "#1051", "#1059", "#1064", "#1072", "#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-27
+sources: ["#983", "#1082", "#1093", "#1101", "#1104", "#1105", "#1109", "#1114", "#1116", "#1117", CHANGELOG 2026-11-26, "#410", "#575", "#603", "#681", "#1022", "#1024", "#996", "#999", "#1000", "#1026", "#1040", "#1042", "#1051", "#1059", "#1064", "#1072", "#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -75,7 +75,10 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 ## Server code
 
-- **139 Cloud Functions**: 74 callable, 26 HTTPS, 39 scheduled (`ops/function-endpoints.json`, Nov 26). Added Nov 25:
+- **148 Cloud Functions**: 76 callable, 28 HTTPS, 44 scheduled (`ops/function-endpoints.json`, Nov 27). Added Nov 26:
+  `checkinForm` (#1093); MetabolicHQ social media's `social`, `socialJob`, `socialCallback`, `socialPublish`,
+  `socialStats`, `hqSocialDraftsStart` and `hqSocialReviewStart` (#1101, #1104, #1114, #1116); `hqBlogMergeWork`
+  (#1117). (Previously 139 on Nov 26.) Added Nov 25:
   `driftCheckStart` (#996), `releaseWatch` (#999), `releaseSignal` (#1000), `checkinReminders` (#1026), `coachDigest`
   (#1040), `serviceStatus` and `siteStatus` (#1042), `majorAnnounce` (#1051), `groups` (#1059), `features` and
   `featureWork` (#1064). (Previously 128 and 34 on Nov 25; 121 and 28 on Nov 23.) Each defined in an area file under `functions/` (`fn-<area>.js`, plus `base.js` for
@@ -111,7 +114,7 @@ Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.ru
 
 Zapier Pro, Resend Free, FatSecret Premier, USDA API, Daily (video, pay-as-you-go, with Daily transcription), Stripe
 (standard rates; Connect Standard for coaches), Google Workspace Business Standard (1 seat), Gemini on Vertex AI
-(MPT Coach), Cloudflare Turnstile (bot protection; App Check uses it, not reCAPTCHA), CodeRabbit, Dependabot.
+(MPT Coach), Cloudflare Turnstile (bot protection on the public forms; App Check with Turnstile is deferred, #1113), CodeRabbit, Dependabot.
 Circle is **not** part of the app. Status page: **Better Stack** (free plan, owner's account) at
 `status.metabolichq.app`, checking the app, portal and site every 3 minutes (#321).
 
@@ -148,15 +151,20 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   fine-grained token `WORKFLOW_START_TOKEN` (mac-app only, Actions): `nightlyE2EStart` 2:13, `securityScanStart`
   2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23, `stagingDemoStart` Mondays 4:17 (#958), `releasePromote` every 15 minutes (#975), `driftCheckStart` 3:07 (#996). Added
   Nov 25 as scheduled functions: `releaseWatch` every 5 minutes (#999), `checkinReminders` every 15 minutes (#1026),
-  `coachDigest` Mondays 8:17 (#1040), `featureWork` 8:23 (#1064). A start or job that
+  `coachDigest` Mondays 8:17 (#1040), `featureWork` 8:23 (#1064). Added Nov 26: `socialPublish` and
+  `hqBlogMergeWork` every 10 minutes, `socialStats` 6:21 AM (CHANGELOG 2026-11-26). A start or job that
   fails saves a security alert for the owner; starters give up after 15 seconds (nightly review Nov 23, #948). Each
   moved workflow keeps "Run workflow"; `test/schedules.test.mjs` fails on any new `schedule:` (#930–#938).
 - **Claude jobs and reminders run from Google Cloud too** (owner's rule, Nov 24, #983): no Claude scheduled tasks.
   The workflow **Claude job** (`claude-run.yml`, Run workflow only) runs Claude Code headless on one job's
   instructions in `ops/claude-jobs/<job>.md`, signed in with the owner's Claude subscription token and a fine-grained
   GitHub token (mac-app and this wiki), and emails the job's report to the owner (#984). Starts (Eastern):
-  `nightlyReviewStart` 12:06 AM, `wikiUpdateStart` 4:41 AM, `hqBlogDraftsStart` 7:10 AM, `helpReviewStart` 7:45 AM
-  (#986). One-time reminders are `functions/reminders.json` (add one with a PR); `reminderWork` checks every 15
+  `nightlyReviewStart` 12:06 AM, `wikiUpdateStart` 4:41 AM, `hqSocialDraftsStart` 5:52 AM, `hqBlogDraftsStart`
+  7:10 AM, `helpReviewStart` 7:45 AM (#986, #1104), and `hqSocialReviewStart` Mondays 6:53 AM (#1116). A by-hand job,
+  `drive-check`, checks Drive access (#1082). **#983 closed Nov 26**: no Claude scheduled tasks are left.
+  **Google Drive** for Claude jobs: a keyless service account in metabolichq-staging (`claude-drive`, no project roles), shared
+  only the cover-photo folder (read) and Documentation (edit); `scripts/drive.mjs` refuses anything outside them and
+  its token goes only to the Claude step (#1082). Each job's report is also printed in its run log (#1082). One-time reminders are `functions/reminders.json` (add one with a PR); `reminderWork` checks every 15
   minutes, emails each due one once, can start a Claude job (started only once, even if the email is retried), and
   records it in `ops/reminders` (#989, #992). On the list: the Nov 27 9:37 AM Group coaches backfill on production
   (#410, #1072), the Nov 29 key clean-up check (job `key-cleanup`, which
@@ -166,6 +174,13 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
 - Nightly: review pass, CodeRabbit + Claude, started by `nightlyReviewStart` (~12:06 AM ET; see
   [Engineering rules](../rules/engineering-rules.md#nightly-review-coderabbit--claude)), full end-to-end run (2:13 AM ET, emails only when something needs
   action), 7:03 AM workout digest.
+- **Large site files live outside the repo** (#620, Nov 26): the private `site-media` GitHub Release holds the homepage
+  demo video (hand-run workflow Site media, #1105); `deploy.yml` downloads and checks each file listed in
+  `ops/site-media.json` before deploying, and stops on a missing or changed one (#1109). 56 workflows.
+- **MetabolicHQ social media data** (server only, no rule allows them): `socialPosts`, `socialIdeas`, `socialAuth`,
+  `socialOAuth`, `socialStats`, `socialDays`, `socialWeeks`, `socialPlans`, `ops/social`; images under `social/` in
+  Storage, given to platforms as 2-hour signed links. Four new secrets stored "unset" until their GitHub secrets exist:
+  the Instagram app ID and secret and the LinkedIn client ID and secret (CHANGELOG 2026-11-26).
 - **Releases signals:** `release-signal.yml` posts each PR and workflow status change to production's
   `releaseSignal`, signed in with the run's GitHub OIDC token (no stored secret); the Releases pages reload when
   `ops/releaseSignal` moves (#1000–#1002, #1070, #1071). See [Versions](versions.md#after-beta-575-done-nov-25).

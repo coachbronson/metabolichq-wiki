@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ content and messaging
 summary: MetHQ messaging framework, homepage "Replace your stack" structure, differentiators, social plan, blog rules and topic queue
-updated: 2026-11-25
-sources: ["#441", "#949", content/blog/posts/, notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
+updated: 2026-11-27
+sources: ["#679", "#1092", "#1101", "#1102", "#1104", "#1114", "#1116", "#1117", "#1120", "#1121", "#1122", "#1123", "#441", "#949", content/blog/posts/, notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
 ---
 
 # MetabolicHQ content and messaging
@@ -70,15 +70,38 @@ Footer shows city and state only (address rule).
 - Photorealistic character images (Imagen) of coaches voicing a problem MetHQ fixes, plus the client angle (no more
   juggling apps, files, emails and video tools; better reports about their own life).
 - Images and captions in the Drive "MetabolicHQ Instagram" folder; file names by topic, numbered.
-- Publer dropped (Nov 11); he approves each item; a social dashboard per brand is wanted.
+- **Auto-publishing, MetabolicHQ's own** (his call, Nov 26; CHANGELOG 2026-11-26): Instagram and the LinkedIn company
+  page, **three posts a week (Mon, Wed, Fri)**. A post goes out at its time unless he pauses or rejects it
+  (previously he approved each item). Same setup as coachbronson.com's but nothing shared: its own apps, keys,
+  storage and scheduler ("MetabolicHQ is self-contained"). Instagram connects with Instagram Login (no Facebook Page);
+  LinkedIn posts as the company page; a platform not connected yet makes a post wait, not fail. Staging never posts.
+  Neither account was connected yet on Nov 26 (CHANGELOG 2026-11-26).
+- **The daily Claude job `hq-social-drafts`** (5:52 AM Eastern, started by Google Cloud) keeps the next week of
+  posts planned and redoes ones he sent back: his ideas first, then unposted sets in Drive › MetabolicHQ Instagram,
+  then the five pillars in rotation. Photos from Google's image model, slides at 1080×1350 with a real app screen,
+  captions ending "Photos: AI-generated." The plan it follows is `content/social/SOCIAL.md` (CHANGELOG 2026-11-26).
+- **Measured and reviewed** (his call, Nov 26: measure every post, review each week, adjust the plan; Instagram
+  only): `socialStats` (6:21 AM daily) stores each post's numbers 24 hours and 7 days after it goes out. The Monday
+  job `hq-social-review` (6:53 AM) reviews the week by funnel stage (new viewers, then follows, then saves and
+  shares; sign-ups not measured yet), leaves suggestions on upcoming posts (never changing them by itself), picks one
+  test for the week, writes **the plan for the week** in plain words (his ask: "this is the kind of reporting I want
+  on the page"), and proposes edits to `content/social/LESSONS.md` as a PR; his merge is his OK. Starting targets:
+  80% of reach from new viewers, 13 follows and 6 saves + shares per 1,000 new viewers; double down after two weeks
+  at 2× median reach, cut after three below it (#1114, #1116, #1120).
+- Run from the portal's **Platform → Social** (see [Coach portal](coach-portal.md#menu-shape)).
 
 ## MetHQ blog (metabolichq.app/blog)
 
 Rules in `mac-app/content/blog/DRAFTING.md`:
 - Every other Monday from Nov 23, 2026 (#675; previously described as the Mondays between coachbronson.com's posts;
   the dates didn't change). The daily go-live run fails on its last step, "Save the go-live log"; posts still go live
-  but the log isn't saved (#679, low). Claude drafts, Bronson
-  approves by merging (`hq-blog-draft` PRs); weekly email of anything awaiting approval.
+  but the log isn't saved (#679, low; fix in PR #1121, open Nov 27). It also deploys main's site straight to
+  production, skipping the staging gate (#1122, open, fixes for him to pick). Claude drafts, Bronson approves
+  (`hq-blog-draft` PRs, or **Approve** on the Content page); weekly email of anything awaiting approval.
+- **Approve works on a draft that's behind main** (#1117, Nov 26): if GitHub can't merge at once, the draft is
+  labeled `hq-blog-approved`, brought up to date, and `hqBlogMergeWork` (every 10 minutes) merges that exact commit
+  once its tests pass. A draft waiting for a rewrite can't be approved. Draft PRs end with **Risk: low**, so a merged
+  post isn't held 24 hours on staging (#1123).
 - Coach's problem and real advice first; MetHQ comes in where it genuinely solves it, usually the last third, at most one
   short product section. 700–1,000 words, first person, coach to coach.
 - One SEO keyword per post from real coach searches. CTA: `start` (default, free up to 5), `compare`, `premium`,
@@ -92,10 +115,12 @@ Rules in `mac-app/content/blog/DRAFTING.md`:
   retention, coaching without spreadsheets, professional fitness coach. Approved Nov 24: "Your Online Coaching Tech
   Stack Is Costing You Clients" (dated Mon, Nov 23, #441) and "Who Owns Your Coaching History?" (goes live Mon,
   Dec 7, #949) (`content/blog/posts/`).
+- Waiting for him: "The Add-On Tax: What Coaching Software Really Costs" (draft PR #1092, goes live Mon, Dec 21 if
+  merged before then; its cover came from Drive, #983).
 - Drafts are started at 7:10 AM Eastern by Google Cloud as a "Claude job" run (`hqBlogDraftsStart`, #983, #986;
   previously a Claude scheduled task).
 - Queue (from coach complaints in Capterra/G2/App Store reviews and r/personaltraining): the app is part of your
-  service; the add-on tax at 5/15/45 clients; keto clients need more than a macro tracker;
+  service; keto clients need more than a macro tracker;
   five apps, one client; clients feeling guilty for messaging; stop retyping call notes; reading glucose, ketones and GKI
   with training; the client overview that should exist; month to month as the default; coaching under your own brand;
   desktop for building, phone for coaching.

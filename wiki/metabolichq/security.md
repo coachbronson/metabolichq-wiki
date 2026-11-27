@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-26
-sources: ["#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-27
+sources: ["#1111", "#1113", "#1110", "#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -10,8 +10,10 @@ sources: ["#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", 
 - Two-step sign-in for coaches; staging's two-step is authenticator-app codes only, no text codes (#952). When start-up
   is refused for the owner's email (no account record yet), the app shows the two-step set-up or "Sign in again"
   screen instead of a raw permission error; the rules didn't change (#964, #966).
-- **All open security work lives in #512** (Pending actions), at the owner's request; #514 and #548 were closed into
-  it on 2026-11-15.
+- **#512 closed Nov 26** (nightly scan #513, monitoring stages A and B #514, Security page #515 done). Its two open
+  parts are **deferred** (his call, Nov 26: not enough real usage yet to know what normal looks like): automatic
+  lockout and Unlock (#514 stage C) in **#1111**, and App Check with Turnstile in **#1113**; both security, priority
+  low, high risk when built (#512 "How this was resolved"). (Previously all open security work lived in #512.)
 
 ## Monitoring and alerts (#514, alert-only)
 
@@ -39,7 +41,7 @@ and accepted risks. **Accept this risk** takes a reason and a review date (up to
 counting that finding until then. On a phone the [MetHQ Monitor](methq-monitor.md)'s Security tab shows the same.
 Alert links open the page on a computer and the Monitor tab on a phone (#515, CHANGELOG 2026-11-15).
 
-## Bot protection: App Check with Turnstile (#512)
+## Bot protection: App Check with Turnstile (deferred, #1113)
 
 - Firebase **App Check with Cloudflare Turnstile** (custom provider; reCAPTCHA ruled out). Every form gets Turnstile.
 - MetabolicHQ has its **own Turnstile widget** ("MetabolicHQ", its own hostnames only), used by the partner apply form,
@@ -49,7 +51,10 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Stage 1 (metrics only) went live on 2026-11-14 and was reverted the same hour: the invisible check timed out and the
   widget couldn't retry (#605, reverted by #606). The owner then made a separate **Invisible** widget for App Check,
   its secret in Secret Manager (#548).
-- Next (#512): stage 1 again with the fixes, tested on a preview link first; the owner registers the app in App Check;
+- **App Check was never turned on**: `public/js/firebase.js` has no site key and still uses reCAPTCHA, and no
+  function enforces it (#512, #1113). Turnstile on the public forms (#684) is separate and done.
+- **Deferred to #1113** (his call, Nov 26: not enough usage for a week of metrics to mean anything). When built:
+  stage 1 again with the fixes, tested on a preview link first; the owner registers the app in App Check;
   a week of metrics; then enforce one service at a time (Firestore, Storage, Auth, callable functions), each with
   the owner's OK. Turnstile is already allowed in the app's Content-Security-Policy, so stage 1 needs no CSP change
   (#550). (#548 closed as not done, moved to #512. Previously coachbronson-site's admin sign-in also had to be
@@ -100,9 +105,15 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 - Security rules, Nov 25–26: only a space's main coach and head coaches (and the owner) write its brand (#1033,
   #1046); a coach reads only the check-in notes a client shared (#1020); groups and each client's `groupCoaches` are
   written only by the server's `groups` callable, and a client's coaches include their group coaches (`coachesOn`;
-  #1059, #1073; see [Spaces and roles](spaces-and-roles.md#client-groups-410)).
+  #1059, #1073; see [Spaces and roles](spaces-and-roles.md#client-groups-410)). A group's own Community feed
+  (`groupFeeds/{gid}/posts`) is read and posted to only while it's on, by the group's active clients, its coaches
+  and managers, and head coaches; a client's `feeds` field is server-only (#1110). Custom check-in forms
+  (`spaces/{sid}/config/checkin`) are written only by the `checkinForm` callable (#1093). Also fixed: the notices
+  rule refused reactions other than 👏 (#1110).
 - `releaseSignal` takes status changes only with a GitHub OIDC token from this repository's release-signal workflow
-  on main (no stored secret; #1000).
+  on main (no stored secret; #1000). MetabolicHQ social media's `socialJob` takes only the Claude job workflow's
+  OIDC token the same way, so no `SOCIAL_JOB_KEY` exists; `socialJob` and `socialCallback` are reviewed public
+  endpoints (CHANGELOG 2026-11-26).
 - Team-coach invites are created in one step, so two spaces can't take over the same email's invite; withdrawing
   checks ownership in the same step (#825).
 
@@ -160,7 +171,8 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 
 ## Open
 
-- **High:** #512 pending actions (lockout stage C, App Check). (#558, the Google Cloud owner steps, closed Nov 22.)
+- **Low, deferred:** #1111 automatic lockout and Unlock, #1113 App Check with Turnstile (#512 closed Nov 26). (#558,
+  the Google Cloud owner steps, closed Nov 22.)
 - Deleting the two disabled accounts' leftovers around Nov 29 (#940, see above). Browser error reporting deferred to #921 (medium).
 - Nov 22 scan: sign-in still allowed from a leftover PR preview domain (medium finding, #558 resolution).
 - **Medium:** #381 HIPAA-ready MetabolicHQ, deferred with SOC 2 (owner, Nov 22; see [HIPAA](hipaa.md)).

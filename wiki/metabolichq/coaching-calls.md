@@ -1,8 +1,8 @@
 ---
 title: Coaching calls and scheduling
 summary: In-app video calls (Daily), scheduling calendar and sync, recording/transcription rules, AI draft notes
-updated: 2026-11-21
-sources: [notes, CHANGELOG v5.0, #755, #787, #857]
+updated: 2026-11-27
+sources: ["#410", "#1107", "#1095", notes, CHANGELOG v5.0, #755, #787, #857]
 ---
 
 # Coaching calls (v5.0)
@@ -28,6 +28,11 @@ sources: [notes, CHANGELOG v5.0, #755, #787, #857]
 - Calendar sync: a direct Google connection and a subscribe link for any calendar.
 - Multi-coach spaces: the client picks their coach. Partner coaches schedule their own clients.
 - Notifications and reminders for scheduling, moves and cancellations.
+- **Group calls** (v8.81.0, #410 stage B4, PR #1107, Nov 26): **Calls → New call → Groups** schedules a call for a
+  group with a **title clients see** (never the group's name). Clients in the group at the time see it, can join one
+  room of up to 50, and can't reschedule or cancel it; only coaches move or cancel it. **Not recorded**, no call
+  notes (his call: keep it simple; recording and AI notes are #1095, which must settle consent when someone who said
+  no joins and what notes may say about others).
 
 ## Related
 

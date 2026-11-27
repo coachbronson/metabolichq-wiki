@@ -12,9 +12,9 @@ Newest at the top. Each entry: date, what changed, pages touched.
   hold a token for it, so this nightly update skips the site's commits. Options in #983: the site's own Claude job adds
   a line to this wiki's inbox.md (its token would also need this repo), or the site repo becomes public. Which?
 
-- **Detailed System Design and the Claude jobs** (#983): mac-app CLAUDE.md now describes the nightly pass as a Claude
-  job (#1034, Nov 25), so that part is answered. Still open: #983's comments list the SSP, CMP, RMP and O&M as updated
-  for Claude jobs and reminders, not the Detailed System Design. Does it need them?
+- **The blog go-live skips the staging gate** (#1122, opened Nov 26): the morning go-live run deploys main's site
+  straight to production, so a merged but not yet promoted `site/` change (in its 24-hour wait, or on Hold) goes
+  live with the next blog post. #1122 lists fixes for you to pick (PR #1121 handles #679's failing last step). Which?
 
 - **A client record with no status counts as "waiting to be let in"** (#1049, not urgent): real sign-ups always get
   a status from the server, so it likely only affects test data, but a record that lost its status would show the
@@ -25,6 +25,36 @@ Newest at the top. Each entry: date, what changed, pages touched.
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-27 — Nightly update
+
+Covered mac-app from `a7b4aaf` to `7535ca8` (33 commits; CHANGELOG 2026-11-26, read with `tools/changelog.mjs`;
+version 8.83.1 on main), the issues closed since then (each "How this was resolved" read: #157, #410, #512, #983,
+#1079, #1089, #1097), new issues #1090, #1095, #1099, #1100, #1111, #1113, #1119, #1122, and mac-app CLAUDE.md
+(#1108: build the workflow when none fits). README unchanged. No priority changes on open backlog issues beyond the
+new ones and the closures. **coachbronson-site's commits skipped** (not in this job yet, #983). Filed all 13 inbox
+lines. First run with Drive: the system documents' "Last reviewed" dates and the diagram names were read from Drive.
+
+- spaces-and-roles: #410 closed; B1, B2, B4, C1, C2 done, B3 dropped, B5 skipped (his calls). biometrics-and-signals:
+  one custom check-in per space (#157). resources-and-files: Resources shared with a group. messaging-and-community:
+  Message the group, group feeds, reaction notices. coaching-calls: group calls (not recorded, #1095).
+- coach-portal: group tools, Cohort reports by group, Daily check-in editor, Releases' end-to-end banner, Platform →
+  Social, roadmap opens on today, Add-ons price fix. methq-monitor: #1079 fixed, the end-to-end banner, blog Approve.
+- methq-content: MetabolicHQ social media (auto-publishing Mon/Wed/Fri, the daily and Monday Claude jobs, the
+  Performance tab and the week's plan); blog Approve behind main, low-risk draft PRs, #1092 waiting, #1121/#1122.
+- security: #512 closed, lockout (#1111) and App Check (#1113) deferred, App Check never on; new rules for group
+  feeds and check-in forms; socialJob's OIDC sign-in. acquisition-readiness: #512 line, the demo video out of the repo.
+- architecture: 148 functions (76 callable, 28 HTTPS, 44 scheduled), new scheduled jobs and Claude jobs, Drive for
+  Claude jobs, site media, social data and secrets' names; Turnstile line corrected. marketing-site: demo video source.
+- versions: 8.83.1 current; Nov 26 timeline. help-and-howto: Help review Nov 26 (#1085).
+- engineering-rules: outside services, build the workflow (#1108); the test-list guard (#1106) and #1090.
+- system-documentation: CMP, Change plan, RMP and O&M last reviewed 2026-11-26 (Drive); diagrams "(2026-11-26, blog
+  merges)". roadmap-and-backlog: snapshot refreshed (89 open, 2 high, 13 on the roadmap, 26 need a decision).
+  index: descriptions updated. inbox emptied.
+- Open questions: the #983 Detailed System Design question removed (its Last reviewed line covers the Claude jobs);
+  new: #1122, the blog go-live skipping the staging gate.
+
+Last update covered: 2026-11-27.
 
 ## 2026-11-26 — Nightly update
 

@@ -1,8 +1,8 @@
 ---
 title: System documentation
 summary: Where the enterprise system documents live (SSP, config, change, resource, O&M, detailed design) and what each covers
-updated: 2026-11-26
-sources: ["#410", "#575", "#603", "#1022", "#1024", "#1033", "#681", "#960", "#983", "#975", "#985", "#950", "#952", "#955", "#956", "#958", "#962", "#638", "#620", "#868", "#876", "#893", "#907", "#909", "#321", "#924", "#926", "#928", "#558", "#940", "#946", mac-app CLAUDE.md, notes]
+updated: 2026-11-27
+sources: [Drive › Documentation (each document's "Last reviewed" line, read Nov 27), "#410", "#575", "#603", "#1022", "#1024", "#1033", "#681", "#960", "#983", "#975", "#985", "#950", "#952", "#955", "#956", "#958", "#962", "#638", "#620", "#868", "#876", "#893", "#907", "#909", "#321", "#924", "#926", "#928", "#558", "#940", "#946", mac-app CLAUDE.md, notes]
 ---
 
 # System documentation
@@ -14,14 +14,14 @@ auditor or new engineer, and support [Acquisition readiness](acquisition-readine
 | Document | Covers | Last reviewed |
 |---|---|---|
 | [System Security Plan (SSP)](https://docs.google.com/document/d/11Abg3dJ8m-4QIg2aODJgqDUM-k6K6zne81bPWv6iTn8/edit) | System boundary, data types (incl. health data), roles and access, controls in place, open risks R1–R11 and planned controls | 2026-11-26 |
-| [Configuration management plan](https://docs.google.com/document/d/1WzqvXqVJLVnC-whtHIc--gdAC4A7-U-4Va4esy3RmR8/edit) | What's under config control (in the repo and outside it), baselines, how config changes are made and recorded, drift detection (incl. the Live config report, #943) | 2026-11-25 |
-| [Change management plan](https://docs.google.com/document/d/1MleX6QdFwW8xEamny3fBqo6RUiC6vHS1OeIqmkGvVpw/edit) | Branch-per-change, blast radius, risk levels and approval, testing levels, staging gate, rollback, release notes | 2026-11-25 |
-| [Resource management plan](https://docs.google.com/document/d/1VkLBUxfWAS74H-Tx2WidTGa6DH9dc_eZcOxDugwZDds/edit) | Google Cloud/Firebase resources, GitHub, third-party services and license inventory, secret names, capacity | 2026-11-25 |
-| [O&M plan](https://docs.google.com/document/d/1-2ESI-k1sJ5RJNdUI09OGitxvIzKxUE2r3mt1tkLLmA/edit) | Monitoring and alerts, scheduled jobs, backup and restore, maintenance, incident procedure, support | 2026-11-25 |
+| [Configuration management plan](https://docs.google.com/document/d/1WzqvXqVJLVnC-whtHIc--gdAC4A7-U-4Va4esy3RmR8/edit) | What's under config control (in the repo and outside it), baselines, how config changes are made and recorded, drift detection (incl. the Live config report, #943) | 2026-11-26 |
+| [Change management plan](https://docs.google.com/document/d/1MleX6QdFwW8xEamny3fBqo6RUiC6vHS1OeIqmkGvVpw/edit) | Branch-per-change, blast radius, risk levels and approval, testing levels, staging gate, rollback, release notes | 2026-11-26 |
+| [Resource management plan](https://docs.google.com/document/d/1VkLBUxfWAS74H-Tx2WidTGa6DH9dc_eZcOxDugwZDds/edit) | Google Cloud/Firebase resources, GitHub, third-party services and license inventory, secret names, capacity | 2026-11-26 |
+| [O&M plan](https://docs.google.com/document/d/1-2ESI-k1sJ5RJNdUI09OGitxvIzKxUE2r3mt1tkLLmA/edit) | Monitoring and alerts, scheduled jobs, backup and restore, maintenance, incident procedure, support | 2026-11-26 |
 | [Detailed System Design](https://docs.google.com/document/d/1vo86_tCDzbLNYM0QKQHw83O2UjKKd5eKNC39IV0eYbM/edit) | Components, data flows, ports and protocols, interconnections; Mermaid source of the diagrams in its appendix | 2026-11-26 |
 | [Engineer Onboarding Guide](https://docs.google.com/document/d/1ol4vmKjGY6vXOsT53uxVDttHOjrYc1kDsz5fGo8H6hQ/edit) | What the system is, where the code lives (the code map), setup, running and testing, making a change, releasing and undoing, day-to-day operations, a first week | 2026-11-26 |
 | [Incident Response Procedure](https://docs.google.com/document/d/1QV6o_kHS-Q5uoEu_t8KbAMZbFCFbztmzL5H5i3T6txs/edit) | Roles and contacts, severity levels and response times, status-page and coach email templates, personal-data incident steps, write-up, incident log (mac-app issues labeled `incident`), quarterly practice | 2026-11-25 |
-| Component diagram · Data flow diagram | Rendered PNGs in [Drive › Documentation](https://drive.google.com/drive/folders/12gDgMAQDVP8vYBttR0YmZtInsewirAEP): "MetabolicHQ component diagram (2026-11-25, feature switches).png" and "… data flow diagram (2026-11-25, feature switches).png", which include the groups lines; the 25c/25d and older PNGs are superseded or trashed (wiki inbox, Nov 25). Re-render from the Mermaid source in the Detailed System Design at the next diagram change | 2026-11-25 |
+| Component diagram · Data flow diagram | Rendered PNGs in [Drive › Documentation](https://drive.google.com/drive/folders/12gDgMAQDVP8vYBttR0YmZtInsewirAEP): "MetabolicHQ component diagram (2026-11-26, blog merges)" and "… data flow diagram (2026-11-26, blog merges)", which include groups, the custom check-in, Claude jobs' Drive account, MetabolicHQ social media and blog merges; the "(2026-11-26, social media)", "(2026-11-26, Claude jobs Drive)", "(2026-11-25, feature switches)" and older PNGs are superseded (Drive › Documentation, read Nov 27). Re-render from the Mermaid source in the Detailed System Design at the next diagram change | 2026-11-26 |
 
 ## Keeping them current
 

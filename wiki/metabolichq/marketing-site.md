@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-26
-sources: ["#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
+updated: 2026-11-27
+sources: ["#1105", "#1109", "#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
 ---
 
 # metabolichq.app site
@@ -35,7 +35,9 @@ sources: ["#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", note
 - **See it in 2½ minutes** section right under the hero plays "A coaching day on MetabolicHQ" (2:36). Bronson narrates
   a coaching day over the real app and portal, filmed from the how-to demo spaces (no real client data). Subtitles
   are burned in, so it works muted. Hero button **▶ Watch the demo (2½ min)** scrolls down and starts it.
-- Self-hosted at `/video/methq-demo.mp4` (no YouTube); nothing plays until clicked. Structured data has a VideoObject;
+- Self-hosted at `/video/methq-demo.mp4` (no YouTube); nothing plays until clicked. Since Nov 26 the file isn't in
+  the repo: it's on mac-app's private `site-media` GitHub Release and the deploy fetches and checks it; the address is
+  unchanged (#1105, #1109; see [Architecture](architecture.md)). Structured data has a VideoObject;
   `llms.txt` links it (CHANGELOG 2026-11-15). How it was made: [Video production](../business/video-production.md).
 
 ## Branding demo widget

@@ -1,8 +1,8 @@
 ---
 title: Resources and shared files
 summary: Coach resource libraries, / linking and sharing rules, worksheets and timed release, private coach–client files
-updated: 2026-11-26
-sources: [notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062", "#156", "#491", "#410", "#431", "#332", "#860"]
+updated: 2026-11-27
+sources: ["#1081", "#157", notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062", "#156", "#491", "#410", "#431", "#332", "#860"]
 ---
 
 # Resources and shared files
@@ -25,8 +25,12 @@ sources: [notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062", "#156", "#491", 
   existing collections left as they are (#860).
 - **‹ Files** in a collection goes to Files, and a client with more than one coach sees **‹ All folders** after
   opening a folder from the list (#1060, #1045, PR #1062, Nov 26).
-- Later: timed release from enrollment/program start or "after the previous section" (#491), groups as an audience
-  for Resources (#410 stage B), search in the `/` list (#431), coach-customizable onboarding workflows (#332).
+- **Shared with a group** (v8.78.0, #410 stage B1, PR #1081, Nov 26): a collection's **Who sees it** lists the
+  space's groups (head coaches: every group; other coaches: groups they coach or manage), shown as "Group: Masters
+  (3 clients)". The server checks group membership when a client asks; clients who join get the usual "New in
+  Resources" notice, and leaving takes the collection away at once. A form for one group is a worksheet shared this
+  way (his call, Nov 26; #157).
+- Later: timed release from enrollment/program start or "after the previous section" (#491), search in the `/` list (#431), coach-customizable onboarding workflows (#332).
 
 ## Shared files (coach ↔ client)
 
