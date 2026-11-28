@@ -1,8 +1,8 @@
 ---
 title: Security
 summary: Security events and sign-in alerts (alert-only), Security page, scanning, App Check/Turnstile, enforced Content-Security-Policy, staging account, open work
-updated: 2026-11-27
-sources: ["#1111", "#1113", "#1110", "#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
+updated: 2026-11-28
+sources: ["#1171", "#1173", "#1174", "#1095", "#491", "#1125", "#1111", "#1113", "#1110", "#1033", "#1046", "#1059", "#1073", "#1000", "#1020", "#989", "#952", "#964", "#966", "#940", "#941", "#942", "#928", notes, "#512", "#514", "#515", "#548", "#619", "#624", "#626", "#638", "#550", "#558", "#595", "#322", "#613", "#676", "#678", "#671", "#684", "#690–#693", "#697", "#702", "#704", "#708", "#716", "#717", "#720", "#729", "#730", "#736", "#737", "#740", "#741", CHANGELOG, docs/security, #756, #759, #760, #761, #768, #783, #816, "#817–#830", #853, #854, #855, #866, #867, #870]
 ---
 
 # Security
@@ -110,6 +110,13 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
   and managers, and head coaches; a client's `feeds` field is server-only (#1110). Custom check-in forms
   (`spaces/{sid}/config/checkin`) are written only by the `checkinForm` callable (#1093). Also fixed: the notices
   rule refused reactions other than 👏 (#1110).
+- Security rules, Nov 27–28: My Daily Focus (#1174, PRs #1183, #1205): the client writes their own goals and habits,
+  their coaches (head coaches or assigned) write the coaches' list, both read both; the 6-goal and 3-coach-goal
+  limits are counted in the rules; each write changes one named item, checked; the reached list is append-only; the
+  space's default habits are head coaches only. Server-only and closed to clients and coaches:
+  `spaces/{sid}/resEnroll` (#491) and the group-call recording agreements (#1095). The audit's role-by-role test
+  (`test/auditroles.test.mjs`, 13 cases incl. MPT) checks the SSP's roles table and this wiki's
+  [Spaces and roles](spaces-and-roles.md) against `firestore.rules`; all pass (#805, PRs #1171, #1189).
 - `releaseSignal` takes status changes only with a GitHub OIDC token from this repository's release-signal workflow
   on main (no stored secret; #1000). MetabolicHQ social media's `socialJob` takes only the Claude job workflow's
   OIDC token the same way, so no `SOCIAL_JOB_KEY` exists; `socialJob` and `socialCallback` are reviewed public
@@ -173,6 +180,9 @@ Alert links open the page on a computer and the Monitor tab on a phone (#515, CH
 
 - **Low, deferred:** #1111 automatic lockout and Unlock, #1113 App Check with Turnstile (#512 closed Nov 26). (#558,
   the Google Cloud owner steps, closed Nov 22.)
+- **Medium, needs his decision:** production Secret Manager still holds coachbronson.com's four `SITE_*` secrets (the
+  removal script's step 3 wasn't run; #1173, found by the audit #805). The SSP roles table is stale (clients
+  "pending until a coach approves", Google sign-in only; #1170, low).
 - Deleting the two disabled accounts' leftovers around Nov 29 (#940, see above). Browser error reporting deferred to #921 (medium).
 - Nov 22 scan: sign-in still allowed from a leftover PR preview domain (medium finding, #558 resolution).
 - **Medium:** #381 HIPAA-ready MetabolicHQ, deferred with SOC 2 (owner, Nov 22; see [HIPAA](hipaa.md)).

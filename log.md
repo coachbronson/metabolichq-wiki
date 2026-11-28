@@ -12,9 +12,9 @@ Newest at the top. Each entry: date, what changed, pages touched.
   hold a token for it, so this nightly update skips the site's commits. Options in #983: the site's own Claude job adds
   a line to this wiki's inbox.md (its token would also need this repo), or the site repo becomes public. Which?
 
-- **The blog go-live skips the staging gate** (#1122, opened Nov 26): the morning go-live run deploys main's site
-  straight to production, so a merged but not yet promoted `site/` change (in its 24-hour wait, or on Hold) goes
-  live with the next blog post. #1122 lists fixes for you to pick (PR #1121 handles #679's failing last step). Which?
+- **A group call's transcript stays when one participant deletes their account** (#1095, Nov 27): it's kept as the
+  coaches' record of a shared call. The session asked whether you want that changed. Keep it, or remove that
+  person's parts?
 
 - **A client record with no status counts as "waiting to be let in"** (#1049, not urgent): real sign-ups always get
   a status from the server, so it likely only affects test data, but a record that lost its status would show the
@@ -25,6 +25,39 @@ Newest at the top. Each entry: date, what changed, pages touched.
 
 - **Book draft fixes** (v5): duplicate Sport Specific chapters, three different fat targets, and other edits listed
   on [the book page](wiki/business/new-essentials-book.md). Which fat target is the one he wants?
+
+## 2026-11-28 — Nightly update
+
+Covered mac-app from `7535ca8` to `6743453` (65 commits; CHANGELOG 2026-11-27 and 2026-11-28, read with
+`tools/changelog.mjs`; version 8.87.0 on main), the issues closed since then (each "How this was resolved" read:
+#620, #1174, #491, #1135, #1095, #1016, #1010, #1177, #1157, #679, #1122, #1125, #1141, #1154, #1156, #1119, #927,
+#928; #1146 a test issue), the new issues (#1131, #1140, #1153, #1163–#1166, #1168, #1170, #1173, #1182, #1185,
+#1193, #1197, #1208, #1211, #1212, #1214, #1215, #1217, #1218, #1220), label changes on open backlog issues (13
+roadmap items he added Nov 27, #256 to features, #1099 to R&D, #1005 labeled), and mac-app CLAUDE.md (Opening
+issues, Naming work, the resolution note posted unasked, the yearly full functional audit). README unchanged.
+**coachbronson-site's commits skipped** (not in this job yet, #983). Filed all 14 inbox lines. The system
+documents' "Last reviewed" dates and diagram names were read from Drive.
+
+- New page **my-daily-focus** (#1174) and its line in index.
+- biometrics-and-signals: My Daily Focus's check-in, body comp signals (#1016), client view signals (#1135).
+  training: #1010 fixed, audit findings #1208, #1212, #1220. coaching-calls: group calls recorded with consent and
+  coaches-only notes (#1095), New call search (#1177). resources-and-files: drip for existing clients (#491), client
+  view (#1135). spaces-and-roles: client view, keep sign-in deletes, #1095 and #1099 lines.
+- coach-portal: Goals & habits tab, My Daily Focus settings, Instagram Unified login, Track record, Cohort cache fix.
+  methq-monitor: Track record. methq-content: blog go-live from production's commit (#679, #1122), Instagram login,
+  social keys and sign-in (#1125), the Add-On Tax post approved. marketing-site: audit findings #1182, #1185, #1193.
+- acquisition-readiness: #620 closed (scores, follow-ups), track record, repo lean done, #928 done, the 2026 audit's
+  progress and findings. security: Nov 27–28 rules, the role test, #1173, #1170. architecture: 150 functions, new
+  scheduled job and Claude job, Run a scheduled job now, new data paths, #1197.
+- versions: 8.87.0 current; Nov 27–28 timeline; #1005 watch notes; #1163. help-and-howto: Help review Nov 27,
+  My Daily Focus Help, #1168, #1214. engineering-rules: the yearly audit, naming work, opening issues, the end-to-end
+  report off the branches, every session adds the three repos. system-documentation: dates (SSP, CMP, DSD,
+  Onboarding 2026-11-28; the rest 2026-11-27), newest diagrams, #1166, #1170. roadmap-and-backlog: snapshot (110
+  open, 2 high, 24 on the roadmap, 33 need a decision).
+- Lint: removed the stray empty `inbox.md.new`. Open questions: the #1122 blog go-live question removed (fixed by
+  PR #1121 with his OK, Nov 27); new: a group call transcript when a participant deletes their account (#1095).
+
+Last update covered: 2026-11-28.
 
 ## 2026-11-27 — Nightly update
 

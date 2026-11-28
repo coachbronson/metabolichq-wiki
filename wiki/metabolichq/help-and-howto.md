@@ -1,8 +1,8 @@
 ---
 title: Help, how-to videos and support
 summary: The app's Help page, tagged how-to videos, Ask MPT Coach, support tickets, review rules after e2e runs
-updated: 2026-11-27
-sources: ["#1085", "#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
+updated: 2026-11-28
+sources: ["#1129", "#1168", "#1174", "#1214", "#1085", "#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#920", "#925", "#320", "#321", notes, mac-app CLAUDE.md, public/js/help.js, e2e/howto/, "#616", "#618", "#645", "#649", "#654", "#655", "#685", "#700", "#701", "#722", "#834", "#872", "#840", "#885"]
 ---
 
 # Help, how-to videos and support
@@ -56,6 +56,14 @@ sources: ["#1085", "#998", "#1036", "#1040", "#972", "#951", "#910", "#918", "#9
   What's new and Coming up cards in "The coach portal", shared check-in notes on a client's overview, new FAQs for
   the service status banner and the coaches' Monday updates email, check-in "answers" (custom check-ins). MPT Coach
   gets seven new app-help test questions (58 in all). How-to videos still matched (CHANGELOG 2026-11-26).
+- Help review Nov 27 (v8.83.2, PR #1129): "Using Community" says team feeds have no topics or @ tags and finished
+  workouts aren't shared there; "Daily check-in" says the coach sees your answers (not "ratings"); owner-only Social,
+  Releases, Add-ons and Roadmap pages have no Help entries (CHANGELOG 2026-11-27).
+- My Daily Focus (#1174, Nov 28) rewrote the check-in topic and added a Goals and habits topic, two coach walkthroughs
+  and a portal video script (`client-goals-habits`); the "Daily check-in" video was updated. Re-making the My Daily
+  Focus videos waits until it's on production (#1214).
+- Open (audit #805): Help's app tour tells every client Home shows Coach Bronson's deals, while partner clients see
+  their own coach's or none (#1168, low; the deal card's wording is #1217).
 - Code: Help, the FAQ and contact support are in `public/js/page-help.js` since the app split (#840).
 - Support: main coaches open tickets to MetabolicHQ (free-tier tagged); replies in portal and email; Support is also
   answerable from [MetHQ Monitor](methq-monitor.md).

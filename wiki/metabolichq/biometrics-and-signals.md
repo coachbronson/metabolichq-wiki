@@ -1,8 +1,8 @@
 ---
 title: Biometrics, check-ins and signals
 summary: Biometrics metrics, daily check-ins, signals and patterns from combined data, aging rules, AI-on-data rule
-updated: 2026-11-27
-sources: ["#157", "#1093", notes, "#1013", "#1014", "#1016", "#1017", "#1020", "#1025", "#1026", "#1052", "#1054", CHANGELOG 2026-11-25, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644", "#820", "#856", "#859"]
+updated: 2026-11-28
+sources: ["#1174", "#1150", "#1135", "#1138", "#157", "#1093", notes, "#1013", "#1014", "#1016", "#1017", "#1020", "#1025", "#1026", "#1052", "#1054", CHANGELOG 2026-11-25, CHANGELOG, mac-app README, "#603", "#602", "#629", "#630", "#631", "#644", "#820", "#856", "#859"]
 ---
 
 # Biometrics, check-ins and signals
@@ -18,7 +18,7 @@ sources: ["#157", "#1093", notes, "#1013", "#1014", "#1016", "#1017", "#1020", "
   scales such as Tanita, InBody, Omron), an amount in the person's weight unit (DEXA) or an area in cm² (some InBody
   models); his choice of a level/amount toggle, with Area added for InBody (#856). Each is its own metric with its own
   tile and chart; Amount and Area tiles show once logged. Coaches see them in the app and the portal. Signals for them
-  are #1016; syncing them from BIA scales is #162.
+  are below (#1016); syncing them from BIA scales is #162.
 - **When was this taken?** on Add data is a dropdown: Not set, fasted and the other times, plus **After waking** and
   **Before bed** (#1054). Fasted-glucose logic still uses only fasted.
 - Planned: progress photos with coach comments (#602, on the roadmap since Nov 25); optional cycle tracking as an
@@ -26,10 +26,14 @@ sources: ["#157", "#1093", notes, "#1013", "#1014", "#1016", "#1017", "#1020", "
 
 ## Check-ins
 
-Daily check-in plus a session reflection. Check-in lives on Home only (not in the menu).
+Daily check-in plus a session reflection. Since v8.85.0 (Nov 28) the daily check-in is the **How you feel** part of
+**My Daily Focus**, opened from Home's card and its own menu item (see [My Daily Focus](my-daily-focus.md), #1174).
+(Previously the check-in lived on Home only, not in the menu.) The per-question Skip button is gone: an unanswered
+question stays open, and **Skip the rest and save** finishes the check-in with the open ones left out (#1174, PR
+#1205).
 
 - **A custom check-in per space** (v8.80.0, #157 closed Nov 26, PR #1093): head coaches make **one** custom
-  check-in for their whole space on **Space settings → Daily check-in**, starting from the default (the 8 ratings
+  check-in for their whole space on **Space settings → My Daily Focus** (previously "Daily check-in"), starting from the default (the 8 ratings
   and hours slept). They can reword, reorder or remove questions, change the words for 1 and 5, and add questions
   of six types (rating 1–5, number with a unit, yes/no, choice, short answer, long answer), up to 30. **Save and use
   it** replaces the default for every client; **Use the default** goes back at any time and keeps the questions to
@@ -65,7 +69,13 @@ Daily check-in plus a session reflection. Check-in lives on Home only (not in th
 - **Patterns** link things like sleep and effort, or carbs and next-morning glucose.
 - Aging: clear from Home; wins/patterns leave Home after 3 days, others after 7; safety signals stay until
   acknowledged; Signals page shows 90 days (older hidden, not deleted).
-- Coaches see every client's signals; the coach can mute kinds and set thresholds per client.
+- **Body comp signals** (#1016, PR #1150, his calls and defaults Nov 27), each comparing a reading with the person's
+  previous one of the same kind (newest in the last 2 weeks, previous within 120 days): **Visceral fat coming down**
+  (win: lower on each of the last two readings of one kind, never mixed); **Phase angle up** (win: 0.3° or more);
+  **Phase angle dropping** (coach watch, coach only: 0.5° or more down). Coaches can switch each off per client.
+- Coaches see every client's signals; the coach can mute kinds and set thresholds per client. In **client view** a
+  coach sees their own signals as a client's (Home card, Signals page, Messages row, bell); it stays empty unless the
+  coach also has a client account (v8.84.2, #1135, PR #1138).
 - Safety signals are checked right after a client saves a reading (up to 30 times an hour; the hourly job covers the
   rest). Each check reserves its slot first, and a closed space's clients are skipped (#816 item 5, #820).
 - Planned: a "same weight for weeks or lighter than usual: check in" signal (#644); a signal that tells the coach

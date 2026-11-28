@@ -1,13 +1,19 @@
 ---
 title: Acquisition readiness
 summary: How mature MetabolicHQ would look to a buyer (#620), the owner's accepted risks, what's still open, and the code split
-updated: 2026-11-27
-sources: ["#512", "#1105", "#1109", "#1111", "#1113", "#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
+updated: 2026-11-28
+sources: ["#1137", "#1143", "#1145", "#1128", "#1133", "#1153", "#1157", "#1162", "#1190", "#1197", "#927", "#512", "#1105", "#1109", "#1111", "#1113", "#681", "#1005", "#620", "#381", "#558", "#575", "#907", "#909–#916", "#320", "#321", "#921", "#924", "#926", "#928", "#939", "#940", CHANGELOG 2026-11-18, CHANGELOG 2026-11-19, "#718–#741", CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, #750, #758, #762–#780, #805, #809, "#815–#878", "#882", "#895", "#898", "#900–#905", CHANGELOG 2026-11-22]
 ---
 
-# Acquisition readiness (#620, high)
+# Acquisition readiness (#620, closed Nov 27)
 
-- **Goal:** raise MetabolicHQ from beta (about **2 of 5**, "late prototype / early beta", assessed Nov 15) toward
+- **Result (Nov 27, #620 closed):** about **3 of 5** overall (was 2), every counted area at 3 or more:
+  Scalability 3.5, Stability 3, Code quality 3.5, Testing 4, Operations 4, Security 3, Separation 3. His call, Nov
+  27: **accepted risks count as handled**; on actual state Security would be about 2.5 and Separation about 2 (#620
+  "How this was resolved"). Follow-ups, none blocking: #1153 the 0.75% server error rate in November, #1005 the
+  production Roll back drill, #805 the full functional audit (below), #1111 and #1113 deferred security items, #921
+  browser errors (deferred), #381 HIPAA (deferred).
+- **Goal (as set):** raise MetabolicHQ from beta (about **2 of 5**, "late prototype / early beta", assessed Nov 15) toward
   enterprise-grade, as a large software firm would judge it in a purchase review (#620).
 - **Done when:** the assessment is re-run and every area scores at least 3. Team and Business traction are left out
   (accepted risk, owner, Nov 18; #620).
@@ -37,7 +43,15 @@ sources: ["#512", "#1105", "#1109", "#1111", "#1113", "#681", "#1005", "#620", "
   performance watch); browser error reporting is deferred to #921 (medium, ops) (#620).
 - Order for the rest of §4: incident procedure, then backup timing at 10× data, then the release process (#575) (#620).
 
-## Status by section (Nov 23)
+## Status by section (Nov 23, updated Nov 27)
+
+- §1 track record (done Nov 27): error alerting, plus `healthMonthly` (daily 3:23 AM Eastern) saving each month's
+  uptime per site, server error rate, response times and incidents (the issues labeled `incident`, by severity, with
+  time to fix) in `ops/health/months`, shown under **Track record** on Platform → Performance and the Monitor's
+  Performance tile. A part that can't be read is saved as missing, never as 0. November so far: 100% / 99.993% /
+  100% uptime (app / coach portal / site), 0.747% server errors, 0 incidents; October saved as "not read" (#1137,
+  #1145, #620 comments of Nov 27). The "Run a scheduled job now" workflow forces any scheduled function on
+  production or staging (#1143).
 
 - §2: done or accepted. Package names are `metabolichq` and `metabolichq-functions` (#915); ownership and accounts
   are accepted risk (above).
@@ -59,7 +73,9 @@ sources: ["#512", "#1105", "#1109", "#1111", "#1113", "#681", "#1005", "#620", "
   [Engineering rules](../rules/engineering-rules.md#type-checking)), the Engineer Onboarding Guide (#907; see
   [System documentation](system-documentation.md)), the `cohortCache` review (#916: reads only the last 200 days of
   workout logs, warns past 5 minutes). Also: the change log is one file per entry (#939), and scheduled jobs run in
-  Google Cloud (#928). Next: the full functional audit (#805, below).
+  Google Cloud (#928, closed Nov 27 with #927; no workflow has a `schedule:` line). **Keep the repo lean is
+  complete** (Nov 27): end-to-end results are on each run's page and its 30-day artifact, and the 12 `e2e-results*`
+  branches are deleted (#1128, #1133). Next: the full functional audit (#805, below).
 
 ## Splitting the big files (§5)
 
@@ -151,12 +167,28 @@ the portal five times (#875). The pages moved, unchanged, into one file per menu
   crossing midnight UTC failed the "today" journeys (#899, #904). See [Engineering rules](../rules/engineering-rules.md#testing-levels).
 - Where new code goes from now on: [Engineering rules](../rules/engineering-rules.md) → the code map (#883).
 
-**After the split:** a full functional audit (#805, high, needs the owner's go-ahead): an inventory of every screen
-control, function, data field, role, integration, key and use case, the expected result written before each test,
-tests in layers up to staging and real devices, an independent re-check, and a finish line (no high issues open,
-`ops/ui-gaps.json` at zero or explained, three green nights in a row). Until then, problems the owner finds are
-logged as `audit-intake` issues, as the audit's answer key. Open decision: where the inventory Sheet lives (#805).
-Added to the roadmap Nov 21 (#805).
+**After the split: the 2026 full functional audit** (#805, high; started Nov 27 with his go-ahead, under way). Its
+method is now the yearly rule (see [Engineering rules](../rules/engineering-rules.md#testing-levels), #1157): the
+answer key is what the system says, not the old `audit-intake` list. Finish line: no high issues open,
+`ops/ui-gaps.json` at zero or explained, three green nights in a row (#805).
+- **Inventory** in the repo, `ops/audit/2026/inventory.json` (`node tools/audit-inventory.mjs`): about 3,700 rows
+  (3,009 controls, displays and data-layer calls; 150 Cloud Functions; 141 data paths; 30 role and space pairs; 69
+  outside hosts; 34 secrets; 59 workflows; 46 schedules; 21 rules sections; 138 wiki use cases). Code-level checks:
+  no findings (PR #1162). Each row's expected result and result: `node tools/audit-results.mjs` (CHANGELOG
+  2026-11-28). (Previously an inventory Sheet was planned.)
+- **Checks so far** (Nov 27–28, hand-run, read-only workflows): all 46 scheduled jobs fine and all 16 declared
+  secrets present on both projects; 130 of 130 staging function calls (refusals and four working calls); 10 of 10
+  outside services answer with the right kind of key (staging Stripe test-only, production live; Resend send-only);
+  36 of 36 outside links; the security rules role by role against the SSP and this wiki (13 cases, MPT included);
+  public pages and the 36 signed-in client pages; a Real use check on staging (a biometric reading and a daily
+  check-in saved and reloaded); the staging gate held for 100 of 100 merges (CHANGELOG 2026-11-28, #805).
+- **Independent re-check** (PR #1190): 11 of 32 sampled results were wrong, none of them platform findings; the
+  tool that writes results was fixed for each pattern.
+- **UI gaps:** new journeys for Reports and Training History, the Exercise Library and Achievements, biometrics
+  cards, the coach's Clients in the app, Home and Notifications took untested controls and displays from 604 to 507
+  (#805 comments of Nov 28, PRs #1216, #1219).
+- **Findings filed so far:** #1163, #1164, #1165, #1166, #1168, #1170, #1173, #1182, #1185, #1193, #1197 (high), #1211,
+  #1212, #1217, #1218, #1220 (see [Roadmap and backlog](roadmap-and-backlog.md)).
 
 Findings the smaller files let the scan see, fixed with the owner's OK: see [Security](security.md#code-scanning).
 

@@ -1,8 +1,8 @@
 ---
 title: Coach portal
 summary: The desktop management portal — menus, Platform vs space areas, client management, Backlog/roadmap, Costs, Performance
-updated: 2026-11-27
-sources: ["#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102", "#1103", "#1107", "#1110", "#1112", "#1115", "#1120", "#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#1036", "#1065", "#1066", "#1068", "#1069", "#1073", "#1076", "#978", "#988", "#980", "#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
+updated: 2026-11-28
+sources: ["#1130", "#1137", "#1174", "#1177", "#1128", "#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102", "#1103", "#1107", "#1110", "#1112", "#1115", "#1120", "#410", "#575", "#648", "#710", "#1019", "#1022", "#1033", "#1035", "#1036", "#1065", "#1066", "#1068", "#1069", "#1073", "#1076", "#978", "#988", "#980", "#955", "#959", "#961", "#920", notes, CHANGELOG v2.0, CHANGELOG 2026-11-15, CHANGELOG 2026-11-17, admin/portal.js, "#515", "#623", "#645", "#648", "#652", "#653", "#675", "#683", "#686", "#850", "#851", "#874", "#875", "#878", "#882", "#895", "#898", "#900–#903", "#818", "#697", "#700", "#701", "#710", "#711", #755, #789]
 ---
 
 # Coach portal (v2.0) — admin.metabolichq.app
@@ -33,7 +33,9 @@ sources: ["#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102",
   (the next two weeks, Looks good / Pause / Resume, New post, Pause all posting, ideas for Claude), **one post**
   (images, captions, Publish now, Reject, Ask Claude to rewrite it), **Connections**, and **Performance** (Instagram
   by funnel stage, the week's plan in plain words, the weekly review's suggestions with Use it / Dismiss) (#1102,
-  #1115, #1120; see [MetabolicHQ content](methq-content.md#social)). The Blog editor's Social link opens it again
+  #1115, #1120; see [MetabolicHQ content](methq-content.md#social)). Instagram connects through Facebook Login for
+  Business ("Unified login"), since Meta stopped offering Instagram login to new apps in late Oct 2026 (CHANGELOG
+  2026-11-27). The Blog editor's Social link opens it again
   (#1097 closed).
 - **Security** (Platform, owner only, two-step): scan results, security events, alerts, lockouts, accepted risks
   (#515; see [Security](security.md)).
@@ -89,11 +91,12 @@ sources: ["#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102",
   Clients has a Group filter too (#1076).
 - The coach data export adds `client-data/groups.csv` (#1035).
 - Each group card has **Message the group** (#1086) and, for head coaches, **Own feed** with its feed name (#1110).
-  **Calls → New call** lists groups for a group call (#1107). Resources' **Who sees it** lists groups (#1081).
+  **Calls → New call** lists groups for a group call (#1107), in a type-to-search box since Nov 27 (#1177). Resources' **Who sees it** lists groups (#1081).
 - **Cohort reports** has a **Group** menu: the same report for one group's clients, still only the clients the coach
   works with, and the 5-client minimum hides small pools (v8.83.0, #1112). Coaches only; a sponsor summary is #1099.
-- **Space settings → Daily check-in** (head coaches): the space's one custom check-in (#157; see
-  [Biometrics and signals](biometrics-and-signals.md#check-ins)).
+- **Space settings → My Daily Focus** (head coaches; previously "Daily check-in"): the space's one custom check-in
+  ("How you feel", #157; see [Biometrics and signals](biometrics-and-signals.md#check-ins)) and the space's
+  **Default habits** (#1174; other coaches read them).
 
 ## Program calendar and one-on-one workouts
 
@@ -109,6 +112,10 @@ sources: ["#157", "#1081", "#1084", "#1086", "#1096", "#1097", "#1098", "#1102",
 
 - Overview per client across training, biometrics, check-ins and nutrition (see
   [Biometrics and signals](biometrics-and-signals.md)) and Coaching notes.
+- **Goals & habits** tab on a client's page: the habit report (7/30/90-day completion, streaks, a 12-week calendar),
+  the coaches' up to 3 goals and their habits (v8.86.0; see [My Daily Focus](my-daily-focus.md), #1174).
+- Cohort reports open from the hourly saved copy again (a key mismatch since Nov 26; fixed in PR #1128, #410
+  follow-up).
 - Turn calories on/off per client; set macro targets.
 - Inbox: app suggestions from every space come to Bronson only, with **Approve** (→ new backlog issue) or **Decline**
   (internal reason, archived).
@@ -141,7 +148,9 @@ Finances and Your brand stay the coach's own. **remove** takes it all away (#647
   projections and budget alerts. Later: cost by space and per user (#467).
 - **Add-ons** editor: adding or removing a trigger no longer turns a typed price of 4.99 into 0.05 (found by the new
   Add-ons journey, #1096).
-- **Performance dashboard**: load, performance, utilization, trends; alerts by email only.
+- **Performance dashboard**: load, performance, utilization, trends; alerts by email only. **Track record** (Nov 27):
+  each month's uptime per site, server error rate, response times and incidents, kept from launch on (#620 §1,
+  #1137; see [Acquisition readiness](acquisition-readiness.md#status-by-section-nov-23-updated-nov-27)).
 
 ## Related
 

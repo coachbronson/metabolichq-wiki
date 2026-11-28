@@ -1,8 +1,8 @@
 ---
 title: Engineering and working rules
 summary: How Claude works on the app and site repos — plan first, branches, blast radius, testing, merging, issues, priorities
-updated: 2026-11-27
-sources: ["#1108", "mac-app #1126", "mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
+updated: 2026-11-28
+sources: ["#1108", "#1128", "#1133", "#1141", "#1154", "#1157", "#805", "#1197", "mac-app #1126", "mac-app #681", "mac-app #979", "mac-app #983", "mac-app #909", "mac-app #913", "mac-app #919", "mac-app #922", "mac-app #924", "mac-app #932", "mac-app #939", "mac-app #945", "mac-app #946", "mac-app #927", "mac-app #928", notes, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, "mac-app #883", "mac-app #702", "mac-app #704", "mac-app #709", "mac-app #715", "mac-app #617", "coachbronson-site #26", "mac-app #657", "mac-app #660", "mac-app #664", "mac-app #550", "mac-app #671", "mac-app #677", #757, #782, #785, #786, #807, #816, #638, #868, #831, #833, #837, #839, #842, #850, #852, #873, "mac-app #881", #876, #893, #894, #896, #897, #899, #904]
 ---
 
 # Engineering and working rules
@@ -12,6 +12,8 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 ## Before doing anything
 
 - **Tell him the plan first and wait for his go-ahead** before building or changing things.
+- **Every session starts by adding mac-app, metabolichq-wiki and coachbronson-site** (his rule, Nov 27; #1141
+  comments).
 - **Read this wiki's `index.md` first** in every session; both repos' CLAUDE.md say so, and say not to edit the wiki
   from app or site work (the nightly update picks changes up) (mac-app #617, coachbronson-site #26).
 - **Check the live code on GitHub (mac-app) first** before mockups or app work; project copies may be stale.
@@ -58,6 +60,19 @@ The repos' own `CLAUDE.md` files are authoritative; this page summarizes them pl
 | Area end-to-end | A change to how a feature works; before merge if it touches saved data or server code |
 | Full end-to-end (~20–25 min) | Nightly, before a major version, before cross-cutting changes |
 | None | Wording, styling, Help or change-log edits |
+| Full functional audit (weeks) | Once a year, or sooner on his ask (e.g. before a sale's due diligence or a major version) |
+
+**The yearly full functional audit** (his rule, Nov 27, 2026; mac-app CLAUDE.md, #1157): the nightly end-to-end run
+checks nothing broke; once a year an audit checks what exists and whether it all works as intended, including what
+no test touches. **The answer key is the system** (his call, Nov 27): what the code, CLAUDE.md, Help, this wiki and
+the system documents say should happen, not a list of known problems. It covers completeness, function and
+consistency (the processes applied every time), by #805's method: an inventory from the code, the expected result
+written before each test, layered tests (wiring, every server function on staging, rules for every role, live
+integrations in test mode, every screen in a browser, real devices, speed and cost, a read-only pass on production),
+one issue per finding, and an independent re-check by a separate agent. The Claude job `annual-audit` (Jan 15,
+8:17 AM Eastern) opens the year's issue with a snapshot and asks for his go-ahead; it skips a year when a full audit
+closed in the last six months (#1157, PRs #1158, #1159, #1161). The 2026 audit is #805 (see
+[Acquisition readiness](../metabolichq/acquisition-readiness.md)).
 
 Every `test/*.test.mjs` must be in an npm test script: four never ran on PRs until Nov 26, and the guard test
 `test/testlist.test.mjs` now fails on the next one (#1106). The portal area holds 36 journeys and takes about 25
@@ -102,8 +117,11 @@ on Nov 16, 2026: no journey ever tapped it.)
 - A run doesn't start across midnight UTC: when 00:00 UTC is less than 55 minutes away (15 for one area), the
   workflow waits until 00:01 UTC, since journeys read "today" all through the run. The nightly run never waits
   (#899, #904). Steps read a confirmation toast only after waiting for it (#894).
-- Runs finishing together no longer turn red over the shared `e2e-results` branch: the report push retries up to
-  five times (#782). After a reload, the runner waits for the app's first page before tapping a menu (#807).
+- The end-to-end report is on the run's own page (Summary); the report, findings, screenshots and server errors are
+  in the run's 30-day `e2e-full-results` artifact, and nothing is pushed to the repo (`contents: read`). The
+  nightly email's "Full report" link opens the run page. The 12 old `e2e-results*` branches were deleted Nov 27 by a
+  one-time hand-run workflow (#620 "keep the repo lean", #1128, #1133). (Previously the report was pushed to shared
+  `e2e-results*` branches, with retries when runs finished together, #782.) After a reload, the runner waits for the app's first page before tapping a menu (#807).
 - A portal page in a journey counts as open only once its own content shows, not just its name in the side menu;
   the old wait hid a too-wide table in most runs (#850, #852).
 - False negative explained and fixed (Nov 20): Stripe showed a US$600 package in Canadian dollars because the test
@@ -186,6 +204,26 @@ PR, checks run, what's left (link a follow-up issue). Write failures onto the is
 the fix PR is ready (tests pass, checks done), not as a "what's left" item after the merge. It says the issue closes
 when that PR merges and what still waits (his OK, a first real run); a line is added if the merge or a later check
 changes anything. (Previously posted when the PR merged; mac-app #679 and #1122 were the first done this way.)
+
+## Naming work
+
+Work is named by its **backlog issue**, never a bare PR number: issues and PRs share one numbering on GitHub. A pull
+request is always written "PR #N", and only next to its issue ("#620, done in PR #1137"). Every PR links an issue
+("Part of #N" / "Closes #N"); work with none gets a labeled issue first. The issue's resolution note lists its PRs.
+It applies to sessions, Claude jobs' reports, the change log and this wiki (his rule, Nov 27, 2026; mac-app
+CLAUDE.md, #1154, PR #1155).
+
+## Opening issues
+
+Every issue a session or Claude job opens gets, when it's created: `backlog`; one type label (`bug`, `feature`,
+`enhancement`, `tech`, `documentation`, `security`, `strategy` or `accessibility`, plus area labels that fit); one
+lane (`bug`/`accessibility` → bugs; `tech`/`documentation`/`security` → ops; `strategy` → R&D; else features; a
+follow-up takes its parent's lane); and exactly one priority, with `needs-decision` when it depends on his call. Never
+`roadmap`: only he places items on the Roadmap. An issue with no labels drops out of the portal's Backlog, the
+Roadmap and every lane (seven had, Nov 24–27). Backstop: the "Issue labels" workflow, on each new issue still
+missing a priority or lane after 20 seconds, adds `backlog`, `priority: low`, a lane from its type and
+`needs-triage`; whoever sees `needs-triage` fixes the guesses and removes it (his rule, Nov 27, 2026; mac-app
+CLAUDE.md, #1141, PRs #1142, #1144).
 
 ## Backlog priorities
 

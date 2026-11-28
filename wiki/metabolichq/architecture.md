@@ -1,8 +1,8 @@
 ---
 title: Architecture and infrastructure
 summary: Repos, Firebase/Google Cloud projects, domains, data model, email, services, backups and deploys
-updated: 2026-11-27
-sources: ["#983", "#1082", "#1093", "#1101", "#1104", "#1105", "#1109", "#1114", "#1116", "#1117", CHANGELOG 2026-11-26, "#410", "#575", "#603", "#681", "#1022", "#1024", "#996", "#999", "#1000", "#1026", "#1040", "#1042", "#1051", "#1059", "#1064", "#1072", "#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
+updated: 2026-11-28
+sources: ["#1137", "#1143", "#1157", "#1159", "#1125", "#1132", "#1174", "#805", "#983", "#1082", "#1093", "#1101", "#1104", "#1105", "#1109", "#1114", "#1116", "#1117", CHANGELOG 2026-11-26, "#410", "#575", "#603", "#681", "#1022", "#1024", "#996", "#999", "#1000", "#1026", "#1040", "#1042", "#1051", "#1059", "#1064", "#1072", "#960", "#967", "#971", "#975", "#983", "#984", "#986", "#989", "#992", ops/function-endpoints.json, functions/reminders.json, "#950", "#952", "#953", "#955", "#956", "#958", "#962", "#965", "#967", "#915", "#921", "#926", "#928", "#930–#938", "#939", "#943", "#946", "#321", mac-app README, mac-app CLAUDE.md, coachbronson-site CLAUDE.md, CHANGELOG, notes, "#611", "#626", "#514", "coachbronson-site #27", "#567", "#667", "#668", "#672", "#676", "#684", "#695", "#696", "#620", "#724–#739", mac-app .firebaserc, #758, #762–#779, #780, #791, #794, #795, #809, "#815–#849", #829, #831, #833, #874, #878, #882, #893, #895, #898, #900–#903, functions/mail.js, .github/workflows/backup.yml, "#638"]
 ---
 
 # Architecture and infrastructure
@@ -71,11 +71,17 @@ Bronson keeps no local copy of the repos; work happens in cloud Claude sessions.
 Spaces: one per coach business; MPT is `mpt`. `accounts/{uid}` says which space a person is in.
 Shared platform data (group program `programDays/{date}_all`, exercises, videos, search cache) sits at the top level;
 everything else lives under `spaces/{sid}/…` (users, logs, check-ins, biometrics, threads, signals, feed…).
+Added Nov 27–28: a client's goals and habits (`focus/client`, `focus/coach`, `habitDays/{date}`) and the space's
+default habits (`config/habits`) (#1174); server-only `spaces/{sid}/resEnroll`, the day each client was added to a
+Resources collection (#491); `users/{uid}/recordAcks`, group-call recording agreements, and `groupCallNotes` (#1095);
+server-only `ops/health/months/<YYYY-MM>`, the track record (#1137).
 Full layout: mac-app `README.md`. Security rules: `firestore.rules`, `storage.rules` (tested in `test/rules.test.mjs`).
 
 ## Server code
 
-- **148 Cloud Functions**: 76 callable, 28 HTTPS, 44 scheduled (`ops/function-endpoints.json`, Nov 27). Added Nov 26:
+- **150 Cloud Functions**: 76 callable, 28 HTTPS, 46 scheduled (`ops/function-endpoints.json`, Nov 28). Added Nov 27:
+  `healthMonthly` (the track record, #1137) and `annualAuditStart` (#1157, PR #1159). (Previously 148 on Nov 27; the
+  system documents give four different counts, 139–150, #1166.) Added Nov 26:
   `checkinForm` (#1093); MetabolicHQ social media's `social`, `socialJob`, `socialCallback`, `socialPublish`,
   `socialStats`, `hqSocialDraftsStart` and `hqSocialReviewStart` (#1101, #1104, #1114, #1116); `hqBlogMergeWork`
   (#1117). (Previously 139 on Nov 26.) Added Nov 25:
@@ -152,7 +158,10 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   2:47, `securitySettingsStart` 4:23, `hqBlogStart` 6:33, `wearablesStart` every hour at :23, `stagingDemoStart` Mondays 4:17 (#958), `releasePromote` every 15 minutes (#975), `driftCheckStart` 3:07 (#996). Added
   Nov 25 as scheduled functions: `releaseWatch` every 5 minutes (#999), `checkinReminders` every 15 minutes (#1026),
   `coachDigest` Mondays 8:17 (#1040), `featureWork` 8:23 (#1064). Added Nov 26: `socialPublish` and
-  `hqBlogMergeWork` every 10 minutes, `socialStats` 6:21 AM (CHANGELOG 2026-11-26). A start or job that
+  `hqBlogMergeWork` every 10 minutes, `socialStats` 6:21 AM (CHANGELOG 2026-11-26). Added Nov 27: `healthMonthly` 3:23 AM (#1137). The hand-run
+  workflow **Run a scheduled job now** forces any scheduled function through Cloud Scheduler on production or
+  staging, since sessions have no Google Cloud access of their own (#1143). #927 and #928 closed Nov 27 (no
+  workflow has a `schedule:` line). A start or job that
   fails saves a security alert for the owner; starters give up after 15 seconds (nightly review Nov 23, #948). Each
   moved workflow keeps "Run workflow"; `test/schedules.test.mjs` fails on any new `schedule:` (#930–#938).
 - **Claude jobs and reminders run from Google Cloud too** (owner's rule, Nov 24, #983): no Claude scheduled tasks.
@@ -160,13 +169,17 @@ Circle is **not** part of the app. Status page: **Better Stack** (free plan, own
   instructions in `ops/claude-jobs/<job>.md`, signed in with the owner's Claude subscription token and a fine-grained
   GitHub token (mac-app and this wiki), and emails the job's report to the owner (#984). Starts (Eastern):
   `nightlyReviewStart` 12:06 AM, `wikiUpdateStart` 4:41 AM, `hqSocialDraftsStart` 5:52 AM, `hqBlogDraftsStart`
-  7:10 AM, `helpReviewStart` 7:45 AM (#986, #1104), and `hqSocialReviewStart` Mondays 6:53 AM (#1116). A by-hand job,
+  7:10 AM, `helpReviewStart` 7:45 AM (#986, #1104), `hqSocialReviewStart` Mondays 6:53 AM (#1116), and `annualAuditStart`
+  each Jan 15 at 8:17 AM (job `annual-audit`, #1157). The two social jobs sign in with the GitHub OIDC values that
+  `claude-run.yml` now hands them (`SOCIAL_OIDC_URL` / `SOCIAL_OIDC_BEARER`; #1125, PR #1149). **Open, high:** the
+  nightly review job stops after opening its PR (no Claude review, no report, marker not moved) while its run shows
+  green, seen Nov 26 and 27 (#1197). A by-hand job,
   `drive-check`, checks Drive access (#1082). **#983 closed Nov 26**: no Claude scheduled tasks are left.
   **Google Drive** for Claude jobs: a keyless service account in metabolichq-staging (`claude-drive`, no project roles), shared
   only the cover-photo folder (read) and Documentation (edit); `scripts/drive.mjs` refuses anything outside them and
   its token goes only to the Claude step (#1082). Each job's report is also printed in its run log (#1082). One-time reminders are `functions/reminders.json` (add one with a PR); `reminderWork` checks every 15
   minutes, emails each due one once, can start a Claude job (started only once, even if the email is retried), and
-  records it in `ops/reminders` (#989, #992). On the list: the Nov 27 9:37 AM Group coaches backfill on production
+  records it in `ops/reminders` (#989, #992). On the list: the Dec 2 9:41 AM release watch one-week check (#1005, PR #1152), the Nov 27 9:37 AM Group coaches backfill on production
   (#410, #1072), the Nov 29 key clean-up check (job `key-cleanup`, which
   deletes nothing), the Dec 19 unused-function review (job `unused-functions-review`), the Jan 29 Riverside booking,
   and the Jul 1, 2027 move of coachbronson.com's email off MetabolicHQ's Resend. coachbronson.com's jobs run from its

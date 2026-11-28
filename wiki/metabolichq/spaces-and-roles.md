@@ -1,8 +1,8 @@
 ---
 title: Spaces, coaches and roles
 summary: Multi-coach spaces, main coach vs team coaches, client assignment, coach vs client accounts, sign-up
-updated: 2026-11-27
-sources: [notes, "#410", "#1081", "#1086", "#1107", "#1110", "#1112", "#1095", "#1099", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
+updated: 2026-11-28
+sources: [notes, "#1135", "#1151", "#1171", "#410", "#1081", "#1086", "#1107", "#1110", "#1112", "#1095", "#1099", "#1033", "#1035", "#1059", "#1073", "#1076", "#1032", mac-app README, CHANGELOG, "#404", "#647", "#652", "#699", "#700", "#701", "#710", "#711", #753, #755, #788, #803, #808, #810, #861, #825]
 ---
 
 # Spaces, coaches and roles
@@ -62,8 +62,10 @@ Nov 26**: stages A1–A4, B1, B2, B4, C1 and C2 merged (v8.75.0–8.83.0); B3 dr
   coaches only (C2, v8.83.0, #1112, see [Coach portal](coach-portal.md#client-groups)).
 - **His calls on the plan (Nov 26):** B3, check-ins by group, dropped for one custom check-in per space (#157, see
   [Biometrics and signals](biometrics-and-signals.md#check-ins)); B4 kept simple, with recording and AI notes in
-  #1095; B5, onboarding by group, skipped until coach-built client onboarding (#332) exists; C2 coaches only, the
-  outside-sponsor summary is #1099 (#410).
+  #1095 (done Nov 27: everyone agrees on each join, notes for coaches only; see
+  [Coaching calls](coaching-calls.md)); B5, onboarding by group, skipped until coach-built client onboarding (#332) exists; C2 coaches only, the
+  outside-sponsor summary is #1099 (deferred to R&D, low, his call Nov 27: only matters if group coaching is sold
+  to companies, gyms or teams) (#410).
 - Still to do: run the **Group coaches backfill** on production once A2 is live (reminder Nov 27, 9:37 AM, #1072).
 - "Group program" is now called **Shared program**, so it isn't mixed up with Groups (his call, Nov 25; #1035).
 - Screens: see [Coach portal](coach-portal.md#client-groups).
@@ -95,7 +97,11 @@ Nov 26**: stages A1–A4, B1, B2, B4, C1 and C2 merged (v8.75.0–8.83.0); B3 dr
   extras (no "Today's workout" tile; no portal link on phones; resource libraries available).
 - The main coach gets a free, full **client view** switch. Client view belongs to the account that turned it on;
   Sign out turns it off and puts the tab back on Home, so the next account in that tab never opens in client view
-  or on the last person's page (#404, v8.66.1).
+  or on the last person's page (#404, v8.66.1). Since Nov 27 client view also shows what clients see on Files
+  (Resources), Signals and Home's What's new card (#1135, v8.84.1–8.84.3).
+- A client who went live as a partner coach of their own space but kept an active MPT client record: the "Delete
+  people" workflow's **keep sign-in** mode removes only their records in the space and keeps their sign-in (now
+  their coach sign-in) and coach invite (CHANGELOG 2026-11-27).
 - Team coaches are blocked from client functions (so free seats aren't used as free client accounts). A team coach
   who wants a client account subscribes through their own space's client sign-up with their coach email — no "+"
   aliases (not universal). They're billed and counted like any client, filed under the main coach, and reach it via

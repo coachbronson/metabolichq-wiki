@@ -1,17 +1,19 @@
 ---
 title: Versions and release history
 summary: Version scheme, what each major version introduced, current version, release process after beta
-updated: 2026-11-27
-sources: ["#1081", "#1085", "#1086", "#1093", "#1107", "#1110", "#1112", "#410", "#575", "#603", "#681", "#1005", "#1017", "#1020", "#1022", "#1024", "#1025", "#1026", "#1035", "#1052", "#1073", "#1076", "#993", "#996", "#999", "#1004", "#1068", "#1069", CHANGELOG 2026-11-25, CHANGELOG 2026-11-26, "#666", "#681", "#960", "#967", "#971", "#973", "#975", "#976", "#977", "#978", "#979", "#983", CHANGELOG 2026-11-24, "#951", "#956", "#960", "#962", "#964", "#966", "#967", CHANGELOG 2026-11-23, "#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
+updated: 2026-11-28
+sources: ["#1174", "#1183", "#1205", "#1210", "#1213", "#1134", "#1136", "#1138", "#1139", "#1129", "#1163", CHANGELOG 2026-11-27, CHANGELOG 2026-11-28, "#1081", "#1085", "#1086", "#1093", "#1107", "#1110", "#1112", "#410", "#575", "#603", "#681", "#1005", "#1017", "#1020", "#1022", "#1024", "#1025", "#1026", "#1035", "#1052", "#1073", "#1076", "#993", "#996", "#999", "#1004", "#1068", "#1069", CHANGELOG 2026-11-25, CHANGELOG 2026-11-26, "#666", "#681", "#960", "#967", "#971", "#973", "#975", "#976", "#977", "#978", "#979", "#983", CHANGELOG 2026-11-24, "#951", "#956", "#960", "#962", "#964", "#966", "#967", CHANGELOG 2026-11-23, "#919", "#920", "#922", "#925", "#928", "#939", "#946", CHANGELOG 2026-11-22, CHANGELOG, public/js/config.js, notes, "#575", "#320", "#645", "#649", "#653", "#654", "#655", "#681", "#700", "#701", "#722", "#620", #751–#755, #806, CHANGELOG 2026-11-20, CHANGELOG 2026-11-21, "#815–#849", "#865", "#872", "#874", "#878", "#880", "#883", "#891", "#893", "#897", "#902", "#904", "#905"]
 ---
 
 # Versions and release history
 
 - Shown as **BETA x.y.z** at the bottom of Help and in the portal sidebar (`APP_VERSION` in `public/js/config.js`).
 - Major number = big feature area, middle = new features, last = fixes. Bump with every release.
-- Current on main, 2026-11-27: **8.83.1** (Help review Nov 26, #1085; `APP_VERSION` in `public/js/config.js`).
+- Current on main, 2026-11-28: **8.87.0** (My Daily Focus part 4, habit-streak achievements, #1174, PR #1213;
+  `APP_VERSION` in `public/js/config.js`).
   Merged is not live: medium- and high-risk changes wait 24 hours on staging, so release notes carry the day each is
-  expected live (`public/js/releasenotes.js`). (Previously 8.77.0 on Nov 26; 8.71.1 from Nov 23, #951.)
+  expected live (`public/js/releasenotes.js`). (Previously 8.83.1 on Nov 27; 8.77.0 on Nov 26; 8.71.1 from Nov 23, #951.) Open: release notes dated
+  Dec 1–10 for changes that went live Nov 25–27 (#1163, medium, found by the audit #805).
 - **Release notes** for people who use it: `public/js/releasenotes.js` (104 notes backfilled from 5.0), shown on
   **What's new** in the app (tap the version at the bottom of Help), in the coach portal (Help → What's new, or the
   version under the menu) and publicly at **metabolichq.app/releases**. Clients see their own notes; coaches see
@@ -83,6 +85,15 @@ A major version gets a full end-to-end test before rollout.
   review (#1085). **#410 client groups closed.** Also MetabolicHQ social media (#1101–#1104, #1114–#1116, #1120),
   blog Approve on a draft behind main (#1117, #1123), the Releases end-to-end banner (#1084, #1103), the demo video
   out of the repo (#1105, #1109), and more portal journeys for #657 (#1078, #1083, #1087, #1088, #1096, #1118).
+- 2026-11-27: 8.83.2 Help review (#1129); 8.84.0 Resources drip for existing clients (#491, PR #1134); 8.84.1–8.84.3
+  client view shows Resources on Files, your own Signals and the clients' What's new card (#1135, PRs #1136, #1138,
+  #1139). Also group call recording and coaches-only AI notes (#1095), body comp signals (#1016), the track record
+  (#620 §1, #1137; **#620 closed**), the blog go-live from production's commit (#679, #1122), the issue-label rules
+  and workflow (#1141), the naming and yearly-audit rules (#1154, #1157), and the 2026 full functional audit started
+  (#805).
+- 2026-11-28: My Daily Focus (#1174, closed): data and rules (PR #1183), 8.85.0 the client page (PR #1205), 8.86.0
+  the coach side (PR #1210), 8.87.0 habit-streak achievements (PR #1213). Calls → New call search (#1177). The audit's
+  checks and new end-to-end journeys (#805).
 - 2026-10-31 → 11-14: desktop layout, backups, achievements, reports, check-ins, video library, then the 2.0–8.x
   releases above, plus spaces (multi-coach), memberships, partner program, Monitor.
 
@@ -91,7 +102,10 @@ A major version gets a full end-to-end test before rollout.
 Continuous delivery, not scheduled releases (#575, closed Nov 25): the staging gate (#681), the post-deploy watch
 and Roll back, feature switches (#1022), a public release page (#320) and release messaging (#1024). Left in #1005:
 watch the first real watches on production, see the alert email arrive, do one Roll back drill, and review the
-50-request floor after a week (#575 "How this was resolved").
+50-request floor after a week (#575 "How this was resolved"). Nov 27: the watch runs on production, mostly "too
+quiet to tell", with two "worse" verdicts from slow requests right after a deploy (likely cold starts); a reminder
+on Dec 2, 9:41 AM counts a week of verdicts and decides the floor (PR #1152); the Roll back drill waits for him
+(#1005).
 
 **Development and staging area** (#681, closed Nov 25): a preview link on staging for every PR; staging as a true
 mirror of production; seeded demo data reset weekly; the staging gate; the nightly drift check. His decisions

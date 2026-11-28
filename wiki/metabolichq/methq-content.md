@@ -1,8 +1,8 @@
 ---
 title: MetabolicHQ content and messaging
 summary: MetHQ messaging framework, homepage "Replace your stack" structure, differentiators, social plan, blog rules and topic queue
-updated: 2026-11-27
-sources: ["#679", "#1092", "#1101", "#1102", "#1104", "#1114", "#1116", "#1117", "#1120", "#1121", "#1122", "#1123", "#441", "#949", content/blog/posts/, notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
+updated: 2026-11-28
+sources: ["#1125", "#1130", "#1149", "#679", "#1092", "#1101", "#1102", "#1104", "#1114", "#1116", "#1117", "#1120", "#1121", "#1122", "#1123", "#441", "#949", content/blog/posts/, notes (Nov 12–13, 2026), MetabolicHQ homepage messaging preview artifact, mac-app content/blog/DRAFTING.md and blog-topics.md, "#675", "#679"]
 ---
 
 # MetabolicHQ content and messaging
@@ -73,9 +73,13 @@ Footer shows city and state only (address rule).
 - **Auto-publishing, MetabolicHQ's own** (his call, Nov 26; CHANGELOG 2026-11-26): Instagram and the LinkedIn company
   page, **three posts a week (Mon, Wed, Fri)**. A post goes out at its time unless he pauses or rejects it
   (previously he approved each item). Same setup as coachbronson.com's but nothing shared: its own apps, keys,
-  storage and scheduler ("MetabolicHQ is self-contained"). Instagram connects with Instagram Login (no Facebook Page);
+  storage and scheduler ("MetabolicHQ is self-contained"). Instagram connects through Facebook Login for Business ("Unified
+  login"), since Meta stopped offering Instagram login to new apps in late Oct 2026 (CHANGELOG 2026-11-27; previously
+  Instagram Login);
   LinkedIn posts as the company page; a platform not connected yet makes a post wait, not fail. Staging never posts.
-  Neither account was connected yet on Nov 26 (CHANGELOG 2026-11-26).
+  Neither account was connected yet on Nov 26 (CHANGELOG 2026-11-26). The four social keys now reach production
+  through Promote (they hadn't, Nov 27; CHANGELOG 2026-11-27). The two social Claude jobs couldn't sign in on their
+  first run and can again (#1125, PR #1149; first run signed in).
 - **The daily Claude job `hq-social-drafts`** (5:52 AM Eastern, started by Google Cloud) keeps the next week of
   posts planned and redoes ones he sent back: his ideas first, then unposted sets in Drive › MetabolicHQ Instagram,
   then the five pillars in rotation. Photos from Google's image model, slides at 1080×1350 with a real app screen,
@@ -94,9 +98,12 @@ Footer shows city and state only (address rule).
 
 Rules in `mac-app/content/blog/DRAFTING.md`:
 - Every other Monday from Nov 23, 2026 (#675; previously described as the Mondays between coachbronson.com's posts;
-  the dates didn't change). The daily go-live run fails on its last step, "Save the go-live log"; posts still go live
-  but the log isn't saved (#679, low; fix in PR #1121, open Nov 27). It also deploys main's site straight to
-  production, skipping the staging gate (#1122, open, fixes for him to pick). Claude drafts, Bronson approves
+  the dates didn't change). The daily go-live run works out what's due from the live
+  metabolichq.app sitemap (no go-live log, nothing pushed, `contents: read`), builds the site from **the commit
+  production runs** with only the blog posts and images from main, includes the site media, and checks the sitemap
+  lists each post after the deploy (#679, #1122, both closed Nov 27, done in PR #1121 with his OK). (Previously it
+  failed daily on "Save the go-live log" and deployed main's site past the staging gate.) First real go-live day
+  with it: Mon Dec 7. A Run workflow option `build_only` builds without deploying. Claude drafts, Bronson approves
   (`hq-blog-draft` PRs, or **Approve** on the Content page); weekly email of anything awaiting approval.
 - **Approve works on a draft that's behind main** (#1117, Nov 26): if GitHub can't merge at once, the draft is
   labeled `hq-blog-approved`, brought up to date, and `hqBlogMergeWork` (every 10 minutes) merges that exact commit
@@ -115,8 +122,8 @@ Rules in `mac-app/content/blog/DRAFTING.md`:
   retention, coaching without spreadsheets, professional fitness coach. Approved Nov 24: "Your Online Coaching Tech
   Stack Is Costing You Clients" (dated Mon, Nov 23, #441) and "Who Owns Your Coaching History?" (goes live Mon,
   Dec 7, #949) (`content/blog/posts/`).
-- Waiting for him: "The Add-On Tax: What Coaching Software Really Costs" (draft PR #1092, goes live Mon, Dec 21 if
-  merged before then; its cover came from Drive, #983).
+- Approved Nov 27: "The Add-On Tax: What Coaching Software Really Costs" (goes live Mon, Dec 21; its cover came from
+  Drive; merged from the draft PR #1092, #983).
 - Drafts are started at 7:10 AM Eastern by Google Cloud as a "Claude job" run (`hqBlogDraftsStart`, #983, #986;
   previously a Claude scheduled task).
 - Queue (from coach complaints in Capterra/G2/App Store reviews and r/personaltraining): the app is part of your

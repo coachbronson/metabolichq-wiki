@@ -1,8 +1,8 @@
 ---
 title: Training (workouts, programs, swaps)
 summary: Programs, workout logging, swaps and usual swaps, moving workouts, notifications, reports, exercise library
-updated: 2026-11-26
-sources: ["#970", "#1009", "#1010", "#1017", "#1038", "#1052", "#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
+updated: 2026-11-28
+sources: ["#1148", "#1174", "#1208", "#1212", "#1220", "#970", "#1009", "#1010", "#1017", "#1038", "#1052", "#930", notes, CHANGELOG, mac-app README, "#172", "#478", "#479", "#655", "#847", "#848", "#863", "#864"]
 ---
 
 # Training
@@ -53,9 +53,13 @@ sources: ["#970", "#1009", "#1010", "#1017", "#1038", "#1052", "#930", notes, CH
 - **Skip this workout** (his addition): skips the whole programmed workout in one tap; the day says "You skipped …"
   with **Bring it back**, the week tags it Skipped, and the client's own workout for that day shows instead. The
   coach's views say "Skipped this day's programmed workout to do their own". Refused once anything that day is
-  logged (#1009). Follow-up: a coach editing a one-on-one day after the client added rows drops their "own" tag
-  (#1010, rare).
+  logged (#1009). A coach editing a one-on-one day keeps the client's own rows tagged as theirs, so a skip no
+  longer hides them (#1010, PR #1148, Nov 27). (Previously a coach's edit dropped the tag.)
 - The end-of-session wrap-up says the rating, effort and notes are shared with the coach (#1017, #1052).
+- Habit streaks earn achievements under **Habits** (v8.87.0; see [My Daily Focus](my-daily-focus.md), #1174).
+- Found by the audit (#805), open and low: Turn off swap → Turn off for good redraws Workouts over another page if
+  you leave mid-change (#1208); a tap on the last week under Reports' "avg" label does nothing (#1212); the workout
+  form's coach parts can no longer be reached in the app (#1220; programming moved to the portal).
 - Requested (#1038, Nov 25): edit a session's start time and length when someone forgot to tap Start workout.
 
 ## Moving a workout

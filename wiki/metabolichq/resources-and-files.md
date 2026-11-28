@@ -1,8 +1,8 @@
 ---
 title: Resources and shared files
 summary: Coach resource libraries, / linking and sharing rules, worksheets and timed release, private coach–client files
-updated: 2026-11-27
-sources: ["#1081", "#157", notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062", "#156", "#491", "#410", "#431", "#332", "#860"]
+updated: 2026-11-28
+sources: ["#1131", "#1135", "#1081", "#157", notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062", "#156", "#491", "#410", "#431", "#332", "#860"]
 ---
 
 # Resources and shared files
@@ -30,7 +30,20 @@ sources: ["#1081", "#157", notes, CHANGELOG, "#1012", "#1045", "#1060", "#1062",
   (3 clients)". The server checks group membership when a client asks; clients who join get the usual "New in
   Resources" notice, and leaving takes the collection away at once. A form for one group is a worksheet shared this
   way (his call, Nov 26; #157).
-- Later: timed release from enrollment/program start or "after the previous section" (#491), search in the `/` list (#431), coach-customizable onboarding workflows (#332).
+- **Drip for existing clients** (v8.84.0, #491, PR #1134, closed Nov 27): two more release rules for items and
+  sections, beside "on a date" and "N days after joining". **Days after being added**: each client counts from the
+  day they were added to that collection (named or through a group); taken out and added back keeps their first day;
+  clients already in a collection started from the day it shipped. **After an earlier item**: once the client opens
+  it (or sends it, for a worksheet), plus any days set; picked with **Waits for…**. A rule that waits for itself or
+  loops is refused on save. Clients see "Opens after you open/send “…”"; the portal's client Files tab says what
+  each waiting item waits for. His calls, Nov 27: coaches add clients (named or by group); late joiners on
+  date-based collections see everything so far; one notice per collection per day; programs kept out ("started
+  their program" moved to R&D, #1131). The "added" day is a server-only record (`spaces/{sid}/resEnroll`), deleted
+  with the client's account (#491 "How this was resolved").
+- **Client view** (a coach's View as a client) shows Resources on Files: every collection in the space, as a client
+  added today sees it (timed sections locked, drafts hidden, worksheets read-only) (v8.84.1, #1135, PR #1136; his
+  call, Nov 27).
+- Later: search in the `/` list (#431), drip from a client's program start (R&D, #1131), search in the `/` list (#431), coach-customizable onboarding workflows (#332).
 
 ## Shared files (coach ↔ client)
 

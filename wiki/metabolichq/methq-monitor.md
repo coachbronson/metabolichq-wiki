@@ -1,8 +1,8 @@
 ---
 title: MetHQ Monitor
 summary: Phone-friendly ops view at admin.metabolichq.app/monitor — tabs, Claude action menus, security and quality tiles
-updated: 2026-11-27
-sources: ["#1079", "#1080", "#1084", "#1103", "#1117", "#1037", "#1043", "#1051", "#1053", "#1058", "#1059", "#1066", "#1069", "#1079", "#977", "#988", notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
+updated: 2026-11-28
+sources: ["#1137", "#1197", "#1079", "#1080", "#1084", "#1103", "#1117", "#1037", "#1043", "#1051", "#1053", "#1058", "#1059", "#1066", "#1069", "#1079", "#977", "#988", notes, admin/monitor/, functions/monitor.js, mac-app CLAUDE.md, "#515", "#673", "#657"]
 ---
 
 # MetHQ Monitor — admin.metabolichq.app/monitor/
@@ -12,7 +12,8 @@ desktop. Kept separate from the portal so it needn't mix role-based access into 
 
 - **Backlog** in list mode (no swim lanes), sortable by tag or date; open, edit, comment; shows priority.
 - **Support**: reply from the phone.
-- **Dashboards, not counters**: Money, Costs, Performance, Usage.
+- **Dashboards, not counters**: Money, Costs, Performance, Usage. The Performance tile shows the **Track record**
+  (each month's uptime, server errors, response times and incidents; #1137, Nov 27).
 - **Security**: where each finding came from and when; every scan (daily and PR-level, not just nightly); charts by
   criticality, by category and a 30-night trend. Also security events, alerts, lockouts and accepted risks, with
   **Accept this risk** in each finding's ⋯ menu; phone alert links open this tab (#515). The portal's Security page

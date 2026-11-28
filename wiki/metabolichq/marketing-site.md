@@ -1,8 +1,8 @@
 ---
 title: metabolichq.app site and MPT page
 summary: The coach landing page, MPT page for individuals, branding demo widget, sales demo pages, blog, research and trust pages
-updated: 2026-11-27
-sources: ["#1105", "#1109", "#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
+updated: 2026-11-28
+sources: ["#1121", "#1182", "#1185", "#1193", "#1105", "#1109", "#1043", "#1064", "#908", "#917", "#922", "#925", "#320", "#321", notes, site/ in mac-app, CHANGELOG, "#322", "#611", "#618", "#636", "#672", "#692", "#693", "#694", "#698", "#703", "#704", "#743", "#744", "#745", "#747", #781, "#319", "#865", "#866", "#871", site/trust.html]
 ---
 
 # metabolichq.app site
@@ -108,6 +108,14 @@ enforced policy (#704).
 
 Prepopulated with launch posts, each reviewed and approved before posting; a different cover photo for each article
 whenever possible. Drive photos are coaching-oriented, so combine them with text/graphics for a tech web-app feel.
+
+## Open (found by the audit, #805)
+
+- The home page loads Cloudflare's captcha (about 2.7 MB) on open, not when the form comes near (#1185, medium); on
+  a phone the page moved 3.3 MB against staging's 1.3 MB (CHANGELOG 2026-11-28).
+- No page-speed targets are written down, so nothing can be judged slow or fine (#1182, needs his decision).
+- metabolichq.app still links to coachbronson.com (About page, structured data): does the self-contained rule cover
+  it? (#1193, needs his decision).
 
 ## Later
 
